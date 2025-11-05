@@ -1,0 +1,944 @@
+{:properties
+ #:user.property{:author-cpCBlhLV
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/ui-position :block-left,
+                  :block/title "author",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "writing_hand", :type :emoji},
+                                    :description
+                                    "The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably."}},
+                 :spouse-lsSSFZqv
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "spouse",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "people_hugging",
+                                     :name "People Hugging",
+                                     :keywords ["care"],
+                                     :skins
+                                     [{:unified "1fac2",
+                                       :native "🫂",
+                                       :shortcodes
+                                       ":people_hugging:"}],
+                                     :version 13,
+                                     :search
+                                     ",people_hugging,people,hugging,care,🫂",
+                                     :type :emoji},
+                                    :description
+                                    "The person's spouse."}},
+                 :relatedTo-E2UsHj53
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "relatedTo",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "The most generic familial relation."}},
+                 :broker-wZW7zuN5
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "broker",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "office",
+                                     :name "Office Building",
+                                     :keywords ["bureau" "work"],
+                                     :skins
+                                     [{:unified "1f3e2",
+                                       :native "🏢",
+                                       :shortcodes ":office:"}],
+                                     :version 1,
+                                     :search
+                                     ",office,office,building,bureau,work,🏢",
+                                     :type :emoji},
+                                    :description
+                                    "An entity that arranges for an exchange between a buyer and a seller. In most cases a broker never acquires or releases ownership of a product or service involved in an exchange. If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred."}},
+                 :children-XxOZD4XD
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "children",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "baby",
+                                     :name "Baby",
+                                     :keywords
+                                     ["child" "boy" "girl" "toddler"],
+                                     :skins
+                                     [{:unified "1f476",
+                                       :native "👶",
+                                       :shortcodes ":baby:"}
+                                      {:unified "1f476-1f3fb",
+                                       :native "👶🏻",
+                                       :shortcodes
+                                       ":baby::skin-tone-2:"}
+                                      {:unified "1f476-1f3fc",
+                                       :native "👶🏼",
+                                       :shortcodes
+                                       ":baby::skin-tone-3:"}
+                                      {:unified "1f476-1f3fd",
+                                       :native "👶🏽",
+                                       :shortcodes
+                                       ":baby::skin-tone-4:"}
+                                      {:unified "1f476-1f3fe",
+                                       :native "👶🏾",
+                                       :shortcodes
+                                       ":baby::skin-tone-5:"}
+                                      {:unified "1f476-1f3ff",
+                                       :native "👶🏿",
+                                       :shortcodes
+                                       ":baby::skin-tone-6:"}],
+                                     :version 1,
+                                     :search
+                                     ",baby,baby,child,boy,girl,toddler,👶,👶🏻,👶🏼,👶🏽,👶🏾,👶🏿",
+                                     :type :emoji},
+                                    :description
+                                    "A child of the person."}},
+                 :actor-OdNUErVt
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "actor",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "performing_arts",
+                                     :name "Performing Arts",
+                                     :keywords
+                                     ["acting" "theater" "drama"],
+                                     :skins
+                                     [{:unified "1f3ad",
+                                       :native "🎭",
+                                       :shortcodes
+                                       ":performing_arts:"}],
+                                     :version 1,
+                                     :search
+                                     ",performing_arts,performing,arts,acting,theater,drama,🎭",
+                                     :type :emoji},
+                                    :description
+                                    "An actor (individual or a group), e.g. in TV, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip."}},
+                 :composer-DqXekXpv
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "composer",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "violin",
+                                     :name "Violin",
+                                     :keywords
+                                     ["music"
+                                      "instrument"
+                                      "orchestra"
+                                      "symphony"],
+                                     :skins
+                                     [{:unified "1f3bb",
+                                       :native "🎻",
+                                       :shortcodes ":violin:"}],
+                                     :version 1,
+                                     :search
+                                     ",violin,violin,music,instrument,orchestra,symphony,🎻",
+                                     :type :emoji},
+                                    :description
+                                    "The [[67ceb474-6efe-4438-8005-63a4dd7eb054]] or [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] who wrote a composition, or who is the composer of a work performed at some event."}},
+                 :provider-M4XBuYkt
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "provider",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "office",
+                                     :name "Office Building",
+                                     :keywords ["bureau" "work"],
+                                     :skins
+                                     [{:unified "1f3e2",
+                                       :native "🏢",
+                                       :shortcodes ":office:"}],
+                                     :version 1,
+                                     :search
+                                     ",office,office,building,bureau,work,🏢",
+                                     :type :emoji},
+                                    :description
+                                    "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller."}},
+                 :sponsor-B3edgyM3
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "sponsor",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "A person or organization that supports a thing through a pledge, promise, or financial contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event."}},
+                 :byArtist-w5s-7l1v
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "byArtist",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/MusicGroup-OcGAL50D],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "art",
+                                     :name "Artist Palette",
+                                     :keywords
+                                     ["art"
+                                      "design"
+                                      "paint"
+                                      "draw"
+                                      "colors"],
+                                     :skins
+                                     [{:unified "1f3a8",
+                                       :native "🎨",
+                                       :shortcodes ":art:"}],
+                                     :version 1,
+                                     :search
+                                     ",art,artist,palette,art,design,paint,draw,colors,🎨",
+                                     :type :emoji},
+                                    :description
+                                    "The artist that performed this album or recording."}},
+                 :lyricist-z_QwYyda
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "lyricist",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "violin",
+                                     :name "Violin",
+                                     :keywords
+                                     ["music"
+                                      "instrument"
+                                      "orchestra"
+                                      "symphony"],
+                                     :skins
+                                     [{:unified "1f3bb",
+                                       :native "🎻",
+                                       :shortcodes ":violin:"}],
+                                     :version 1,
+                                     :search
+                                     ",violin,violin,music,instrument,orchestra,symphony,🎻",
+                                     :type :emoji},
+                                    :description
+                                    "The person who wrote the words."}},
+                 :alumni-Wxc6iYeE
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "alumni",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "Alumni of an [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]].\nInverse property: [[00000002-7815-5106-6000-000000000000]]"}},
+                 :member-KLhlfdeR
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "member",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "ticket",
+                                     :name "Ticket",
+                                     :keywords
+                                     ["event" "concert" "pass"],
+                                     :skins
+                                     [{:unified "1f3ab",
+                                       :native "🎫",
+                                       :shortcodes ":ticket:"}],
+                                     :version 1,
+                                     :search
+                                     ",ticket,ticket,event,concert,pass,🎫",
+                                     :type :emoji},
+                                    :description
+                                    "A member of an [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] or a ProgramMembership. Organizations can be members of Organizations; ProgramMembership is typically for individuals. Inverse property:  [[00000002-2693-9859-0000-000000000000]]"}},
+                 :colleague-dgX2eJjr
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "colleague",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "A colleague of the person."}},
+                 :creditedTo-AxWjd9hw
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "creditedTo",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "mega",
+                                     :name "Megaphone",
+                                     :keywords
+                                     ["mega"
+                                      "sound"
+                                      "speaker"
+                                      "volume"],
+                                     :skins
+                                     [{:unified "1f4e3",
+                                       :native "📣",
+                                       :shortcodes ":mega:"}],
+                                     :version 1,
+                                     :search
+                                     ",mega,megaphone,mega,sound,speaker,volume,📣",
+                                     :type :emoji},
+                                    :description
+                                    "The group the release is credited to if different than the byArtist. For example, Red and Blue is credited to \"Stefani Germanotta Band\", but by Lady Gaga."}},
+                 :director-SR7t7H8b
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "director",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "mega",
+                                     :name "Megaphone",
+                                     :keywords
+                                     ["mega"
+                                      "sound"
+                                      "speaker"
+                                      "volume"],
+                                     :skins
+                                     [{:unified "1f4e3",
+                                       :native "📣",
+                                       :shortcodes ":mega:"}],
+                                     :version 1,
+                                     :search
+                                     ",mega,megaphone,mega,sound,speaker,volume,📣",
+                                     :type :emoji},
+                                    :description
+                                    "A director of e.g. TV, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip."}},
+                 :producer-tDHINIQi
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "producer",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.)."}},
+                 :publisher-FX1fL5XC
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "publisher",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "The publisher of the article in question."}},
+                 :maintainer-q7oS2Alh
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "maintainer",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "A maintainer of a [Dataset](https://schema.org/Dataset), software package ([SoftwareApplication](https://schema.org/SoftwareApplication)), or other [Project](https://schema.org/Project). A maintainer is a [Person](https://schema.org/Person) or [Organization](https://schema.org/Organization) that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When [maintainer](https://schema.org/maintainer) is applied to a specific version of something e.g. a particular version or packaging of a [Dataset](https://schema.org/Dataset), it is always possible that the upstream source has a different maintainer. The [isBasedOn](https://schema.org/isBasedOn) property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work."}},
+                 :Parents-TJpz00YQ
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "parents",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "man-woman-girl",
+                                     :name "Family: Man, Woman, Girl",
+                                     :keywords
+                                     ["man"
+                                      "woman-girl"
+                                      "family"
+                                      "woman"
+                                      "home"
+                                      "parents"
+                                      "people"
+                                      "human"
+                                      "child"],
+                                     :skins
+                                     [{:unified
+                                       "1f468-200d-1f469-200d-1f467",
+                                       :native "👨‍👩‍👧",
+                                       :shortcodes
+                                       ":man-woman-girl:"}],
+                                     :version 2,
+                                     :search
+                                     ",man-woman-girl,family:,man,,woman,,girl,man,woman-girl,family,woman,home,parents,people,human,child,👨‍👩‍👧",
+                                     :type :emoji},
+                                    :description
+                                    "A parent of this person. We use \"parents\" instead of \"parent\" as this property is already used."}},
+                 :attendee-ltKyBpcg
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :logseq.property/ui-position :block-below,
+                  :block/title "attendee",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "A person or organization attending the event."}},
+                 :contactPoint-NixCcjXJ
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "contactPoint",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "A contact point for a [[67ceb474-6efe-4438-8005-63a4dd7eb054]] or [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]]"}},
+                 :creator-DoXW8XMs
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/hide? true,
+                  :block/title "creator",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "The creator/ [[00000002-1170-4968-9600-000000000000]] of this [[67ea5b18-d228-4483-8871-9df683c1af7b]] . This is the same as the [[00000002-1170-4968-9600-000000000000]] property for [[67ea5b18-d228-4483-8871-9df683c1af7b]] ."}},
+                 :seller-TYIlntxq
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "seller",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "classical_building",
+                                     :name "Classical Building",
+                                     :keywords
+                                     ["art" "culture" "history"],
+                                     :skins
+                                     [{:unified "1f3db-fe0f",
+                                       :native "🏛️",
+                                       :shortcodes
+                                       ":classical_building:"}],
+                                     :version 1,
+                                     :search
+                                     ",classical_building,classical,building,art,culture,history,🏛️",
+                                     :type :emoji},
+                                    :description
+                                    "An entity which offers (sells / leases / lends / loans) the services / goods. A seller may also be a provider."}},
+                 :contributor-oxEX00r_
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/hide? true,
+                  :block/title "contributor",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "A secondary contributor to the [[67ea5b18-d228-4483-8871-9df683c1af7b]] or [[00000002-1301-0956-0100-000000000000]] ."}},
+                 :sibling-i6Kk0Lvr
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "sibling",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "man-woman-girl-girl",
+                                     :name
+                                     "Family: Man, Woman, Girl, Girl",
+                                     :keywords
+                                     ["man"
+                                      "woman-girl-girl"
+                                      "family"
+                                      "woman"
+                                      "home"
+                                      "parents"
+                                      "people"
+                                      "human"
+                                      "children"],
+                                     :skins
+                                     [{:unified
+                                       "1f468-200d-1f469-200d-1f467-200d-1f467",
+                                       :native "👨‍👩‍👧‍👧",
+                                       :shortcodes
+                                       ":man-woman-girl-girl:"}],
+                                     :version 2,
+                                     :search
+                                     ",man-woman-girl-girl,family:,man,,woman,,girl,,girl,man,woman-girl-girl,family,woman,home,parents,people,human,children,👨‍👩‍👧‍👧",
+                                     :type :emoji},
+                                    :description
+                                    "A sibling of the person."}},
+                 :endorsers-OaAOkjBA
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "endorsers",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "People or organizations that endorse the plan."}},
+                 :underName-Q5lbkSQp
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "underName",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/Organization-zHGqsbg8],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "The person or organization the reservation or ticket is for."}},
+                 :readBy-Swh1B994
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "readBy",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "speaking_head_in_silhouette",
+                                     :name "Speaking Head",
+                                     :keywords
+                                     ["in"
+                                      "silhouette"
+                                      "user"
+                                      "person"
+                                      "human"
+                                      "sing"
+                                      "say"
+                                      "talk"],
+                                     :skins
+                                     [{:unified "1f5e3-fe0f",
+                                       :native "🗣️",
+                                       :shortcodes
+                                       ":speaking_head_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
+                                     :type :emoji},
+                                    :description
+                                    "A person who reads (performs) the audiobook."}},
+                 :knows-tKhsJ816
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "knows",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "The most generic bi-directional social/work relation."}},
+                 :editor-M9WJEe3r
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/hide? true,
+                  :block/title "editor",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "Specifies the [[67ceb474-6efe-4438-8005-63a4dd7eb054]] who edited the [[67ea5b18-d228-4483-8871-9df683c1af7b]] ."}},
+                 :character-CpH6W1eR
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "character",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "mage",
+                                     :name "Mage",
+                                     :keywords ["magic"],
+                                     :skins
+                                     [{:unified "1f9d9",
+                                       :native "🧙",
+                                       :shortcodes ":mage:"}
+                                      {:unified "1f9d9-1f3fb",
+                                       :native "🧙🏻",
+                                       :shortcodes
+                                       ":mage::skin-tone-2:"}
+                                      {:unified "1f9d9-1f3fc",
+                                       :native "🧙🏼",
+                                       :shortcodes
+                                       ":mage::skin-tone-3:"}
+                                      {:unified "1f9d9-1f3fd",
+                                       :native "🧙🏽",
+                                       :shortcodes
+                                       ":mage::skin-tone-4:"}
+                                      {:unified "1f9d9-1f3fe",
+                                       :native "🧙🏾",
+                                       :shortcodes
+                                       ":mage::skin-tone-5:"}
+                                      {:unified "1f9d9-1f3ff",
+                                       :native "🧙🏿",
+                                       :shortcodes
+                                       ":mage::skin-tone-6:"}],
+                                     :version 5,
+                                     :search
+                                     ",mage,mage,magic,🧙,🧙🏻,🧙🏼,🧙🏽,🧙🏾,🧙🏿",
+                                     :type :emoji},
+                                    :description
+                                    "Fictional [[67ceb474-6efe-4438-8005-63a4dd7eb054]] connected with a creative work."}},
+                 :instructor-WAvJotJ-
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "instructor",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "bust_in_silhouette",
+                                     :name "Bust in Silhouette",
+                                     :keywords
+                                     ["user" "person" "human"],
+                                     :skins
+                                     [{:unified "1f464",
+                                       :native "👤",
+                                       :shortcodes
+                                       ":bust_in_silhouette:"}],
+                                     :version 1,
+                                     :search
+                                     ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
+                                     :type :emoji},
+                                    :description
+                                    "A person assigned to instruct or provide instructional assistance for the [CourseInstance](https://schema.org/CourseInstance)."}},
+                 :illustrator-gBU5450B
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "illustrator",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "lower_left_paintbrush",
+                                     :name "Paintbrush",
+                                     :keywords
+                                     ["lower"
+                                      "left"
+                                      "drawing"
+                                      "creativity"
+                                      "art"],
+                                     :skins
+                                     [{:unified "1f58c-fe0f",
+                                       :native "🖌️",
+                                       :shortcodes
+                                       ":lower_left_paintbrush:"}],
+                                     :version 1,
+                                     :search
+                                     ",lower_left_paintbrush,paintbrush,lower,left,drawing,creativity,art,🖌️",
+                                     :type :emoji},
+                                    :description
+                                    "The illustrator of the book."}},
+                 :musicBy-f4bfH8ib
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "musicBy",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM
+                   :user.class/MusicGroup-OcGAL50D],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "musical_note",
+                                     :name "Musical Note",
+                                     :keywords
+                                     ["score" "tone" "sound"],
+                                     :skins
+                                     [{:unified "1f3b5",
+                                       :native "🎵",
+                                       :shortcodes ":musical_note:"}],
+                                     :version 1,
+                                     :search
+                                     ",musical_note,musical,note,score,tone,sound,🎵",
+                                     :type :emoji},
+                                    :description
+                                    "The composer of the soundtrack."}},
+                 :employee-OvTfg04j
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "employee",
+                  :build/property-classes
+                  [:user.class/Person-cB8UklzM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "mechanic",
+                                     :name "Mechanic",
+                                     :keywords ["worker" "technician"],
+                                     :skins
+                                     [{:unified "1f9d1-200d-1f527",
+                                       :native "🧑‍🔧",
+                                       :shortcodes ":mechanic:"}
+                                      {:unified
+                                       "1f9d1-1f3fb-200d-1f527",
+                                       :native "🧑🏻‍🔧",
+                                       :shortcodes
+                                       ":mechanic::skin-tone-2:"}
+                                      {:unified
+                                       "1f9d1-1f3fc-200d-1f527",
+                                       :native "🧑🏼‍🔧",
+                                       :shortcodes
+                                       ":mechanic::skin-tone-3:"}
+                                      {:unified
+                                       "1f9d1-1f3fd-200d-1f527",
+                                       :native "🧑🏽‍🔧",
+                                       :shortcodes
+                                       ":mechanic::skin-tone-4:"}
+                                      {:unified
+                                       "1f9d1-1f3fe-200d-1f527",
+                                       :native "🧑🏾‍🔧",
+                                       :shortcodes
+                                       ":mechanic::skin-tone-5:"}
+                                      {:unified
+                                       "1f9d1-1f3ff-200d-1f527",
+                                       :native "🧑🏿‍🔧",
+                                       :shortcodes
+                                       ":mechanic::skin-tone-6:"}],
+                                     :version 12.1,
+                                     :search
+                                     ",mechanic,mechanic,worker,technician,🧑‍🔧,🧑🏻‍🔧,🧑🏼‍🔧,🧑🏽‍🔧,🧑🏾‍🔧,🧑🏿‍🔧",
+                                     :type :emoji},
+                                    :description
+                                    "Someone working for this [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]]."}}}}

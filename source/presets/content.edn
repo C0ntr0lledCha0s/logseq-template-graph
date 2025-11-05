@@ -1,0 +1,3 @@
+{:name "Content Creation Template"
+ :description "Content creators - Videos, Articles, Images, Media"
+ :include ["person" "creative-work" "base" "common"]}

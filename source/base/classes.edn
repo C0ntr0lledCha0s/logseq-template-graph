@@ -1,0 +1,16 @@
+{:classes
+ #:user.class{:Thing-K1x5zUhw
+              {:block/title "Thing",
+               :build/class-properties
+               [:user.property/url-vl6uOHvr
+                :user.property/sameAs-d-nt_wFF
+                :user.property/image-mzkRLYi1
+                :user.property/subjectOf-TT46bi31],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "apple", :type :emoji},
+                :logseq.property/description
+                "The most generic type of item."}},
+              :Resource-sv9Q1YY_ #:block{:title "Resource"}}}

@@ -1,0 +1,182 @@
+{:properties
+ #:user.property{:tripOrigin-zaHltvJm
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "tripOrigin",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "The location of origin of the trip, prior to any destination(s)."}},
+                 :contentLocation-QNbnwDey
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/hide? true,
+                  :block/title "contentLocation",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "The location depicted or described in the content. For example, the location in a photograph or painting."}},
+                 :pickupLocation-OWhJl-L0
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "pickupLocation",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:description
+                                    "Where a taxi will pick up a passenger or a rental car can be picked up."}},
+                 :gameLocation-wfV16uwE
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "gameLocation",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "Real or fictional location of the game (or part of game)."}},
+                 :birthPlace-lkalc5Dz
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "birthPlace",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "The place where the person was born."}},
+                 :serviceArea-VJ8w0kxi
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "areaServed",
+                  :build/property-classes
+                  [:user.class/Place-sWTwEwWP
+                   :user.class/AdministrativeArea-mVunGx8W],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "The geographic area where a service or offered item is provided."}},
+                 :location-rtPRwp3c
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/ui-position :block-right,
+                  :block/title "location",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "The location of, for example, where an [[00000002-1301-0956-0100-000000000000]] is happening, where an [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] is located, or where an action takes place."}},
+                 :itinerary-saka-wPe
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "itinerary",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "Destination(s) ( [Place](https://schema.org/Place) ) that make up a trip. For a trip where destination order is important use [ItemList](https://schema.org/ItemList) to specify that order (see examples)."}},
+                 :homeLocation-weuUMB3U
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "homeLocation",
+                  :build/property-classes [:user.class/Place-sWTwEwWP],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "world_map",
+                                     :name "World Map",
+                                     :keywords
+                                     ["location" "direction"],
+                                     :skins
+                                     [{:unified "1f5fa-fe0f",
+                                       :native "🗺️",
+                                       :shortcodes ":world_map:"}],
+                                     :version 1,
+                                     :search
+                                     ",world_map,world,map,location,direction,🗺️",
+                                     :type :emoji},
+                                    :description
+                                    "A contact location for a person's residence."}}}}

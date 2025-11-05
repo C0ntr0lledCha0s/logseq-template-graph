@@ -1,0 +1,71 @@
+{:classes
+ #:user.class{:Occupation-oFkgoG3w
+              {:block/title "Occupation",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/skills-AxlhRSPo
+                :user.property/experienceRequirements-k6e_h1tv
+                :user.property/qualifications-vpPYlEVx
+                :user.property/responsibilities-nZnn4ia1],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "briefcase", :type :emoji},
+                                 :description
+                                 "A profession, may involve prolonged training and/or a formal qualification."}},
+              :Organization-zHGqsbg8
+              {:block/title "Organization",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/event-TnZsBTQU
+                :user.property/owns-hbJat1oZ
+                :user.property/alumni-Wxc6iYeE
+                :user.property/serviceArea-VJ8w0kxi
+                :user.property/contactPoint-NixCcjXJ
+                :user.property/legalName-NTd1D8n3
+                :user.property/parentOrganization-kjRHwqXD
+                :user.property/employee-OvTfg04j
+                :user.property/subOrganization-sJuCh8sl
+                :user.property/telephone-MNlPt6MU
+                :user.property/location-rtPRwp3c
+                :user.property/memberOf-vE2BpOu4
+                :user.property/member-KLhlfdeR
+                :user.property/email-UL_S9FXV
+                :user.property/keywords-SmmwpeIY
+                :user.property/logo-G3qEV2JH],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "office", :type :emoji},
+                :logseq.property/description
+                "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] such as a school, NGO, corporation, club, etc."}},
+              :EducationalOrganization-eqQowbNb
+              {:block/title "EducationalOrganization",
+               :build/class-properties
+               [:user.property/alumni-Wxc6iYeE],
+               :build/class-extends
+               [:user.class/Organization-zHGqsbg8],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "school", :type :emoji},
+                :logseq.property/description
+                "An educational organization."}},
+              :EducationalOccupationalCredential-YiXkugqH
+              {:block/title "EducationalOccupationalCredential",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/competencyRequired-Cs6MsGxD
+                :user.property/educationalLevel-VdDtKf3f
+                :user.property/credentialCategory-uq00Gg17
+                :user.property/recognizedBy-W-hbsX-K
+                :user.property/validIn-VDYGrCTd
+                :user.property/validFor-zMYMRxMA],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "An educational or occupational credential. A diploma, academic degree, certification, qualification, badge, etc., that may be awarded to a person or other entity that meets the requirements defined by the credentialer."}}}}

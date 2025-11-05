@@ -1,0 +1,178 @@
+{:properties
+ #:user.property{:reviewRating-QBDiKkwj
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/ui-position :block-left,
+                  :block/title "reviewRating",
+                  :build/property-classes
+                  [:user.class/Rating-BSM3CCuf],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "star",
+                                     :name "Star",
+                                     :keywords ["night" "yellow"],
+                                     :skins
+                                     [{:unified "2b50",
+                                       :native "⭐",
+                                       :shortcodes ":star:"}],
+                                     :version 1,
+                                     :search
+                                     ",star,star,night,yellow,⭐",
+                                     :type :emoji},
+                                    :description
+                                    "The rating given in this review. Note that reviews can themselves be rated. The `reviewRating` applies to rating given by the review. The [aggregateRating](https://schema.org/aggregateRating) property applies to the review itself, as a creative work."}},
+                 :associatedReview-Gg9tUlWS
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "associatedReview",
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "An associated [Review](https://schema.org/Review)."}},
+                 :associatedMediaReview-kQDY_aNa
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "associatedMediaReview",
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "An associated [MediaReview](https://schema.org/MediaReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
+                 :certificationRating-D7xMAVtS
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "certificationRating",
+                  :build/property-classes
+                  [:user.class/Rating-BSM3CCuf],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "star",
+                                     :name "Star",
+                                     :keywords ["night" "yellow"],
+                                     :skins
+                                     [{:unified "2b50",
+                                       :native "⭐",
+                                       :shortcodes ":star:"}],
+                                     :version 1,
+                                     :search
+                                     ",star,star,night,yellow,⭐",
+                                     :type :emoji},
+                                    :description
+                                    "Rating of a certification instance (as defined by an independent certification body). Typically this rating can be used to rate the level to which the requirements of the certification instance are fulfilled. See also [gs1:certificationValue](https://www.gs1.org/voc/certificationValue)."}},
+                 :audience-hpnGPafX
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "audience",
+                  :build/property-classes
+                  [:user.class/Audience-Ya93MfDW],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "busts_in_silhouette",
+                                     :type :emoji},
+                                    :description
+                                    "An intended audience, i.e. a group for whom something was created."}},
+                 :touristType-wqyyjviY
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "touristType",
+                  :build/property-classes
+                  [:user.class/Audience-Ya93MfDW],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "camera",
+                                     :name "Camera",
+                                     :keywords
+                                     ["gadgets" "photography"],
+                                     :skins
+                                     [{:unified "1f4f7",
+                                       :native "📷",
+                                       :shortcodes ":camera:"}],
+                                     :version 1,
+                                     :search
+                                     ",camera,camera,gadgets,photography,📷",
+                                     :type :emoji},
+                                    :description
+                                    "Attraction suitable for type(s) of tourist. E.g. children, visitors from a particular country, etc."}},
+                 :Rating-ZemDKbJS
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "Rating",
+                  :build/property-classes
+                  [:user.class/Rating-BSM3CCuf]},
+                 :associatedClaimReview-sI_cmxtZ
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "associatedClaimReview",
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "An associated [ClaimReview](https://schema.org/ClaimReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
+                 :review-DCP-Kpw4
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/hide? true,
+                  :block/title "review",
+                  :block/collapsed? false,
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "thought_balloon",
+                                     :name "Thought Balloon",
+                                     :keywords
+                                     ["bubble"
+                                      "cloud"
+                                      "speech"
+                                      "thinking"
+                                      "dream"],
+                                     :skins
+                                     [{:unified "1f4ad",
+                                       :native "💭",
+                                       :shortcodes
+                                       ":thought_balloon:"}],
+                                     :version 1,
+                                     :search
+                                     ",thought_balloon,thought,balloon,bubble,cloud,speech,thinking,dream,💭",
+                                     :type :emoji},
+                                    :description
+                                    "A review of the item."}}}}

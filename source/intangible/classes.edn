@@ -1,0 +1,116 @@
+{:classes
+ #:user.class{:Review-lv8JXdKK
+              {:block/title "Review",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/itemReviewed-I5jEm4tv
+                :user.property/reviewAspect-CUiKDJLe
+                :user.property/reviewRating-QBDiKkwj
+                :user.property/associatedClaimReview-sI_cmxtZ
+                :user.property/associatedMediaReview-kQDY_aNa
+                :user.property/associatedReview-Gg9tUlWS],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "thinking_face", :type :emoji},
+                                 :description
+                                 "A review of an item - for example, of a restaurant, movie, or store."}},
+              :Rating-BSM3CCuf
+              {:block/title "Rating",
+               :build/class-properties
+               [:user.property/author-cpCBlhLV
+                :user.property/ratingValue-Xu8kZopa
+                :user.property/ratingExplanation-Cgyv6g38
+                :user.property/bestRating-VU7IjcYH
+                :user.property/worstRating-Z71o-EwL],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "star", :type :emoji},
+                                 :description
+                                 "A rating is an evaluation on a numeric scale, such as 1 to 5 stars."}},
+              :CriticReview-vgx67W_W
+              {:block/title "CriticReview",
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "thinking_face", :type :emoji},
+                :logseq.property/description
+                "A [CriticReview](https://schema.org/CriticReview) is a more specialized form of Review written or published by a source that is recognized for its reviewing activities. These can include online columns, travel and food guides, TV and radio shows, blogs and other independent Web sites. [CriticReview](https://schema.org/CriticReview)s are typically more in-depth and professionally written. For simpler, casually written user/visitor/viewer/customer reviews, it is more appropriate to use the [UserReview](https://schema.org/UserReview) type. Review aggregator sites such as Metacritic already separate out the site's user reviews from selected critic reviews that originate from third-party sources."}},
+              :BusinessAudience-FSvB6WNF
+              {:block/title "BusinessAudience",
+               :build/class-properties
+               [:user.property/numberOfEmployees-KzEbRfar
+                :user.property/yearlyRevenue-BgP9WWpO
+                :user.property/yearsInOperation-WbOXIiVy],
+               :build/class-extends [:user.class/Audience-Ya93MfDW],
+               :build/properties
+               #:logseq.property{:description
+                                 "A set of characteristics belonging to businesses, e.g. who compose an item's target audience."}},
+              :EducationalAudience-gYKiBcXX
+              {:block/title "EducationalAudience",
+               :build/class-properties
+               [:user.property/educationRole-WfwQqL47],
+               :build/class-extends [:user.class/Audience-Ya93MfDW],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/description
+                "An EducationalAudience."}},
+              :ClaimReview-eGazuFfz
+              {:block/title "ClaimReview",
+               :build/class-properties
+               [:user.property/claimReviewed-O7g5QHqG],
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "thinking_face", :type :emoji},
+                :logseq.property/description
+                "A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed)."}},
+              :Audience-Ya93MfDW
+              {:block/title "Audience",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/audienceType-NVljUvde
+                :user.property/geographicArea-b09-fK-r],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "busts_in_silhouette",
+                                  :type :emoji},
+                                 :description
+                                 "Intended audience for an item, i.e. the group for whom the item was created."}},
+              :UserReview-EsP1eHLo
+              {:block/title "UserReview",
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "speaking_head_in_silhouette", :type :emoji},
+                :logseq.property/description
+                "A review created by an end-user (e.g. consumer, purchaser, attendee etc.), in contrast with [CriticReview](https://schema.org/CriticReview)."}},
+              :PeopleAudience-qC2wPN-G
+              {:block/title "PeopleAudience",
+               :build/class-properties
+               [:user.property/requiredGender-edrb5AZ7
+                :user.property/requiredAge-lm_Dq1id
+                :user.property/requiredMaxAge-cQfgFC2e
+                :user.property/suggestedAge-w62YXGBw
+                :user.property/suggestedGender-RnIy1hU9
+                :user.property/suggestedMaxAge-W8zRKbo_
+                :user.property/suggestedMinAge-fzsSL4D9],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/description
+                "A set of characteristics belonging to people, e.g. who compose an item's target audience."}}}}

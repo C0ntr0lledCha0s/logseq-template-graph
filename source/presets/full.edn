@@ -1,0 +1,3 @@
+{:name "Full Template"
+ :description "Complete Schema.org-based template with all classes and properties"
+ :include nil}  ; nil means include everything

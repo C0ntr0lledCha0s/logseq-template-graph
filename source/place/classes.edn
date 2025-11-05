@@ -1,0 +1,24 @@
+{:classes
+ #:user.class{:VirtualLocation-xrGDVABU
+              {:block/title "VirtualLocation",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "desktop_computer", :type :emoji},
+                :logseq.property/description
+                "An online or virtual location for attending events. For example, one may attend an online seminar or educational event. While a virtual location may be used as the location of an event, virtual locations should not be confused with physical locations in the real world."}},
+              :Place-sWTwEwWP
+              {:block/title "Place",
+               :block/collapsed? true,
+               :build/class-properties
+               [:user.property/address-Dw4sxM8a
+                :user.property/event-TnZsBTQU
+                :user.property/keywords-SmmwpeIY],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "world_map", :type :emoji},
+                                 :description
+                                 "Entities that have a somewhat fixed, physical extension."}}}}

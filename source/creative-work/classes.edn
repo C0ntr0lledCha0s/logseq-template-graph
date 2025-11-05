@@ -1,0 +1,190 @@
+{:classes
+ #:user.class{:NewsArticle-GdyxYLHe
+              {:block/title "NewsArticle",
+               :build/class-extends [:user.class/Article-DHvKxEmc],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "rolled_up_newspaper",
+                                  :type :emoji},
+                                 :description
+                                 "A NewsArticle is an article whose content reports news, or provides background context and supporting materials for understanding the news."}},
+              :AnalysisNewsArticle-rIVFu8hp
+              {:block/title "AnalysisNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon {:id "brain", :type :emoji},
+                                 :description
+                                 "An AnalysisNewsArticle is a [NewsArticle](https://schema.org/NewsArticle) that, while based on factual reporting, incorporates the expertise of the author/producer, offering interpretations and conclusions."}},
+              :VideoGame-wWWTJbYj
+              {:block/title "VideoGame",
+               :build/class-properties
+               [:user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/gameEdition-xDnH4o1U
+                :user.property/gamePlatform-FyB01r7I],
+               :build/class-extends [:user.class/Game-oZQ8o7Dt],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "video_game", :type :emoji},
+                                 :description
+                                 "A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device."}},
+              :OpinionNewsArticle-g2sUdH3Y
+              {:block/title "OpinionNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "thought_balloon", :type :emoji},
+                                 :description
+                                 "An [OpinionNewsArticle](https://schema.org/OpinionNewsArticle) is a [NewsArticle](https://schema.org/NewsArticle) that primarily expresses opinions rather than journalistic reporting of news and events. For example, a [NewsArticle](https://schema.org/NewsArticle) consisting of a column or [Blog](https://schema.org/Blog)/[BlogPosting](https://schema.org/BlogPosting) entry in the Opinions section of a news publication."}},
+              :Audiobook-VnMpBcb8
+              {:block/title "Audiobook",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/readBy-Swh1B994],
+               :build/class-extends [:user.class/Book-NGA-89uv],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "headphones", :type :emoji},
+                :logseq.property/description "An audiobook."}},
+              :CreativeWork-B7DmUg1j
+              {:block/title "CreativeWork",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/sponsor-B3edgyM3
+                :user.property/review-DCP-Kpw4
+                :user.property/commentCount-FviA_HOv
+                :user.property/publisher-FX1fL5XC
+                :user.property/contentLocation-QNbnwDey
+                :user.property/author-cpCBlhLV
+                :user.property/contributor-oxEX00r_
+                :user.property/alternativeHeadline-DdoUESHZ
+                :user.property/character-CpH6W1eR
+                :user.property/isBasedOn-LoJm5WMC
+                :user.property/timeRequired-DIShrfI7
+                :user.property/hasPart-MU18tG77
+                :user.property/comment-TluJyr6W
+                :user.property/inLanguage-hmAiIzlE
+                :user.property/headline-Ic1Lhkuq
+                :user.property/editor-M9WJEe3r
+                :user.property/isPartOf-nCfhGBzX
+                :user.property/genre-XAO6sAh5
+                :user.property/datePublished-sLI9lZvT
+                :user.property/dateModified-Ou9z6VDL
+                :user.property/about-nsPvSRUP
+                :user.property/dateCreated-T1y0l7V0
+                :user.property/license-YrKpjYhb
+                :user.property/audience-hpnGPafX
+                :user.property/creator-DoXW8XMs
+                :user.property/maintainer-q7oS2Alh
+                :user.property/provider-M4XBuYkt
+                :user.property/keywords-SmmwpeIY
+                :user.property/producer-tDHINIQi],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "art", :type :emoji},
+                :logseq.property/description
+                "The most generic kind of creative work, including books, movies, photographs, software programs, etc."}},
+              :CreativeWorkSeries-KpLORY2e
+              {:block/title "CreativeWorkSeries",
+               :build/class-properties
+               [:user.property/startDate-pTZGr2us
+                :user.property/endDate-S6oT3xL4],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "art", :type :emoji},
+                                 :description
+                                 "A CreativeWorkSeries in schema.org is a group of related items, typically but not necessarily of the same kind."}},
+              :BackgroundNewsArticle-i_gcHV7-
+              {:block/title "BackgroundNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon {:id "scroll", :type :emoji},
+                                 :description
+                                 "A [NewsArticle](https://schema.org/NewsArticle) providing historical context, definition and detail on a specific topic (aka \"explainer\" or \"backgrounder\")."}},
+              :Article-DHvKxEmc
+              {:block/title "Article",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/articleSection-DNFDM1UG
+                :user.property/backStory-C8a5xvyE],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "scroll", :type :emoji},
+                :logseq.property/description
+                "An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all."}},
+              :Book-NGA-89uv
+              {:block/title "Book",
+               :build/class-properties
+               [:user.property/bookEdition-rNhd8OND
+                :user.property/bookFormat-xoZSEDrb
+                :user.property/illustrator-gBU5450B
+                :user.property/isbn-t79SXlCN
+                :user.property/numberOfPages-uA4zuqoz],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "book", :type :emoji},
+                :logseq.property/description "A book."}},
+              :BookSeries-IiyE5agy
+              {:block/title "BookSeries",
+               :build/class-properties
+               [:user.property/startDate-pTZGr2us
+                :user.property/endDate-S6oT3xL4
+                :user.property/issn-NVWcUYs-],
+               :build/class-extends
+               [:user.class/CreativeWorkSeries-KpLORY2e],
+               :build/properties
+               #:logseq.property{:icon {:id "book", :type :emoji},
+                                 :description
+                                 "A series of books. Included books can be indicated with the hasPart property."}},
+              :CreativeWorkSeason-efeV26fq
+              {:block/title "CreativeWorkSeason",
+               :build/class-properties
+               [:user.property/director-SR7t7H8b
+                :user.property/episode-vIvdyDrO
+                :user.property/actor-OdNUErVt
+                :user.property/startDate-pTZGr2us
+                :user.property/endDate-S6oT3xL4
+                :user.property/seasonNumber-tNhJ6d_I
+                :user.property/productionCompany-gj-DihDM
+                :user.property/numberOfEpisodes-zdrIalSK
+                :user.property/partOfSeries-j6j10CyU],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "art", :type :emoji},
+                                 :description
+                                 "A media season, e.g. TV, radio, video game etc."}},
+              :ReportageNewsArticle-dtL67Ipf
+              {:block/title "ReportageNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ReportSearch",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "The [ReportageNewsArticle](https://schema.org/ReportageNewsArticle) type is a subtype of [NewsArticle](https://schema.org/NewsArticle) representing news articles which are the result of journalistic news reporting conventions."}},
+              :ReviewNewsArticle-EUXadt4S
+              {:block/title "ReviewNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "InReview",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A [NewsArticle](https://schema.org/NewsArticle) and [CriticReview](https://schema.org/CriticReview) providing a professional critic's assessment of a service, product, performance, or artistic or literary work."}}}}

@@ -1,0 +1,1034 @@
+{:classes
+ #:user.class{:LivestyleModification-EQZ0mDTD
+              {:block/title "LivestyleModification",
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "dna", :type :emoji},
+                                 :description
+                                 "A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition."}},
+              :Conversation-nePZ1m6p
+              {:block/title "Conversation",
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "speech_balloon", :type :emoji},
+                                 :description
+                                 "One or more messages between organizations or people on a particular topic. Individual messages can be linked to the conversation with isPartOf or hasPart properties."}},
+              :PhysicalActivity-LgYmEvCy
+              {:block/title "PhysicalActivity",
+               :build/class-properties
+               [:user.property/associatedAnatomy-v2fic-1N
+                :user.property/category-wiulLpkL
+                :user.property/epidemiology-A9i-vXl6
+                :user.property/pathophysiology-x65zQlVL],
+               :build/class-extends
+               [:user.class/LivestyleModification-EQZ0mDTD],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ActivityHeartbeat",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "Any bodily activity that enhances or maintains physical fitness and overall health and wellness. Includes activity that is part of daily living and routine, structured exercise, and exercise prescribed as part of a medical treatment or recovery plan."}},
+              :AdministrativeArea-mVunGx8W
+              {:block/title "AdministrativeArea",
+               :build/class-extends [:user.class/Place-sWTwEwWP],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "world_map", :type :emoji},
+                :logseq.property/description
+                "A geographical region, typically under the jurisdiction of a particular government."}},
+              :TrainStation-GGs5Id8U
+              {:block/title "TrainStation",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "steam_locomotive", :type :emoji},
+                :logseq.property/description "A train station."}},
+              :BusStation-gi4OqHfp
+              {:block/title "BusStation",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "bus", :type :emoji},
+                :logseq.property/description "A bus station."}},
+              :ItemList-fvTGUmAv
+              {:block/title "ItemList",
+               :build/class-properties
+               [:user.property/numberOfItems-XoQx6jS2
+                :user.property/aggregateElement-qGiYUW3i
+                :user.property/itemListOrder-JJqXHS2N],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ListNumbers",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting."}},
+              :FoodEstablishmentReservation-qJgebkU1
+              {:block/title "FoodEstablishmentReservation",
+               :build/class-properties
+               [:user.property/endTime-I4vdeV9O
+                :user.property/startTime-PHj9fR0A
+                :user.property/partySize-LOGA0uTB],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "pretzel", :type :emoji},
+                                 :description
+                                 "A reservation to dine at a food-related business."}},
+              :ReservationPackage-XyRQiG0R
+              {:block/title "ReservationPackage",
+               :build/class-properties
+               [:user.property/subReservation-P3URlTQD],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "green_book", :type :emoji},
+                                 :description
+                                 "A group of multiple reservations with common values for all sub-reservations."}},
+              :ProgramMembership-MYM3-sYx
+              {:block/title "ProgramMembership",
+               :build/class-properties
+               [:user.property/member-KLhlfdeR
+                :user.property/hostingOrganization-ISlgTiyb
+                :user.property/membershipNumber-QHxoc0nG
+                :user.property/membershipPointsEarned-kpcqd2Vp
+                :user.property/program-YPw2pQES],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "ticket", :type :emoji},
+                                 :description
+                                 "Used to describe membership in a loyalty programs (e.g. \"StarAliance\"), traveler clubs (e.g. \"AAA\"), purchase clubs (\"Safeway Club\"), etc."}},
+              :TrainReservation-aEoSh9Ke
+              {:block/title "TrainReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "steam_locomotive",
+                                  :type :emoji},
+                                 :description
+                                 "A reservation for train travel."}},
+              :DigitalDocument-Qh9W9pN5
+              {:block/title "DigitalDocument",
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "FileDigit",
+                 :type :tabler-icon,
+                 :color "inherit"},
+                :logseq.property/description
+                "An electronic file or document."}},
+              :FlightReservation-WTwvhQ9x
+              {:block/title "FlightReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "airplane_departure",
+                                  :type :emoji},
+                                 :description
+                                 "A reservation for air travel."}},
+              :TaxiReservation-ur7tMzEf
+              {:block/title "TaxiReservation",
+               :build/class-properties
+               [:user.property/partySize-LOGA0uTB
+                :user.property/pickupTime-ayDqSpNv
+                :user.property/pickupLocation-OWhJl-L0],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "taxi", :type :emoji},
+                                 :description
+                                 "A reservation for a taxi."}},
+              :Ticket-pdA-Ir-K
+              {:block/title "Ticket",
+               :build/class-properties
+               [:user.property/priceCurrency-Z5vcfXRF
+                :user.property/totalPrice-k4eAGPGr
+                :user.property/underName-Q5lbkSQp
+                :user.property/dateIssued-P3N7MeTZ
+                :user.property/issuedBy-bKx7IVz5
+                :user.property/ticketNumber-flGt3rUe
+                :user.property/ticketToken-UpeX5QBm
+                :user.property/ticketedSeat-cCqOztxq],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "admission_tickets",
+                                  :type :emoji},
+                                 :description
+                                 "Used to describe a ticket to an event, a flight, a bus ride, etc."}},
+              :Reservation-tDje6vAq
+              {:block/title "Reservation",
+               :block/collapsed? true,
+               :build/class-properties
+               [:user.property/underName-Q5lbkSQp
+                :user.property/broker-wZW7zuN5
+                :user.property/bookingTime-ib2dcl4y
+                :user.property/reservationStatus-kqRDuv2Z
+                :user.property/reservationFor-n-hM7DO1
+                :user.property/reservationId-nfD67GOp
+                :user.property/priceCurrency-Z5vcfXRF
+                :user.property/reservedTicket-UcavUkmL
+                :user.property/modifiedTime-CvkPGMM7
+                :user.property/programMembershipUsed-Bxfs7uuH
+                :user.property/provider-M4XBuYkt
+                :user.property/totalPrice-k4eAGPGr],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "green_book", :type :emoji},
+                                 :description
+                                 "Describes a reservation for travel, dining or an event. Some reservations require tickets."}},
+              :MusicComposition-SIPTMhhl
+              {:block/title "MusicComposition",
+               :build/class-properties
+               [:user.property/composer-DqXekXpv
+                :user.property/iswcCode-Yt6dq2KL
+                :user.property/lyricist-z_QwYyda
+                :user.property/recordedAs-WuH0Xf_E],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "musical_score", :type :emoji},
+                                 :description
+                                 "A musical composition."}},
+              :MusicRecording-OBFMQQGG
+              {:block/title "MusicRecording",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/byArtist-w5s-7l1v
+                :user.property/inAlbum-unC1TYO9
+                :user.property/inPlaylist-Jwz10SOO
+                :user.property/isrcCode-MT8UcoMv
+                :user.property/recordingOf-HG76I4BO],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "cd", :type :emoji},
+                                 :description
+                                 "A music recording (track), usually a single song."}},
+              :Certification-LU3sgAuM
+              {:block/title "Certification",
+               :build/class-properties
+               [:user.property/expires-buw30WDd
+                :user.property/certificationStatus-KtfX6leC
+                :user.property/auditDate-IIUQNOsg
+                :user.property/certificationIdentification-y9GPkyy_
+                :user.property/certificationRating-D7xMAVtS
+                :user.property/issuedBy-bKx7IVz5
+                :user.property/datePublished-sLI9lZvT
+                :user.property/about-nsPvSRUP
+                :user.property/validIn-VDYGrCTd
+                :user.property/validFrom-YK1SD77t
+                :user.property/logo-G3qEV2JH],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "+1", :type :emoji},
+                :logseq.property/description
+                "A Certification is an official and authoritative statement about a subject, for example a product, service, person, or organization. A certification is typically issued by an indendent certification body, for example a professional organization or government. It formally attests certain characteristics about the subject, for example Organizations can be ISO certified, Food products can be certified Organic or Vegan, a Person can be a certified professional, a Place can be certified for food processing. There are certifications for many domains: regulatory, organizational, recycling, food, efficiency, educational, ecological, etc. A certification is a form of credential, as are accreditations and licenses. Mapped from the [gs1:CertificationDetails](https://www.gs1.org/voc/CertificationDetails) class in the GS1 Web Vocabulary."}},
+              :StructuredValue-oR41qUmP
+              {:block/title "StructuredValue",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "straight_ruler", :type :emoji},
+                                 :description
+                                 "Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing."}},
+              :SoftwareSourceCode-PyFWyRpz
+              {:block/title "SoftwareSourceCode",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/codeRepository-OmAGGRv5
+                :user.property/codeSampleType-kgSynuQb
+                :user.property/programmingLanguage-rXiRDkVx
+                :user.property/targetProduct-RnSz4FxE],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Code",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates."}},
+              :BusStop-ucqGdOV8
+              {:block/title "BusStop",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "bus", :type :emoji},
+                :logseq.property/description "A bus stop."}},
+              :LodgingReservation-i_3_CCps
+              {:block/title "LodgingReservation",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/checkinTime-yG1s87l_
+                :user.property/checkoutTime-aIwB61Od
+                :user.property/lodgingUnitDescription-EZOef7dO
+                :user.property/lodgingUnitType-R-8D18oF
+                :user.property/numAdults-bSIbpwRi
+                :user.property/numChildren-gmr_QxI7],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "hotel", :type :emoji},
+                                 :description
+                                 "A reservation for lodging at a hotel, motel, inn, etc."}},
+              :WebAPI-hJQvnWtw
+              {:block/title "WebAPI",
+               :build/class-properties
+               [:user.property/documentation-myvj5vw6],
+               :build/class-extends [:user.class/Service-lkacLVaV],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "WorldWww", :type :tabler-icon, :color "inherit"},
+                :logseq.property/description
+                "An application programming interface accessible over Web/Internet technologies."}},
+              :TextDigitalDocument-p9crar5l
+              {:block/title "TextDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Text",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A file composed primarily of text."}},
+              :NoteDigitalDocument-krt2kIk5
+              {:block/title "NoteDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "spiral_note_pad", :type :emoji},
+                                 :description
+                                 "A file containing a note, primarily for the author."}},
+              :Syllabus-nfgb0rMr
+              {:block/title "Syllabus",
+               :build/class-properties
+               [:user.property/assesses-IP45ixk-
+                :user.property/competencyRequired-Cs6MsGxD
+                :user.property/educationalAlignment-U0xgyOCF
+                :user.property/educationalLevel-VdDtKf3f
+                :user.property/educationalUse-REEoXbDH
+                :user.property/learningResourceType-K_-tkOTS
+                :user.property/teaches-vy8FF52w],
+               :build/class-extends
+               [:user.class/LearningResource-IPa2Mad_],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "school", :type :emoji},
+                :logseq.property/description
+                "A syllabus that describes the material covered in a course, often with several such sections per [Course](https://schema.org/Course) so that a distinct [timeRequired](https://schema.org/timeRequired) can be provided for that section of the [Course](https://schema.org/Course)."}},
+              :TouristTrip-kKOVMZBs
+              {:block/title "TouristTrip",
+               :build/class-properties
+               [:user.property/touristType-wqyyjviY],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "camera", :type :emoji},
+                :logseq.property/description
+                "A tourist trip. A created itinerary of visits to one or more places of interest ([TouristAttraction](https://schema.org/TouristAttraction)/[TouristDestination](https://schema.org/TouristDestination)) often linked by a similar theme, geographic area, or interest to a particular [touristType](https://schema.org/touristType). The [UNWTO](http://www2.unwto.org/) defines tourism trip as the Trip taken by visitors."}},
+              :MusicPlaylist-Km-QRe6j
+              {:block/title "MusicPlaylist",
+               :build/class-properties
+               [:user.property/track-GQbs8YMa
+                :user.property/numTracks-tU9asfzE],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "arrow_forward", :type :emoji},
+                                 :description
+                                 "A collection of music tracks in playlist form."}},
+              :Trip-r8sS-d2X
+              {:block/title "Trip",
+               :build/class-properties
+               [:user.property/provider-M4XBuYkt
+                :user.property/arrivalTime-YEa7dFKt
+                :user.property/departureTime-Kbp9h8BI
+                :user.property/itinerary-saka-wPe
+                :user.property/partOfTrip-UXTLyMra
+                :user.property/subTrip-E5bHCsjT
+                :user.property/tripOrigin-zaHltvJm],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "luggage", :type :emoji},
+                                 :description
+                                 "A trip or journey. An itinerary of visits to one or more places."}},
+              :MusicGroup-OcGAL50D
+              {:block/title "MusicGroup",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/genre-XAO6sAh5
+                :user.property/album-TO8vpaYs
+                :user.property/track-GQbs8YMa],
+               :build/class-extends
+               [:user.class/PerformingGroup-rmj3_7CJ],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "busts_in_silhouette",
+                                  :type :emoji},
+                                 :description
+                                 "A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician."}},
+              :BusReservation-gSklWxl0
+              {:block/title "BusReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "bus", :type :emoji},
+                                 :description
+                                 "A reservation for bus travel."}},
+              :Department-ZLqrca9h
+              {:block/title "Department",
+               :build/properties
+               #:user.property{:sourceSchema-mW7IZAwI
+                               [:block/uuid
+                                #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"]}},
+              :Report-LdfQ0yvd
+              {:block/title "Report",
+               :build/class-properties
+               [:user.property/reportNumber-ppuVqO8M],
+               :build/class-extends [:user.class/Article-DHvKxEmc],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "clipboard", :type :emoji},
+                :logseq.property/description
+                "A Report generated by governmental or non-governmental organization."}},
+              :SoftwareApplication-wXYtaQzn
+              {:block/title "SoftwareApplication",
+               :build/class-properties
+               [:user.property/applicationCategory-WZNoKEnr
+                :user.property/applicationSubCategory-lPAdUgRE
+                :user.property/applicationSuite-jFY1fq7w
+                :user.property/downloadUrl-SetggybQ
+                :user.property/featureList-OHaRyDei
+                :user.property/softwareAddOn-IqkhZtNk
+                :user.property/softwareHelp-IGa29x9T],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "AppsFilled",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A software application."}},
+              :MemberProgramTier-WXd-EWZL
+              {:block/title "MemberProgramTier",
+               :build/class-properties
+               [:user.property/membershipPointsEarned-kpcqd2Vp
+                :user.property/isTierOf-Jp7onTLo
+                :user.property/hasTierRequirement-E4K69mu0
+                :user.property/hasTierBenefit-JXoGm4l6],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Pyramid",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A MemberProgramTier specifies a tier under a loyalty (member) program, for example \"gold\"."}},
+              :City-tX3ImtXS
+              {:block/title "City",
+               :build/class-extends
+               [:user.class/AdministrativeArea-mVunGx8W],
+               :build/properties
+               #:logseq.property{:icon {:id "cityscape", :type :emoji},
+                                 :description "A city or town."}},
+              :AlignmentObject-Bp9Qbx_4
+              {:block/title "AlignmentObject",
+               :build/class-properties
+               [:user.property/alignmentType-yxeXcPmB
+                :user.property/educationalFramework-sO-tGOVl
+                :user.property/targetDescription-xxfg2jZY
+                :user.property/targetName-WA5ohoo7
+                :user.property/targetUrl-uSW0bkbu],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "An intangible item that describes an alignment between a learning resource and a node in an educational framework."}},
+              :Course-G32kzYLY
+              {:block/title "Course",
+               :build/class-properties
+               [:user.property/courseCode-LmNG6oGT
+                :user.property/coursePrerequisites-BVkZhygE
+                :user.property/educationalCredentialAwarded-z_pdTnql
+                :user.property/numberOfCredits-WIlf3zow
+                :user.property/occupationalCredentialAwarded-GwMjpAQg
+                :user.property/hasCourseInstance-tE_A5mgp
+                :user.property/syllabusSections-RfyrTa6L],
+               :build/class-extends
+               [:user.class/LearningResource-IPa2Mad_],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "A description of an educational course which may be offered as distinct instances which take place at different times or take place at different locations, or be offered through different media or modes of study. An educational course is a sequence of one or more educational events and/or creative works which aims to build knowledge, competence or ability of learners."}},
+              :TVEpisode-iqStiz4R
+              {:block/title "TVEpisode",
+               :build/class-properties
+               [:user.property/titleEIDR-on2y7Xb2],
+               :build/class-extends [:user.class/Episode-QaUtLF63],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "tv", :type :emoji},
+                :logseq.property/description
+                "A TV episode which can be part of a series or season."}},
+              :Recommendation-qBw5UMwf
+              {:block/title "Recommendation",
+               :build/class-properties
+               [:user.property/category-wiulLpkL],
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "first_place_medal",
+                                  :type :emoji},
+                                 :description
+                                 "[Recommendation](https://schema.org/Recommendation) is a type of [Review](https://schema.org/Review) that suggests or proposes something as the best option or best course of action. Recommendations may be for products or services, or other concrete things, as in the case of a ranked list or product guide. A [Guide](https://schema.org/Guide) may list multiple recommendations for different categories."}},
+              :Website-crbLAW_E
+              {:block/title "Website",
+               :build/class-properties [:user.property/issn-NVWcUYs-],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "WorldWww",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs."}},
+              :Game-oZQ8o7Dt
+              {:block/title "Game",
+               :build/class-properties
+               [:user.property/characterAttribute-Pwu1TSqS
+                :user.property/gameItem-mHVgMpnS
+                :user.property/gameLocation-wfV16uwE
+                :user.property/numberOfPlayers-RAmSTkGI
+                :user.property/quest-DCLjpQXr],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "game_die", :type :emoji},
+                                 :description
+                                 "The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting."}},
+              :BusTrip-vLDGeMNT
+              {:block/title "BusTrip",
+               :build/class-properties
+               [:user.property/arrivalBusStop-h4get2QO
+                :user.property/busName-JCI9133e
+                :user.property/busNumber-qfQq5rs3
+                :user.property/departureBusStop-JfoGAPWC],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
+               :build/properties
+               #:logseq.property{:icon {:id "bus", :type :emoji},
+                                 :description
+                                 "A trip on a commercial bus line."}},
+              :MovieSeries-KOBEpTTJ
+              {:block/title "MovieSeries",
+               :build/class-properties
+               [:user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/productionCompany-gj-DihDM
+                :user.property/musicBy-f4bfH8ib],
+               :build/class-extends
+               [:user.class/CreativeWorkSeries-KpLORY2e],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "film_projector", :type :emoji},
+                :logseq.property/description
+                "A series of movies. Included movies can be indicated with the hasPart property."}},
+              :PresentationDigitalDocument-tAPLgpbo
+              {:block/title "PresentationDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "chart_with_upwards_trend",
+                                  :type :emoji},
+                                 :description
+                                 "A file containing slides or used for a presentation."}},
+              :Country-wxqURStL
+              {:block/title "Country",
+               :build/class-extends
+               [:user.class/AdministrativeArea-mVunGx8W],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "earth_asia", :type :emoji},
+                :logseq.property/description "A country."}},
+              :TouristDestination-d0LESB-m
+              {:block/title "TouristDestination",
+               :build/class-properties
+               [:user.property/touristType-wqyyjviY
+                :user.property/includesAttraction-ThQoIDXb],
+               :build/class-extends [:user.class/Place-sWTwEwWP],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "camera", :type :emoji},
+                :logseq.property/description
+                "A tourist destination. In principle any [Place](https://schema.org/Place) can be a [TouristDestination](https://schema.org/TouristDestination) from a [City](https://schema.org/City), Region or [Country](https://schema.org/Country) to an [AmusementPark](https://schema.org/AmusementPark) or [Hotel](https://schema.org/Hotel). This Type can be used on its own to describe a general [TouristDestination](https://schema.org/TouristDestination), or be used as an [additionalType](https://schema.org/additionalType) to add tourist relevant properties to any other [Place](https://schema.org/Place). A [TouristDestination](https://schema.org/TouristDestination) is defined as a [Place](https://schema.org/Place) that contains, or is colocated with, one or more [TouristAttraction](https://schema.org/TouristAttraction)s, often linked by a similar theme or interest to a particular [touristType](https://schema.org/touristType). The [UNWTO](http://www2.unwto.org/) defines Destination (main destination of a tourism trip) as the place visited that is central to the decision to take the trip."}},
+              :LocalBusiness-H52ucsbv
+              {:block/title "LocalBusiness",
+               :build/class-properties
+               [:user.property/openingHours-bnyE7wOV
+                :user.property/priceRange-KoQ0yZOa],
+               :build/class-extends
+               [:user.class/Organization-zHGqsbg8],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "office", :type :emoji},
+                :logseq.property/description
+                "A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc."}},
+              :Language-SMD4JFAN #:block{:title "Language"},
+              :TVSeason-V--6DIX3
+              {:block/title "TVSeason",
+               :build/class-properties
+               [:user.property/titleEIDR-on2y7Xb2],
+               :build/class-extends
+               [:user.class/CreativeWorkSeason-efeV26fq],
+               :build/properties
+               #:logseq.property{:icon {:id "tv", :type :emoji},
+                                 :description ""}},
+              :Movie-eabsTS9z
+              {:block/title "Movie",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/productionCompany-gj-DihDM
+                :user.property/musicBy-f4bfH8ib
+                :user.property/titleEIDR-on2y7Xb2],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "film_projector", :type :emoji},
+                                 :description "A movie."}},
+              :BoatTerminal-KHUtlc7o
+              {:block/title "BoatTerminal",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "boat", :type :emoji},
+                :logseq.property/description
+                "A terminal for boats, ships, and other water vessels."}},
+              :TrainTrip-xVhsaKB2
+              {:block/title "TrainTrip",
+               :build/class-properties
+               [:user.property/arrivalPlatform-sxOgei4W
+                :user.property/arrivalStation-P09qfPlc
+                :user.property/departurePlatform-JfrFRXrj
+                :user.property/departureStation-h5ZwMFlX
+                :user.property/trainName-Pm4GSmHe
+                :user.property/trainNumber-Snsq4fWc],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "steam_locomotive", :type :emoji},
+                :logseq.property/description
+                "A trip on a commercial train line."}},
+              :Festival-iRcg-Qju
+              {:block/title "Festival",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "confetti_ball", :type :emoji},
+                :logseq.property/description "Event type: Festival."}},
+              :BoatReservation-ONY2pvkk
+              {:block/title "BoatReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "boat", :type :emoji},
+                                 :description
+                                 "A reservation for boat travel."}},
+              :CivicStructure-y8-1eXjA
+              {:block/title "CivicStructure",
+               :build/class-properties
+               [:user.property/openingHours-bnyE7wOV],
+               :build/class-extends [:user.class/Place-sWTwEwWP],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "classical_building", :type :emoji},
+                :logseq.property/description
+                "A public structure, such as a town hall or concert hall."}},
+              :Intangible-nCPCNu8i
+              {:block/title "Intangible",
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "ghost", :type :emoji},
+                                 :description
+                                 "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc."}},
+              :Airport-QAVQIBiI
+              {:block/title "Airport",
+               :build/class-properties
+               [:user.property/iataCode-LWJS7zmV
+                :user.property/icaoCode-fi0_lvU4],
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "airplane", :type :emoji},
+                :logseq.property/description "An airport."}},
+              :Brand-g2OrKuVq #:block{:title "Brand"},
+              :Episode-QaUtLF63
+              {:block/title "Episode",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/partOfSeries-j6j10CyU
+                :user.property/productionCompany-gj-DihDM
+                :user.property/episodeNumber-FVyvDhd8
+                :user.property/partOfSeason-RuKvwZB3],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "tv", :type :emoji},
+                                 :description
+                                 "A media episode (e.g. TV, radio, video game) which can be part of a series or season."}},
+              :LearningResource-IPa2Mad_
+              {:block/title "LearningResource",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/assesses-IP45ixk-
+                :user.property/competencyRequired-Cs6MsGxD
+                :user.property/educationalAlignment-U0xgyOCF
+                :user.property/educationalLevel-VdDtKf3f
+                :user.property/educationalUse-REEoXbDH
+                :user.property/learningResourceType-K_-tkOTS
+                :user.property/teaches-vy8FF52w],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "book", :type :emoji},
+                                 :description
+                                 "The LearningResource type can be used to indicate [CreativeWork](https://schema.org/CreativeWork)s (whether physical or digital) that have a particular and explicit orientation towards learning, education, skill acquisition, and other educational purposes."}},
+              :CountryState-NEWaiJWB
+              {:block/title "CountryState",
+               :build/class-extends
+               [:user.class/AdministrativeArea-mVunGx8W],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "earth_americas", :type :emoji},
+                :logseq.property/description
+                "A state or province of a country."}},
+              :Service-lkacLVaV
+              {:block/title "Service",
+               :block/collapsed? true,
+               :build/class-properties
+               [:user.property/category-wiulLpkL
+                :user.property/award-My4UlCOU
+                :user.property/review-DCP-Kpw4
+                :user.property/brand-vVFv2KZZ
+                :user.property/broker-wZW7zuN5
+                :user.property/isSimilarTo-GiQz4GGK
+                :user.property/serviceArea-VJ8w0kxi
+                :user.property/isRelatedTo-VaZiAlSO
+                :user.property/hasCertification-AV3D5I0Y
+                :user.property/serviceType-yAzEQ0lN
+                :user.property/serviceOutput-DsLYFQA0
+                :user.property/audience-hpnGPafX
+                :user.property/provider-M4XBuYkt
+                :user.property/termsOfService-tOjPWsb8
+                :user.property/logo-G3qEV2JH],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "bellhop_bell", :type :emoji},
+                :logseq.property/description
+                "A service provided by an organization, e.g. delivery service, print services, etc."}},
+              :Business-eQlzo2fs #:block{:title "Business"},
+              :Duration-l9FSb6jS
+              {:block/title "Duration",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:user.property{:sourceSchema-mW7IZAwI
+                               [:block/uuid
+                                #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"]}},
+              :ListItem-gPGuE3ib
+              {:block/title "ListItem",
+               :build/class-properties
+               [:user.property/item-DhwT3bCJ
+                :user.property/nextItem-pJEtk0Ht
+                :user.property/position-CpQTj3Hx
+                :user.property/previousItem-COK0wTnJ],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ListNumbers",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "An list item, e.g. a step in a checklist or how-to description."}},
+              :Flight-UHKPpkhu
+              {:block/title "Flight",
+               :build/class-properties
+               [:user.property/arrivalGate-u7wZFKbZ
+                :user.property/departureAirport-X9-pSdP6
+                :user.property/arrivalTerminal-Kp81uh81
+                :user.property/estimatedFlightDuration-i9LYDf5-
+                :user.property/flightDistance-dZPBgsdI
+                :user.property/departureGate-S2dH7mtw
+                :user.property/departureTerminal-PqlMbRVV
+                :user.property/aircraft-v-3nuYlS
+                :user.property/arrivalAirport-Gjt-NPXQ
+                :user.property/webCheckinTime-JKr4Kz6T
+                :user.property/seller-TYIlntxq
+                :user.property/mealService-Gswx1Lyn
+                :user.property/flightNumber-S98UtDgy],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "airplane", :type :emoji},
+                :logseq.property/description "An airline flight."}},
+              :TVSeries-xwvH8URL
+              {:block/title "TVSeries",
+               :build/class-properties
+               [:user.property/containsSeason-lPZoUCIK
+                :user.property/director-SR7t7H8b
+                :user.property/numberOfSeasons-VS_hMs2_
+                :user.property/titleEIDR-on2y7Xb2
+                :user.property/episode-vIvdyDrO
+                :user.property/actor-OdNUErVt
+                :user.property/musicBy-f4bfH8ib
+                :user.property/productionCompany-gj-DihDM
+                :user.property/numberOfEpisodes-zdrIalSK],
+               :build/class-extends
+               [:user.class/CreativeWorkSeries-KpLORY2e],
+               :build/properties
+               #:logseq.property{:icon {:id "tv", :type :emoji},
+                                 :description
+                                 "CreativeWorkSeries dedicated to TV broadcast and associated online delivery."}},
+              :MusicAlbum-h41DK9DK
+              {:block/title "MusicAlbum",
+               :build/class-properties
+               [:user.property/byArtist-w5s-7l1v
+                :user.property/albumProductionType-TxGU69q7
+                :user.property/albumRelease-gvGdSEW9
+                :user.property/albumReleaseType-tDrQxk36],
+               :build/class-extends
+               [:user.class/MusicPlaylist-Km-QRe6j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Album",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A collection of music tracks."}},
+              :PerformingGroup-rmj3_7CJ
+              {:block/title "PerformingGroup",
+               :build/class-extends
+               [:user.class/Organization-zHGqsbg8],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "busts_in_silhouette",
+                                  :type :emoji},
+                                 :description
+                                 "A performance group, such as a band, an orchestra, or a circus."}},
+              :MemberProgram-ow0-vJAI
+              {:block/title "MemberProgram",
+               :build/class-properties
+               [:user.property/hostingOrganization-ISlgTiyb
+                :user.property/hasTiers-ug5kfMPF],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "ticket", :type :emoji},
+                                 :description
+                                 "A MemberProgram defines a loyalty (or membership) program that provides its members with certain benefits, for example better pricing, free shipping or returns, or the ability to earn loyalty points. Member programs may have multiple tiers, for example silver and gold members, each with different benefits."}},
+              :QuantitativeValue-IKnk1j2N
+              {:block/title "QuantitativeValue",
+               :build/class-properties
+               [:user.property/maxValue-bfkd1aMe
+                :user.property/minValue-sZuXYnu5
+                :user.property/unitText-URn4pirV
+                :user.property/value-X4gwRXjI],
+               :build/class-extends
+               [:user.class/StructuredValue-oR41qUmP],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "straight_ruler", :type :emoji},
+                                 :description
+                                 "A point value or interval for product characteristics and other purposes."}},
+              :CourseInstance-MqjA3ZLE
+              {:block/title "CourseInstance",
+               :build/class-properties
+               [:user.property/courseMode-PrUwU06T
+                :user.property/courseSchedule-YgJyelJz
+                :user.property/courseWorkload-D2r1XolO
+                :user.property/instructor-WAvJotJ-],
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "An instance of a [Course](https://schema.org/Course) which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students."}},
+              :SpreadsheetDigitalDocument-IULdoRLh
+              {:block/title "SpreadsheetDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "FileSpreadsheet",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description "A spreadsheet file."}},
+              :BoatTrip-sRJgEUB7
+              {:block/title "BoatTrip",
+               :build/class-properties
+               [:user.property/arrivalBoatTerminal-S3ZmcXzN
+                :user.property/departureBoatTerminal-XnZ_OZY6],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "boat", :type :emoji},
+                :logseq.property/description
+                "A trip on a commercial ferry line."}},
+              :Diet-MNiPz5KL
+              {:block/title "Diet",
+               :build/class-properties
+               [:user.property/dietFeatures-v1gjALq0
+                :user.property/endorsers-OaAOkjBA
+                :user.property/expertConsiderations-WXzlugI6
+                :user.property/physiologicalBenefits-FJV7UKgQ
+                :user.property/risks-XWR9b24n],
+               :build/class-extends
+               [:user.class/LivestyleModification-EQZ0mDTD],
+               :build/properties
+               #:logseq.property{:icon {:id "apple", :type :emoji},
+                                 :description
+                                 "A strategy of regulating the intake of food to achieve or maintain a specific health-related goal."}},
+              :MusicRelease-bDhA9VSI
+              {:block/title "MusicRelease",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/catalogNumber-Dz2SUuXx
+                :user.property/creditedTo-AxWjd9hw
+                :user.property/musicReleaseFormat-XEW4zCsl
+                :user.property/recordLabel-rW9jy_mt
+                :user.property/releaseOf-b9vCUFY_],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "cd", :type :emoji},
+                :logseq.property/description
+                "A MusicRelease is a specific release of a music album."}},
+              :ExercisePlan-e90r_yPV
+              {:block/title "ExercisePlan",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/activityDuration-ffVdaMZK
+                :user.property/activityFrequency-vpC_bzQl
+                :user.property/additionalVariable-Vslk_AUZ
+                :user.property/exerciseType-cryv0fp5
+                :user.property/intensity-sDMTFmeg
+                :user.property/repetitions-vRP2YaE4
+                :user.property/restPeriods-EsG6Js4g],
+               :build/class-extends
+               [:user.class/PhysicalActivity-LgYmEvCy],
+               :build/properties
+               #:logseq.property{:icon {:id "muscle", :type :emoji},
+                                 :description
+                                 "Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician."}},
+              :ComputerLanguage-W_oRfV0P
+              {:block/title "ComputerLanguage",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "robot_face", :type :emoji},
+                                 :description
+                                 "This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations. Natural languages are best represented with the [Language](https://schema.org/Language) type."}},
+              :Guide-yABdLmqC
+              {:block/title "Guide",
+               :build/class-properties
+               [:user.property/reviewAspect-CUiKDJLe],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "guide_dog", :type :emoji},
+                :logseq.property/description
+                "[Guide](https://schema.org/Guide) is a page or article that recommends specific products or services, or aspects of a thing for a user to consider. A [Guide](https://schema.org/Guide) may represent a Buying Guide and detail aspects of products or services for a user to consider. A [Guide](https://schema.org/Guide) may represent a Product Guide and recommend specific products or services. A [Guide](https://schema.org/Guide) may represent a Ranked List and recommend specific products or services with ranking."}},
+              :FamilyGroup-CmI2Ne2A
+              {:block/title "FamilyGroup",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/event-TnZsBTQU
+                :user.property/keywords-SmmwpeIY
+                :user.property/contactPoint-NixCcjXJ
+                :user.property/parentFamilyGroup-QduiTy2X
+                :user.property/subFamilyGroup-FDjn_0z4],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "man-woman-girl-girl",
+                                  :type :emoji},
+                                 :description
+                                 "A [[680750e7-0d81-417e-8a5d-3b5721c4b217]] such as parents and their children."}}}}
