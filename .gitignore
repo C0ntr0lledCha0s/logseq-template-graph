@@ -1,0 +1,31 @@
+# Logseq Template Graph - Git Ignore
+
+# Ignore UI-exported files with timestamps
+logseq_db_Templates_[0-9]*.edn
+
+# Personal development graphs
+dev-graph/
+template-dev/
+my-template/
+
+# Backups
+*.backup
+*.bak
+archive/
+backups/
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
