@@ -6,16 +6,29 @@ Your template has grown to **15,422 lines** with **1,033 properties** and **632 
 
 ## One-Command Setup
 
+### Linux/macOS
 ```bash
 ./scripts/init-modular.sh
 ```
 
+### Windows
+```powershell
+# First, install Babashka via Scoop (if not already installed)
+scoop bucket add scoop-clojure https://github.com/littleli/scoop-clojure
+scoop install babashka -s
+
+# Then run the init script
+bash ./scripts/init-modular.sh
+```
+
 This will:
-1. ✅ Install Babashka (if needed)
+1. ✅ Install Babashka (automatic on Linux/macOS, manual on Windows)
 2. ✅ Create modular directory structure
 3. ✅ Split your monolithic template into modules
 4. ✅ Create preset configurations
 5. ✅ Archive the original
+
+**Note:** Windows users need [Scoop](https://scoop.sh/) package manager. The `-s` flag skips hash validation if needed.
 
 ---
 
@@ -78,24 +91,46 @@ git push
 ```
 source/                          # EDIT THESE (modular source)
 ├── base/
-│   ├── classes.edn             # Thing, Resource
-│   ├── properties.edn          # Base properties
+│   ├── classes.edn             # Thing, Agent (2 classes)
 │   └── README.md
 ├── person/
-│   ├── classes.edn             # Person class
-│   ├── properties.edn          # 150+ person properties
+│   ├── classes.edn             # Person, Patient (2 classes)
+│   ├── properties.edn          # 36 person properties
 │   └── README.md
 ├── organization/
-│   ├── classes.edn             # Organization, Occupation
-│   ├── properties.edn          # Org properties
+│   ├── classes.edn             # Organization, NGO, GovernmentOrganization, Consortium (4 classes)
+│   ├── properties.edn          # 15 org properties
 │   └── README.md
 ├── event/
-│   ├── classes.edn             # Event, EventSeries, Meeting
-│   ├── properties.edn          # Event properties
+│   ├── classes.edn             # Event, PublicationEvent, Meeting, etc. (17 classes)
+│   ├── properties.edn          # 6 event properties
 │   └── README.md
 ├── creative-work/
-│   ├── classes.edn             # Book, Article, Video, etc.
-│   ├── properties.edn          # Creative work properties
+│   ├── classes.edn             # Book, Article, Video, etc. (14 classes)
+│   ├── properties.edn          # 7 creative work properties
+│   └── README.md
+├── place/
+│   ├── classes.edn             # Place, AdministrativeArea (2 classes)
+│   ├── properties.edn          # 9 place properties
+│   └── README.md
+├── product/
+│   ├── classes.edn             # Product (1 class)
+│   ├── properties.edn          # 2 product properties
+│   └── README.md
+├── intangible/
+│   ├── classes.edn             # Rating, StructuredValue, etc. (9 classes)
+│   ├── properties.edn          # 9 intangible properties
+│   └── README.md
+├── action/
+│   ├── classes.edn             # Action (1 class)
+│   ├── properties.edn          # 1 action property
+│   └── README.md
+├── common/
+│   ├── properties.edn          # 189 shared properties across all domains
+│   └── README.md
+├── misc/
+│   ├── classes.edn             # 82 miscellaneous classes
+│   ├── properties.edn          # 59 misc properties
 │   └── README.md
 └── presets/
     ├── full.edn                # All modules
@@ -126,14 +161,16 @@ scripts/
 ```bash
 bb scripts/build.clj full
 # Output: build/logseq_db_Templates_full.edn
-# Includes: Everything (632 classes, 1033 properties)
+# Size: 8,931 lines, 497 KB
+# Includes: Everything (134 classes, 333 properties)
 ```
 
 ### CRM Template
 ```bash
 bb scripts/build.clj crm
 # Output: build/logseq_db_Templates_crm.edn
-# Includes: Person, Organization, Contact, Base
+# Size: 5,386 lines, 298 KB
+# Includes: Person, Organization, Contact, Base (8 classes, 240 properties)
 # Use for: Customer relationship management
 ```
 
@@ -141,7 +178,8 @@ bb scripts/build.clj crm
 ```bash
 bb scripts/build.clj research
 # Output: build/logseq_db_Templates_research.edn
-# Includes: Person, Organization, Books, Articles, Base
+# Size: 5,713 lines, 317 KB
+# Includes: Person, Organization, Books, Articles, Base (22 classes, 247 properties)
 # Use for: Academic research, literature notes
 ```
 
@@ -261,14 +299,31 @@ bb scripts/build.clj mypreset
 ## Troubleshooting
 
 ### "bb: command not found"
+
+**Linux/macOS:**
 ```bash
-# Install Babashka
-./scripts/init-modular.sh  # Will auto-install
+# Will auto-install via init script
+./scripts/init-modular.sh
 
 # Or manually:
 # macOS: brew install borkdude/brew/babashka
 # Linux: bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
 ```
+
+**Windows:**
+```powershell
+# Install Scoop if needed
+# Visit: https://scoop.sh/
+
+# Add Clojure bucket and install Babashka
+scoop bucket add scoop-clojure https://github.com/littleli/scoop-clojure
+scoop install babashka -s
+
+# Verify installation
+bb --version
+```
+
+**Note:** The `-s` flag skips hash verification if there's a temporary hash mismatch with vcredist2022 dependency.
 
 ### "source/ directory not found"
 ```bash
