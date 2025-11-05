@@ -8,6 +8,19 @@ dev-graph/
 template-dev/
 my-template/
 
+# Modular build artifacts (optional: commit these or ignore)
+build/
+# Uncomment to track build artifacts:
+# !build/logseq_db_Templates_*.edn
+
+# Babashka cache
+.bb-cache/
+
+# Claude Code - Track .claude folder but allow personal overrides
+# .claude/commands/ should be committed (team commands)
+# User can create .claude/local/ for personal commands (not tracked)
+.claude/local/
+
 # Backups
 *.backup
 *.bak
