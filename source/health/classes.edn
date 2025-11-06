@@ -1,0 +1,55 @@
+{:classes
+ #:user.class{:LivestyleModification-EQZ0mDTD
+              {:block/title "LivestyleModification",
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "dna", :type :emoji},
+                                 :description
+                                 "A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition."}},
+              :PhysicalActivity-LgYmEvCy
+              {:block/title "PhysicalActivity",
+               :build/class-properties
+               [:user.property/associatedAnatomy-v2fic-1N
+                :user.property/category-wiulLpkL
+                :user.property/epidemiology-A9i-vXl6
+                :user.property/pathophysiology-x65zQlVL],
+               :build/class-extends
+               [:user.class/LivestyleModification-EQZ0mDTD],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ActivityHeartbeat",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "Any bodily activity that enhances or maintains physical fitness and overall health and wellness. Includes activity that is part of daily living and routine, structured exercise, and exercise prescribed as part of a medical treatment or recovery plan."}},
+              :Diet-MNiPz5KL
+              {:block/title "Diet",
+               :build/class-properties
+               [:user.property/dietFeatures-v1gjALq0
+                :user.property/endorsers-OaAOkjBA
+                :user.property/expertConsiderations-WXzlugI6
+                :user.property/physiologicalBenefits-FJV7UKgQ
+                :user.property/risks-XWR9b24n],
+               :build/class-extends
+               [:user.class/LivestyleModification-EQZ0mDTD],
+               :build/properties
+               #:logseq.property{:icon {:id "apple", :type :emoji},
+                                 :description
+                                 "A strategy of regulating the intake of food to achieve or maintain a specific health-related goal."}},
+              :ExercisePlan-e90r_yPV
+              {:block/title "ExercisePlan",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/activityDuration-ffVdaMZK
+                :user.property/activityFrequency-vpC_bzQl
+                :user.property/additionalVariable-Vslk_AUZ
+                :user.property/exerciseType-cryv0fp5
+                :user.property/intensity-sDMTFmeg
+                :user.property/repetitions-vRP2YaE4
+                :user.property/restPeriods-EsG6Js4g],
+               :build/class-extends
+               [:user.class/PhysicalActivity-LgYmEvCy],
+               :build/properties
+               #:logseq.property{:icon {:id "muscle", :type :emoji},
+                                 :description
+                                 "Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician."}}}}

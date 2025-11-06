@@ -72,31 +72,6 @@
                 :logseq.property/icon {:id "popcorn", :type :emoji},
                 :logseq.property/description
                 "A screening of a movie or other video."}},
-              :BusinessEvent-ZhquVXi7
-              {:block/title "BusinessEvent",
-               :build/class-extends [:user.class/Event-eokdG-Nd],
-               :build/properties
-               {:user.property/sourceSchema-mW7IZAwI
-                [:block/uuid
-                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
-                :logseq.property/icon {:id "briefcase", :type :emoji},
-                :logseq.property/description
-                "Event type: Business event."}},
-              :BusinessMeeting-yB0IQ0_t
-              {:block/title "Business Meeting",
-               :build/class-properties
-               [:user.property/project-urDQmpUz
-                :user.property/topic-IKHrOrfb
-                :user.property/areas-RjYz4kBx
-                :user.property/objective-z5ii3204
-                :user.property/nextMeetingDate-GUnc-7cv],
-               :build/class-extends [:user.class/Event-eokdG-Nd],
-               :build/properties
-               {:user.property/sourceSchema-mW7IZAwI
-                [:block/uuid
-                 #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"],
-                :logseq.property/icon
-                {:id "briefcase", :type :emoji}}},
               :EducationEvent-hQ3etcnz
               {:block/title "EducationEvent",
                :build/class-properties
@@ -132,6 +107,16 @@
                 :logseq.property/icon {:id "pretzel", :type :emoji},
                 :logseq.property/description
                 "Event type: Food event."}},
+              :Festival-iRcg-Qju
+              {:block/title "Festival",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "confetti_ball", :type :emoji},
+                :logseq.property/description "Event type: Festival."}},
               :TheaterEvent-ClXLSIs5
               {:block/title "TheaterEvent",
                :build/class-extends [:user.class/Event-eokdG-Nd],
@@ -174,6 +159,18 @@
                 :logseq.property/icon {:id "bookmark", :type :emoji},
                 :logseq.property/description
                 "Event type: Literary event."}},
+              :CourseInstance-MqjA3ZLE
+              {:block/title "CourseInstance",
+               :build/class-properties
+               [:user.property/courseMode-PrUwU06T
+                :user.property/courseSchedule-YgJyelJz
+                :user.property/courseWorkload-D2r1XolO
+                :user.property/instructor-WAvJotJ-],
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "An instance of a [Course](https://schema.org/Course) which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students."}},
               :EventSeries-RttAZrnB
               {:block/title "EventSeries",
                :build/class-extends [:user.class/Event-eokdG-Nd],

@@ -1,5 +1,107 @@
 {:properties
- #:user.property{:reviewRating-QBDiKkwj
+ #:user.property{:hasTiers-ug5kfMPF
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "hasTiers",
+                  :build/property-classes
+                  [:user.class/MemberProgramTier-WXd-EWZL],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "Pyramid",
+                                     :name "Pyramid",
+                                     :color "inherit"},
+                                    :description
+                                    "The tiers of a member program.\nInverse property: [isTierOf](https://schema.org/isTierOf)"}},
+                 :subReservation-P3URlTQD
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "subReservation",
+                  :build/property-classes
+                  [:user.class/Reservation-tDje6vAq],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "green_book",
+                                     :name "Green Book",
+                                     :keywords
+                                     ["read"
+                                      "library"
+                                      "knowledge"
+                                      "study"],
+                                     :skins
+                                     [{:unified "1f4d7",
+                                       :native "📗",
+                                       :shortcodes ":green_book:"}],
+                                     :version 1,
+                                     :search
+                                     ",green_book,green,book,read,library,knowledge,study,📗",
+                                     :type :emoji},
+                                    :description
+                                    "The individual reservations included in the package. Typically a repeated property."}},
+                 :nextItem-pJEtk0Ht
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "nextItem",
+                  :build/property-classes
+                  [:user.class/ListItem-gPGuE3ib],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "A link to the ListItem that follows the current one."}},
+                 :program-YPw2pQES
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "program",
+                  :build/property-classes
+                  [:user.class/MemberProgram-ow0-vJAI],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "ticket",
+                                     :name "Ticket",
+                                     :keywords
+                                     ["event" "concert" "pass"],
+                                     :skins
+                                     [{:unified "1f3ab",
+                                       :native "🎫",
+                                       :shortcodes ":ticket:"}],
+                                     :version 1,
+                                     :search
+                                     ",ticket,ticket,event,concert,pass,🎫",
+                                     :type :emoji},
+                                    :description
+                                    "The [MemberProgram](https://schema.org/MemberProgram) associated with a [ProgramMembership](https://schema.org/ProgramMembership)."}},
+                 :repeatFrequency-Q0bQ9SOb
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "repeatFrequency",
+                  :build/property-classes
+                  [:user.class/Duration-l9FSb6jS],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "repeat",
+                                     :name "Repeat Button",
+                                     :keywords ["loop" "record"],
+                                     :skins
+                                     [{:unified "1f501",
+                                       :native "🔁",
+                                       :shortcodes ":repeat:"}],
+                                     :version 1,
+                                     :search
+                                     ",repeat,repeat,button,loop,record,🔁",
+                                     :type :emoji},
+                                    :description
+                                    "Defines the frequency at which [Event](https://schema.org/Event)s will occur according to a schedule [Schedule](https://schema.org/Schedule). The intervals between events should be defined as a [Duration](https://schema.org/Duration) of time."}},
+                 :reviewRating-QBDiKkwj
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
                   :logseq.property/ui-position :block-left,
@@ -21,15 +123,154 @@
                                      :type :emoji},
                                     :description
                                     "The rating given in this review. Note that reviews can themselves be rated. The `reviewRating` applies to rating given by the review. The [aggregateRating](https://schema.org/aggregateRating) property applies to the review itself, as a creative work."}},
-                 :associatedReview-Gg9tUlWS
+                 :partOfTrip-UXTLyMra
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
-                  :block/title "associatedReview",
-                  :build/property-classes
-                  [:user.class/Review-lv8JXdKK],
+                  :block/title "partOfTrip",
+                  :build/property-classes [:user.class/Trip-r8sS-d2X],
                   :build/properties
-                  #:logseq.property{:hide-empty-value true,
-                                    :icon
+                  #:logseq.property{:icon
+                                    {:id "luggage",
+                                     :name "Luggage",
+                                     :keywords ["packing" "travel"],
+                                     :skins
+                                     [{:unified "1f9f3",
+                                       :native "🧳",
+                                       :shortcodes ":luggage:"}],
+                                     :version 11,
+                                     :search
+                                     ",luggage,luggage,packing,travel,🧳",
+                                     :type :emoji},
+                                    :description
+                                    "Identifies that this [Trip](https://schema.org/Trip) is a subTrip of another Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [subTrip](https://schema.org/subTrip)"}},
+                 :subTrip-E5bHCsjT
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "subTrip",
+                  :build/property-classes [:user.class/Trip-r8sS-d2X],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "luggage",
+                                     :name "Luggage",
+                                     :keywords ["packing" "travel"],
+                                     :skins
+                                     [{:unified "1f9f3",
+                                       :native "🧳",
+                                       :shortcodes ":luggage:"}],
+                                     :version 11,
+                                     :search
+                                     ",luggage,luggage,packing,travel,🧳",
+                                     :type :emoji},
+                                    :description
+                                    "Identifies a [Trip](https://schema.org/Trip) that is a subTrip of this Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [partOfTrip](https://schema.org/partOfTrip)"}},
+                 :numberOfPlayers-RAmSTkGI
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "numberOfPlayers",
+                  :build/property-classes
+                  [:user.class/QuantitativeValue-IKnk1j2N],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "straight_ruler",
+                                     :name "Straight Ruler",
+                                     :keywords
+                                     ["stationery"
+                                      "calculate"
+                                      "length"
+                                      "math"
+                                      "school"
+                                      "drawing"
+                                      "architect"
+                                      "sketch"],
+                                     :skins
+                                     [{:unified "1f4cf",
+                                       :native "📏",
+                                       :shortcodes
+                                       ":straight_ruler:"}],
+                                     :version 1,
+                                     :search
+                                     ",straight_ruler,straight,ruler,stationery,calculate,length,math,school,drawing,architect,sketch,📏",
+                                     :type :emoji},
+                                    :description
+                                    "Indicate how many people can play this game (minimum, maximum, or range)."}},
+                 :restPeriods-EsG6Js4g
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "restPeriods",
+                  :build/property-classes
+                  [:user.class/QuantitativeValue-IKnk1j2N],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "sleepy",
+                                     :name "Sleepy Face",
+                                     :keywords ["tired" "rest" "nap"],
+                                     :skins
+                                     [{:unified "1f62a",
+                                       :native "😪",
+                                       :shortcodes ":sleepy:"}],
+                                     :version 1,
+                                     :search
+                                     ",sleepy,sleepy,face,tired,rest,nap,😪",
+                                     :type :emoji},
+                                    :description
+                                    "How often one should break from the activity."}},
+                 :programMembershipUsed-Bxfs7uuH
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "programMembershipUsed",
+                  :build/property-classes
+                  [:user.class/ProgramMembership-MYM3-sYx],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "identification_card",
+                                     :name "Identification Card",
+                                     :keywords ["document"],
+                                     :skins
+                                     [{:unified "1faaa",
+                                       :native "🪪",
+                                       :shortcodes
+                                       ":identification_card:"}],
+                                     :version 14,
+                                     :search
+                                     ",identification_card,identification,card,document,🪪",
+                                     :type :emoji},
+                                    :description
+                                    "Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation."}},
+                 :coursePrerequisites-BVkZhygE
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "coursePrerequisites",
+                  :build/property-classes
+                  [:user.class/AlignmentObject-Bp9Qbx_4
+                   :user.class/Course-G32kzYLY],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "school",
+                                     :name "School",
+                                     :keywords
+                                     ["building"
+                                      "student"
+                                      "education"
+                                      "learn"
+                                      "teach"],
+                                     :skins
+                                     [{:unified "1f3eb",
+                                       :native "🏫",
+                                       :shortcodes ":school:"}],
+                                     :version 1,
+                                     :search
+                                     ",school,school,building,student,education,learn,teach,🏫",
+                                     :type :emoji},
+                                    :description
+                                    "Requirements for taking the Course. May be completion of another [Course](https://schema.org/Course) or a textual description like \"permission of instructor\". Requirements may be a pre-requisite competency, referenced using [AlignmentObject](https://schema.org/AlignmentObject)."}},
+                 :previousItem-COK0wTnJ
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "previousItem",
+                  :build/property-classes
+                  [:user.class/ListItem-gPGuE3ib],
+                  :build/properties
+                  #:logseq.property{:icon
                                     {:id "link",
                                      :name "Link",
                                      :keywords ["rings" "url"],
@@ -41,28 +282,79 @@
                                      :search ",link,link,rings,url,🔗",
                                      :type :emoji},
                                     :description
-                                    "An associated [Review](https://schema.org/Review)."}},
-                 :associatedMediaReview-kQDY_aNa
-                 {:db/cardinality :db.cardinality/one,
+                                    "A link to the ListItem that precedes the current one."}},
+                 :programmingLanguage-rXiRDkVx
+                 {:db/cardinality :db.cardinality/many,
                   :logseq.property/type :node,
-                  :block/title "associatedMediaReview",
+                  :block/title "programmingLanguage",
                   :build/property-classes
-                  [:user.class/Review-lv8JXdKK],
+                  [:user.class/ComputerLanguage-W_oRfV0P],
                   :build/properties
-                  #:logseq.property{:hide-empty-value true,
-                                    :icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
+                  #:logseq.property{:icon
+                                    {:id "robot_face",
+                                     :name "Robot",
+                                     :keywords
+                                     ["face"
+                                      "computer"
+                                      "machine"
+                                      "bot"],
                                      :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
+                                     [{:unified "1f916",
+                                       :native "🤖",
+                                       :shortcodes ":robot_face:"}],
                                      :version 1,
-                                     :search ",link,link,rings,url,🔗",
+                                     :search
+                                     ",robot_face,robot,face,computer,machine,bot,🤖",
                                      :type :emoji},
                                     :description
-                                    "An associated [MediaReview](https://schema.org/MediaReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
+                                    "The computer programming language."}},
+                 :reservedTicket-UcavUkmL
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "reservedTicket",
+                  :build/property-classes
+                  [:user.class/Ticket-pdA-Ir-K],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "green_book",
+                                     :name "Green Book",
+                                     :keywords
+                                     ["read"
+                                      "library"
+                                      "knowledge"
+                                      "study"],
+                                     :skins
+                                     [{:unified "1f4d7",
+                                       :native "📗",
+                                       :shortcodes ":green_book:"}],
+                                     :version 1,
+                                     :search
+                                     ",green_book,green,book,read,library,knowledge,study,📗",
+                                     :type :emoji},
+                                    :description
+                                    "A ticket associated with the reservation."}},
+                 :activityDuration-ffVdaMZK
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "activityDuration",
+                  :build/property-classes
+                  [:user.class/QuantitativeValue-IKnk1j2N
+                   :user.class/Duration-l9FSb6jS],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "stopwatch",
+                                     :name "Stopwatch",
+                                     :keywords ["time" "deadline"],
+                                     :skins
+                                     [{:unified "23f1-fe0f",
+                                       :native "⏱️",
+                                       :shortcodes ":stopwatch:"}],
+                                     :version 1,
+                                     :search
+                                     ",stopwatch,stopwatch,time,deadline,⏱️",
+                                     :type :emoji},
+                                    :description
+                                    "Length of time to engage in the activity."}},
                  :certificationRating-D7xMAVtS
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
@@ -125,54 +417,133 @@
                   :block/title "Rating",
                   :build/property-classes
                   [:user.class/Rating-BSM3CCuf]},
-                 :associatedClaimReview-sI_cmxtZ
+                 :intensity-sDMTFmeg
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
-                  :block/title "associatedClaimReview",
+                  :block/title "intensity",
                   :build/property-classes
-                  [:user.class/Review-lv8JXdKK],
+                  [:user.class/QuantitativeValue-IKnk1j2N],
                   :build/properties
-                  #:logseq.property{:hide-empty-value true,
-                                    :icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
+                  #:logseq.property{:icon
+                                    {:id "woozy_face",
+                                     :name "Woozy Face",
+                                     :keywords
+                                     ["dizzy"
+                                      "intoxicated"
+                                      "tipsy"
+                                      "wavy"],
                                      :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
+                                     [{:unified "1f974",
+                                       :native "🥴",
+                                       :shortcodes ":woozy_face:"}],
+                                     :version 11,
+                                     :search
+                                     ",woozy_face,woozy,face,dizzy,intoxicated,tipsy,wavy,🥴",
                                      :type :emoji},
                                     :description
-                                    "An associated [ClaimReview](https://schema.org/ClaimReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
-                 :review-DCP-Kpw4
+                                    "Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement."}},
+                 :validFor-zMYMRxMA
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
-                  :logseq.property/hide? true,
-                  :block/title "review",
-                  :block/collapsed? false,
+                  :block/title "validFor",
                   :build/property-classes
-                  [:user.class/Review-lv8JXdKK],
+                  [:user.class/Duration-l9FSb6jS],
                   :build/properties
-                  #:logseq.property{:hide-empty-value true,
-                                    :icon
-                                    {:id "thought_balloon",
-                                     :name "Thought Balloon",
-                                     :keywords
-                                     ["bubble"
-                                      "cloud"
-                                      "speech"
-                                      "thinking"
-                                      "dream"],
+                  #:logseq.property{:icon
+                                    {:id "stopwatch",
+                                     :name "Stopwatch",
+                                     :keywords ["time" "deadline"],
                                      :skins
-                                     [{:unified "1f4ad",
-                                       :native "💭",
-                                       :shortcodes
-                                       ":thought_balloon:"}],
+                                     [{:unified "23f1-fe0f",
+                                       :native "⏱️",
+                                       :shortcodes ":stopwatch:"}],
                                      :version 1,
                                      :search
-                                     ",thought_balloon,thought,balloon,bubble,cloud,speech,thinking,dream,💭",
+                                     ",stopwatch,stopwatch,time,deadline,⏱️",
                                      :type :emoji},
                                     :description
-                                    "A review of the item."}}}}
+                                    "The duration of validity of a permit or similar thing."}},
+                 :isTierOf-Jp7onTLo
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "isTierOf",
+                  :build/property-classes
+                  [:user.class/MemberProgram-ow0-vJAI],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "Pyramid",
+                                     :name "Pyramid",
+                                     :color "inherit"},
+                                    :description
+                                    "The member program this tier is a part of.\nInverse property: [hasTiers](https://schema.org/hasTiers)"}},
+                 :estimatedFlightDuration-i9LYDf5-
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "estimatedFlightDuration",
+                  :build/property-classes
+                  [:user.class/Duration-l9FSb6jS],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "straight_ruler",
+                                     :name "Straight Ruler",
+                                     :keywords
+                                     ["stationery"
+                                      "calculate"
+                                      "length"
+                                      "math"
+                                      "school"
+                                      "drawing"
+                                      "architect"
+                                      "sketch"],
+                                     :skins
+                                     [{:unified "1f4cf",
+                                       :native "📏",
+                                       :shortcodes
+                                       ":straight_ruler:"}],
+                                     :version 1,
+                                     :search
+                                     ",straight_ruler,straight,ruler,stationery,calculate,length,math,school,drawing,architect,sketch,📏",
+                                     :type :emoji},
+                                    :description
+                                    "The estimated time the flight will take."}},
+                 :repetitions-vRP2YaE4
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "repetitions",
+                  :build/property-classes
+                  [:user.class/QuantitativeValue-IKnk1j2N],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "Repeat",
+                                     :name "Repeat",
+                                     :color "inherit"},
+                                    :description
+                                    "Number of times one should repeat the activity."}},
+                 :educationalAlignment-U0xgyOCF
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "educationalAlignment",
+                  :build/property-classes
+                  [:user.class/AlignmentObject-Bp9Qbx_4],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "school",
+                                     :name "School",
+                                     :keywords
+                                     ["building"
+                                      "student"
+                                      "education"
+                                      "learn"
+                                      "teach"],
+                                     :skins
+                                     [{:unified "1f3eb",
+                                       :native "🏫",
+                                       :shortcodes ":school:"}],
+                                     :version 1,
+                                     :search
+                                     ",school,school,building,student,education,learn,teach,🏫",
+                                     :type :emoji},
+                                    :description
+                                    "An alignment to an established educational framework."}}}}

@@ -19,6 +19,27 @@
                                      :type :emoji},
                                     :description
                                     "The series to which this episode or season belongs."}},
+                 :recordingOf-HG76I4BO
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "recordingOf",
+                  :build/property-classes
+                  [:user.class/MusicComposition-SIPTMhhl],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "dvd",
+                                     :name "Dvd",
+                                     :keywords ["cd" "disk" "disc"],
+                                     :skins
+                                     [{:unified "1f4c0",
+                                       :native "📀",
+                                       :shortcodes ":dvd:"}],
+                                     :version 1,
+                                     :search
+                                     ",dvd,dvd,cd,disk,disc,📀",
+                                     :type :emoji},
+                                    :description
+                                    "The composition this track is a recording of.\nInverse property: [recordedAs](https://schema.org/recordedAs)"}},
                  :hasPart-MU18tG77
                  {:db/cardinality :db.cardinality/many,
                   :logseq.property/type :node,
@@ -60,6 +81,32 @@
                                      :type :emoji},
                                     :description
                                     "A season that is part of the media series."}},
+                 :releaseOf-b9vCUFY_
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "releaseOf",
+                  :build/property-classes
+                  [:user.class/MusicAlbum-h41DK9DK],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "cd",
+                                     :name "Optical Disc",
+                                     :keywords
+                                     ["cd"
+                                      "disk"
+                                      "technology"
+                                      "dvd"
+                                      "90s"],
+                                     :skins
+                                     [{:unified "1f4bf",
+                                       :native "💿",
+                                       :shortcodes ":cd:"}],
+                                     :version 1,
+                                     :search
+                                     ",cd,optical,disc,cd,disk,technology,dvd,90s,💿",
+                                     :type :emoji},
+                                    :description
+                                    "The album this is a release of.\nInverse property: [albumRelease](https://schema.org/albumRelease)"}},
                  :softwareHelp-IGa29x9T
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
@@ -74,6 +121,27 @@
                                      :color "inherit"},
                                     :description
                                     "Software application help."}},
+                 :associatedReview-Gg9tUlWS
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "associatedReview",
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "An associated [Review](https://schema.org/Review)."}},
                  :isPartOf-nCfhGBzX
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
@@ -95,6 +163,40 @@
                                      :type :emoji},
                                     :description
                                     "Indicates an item or CreativeWork that this item, or CreativeWork (in some sense), is part of.\nInverse property: [hasPart](https://schema.org/hasPart)"}},
+                 :associatedMediaReview-kQDY_aNa
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "associatedMediaReview",
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "An associated [MediaReview](https://schema.org/MediaReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
+                 :album-TO8vpaYs
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "album",
+                  :build/property-classes
+                  [:user.class/MusicAlbum-h41DK9DK],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "Album",
+                                     :name "Album",
+                                     :color "inherit"},
+                                    :description "A music album."}},
                  :isBasedOn-LoJm5WMC
                  {:db/cardinality :db.cardinality/many,
                   :logseq.property/type :node,
@@ -117,6 +219,57 @@
                                      :type :emoji},
                                     :description
                                     "A resource from which this work is derived or from which it is a modification or adaptation."}},
+                 :syllabusSections-RfyrTa6L
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "syllabusSections",
+                  :build/property-classes
+                  [:user.class/Syllabus-nfgb0rMr],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "school",
+                                     :name "School",
+                                     :keywords
+                                     ["building"
+                                      "student"
+                                      "education"
+                                      "learn"
+                                      "teach"],
+                                     :skins
+                                     [{:unified "1f3eb",
+                                       :native "🏫",
+                                       :shortcodes ":school:"}],
+                                     :version 1,
+                                     :search
+                                     ",school,school,building,student,education,learn,teach,🏫",
+                                     :type :emoji},
+                                    :description
+                                    "Indicates (typically several) Syllabus entities that lay out what each section of the overall course will cover."}},
+                 :recordedAs-WuH0Xf_E
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "recordedAs",
+                  :build/property-classes
+                  [:user.class/MusicRecording-OBFMQQGG],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "violin",
+                                     :name "Violin",
+                                     :keywords
+                                     ["music"
+                                      "instrument"
+                                      "orchestra"
+                                      "symphony"],
+                                     :skins
+                                     [{:unified "1f3bb",
+                                       :native "🎻",
+                                       :shortcodes ":violin:"}],
+                                     :version 1,
+                                     :search
+                                     ",violin,violin,music,instrument,orchestra,symphony,🎻",
+                                     :type :emoji},
+                                    :description
+                                    "An audio recording of the work.\nInverse property: [recordingOf](https://schema.org/recordingOf)"}},
                  :partOfSeason-RuKvwZB3
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
@@ -136,4 +289,242 @@
                                      :search ",link,link,rings,url,🔗",
                                      :type :emoji},
                                     :description
-                                    "The season to which this episode belongs."}}}}
+                                    "The season to which this episode belongs."}},
+                 :inPlaylist-Jwz10SOO
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "inPlaylist",
+                  :build/property-classes
+                  [:user.class/MusicPlaylist-Km-QRe6j],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "List",
+                                     :name "List",
+                                     :color "inherit"},
+                                    :description
+                                    "The playlist to which this recording belongs."}},
+                 :workPresented-F87jbUtZ
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "workPresented",
+                  :build/property-classes [:user.class/Movie-eabsTS9z],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "popcorn",
+                                     :name "Popcorn",
+                                     :keywords
+                                     ["food"
+                                      "movie"
+                                      "theater"
+                                      "films"
+                                      "snack"],
+                                     :skins
+                                     [{:unified "1f37f",
+                                       :native "🍿",
+                                       :shortcodes ":popcorn:"}],
+                                     :version 1,
+                                     :search
+                                     ",popcorn,popcorn,food,movie,theater,films,snack,🍿",
+                                     :type :emoji},
+                                    :description
+                                    "The movie presented during this event."}},
+                 :track-GQbs8YMa
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "track",
+                  :build/property-classes
+                  [:user.class/MusicRecording-OBFMQQGG],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "dvd",
+                                     :name "Dvd",
+                                     :keywords ["cd" "disk" "disc"],
+                                     :skins
+                                     [{:unified "1f4c0",
+                                       :native "📀",
+                                       :shortcodes ":dvd:"}],
+                                     :version 1,
+                                     :search
+                                     ",dvd,dvd,cd,disk,disc,📀",
+                                     :type :emoji},
+                                    :description
+                                    "A music recording (track)—usually a single song. If an ItemList is given, the list should contain items of type MusicRecording."}},
+                 :hasCertification-AV3D5I0Y
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "hasCertification",
+                  :build/property-classes
+                  [:user.class/Certification-LU3sgAuM],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "+1",
+                                     :name "Thumbs Up",
+                                     :keywords
+                                     ["+1"
+                                      "thumbsup"
+                                      "yes"
+                                      "awesome"
+                                      "good"
+                                      "agree"
+                                      "accept"
+                                      "cool"
+                                      "hand"
+                                      "like"],
+                                     :skins
+                                     [{:unified "1f44d",
+                                       :native "👍",
+                                       :shortcodes ":+1:"}
+                                      {:unified "1f44d-1f3fb",
+                                       :native "👍🏻",
+                                       :shortcodes ":+1::skin-tone-2:"}
+                                      {:unified "1f44d-1f3fc",
+                                       :native "👍🏼",
+                                       :shortcodes ":+1::skin-tone-3:"}
+                                      {:unified "1f44d-1f3fd",
+                                       :native "👍🏽",
+                                       :shortcodes ":+1::skin-tone-4:"}
+                                      {:unified "1f44d-1f3fe",
+                                       :native "👍🏾",
+                                       :shortcodes ":+1::skin-tone-5:"}
+                                      {:unified "1f44d-1f3ff",
+                                       :native "👍🏿",
+                                       :shortcodes
+                                       ":+1::skin-tone-6:"}],
+                                     :version 1,
+                                     :aliases ["thumbsup"],
+                                     :search
+                                     ",+1,thumbs,up,+1,thumbsup,yes,awesome,good,agree,accept,cool,hand,like,👍,👍🏻,👍🏼,👍🏽,👍🏾,👍🏿",
+                                     :type :emoji},
+                                    :description
+                                    "Certification information about a product, organization, service, place, or person."}},
+                 :episode-vIvdyDrO
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "episode",
+                  :build/property-classes
+                  [:user.class/Episode-QaUtLF63
+                   :user.class/TVEpisode-iqStiz4R],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "1234",
+                                     :name "Input Numbers",
+                                     :keywords
+                                     ["1234" "blue" "square"],
+                                     :skins
+                                     [{:unified "1f522",
+                                       :native "🔢",
+                                       :shortcodes ":1234:"}],
+                                     :version 1,
+                                     :search
+                                     ",1234,input,numbers,1234,blue,square,🔢",
+                                     :type :emoji},
+                                    :description
+                                    "An episode of a TV, radio or game media within a series or season."}},
+                 :associatedClaimReview-sI_cmxtZ
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "associatedClaimReview",
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "An associated [ClaimReview](https://schema.org/ClaimReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
+                 :review-DCP-Kpw4
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :logseq.property/hide? true,
+                  :block/title "review",
+                  :block/collapsed? false,
+                  :build/property-classes
+                  [:user.class/Review-lv8JXdKK],
+                  :build/properties
+                  #:logseq.property{:hide-empty-value true,
+                                    :icon
+                                    {:id "thought_balloon",
+                                     :name "Thought Balloon",
+                                     :keywords
+                                     ["bubble"
+                                      "cloud"
+                                      "speech"
+                                      "thinking"
+                                      "dream"],
+                                     :skins
+                                     [{:unified "1f4ad",
+                                       :native "💭",
+                                       :shortcodes
+                                       ":thought_balloon:"}],
+                                     :version 1,
+                                     :search
+                                     ",thought_balloon,thought,balloon,bubble,cloud,speech,thinking,dream,💭",
+                                     :type :emoji},
+                                    :description
+                                    "A review of the item."}},
+                 :softwareAddOn-IqkhZtNk
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "softwareAddOn",
+                  :build/property-classes
+                  [:user.class/SoftwareApplication-wXYtaQzn],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "AppsFilled",
+                                     :name "AppsFilled",
+                                     :color "inherit"},
+                                    :description
+                                    "Additional content for a software application."}},
+                 :albumRelease-gvGdSEW9
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "albumRelease",
+                  :build/property-classes
+                  [:user.class/MusicRelease-bDhA9VSI],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "Album",
+                                     :name "Album",
+                                     :color "inherit"},
+                                    :description
+                                    "A release of this album.\nInverse property: [releaseOf](https://schema.org/releaseOf)"}},
+                 :inAlbum-unC1TYO9
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :node,
+                  :block/title "inAlbum",
+                  :build/property-classes
+                  [:user.class/MusicAlbum-h41DK9DK],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "Album",
+                                     :name "Album",
+                                     :color "inherit"},
+                                    :description
+                                    "The album to which this recording belongs."}},
+                 :targetProduct-RnSz4FxE
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "targetProduct",
+                  :build/property-classes
+                  [:user.class/SoftwareApplication-wXYtaQzn],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:type :tabler-icon,
+                                     :id "AppsFilled",
+                                     :name "AppsFilled",
+                                     :color "inherit"},
+                                    :description
+                                    "Target Operating System / Product to which the code applies. If applies to several versions, just the product name can be used."}}}}

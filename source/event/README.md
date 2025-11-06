@@ -3,7 +3,7 @@
 ## Contents
 
 - **Classes**: 17
-- **Properties**: 6
+- **Properties**: 7
 
 ## Files
 
