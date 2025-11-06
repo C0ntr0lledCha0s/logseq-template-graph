@@ -6,8 +6,8 @@
 set -e  # Exit on error
 
 # Configuration
-GRAPH_PATH="${LOGSEQ_GRAPH_PATH:-C:/Users/YourName/Logseq/template-dev}"
-OUTPUT_DIR="."
+GRAPH_PATH="${LOGSEQ_GRAPH_PATH:-$HOME/logseq/graphs/Test Build}"
+OUTPUT_DIR="${LOGSEQ_OUTPUT_DIR:-.}"
 DATE=$(date +%Y-%m-%d)
 
 # Colors for output
@@ -35,32 +35,30 @@ if [ ! -d "$GRAPH_PATH" ]; then
     exit 1
 fi
 
-# Export minimal version (no timestamps, clean structure)
-echo -e "${YELLOW}📦 Exporting minimal template (recommended for users)...${NC}"
+# Get absolute path for output directory
+if [ "$OUTPUT_DIR" = "." ]; then
+    OUTPUT_DIR_ABS="$(pwd)"
+else
+    OUTPUT_DIR_ABS="$(cd "$OUTPUT_DIR" && pwd)"
+fi
+
+echo -e "${CYAN}Output directory: $OUTPUT_DIR_ABS${NC}"
+echo ""
+
+# Export template (clean, no timestamps)
+echo -e "${YELLOW}📦 Exporting template...${NC}"
+OUTPUT_FILE="$OUTPUT_DIR_ABS/logseq_db_Templates.edn"
+echo -e "${CYAN}Target file: $OUTPUT_FILE${NC}"
 logseq export-edn \
-  --graph "$GRAPH_PATH" \
-  --output "$OUTPUT_DIR/logseq_db_Templates.edn" \
-  --ignore-builtin-pages \
+  "$GRAPH_PATH" \
+  --file "$OUTPUT_FILE" \
+  --exclude-built-in-pages \
   --exclude-namespaces "logseq.kv"
 
 if [ $? -eq 0 ]; then
-    echo -e "${GREEN}✅ Minimal template exported${NC}"
+    echo -e "${GREEN}✅ Template exported${NC}"
 else
-    echo -e "${RED}❌ Failed to export minimal template${NC}"
-    exit 1
-fi
-
-# Export full version (with timestamps and full metadata)
-echo -e "${YELLOW}📦 Exporting full template (with all metadata)...${NC}"
-logseq export-edn \
-  --graph "$GRAPH_PATH" \
-  --output "$OUTPUT_DIR/logseq_db_Templates_full.edn" \
-  --include-timestamps
-
-if [ $? -eq 0 ]; then
-    echo -e "${GREEN}✅ Full template exported${NC}"
-else
-    echo -e "${RED}❌ Failed to export full template${NC}"
+    echo -e "${RED}❌ Failed to export template${NC}"
     exit 1
 fi
 
@@ -70,16 +68,14 @@ echo ""
 
 # Show statistics
 if command -v wc &> /dev/null; then
-    MINIMAL_LINES=$(wc -l < "$OUTPUT_DIR/logseq_db_Templates.edn")
-    FULL_LINES=$(wc -l < "$OUTPUT_DIR/logseq_db_Templates_full.edn")
+    LINES=$(wc -l < "logseq_db_Templates.edn")
     echo -e "${CYAN}📊 Statistics:${NC}"
-    echo -e "   Minimal: ${MINIMAL_LINES} lines"
-    echo -e "   Full: ${FULL_LINES} lines"
+    echo -e "   Lines: ${LINES}"
 fi
 
 if command -v grep &> /dev/null; then
-    PROP_COUNT=$(grep -c "user.property/" "$OUTPUT_DIR/logseq_db_Templates.edn" || echo "0")
-    CLASS_COUNT=$(grep -c "user.class/" "$OUTPUT_DIR/logseq_db_Templates.edn" || echo "0")
+    PROP_COUNT=$(grep -c "user.property/" "logseq_db_Templates.edn" || echo "0")
+    CLASS_COUNT=$(grep -c "user.class/" "logseq_db_Templates.edn" || echo "0")
     echo -e "   Properties: ${PROP_COUNT}"
     echo -e "   Classes: ${CLASS_COUNT}"
 fi
@@ -89,7 +85,7 @@ echo ""
 # Show git changes
 if command -v git &> /dev/null && [ -d .git ]; then
     echo -e "${CYAN}📊 Git changes:${NC}"
-    git diff --stat logseq_db_Templates.edn logseq_db_Templates_full.edn 2>/dev/null || echo "   No changes detected"
+    git diff --stat logseq_db_Templates.edn 2>/dev/null || echo "   No changes detected"
     echo ""
 fi
 
@@ -106,7 +102,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         COMMIT_MSG="chore: auto-export templates on $DATE"
     fi
 
-    git add logseq_db_Templates.edn logseq_db_Templates_full.edn
+    git add logseq_db_Templates.edn
     git commit -m "$COMMIT_MSG"
 
     if [ $? -eq 0 ]; then

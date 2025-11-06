@@ -5,7 +5,10 @@
       "Bash(gh issue create:*)",
       "Bash(gh issue edit:*)",
       "Bash(bb:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(test:*)",
+      "Bash(logseq export-edn:*)",
+      "Bash(logseq:*)"
     ],
     "deny": [],
     "ask": []
