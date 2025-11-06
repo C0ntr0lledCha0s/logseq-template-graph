@@ -12,6 +12,31 @@
                #:logseq.property{:icon {:id "briefcase", :type :emoji},
                                  :description
                                  "A profession, may involve prolonged training and/or a formal qualification."}},
+              :BusinessAudience-FSvB6WNF
+              {:block/title "BusinessAudience",
+               :build/class-properties
+               [:user.property/numberOfEmployees-KzEbRfar
+                :user.property/yearlyRevenue-BgP9WWpO
+                :user.property/yearsInOperation-WbOXIiVy],
+               :build/class-extends [:user.class/Audience-Ya93MfDW],
+               :build/properties
+               #:logseq.property{:description
+                                 "A set of characteristics belonging to businesses, e.g. who compose an item's target audience."}},
+              :MusicGroup-OcGAL50D
+              {:block/title "MusicGroup",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/genre-XAO6sAh5
+                :user.property/album-TO8vpaYs
+                :user.property/track-GQbs8YMa],
+               :build/class-extends
+               [:user.class/PerformingGroup-rmj3_7CJ],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "busts_in_silhouette",
+                                  :type :emoji},
+                                 :description
+                                 "A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician."}},
               :Organization-zHGqsbg8
               {:block/title "Organization",
                :block/collapsed? false,
@@ -40,6 +65,51 @@
                 :logseq.property/icon {:id "office", :type :emoji},
                 :logseq.property/description
                 "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] such as a school, NGO, corporation, club, etc."}},
+              :BusinessEvent-ZhquVXi7
+              {:block/title "BusinessEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "briefcase", :type :emoji},
+                :logseq.property/description
+                "Event type: Business event."}},
+              :BusinessMeeting-yB0IQ0_t
+              {:block/title "Business Meeting",
+               :build/class-properties
+               [:user.property/project-urDQmpUz
+                :user.property/topic-IKHrOrfb
+                :user.property/areas-RjYz4kBx
+                :user.property/objective-z5ii3204
+                :user.property/nextMeetingDate-GUnc-7cv],
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"],
+                :logseq.property/icon
+                {:id "briefcase", :type :emoji}}},
+              :Department-ZLqrca9h
+              {:block/title "Department",
+               :build/properties
+               #:user.property{:sourceSchema-mW7IZAwI
+                               [:block/uuid
+                                #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"]}},
+              :LocalBusiness-H52ucsbv
+              {:block/title "LocalBusiness",
+               :build/class-properties
+               [:user.property/openingHours-bnyE7wOV
+                :user.property/priceRange-KoQ0yZOa],
+               :build/class-extends
+               [:user.class/Organization-zHGqsbg8],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "office", :type :emoji},
+                :logseq.property/description
+                "A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc."}},
               :EducationalOrganization-eqQowbNb
               {:block/title "EducationalOrganization",
                :build/class-properties
@@ -53,6 +123,18 @@
                 :logseq.property/icon {:id "school", :type :emoji},
                 :logseq.property/description
                 "An educational organization."}},
+              :Brand-g2OrKuVq #:block{:title "Brand"},
+              :Business-eQlzo2fs #:block{:title "Business"},
+              :PerformingGroup-rmj3_7CJ
+              {:block/title "PerformingGroup",
+               :build/class-extends
+               [:user.class/Organization-zHGqsbg8],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "busts_in_silhouette",
+                                  :type :emoji},
+                                 :description
+                                 "A performance group, such as a band, an orchestra, or a circus."}},
               :EducationalOccupationalCredential-YiXkugqH
               {:block/title "EducationalOccupationalCredential",
                :block/collapsed? false,

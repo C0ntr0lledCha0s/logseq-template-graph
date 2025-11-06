@@ -2,8 +2,8 @@
 
 ## Contents
 
-- **Classes**: 9
-- **Properties**: 9
+- **Classes**: 33
+- **Properties**: 26
 
 ## Files
 

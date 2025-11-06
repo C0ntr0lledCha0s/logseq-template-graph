@@ -1,22 +1,5 @@
 {:classes
- #:user.class{:Review-lv8JXdKK
-              {:block/title "Review",
-               :block/collapsed? false,
-               :build/class-properties
-               [:user.property/itemReviewed-I5jEm4tv
-                :user.property/reviewAspect-CUiKDJLe
-                :user.property/reviewRating-QBDiKkwj
-                :user.property/associatedClaimReview-sI_cmxtZ
-                :user.property/associatedMediaReview-kQDY_aNa
-                :user.property/associatedReview-Gg9tUlWS],
-               :build/class-extends
-               [:user.class/CreativeWork-B7DmUg1j],
-               :build/properties
-               #:logseq.property{:icon
-                                 {:id "thinking_face", :type :emoji},
-                                 :description
-                                 "A review of an item - for example, of a restaurant, movie, or store."}},
-              :Rating-BSM3CCuf
+ #:user.class{:Rating-BSM3CCuf
               {:block/title "Rating",
                :build/class-properties
                [:user.property/author-cpCBlhLV
@@ -29,27 +12,186 @@
                #:logseq.property{:icon {:id "star", :type :emoji},
                                  :description
                                  "A rating is an evaluation on a numeric scale, such as 1 to 5 stars."}},
-              :CriticReview-vgx67W_W
-              {:block/title "CriticReview",
-               :build/class-extends [:user.class/Review-lv8JXdKK],
+              :ItemList-fvTGUmAv
+              {:block/title "ItemList",
+               :build/class-properties
+               [:user.property/numberOfItems-XoQx6jS2
+                :user.property/aggregateElement-qGiYUW3i
+                :user.property/itemListOrder-JJqXHS2N],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ListNumbers",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting."}},
+              :FoodEstablishmentReservation-qJgebkU1
+              {:block/title "FoodEstablishmentReservation",
+               :build/class-properties
+               [:user.property/endTime-I4vdeV9O
+                :user.property/startTime-PHj9fR0A
+                :user.property/partySize-LOGA0uTB],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "pretzel", :type :emoji},
+                                 :description
+                                 "A reservation to dine at a food-related business."}},
+              :ReservationPackage-XyRQiG0R
+              {:block/title "ReservationPackage",
+               :build/class-properties
+               [:user.property/subReservation-P3URlTQD],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "green_book", :type :emoji},
+                                 :description
+                                 "A group of multiple reservations with common values for all sub-reservations."}},
+              :ProgramMembership-MYM3-sYx
+              {:block/title "ProgramMembership",
+               :build/class-properties
+               [:user.property/member-KLhlfdeR
+                :user.property/hostingOrganization-ISlgTiyb
+                :user.property/membershipNumber-QHxoc0nG
+                :user.property/membershipPointsEarned-kpcqd2Vp
+                :user.property/program-YPw2pQES],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "ticket", :type :emoji},
+                                 :description
+                                 "Used to describe membership in a loyalty programs (e.g. \"StarAliance\"), traveler clubs (e.g. \"AAA\"), purchase clubs (\"Safeway Club\"), etc."}},
+              :TrainReservation-aEoSh9Ke
+              {:block/title "TrainReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "steam_locomotive",
+                                  :type :emoji},
+                                 :description
+                                 "A reservation for train travel."}},
+              :FlightReservation-WTwvhQ9x
+              {:block/title "FlightReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "airplane_departure",
+                                  :type :emoji},
+                                 :description
+                                 "A reservation for air travel."}},
+              :TaxiReservation-ur7tMzEf
+              {:block/title "TaxiReservation",
+               :build/class-properties
+               [:user.property/partySize-LOGA0uTB
+                :user.property/pickupTime-ayDqSpNv
+                :user.property/pickupLocation-OWhJl-L0],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "taxi", :type :emoji},
+                                 :description
+                                 "A reservation for a taxi."}},
+              :Ticket-pdA-Ir-K
+              {:block/title "Ticket",
+               :build/class-properties
+               [:user.property/priceCurrency-Z5vcfXRF
+                :user.property/totalPrice-k4eAGPGr
+                :user.property/underName-Q5lbkSQp
+                :user.property/dateIssued-P3N7MeTZ
+                :user.property/issuedBy-bKx7IVz5
+                :user.property/ticketNumber-flGt3rUe
+                :user.property/ticketToken-UpeX5QBm
+                :user.property/ticketedSeat-cCqOztxq],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "admission_tickets",
+                                  :type :emoji},
+                                 :description
+                                 "Used to describe a ticket to an event, a flight, a bus ride, etc."}},
+              :Reservation-tDje6vAq
+              {:block/title "Reservation",
+               :block/collapsed? true,
+               :build/class-properties
+               [:user.property/underName-Q5lbkSQp
+                :user.property/broker-wZW7zuN5
+                :user.property/bookingTime-ib2dcl4y
+                :user.property/reservationStatus-kqRDuv2Z
+                :user.property/reservationFor-n-hM7DO1
+                :user.property/reservationId-nfD67GOp
+                :user.property/priceCurrency-Z5vcfXRF
+                :user.property/reservedTicket-UcavUkmL
+                :user.property/modifiedTime-CvkPGMM7
+                :user.property/programMembershipUsed-Bxfs7uuH
+                :user.property/provider-M4XBuYkt
+                :user.property/totalPrice-k4eAGPGr],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "green_book", :type :emoji},
+                                 :description
+                                 "Describes a reservation for travel, dining or an event. Some reservations require tickets."}},
+              :StructuredValue-oR41qUmP
+              {:block/title "StructuredValue",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "straight_ruler", :type :emoji},
+                                 :description
+                                 "Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing."}},
+              :LodgingReservation-i_3_CCps
+              {:block/title "LodgingReservation",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/checkinTime-yG1s87l_
+                :user.property/checkoutTime-aIwB61Od
+                :user.property/lodgingUnitDescription-EZOef7dO
+                :user.property/lodgingUnitType-R-8D18oF
+                :user.property/numAdults-bSIbpwRi
+                :user.property/numChildren-gmr_QxI7],
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "hotel", :type :emoji},
+                                 :description
+                                 "A reservation for lodging at a hotel, motel, inn, etc."}},
+              :WebAPI-hJQvnWtw
+              {:block/title "WebAPI",
+               :build/class-properties
+               [:user.property/documentation-myvj5vw6],
+               :build/class-extends [:user.class/Service-lkacLVaV],
                :build/properties
                {:user.property/sourceSchema-mW7IZAwI
                 [:block/uuid
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
                 :logseq.property/icon
-                {:id "thinking_face", :type :emoji},
+                {:id "WorldWww", :type :tabler-icon, :color "inherit"},
                 :logseq.property/description
-                "A [CriticReview](https://schema.org/CriticReview) is a more specialized form of Review written or published by a source that is recognized for its reviewing activities. These can include online columns, travel and food guides, TV and radio shows, blogs and other independent Web sites. [CriticReview](https://schema.org/CriticReview)s are typically more in-depth and professionally written. For simpler, casually written user/visitor/viewer/customer reviews, it is more appropriate to use the [UserReview](https://schema.org/UserReview) type. Review aggregator sites such as Metacritic already separate out the site's user reviews from selected critic reviews that originate from third-party sources."}},
-              :BusinessAudience-FSvB6WNF
-              {:block/title "BusinessAudience",
+                "An application programming interface accessible over Web/Internet technologies."}},
+              :TouristTrip-kKOVMZBs
+              {:block/title "TouristTrip",
                :build/class-properties
-               [:user.property/numberOfEmployees-KzEbRfar
-                :user.property/yearlyRevenue-BgP9WWpO
-                :user.property/yearsInOperation-WbOXIiVy],
-               :build/class-extends [:user.class/Audience-Ya93MfDW],
+               [:user.property/touristType-wqyyjviY],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
                :build/properties
-               #:logseq.property{:description
-                                 "A set of characteristics belonging to businesses, e.g. who compose an item's target audience."}},
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "camera", :type :emoji},
+                :logseq.property/description
+                "A tourist trip. A created itinerary of visits to one or more places of interest ([TouristAttraction](https://schema.org/TouristAttraction)/[TouristDestination](https://schema.org/TouristDestination)) often linked by a similar theme, geographic area, or interest to a particular [touristType](https://schema.org/touristType). The [UNWTO](http://www2.unwto.org/) defines tourism trip as the Trip taken by visitors."}},
+              :Trip-r8sS-d2X
+              {:block/title "Trip",
+               :build/class-properties
+               [:user.property/provider-M4XBuYkt
+                :user.property/arrivalTime-YEa7dFKt
+                :user.property/departureTime-Kbp9h8BI
+                :user.property/itinerary-saka-wPe
+                :user.property/partOfTrip-UXTLyMra
+                :user.property/subTrip-E5bHCsjT
+                :user.property/tripOrigin-zaHltvJm],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "luggage", :type :emoji},
+                                 :description
+                                 "A trip or journey. An itinerary of visits to one or more places."}},
               :EducationalAudience-gYKiBcXX
               {:block/title "EducationalAudience",
                :build/class-properties
@@ -61,19 +203,113 @@
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
                 :logseq.property/description
                 "An EducationalAudience."}},
-              :ClaimReview-eGazuFfz
-              {:block/title "ClaimReview",
+              :BusReservation-gSklWxl0
+              {:block/title "BusReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "bus", :type :emoji},
+                                 :description
+                                 "A reservation for bus travel."}},
+              :MemberProgramTier-WXd-EWZL
+              {:block/title "MemberProgramTier",
                :build/class-properties
-               [:user.property/claimReviewed-O7g5QHqG],
-               :build/class-extends [:user.class/Review-lv8JXdKK],
+               [:user.property/membershipPointsEarned-kpcqd2Vp
+                :user.property/isTierOf-Jp7onTLo
+                :user.property/hasTierRequirement-E4K69mu0
+                :user.property/hasTierBenefit-JXoGm4l6],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Pyramid",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A MemberProgramTier specifies a tier under a loyalty (member) program, for example \"gold\"."}},
+              :AlignmentObject-Bp9Qbx_4
+              {:block/title "AlignmentObject",
+               :build/class-properties
+               [:user.property/alignmentType-yxeXcPmB
+                :user.property/educationalFramework-sO-tGOVl
+                :user.property/targetDescription-xxfg2jZY
+                :user.property/targetName-WA5ohoo7
+                :user.property/targetUrl-uSW0bkbu],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "An intangible item that describes an alignment between a learning resource and a node in an educational framework."}},
+              :BusTrip-vLDGeMNT
+              {:block/title "BusTrip",
+               :build/class-properties
+               [:user.property/arrivalBusStop-h4get2QO
+                :user.property/busName-JCI9133e
+                :user.property/busNumber-qfQq5rs3
+                :user.property/departureBusStop-JfoGAPWC],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
+               :build/properties
+               #:logseq.property{:icon {:id "bus", :type :emoji},
+                                 :description
+                                 "A trip on a commercial bus line."}},
+              :TrainTrip-xVhsaKB2
+              {:block/title "TrainTrip",
+               :build/class-properties
+               [:user.property/arrivalPlatform-sxOgei4W
+                :user.property/arrivalStation-P09qfPlc
+                :user.property/departurePlatform-JfrFRXrj
+                :user.property/departureStation-h5ZwMFlX
+                :user.property/trainName-Pm4GSmHe
+                :user.property/trainNumber-Snsq4fWc],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
                :build/properties
                {:user.property/sourceSchema-mW7IZAwI
                 [:block/uuid
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
                 :logseq.property/icon
-                {:id "thinking_face", :type :emoji},
+                {:id "steam_locomotive", :type :emoji},
                 :logseq.property/description
-                "A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed)."}},
+                "A trip on a commercial train line."}},
+              :BoatReservation-ONY2pvkk
+              {:block/title "BoatReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "boat", :type :emoji},
+                                 :description
+                                 "A reservation for boat travel."}},
+              :Intangible-nCPCNu8i
+              {:block/title "Intangible",
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "ghost", :type :emoji},
+                                 :description
+                                 "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc."}},
+              :Service-lkacLVaV
+              {:block/title "Service",
+               :block/collapsed? true,
+               :build/class-properties
+               [:user.property/category-wiulLpkL
+                :user.property/award-My4UlCOU
+                :user.property/review-DCP-Kpw4
+                :user.property/brand-vVFv2KZZ
+                :user.property/broker-wZW7zuN5
+                :user.property/isSimilarTo-GiQz4GGK
+                :user.property/serviceArea-VJ8w0kxi
+                :user.property/isRelatedTo-VaZiAlSO
+                :user.property/hasCertification-AV3D5I0Y
+                :user.property/serviceType-yAzEQ0lN
+                :user.property/serviceOutput-DsLYFQA0
+                :user.property/audience-hpnGPafX
+                :user.property/provider-M4XBuYkt
+                :user.property/termsOfService-tOjPWsb8
+                :user.property/logo-G3qEV2JH],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "bellhop_bell", :type :emoji},
+                :logseq.property/description
+                "A service provided by an organization, e.g. delivery service, print services, etc."}},
               :Audience-Ya93MfDW
               {:block/title "Audience",
                :block/collapsed? false,
@@ -87,17 +323,96 @@
                                   :type :emoji},
                                  :description
                                  "Intended audience for an item, i.e. the group for whom the item was created."}},
-              :UserReview-EsP1eHLo
-              {:block/title "UserReview",
-               :build/class-extends [:user.class/Review-lv8JXdKK],
+              :Duration-l9FSb6jS
+              {:block/title "Duration",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:user.property{:sourceSchema-mW7IZAwI
+                               [:block/uuid
+                                #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"]}},
+              :ListItem-gPGuE3ib
+              {:block/title "ListItem",
+               :build/class-properties
+               [:user.property/item-DhwT3bCJ
+                :user.property/nextItem-pJEtk0Ht
+                :user.property/position-CpQTj3Hx
+                :user.property/previousItem-COK0wTnJ],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ListNumbers",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "An list item, e.g. a step in a checklist or how-to description."}},
+              :Flight-UHKPpkhu
+              {:block/title "Flight",
+               :build/class-properties
+               [:user.property/arrivalGate-u7wZFKbZ
+                :user.property/departureAirport-X9-pSdP6
+                :user.property/arrivalTerminal-Kp81uh81
+                :user.property/estimatedFlightDuration-i9LYDf5-
+                :user.property/flightDistance-dZPBgsdI
+                :user.property/departureGate-S2dH7mtw
+                :user.property/departureTerminal-PqlMbRVV
+                :user.property/aircraft-v-3nuYlS
+                :user.property/arrivalAirport-Gjt-NPXQ
+                :user.property/webCheckinTime-JKr4Kz6T
+                :user.property/seller-TYIlntxq
+                :user.property/mealService-Gswx1Lyn
+                :user.property/flightNumber-S98UtDgy],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
                :build/properties
                {:user.property/sourceSchema-mW7IZAwI
                 [:block/uuid
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
-                :logseq.property/icon
-                {:id "speaking_head_in_silhouette", :type :emoji},
+                :logseq.property/icon {:id "airplane", :type :emoji},
+                :logseq.property/description "An airline flight."}},
+              :MemberProgram-ow0-vJAI
+              {:block/title "MemberProgram",
+               :build/class-properties
+               [:user.property/hostingOrganization-ISlgTiyb
+                :user.property/hasTiers-ug5kfMPF],
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon {:id "ticket", :type :emoji},
+                                 :description
+                                 "A MemberProgram defines a loyalty (or membership) program that provides its members with certain benefits, for example better pricing, free shipping or returns, or the ability to earn loyalty points. Member programs may have multiple tiers, for example silver and gold members, each with different benefits."}},
+              :QuantitativeValue-IKnk1j2N
+              {:block/title "QuantitativeValue",
+               :build/class-properties
+               [:user.property/maxValue-bfkd1aMe
+                :user.property/minValue-sZuXYnu5
+                :user.property/unitText-URn4pirV
+                :user.property/value-X4gwRXjI],
+               :build/class-extends
+               [:user.class/StructuredValue-oR41qUmP],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "straight_ruler", :type :emoji},
+                                 :description
+                                 "A point value or interval for product characteristics and other purposes."}},
+              :BoatTrip-sRJgEUB7
+              {:block/title "BoatTrip",
+               :build/class-properties
+               [:user.property/arrivalBoatTerminal-S3ZmcXzN
+                :user.property/departureBoatTerminal-XnZ_OZY6],
+               :build/class-extends [:user.class/Trip-r8sS-d2X],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "boat", :type :emoji},
                 :logseq.property/description
-                "A review created by an end-user (e.g. consumer, purchaser, attendee etc.), in contrast with [CriticReview](https://schema.org/CriticReview)."}},
+                "A trip on a commercial ferry line."}},
+              :ComputerLanguage-W_oRfV0P
+              {:block/title "ComputerLanguage",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "robot_face", :type :emoji},
+                                 :description
+                                 "This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations. Natural languages are best represented with the [Language](https://schema.org/Language) type."}},
               :PeopleAudience-qC2wPN-G
               {:block/title "PeopleAudience",
                :build/class-properties

@@ -74,6 +74,32 @@
                                      :type :emoji},
                                     :description
                                     "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [offers](https://schema.org/offers) property. Repeated events may be structured as separate Event objects."}},
+                 :hasCourseInstance-tE_A5mgp
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :node,
+                  :block/title "hasCourseInstance",
+                  :build/property-classes
+                  [:user.class/CourseInstance-MqjA3ZLE],
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "school",
+                                     :name "School",
+                                     :keywords
+                                     ["building"
+                                      "student"
+                                      "education"
+                                      "learn"
+                                      "teach"],
+                                     :skins
+                                     [{:unified "1f3eb",
+                                       :native "🏫",
+                                       :shortcodes ":school:"}],
+                                     :version 1,
+                                     :search
+                                     ",school,school,building,student,education,learn,teach,🏫",
+                                     :type :emoji},
+                                    :description
+                                    "An offering of the course at a specific time and place or through specific media or mode of study or to a specific section of students."}},
                  :subEvent-GTo4BJ_-
                  {:db/cardinality :db.cardinality/one,
                   :logseq.property/type :node,
