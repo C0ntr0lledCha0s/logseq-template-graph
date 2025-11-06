@@ -1,0 +1,92 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name (e.g., v0.3.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install && ./install && rm install
+
+      - name: Build all template variants
+        run: |
+          if [ -d "source" ]; then
+            echo "Building from modular source..."
+            bb scripts/build.clj full
+            bb scripts/build.clj crm
+            bb scripts/build.clj research
+            bb scripts/build.clj content
+            bb scripts/build.clj events
+            FILES="build/*.edn"
+          else
+            echo "Using monolithic templates..."
+            FILES="logseq_db_Templates*.edn"
+          fi
+
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "TAG=$TAG" >> $GITHUB_OUTPUT
+
+          # Extract changelog section if exists
+          if [ -f "CHANGELOG.md" ]; then
+            NOTES=$(sed -n "/## $TAG/,/## /p" CHANGELOG.md | sed '$d')
+          else
+            NOTES="Release $TAG"
+          fi
+
+          # Add build statistics
+          echo "$NOTES" > release_notes.txt
+          echo "" >> release_notes.txt
+          echo "## Template Variants" >> release_notes.txt
+          echo "" >> release_notes.txt
+
+          for file in build/*.edn logseq_db_Templates*.edn; do
+            if [ -f "$file" ]; then
+              name=$(basename "$file")
+              lines=$(wc -l < "$file")
+              props=$(grep -c "user.property/" "$file" || echo "0")
+              classes=$(grep -c "user.class/" "$file" || echo "0")
+              echo "### $name" >> release_notes.txt
+              echo "- **Lines:** $lines" >> release_notes.txt
+              echo "- **Properties:** $props" >> release_notes.txt
+              echo "- **Classes:** $classes" >> release_notes.txt
+              echo "" >> release_notes.txt
+            fi
+          done
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release ${{ steps.release_notes.outputs.TAG }}
+          body_path: release_notes.txt
+          files: |
+            build/*.edn
+            logseq_db_Templates.edn
+            logseq_db_Templates_full.edn
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update release summary
+        run: |
+          echo "## Release Created: ${{ steps.release_notes.outputs.TAG }}" >> $GITHUB_STEP_SUMMARY
+          cat release_notes.txt >> $GITHUB_STEP_SUMMARY
