@@ -35,19 +35,37 @@
       (str/includes? title "person") "person"
 
       ;; Organization
-      (str/includes? title "organization") "organization"
-      (str/includes? title "occupation") "organization"
+      (or (str/includes? title "organization")
+          (str/includes? title "occupation")
+          (str/includes? title "department")
+          (str/includes? title "business")
+          (str/includes? title "brand")
+          (and (str/includes? title "group")
+               (not (str/includes? title "family")))) "organization"
 
       ;; Event
-      (str/includes? title "event") "event"
-      (str/includes? title "meeting") "event"
-      (str/includes? title "schedule") "event"
+      (or (str/includes? title "event")
+          (str/includes? title "meeting")
+          (str/includes? title "schedule")
+          (str/includes? title "festival")
+          (str/includes? title "courseinstance")) "event"
 
-      ;; Place
-      (str/includes? title "place") "place"
-      (str/includes? title "location") "place"
+      ;; Place (expanded: geographic + infrastructure)
+      (or (str/includes? title "place")
+          (str/includes? title "location")
+          (str/includes? title "city")
+          (str/includes? title "country")
+          (str/includes? title "state")
+          (str/includes? title "administrative")
+          (str/includes? title "airport")
+          (str/includes? title "station")
+          (str/includes? title "terminal")
+          (str/includes? title "stop")
+          (str/includes? title "civic")
+          (str/includes? title "localbusiness")
+          (str/includes? title "touristdestination")) "place"
 
-      ;; CreativeWork
+      ;; CreativeWork (expanded: music, TV, documents, software, learning)
       (or (str/includes? title "creative")
           (str/includes? title "book")
           (str/includes? title "article")
@@ -55,7 +73,44 @@
           (str/includes? title "audio")
           (str/includes? title "image")
           (str/includes? title "media")
-          (str/includes? title "work")) "creative-work"
+          (str/includes? title "work")
+          ;; Music
+          (str/includes? title "music")
+          (str/includes? title "song")
+          (str/includes? title "album")
+          (str/includes? title "playlist")
+          (str/includes? title "recording")
+          (str/includes? title "composition")
+          (str/includes? title "release")
+          ;; TV/Film
+          (str/includes? title "movie")
+          (str/includes? title "film")
+          (str/includes? title "tv")
+          (str/includes? title "episode")
+          (str/includes? title "series")
+          (str/includes? title "season")
+          ;; Documents
+          (str/includes? title "document")
+          (str/includes? title "spreadsheet")
+          (str/includes? title "presentation")
+          (str/includes? title "note")
+          ;; Software
+          (str/includes? title "software")
+          (str/includes? title "application")
+          (str/includes? title "sourcecode")
+          (str/includes? title "website")
+          ;; Learning
+          (str/includes? title "course")
+          (str/includes? title "syllabus")
+          (str/includes? title "learningresource")
+          ;; Other CreativeWork
+          (str/includes? title "game")
+          (str/includes? title "conversation")
+          (str/includes? title "report")
+          (str/includes? title "certification")
+          (str/includes? title "guide")
+          (str/includes? title "recommendation")
+          (str/includes? title "review")) "creative-work"
 
       ;; Product
       (or (str/includes? title "product")
@@ -64,10 +119,44 @@
       ;; Action
       (str/includes? title "action") "action"
 
-      ;; Intangible
-      (or (str/includes? title "audience")
+      ;; Health (new category)
+      (or (str/includes? title "physical")
+          (str/includes? title "exercise")
+          (str/includes? title "diet")
+          (str/includes? title "lifestyle")
+          (str/includes? title "livestyle")  ;; typo variant
+          (str/includes? title "wellness")) "health"
+
+      ;; Intangible (expanded: trips, reservations, services, structures)
+      (or (str/includes? title "intangible")
+          (str/includes? title "audience")
           (str/includes? title "rating")
-          (str/includes? title "review")) "intangible"
+          ;; Note: "review" moved to creative-work above
+          ;; Trips & Travel
+          (str/includes? title "trip")
+          (str/includes? title "flight")
+          (str/includes? title "tourist")
+          ;; Reservations
+          (str/includes? title "reservation")
+          (str/includes? title "ticket")
+          ;; Memberships
+          (str/includes? title "membership")
+          (str/includes? title "program")
+          (str/includes? title "tier")
+          ;; Services
+          (str/includes? title "service")
+          (str/includes? title "api")
+          ;; Structured data
+          (str/includes? title "value")
+          (str/includes? title "duration")
+          (str/includes? title "structured")
+          (str/includes? title "quantitative")
+          ;; Lists
+          (str/includes? title "list")
+          ;; Education-related intangibles
+          (str/includes? title "alignment")
+          ;; Languages
+          (str/includes? title "computerlanguage")) "intangible"
 
       ;; Default
       :else "misc")))
