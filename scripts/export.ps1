@@ -2,8 +2,8 @@
 # This script exports your development graph to clean, version-controlled EDN files
 
 # Configuration
-$GRAPH_PATH = if ($env:LOGSEQ_GRAPH_PATH) { $env:LOGSEQ_GRAPH_PATH } else { "C:\Users\YourName\Logseq\template-dev" }
-$OUTPUT_DIR = "."
+$GRAPH_PATH = if ($env:LOGSEQ_GRAPH_PATH) { $env:LOGSEQ_GRAPH_PATH } else { "$env:USERPROFILE\logseq\graphs\Test Build" }
+$OUTPUT_DIR = if ($env:LOGSEQ_OUTPUT_DIR) { $env:LOGSEQ_OUTPUT_DIR } else { "." }
 $DATE = Get-Date -Format "yyyy-MM-dd"
 
 Write-Host "🚀 Exporting Logseq Template Graph..." -ForegroundColor Cyan
@@ -24,32 +24,34 @@ if (-not (Test-Path $GRAPH_PATH)) {
     exit 1
 }
 
-# Export minimal version (no timestamps, clean structure)
-Write-Host "📦 Exporting minimal template (recommended for users)..." -ForegroundColor Yellow
+# Convert Windows paths to forward slashes for Logseq CLI
+$GRAPH_PATH_CLI = $GRAPH_PATH -replace '\\', '/'
+
+# Get absolute path for output directory
+$OUTPUT_DIR_ABS = if ($OUTPUT_DIR -eq ".") {
+    (Get-Location).Path
+} else {
+    (Resolve-Path $OUTPUT_DIR).Path
+}
+$OUTPUT_DIR_CLI = $OUTPUT_DIR_ABS -replace '\\', '/'
+
+Write-Host "Output directory: $OUTPUT_DIR_CLI" -ForegroundColor Cyan
+Write-Host ""
+
+# Export template (clean, no timestamps)
+Write-Host "📦 Exporting template..." -ForegroundColor Yellow
+$OUTPUT_FILE = "$OUTPUT_DIR_CLI/logseq_db_Templates.edn"
+Write-Host "Target file: $OUTPUT_FILE" -ForegroundColor Cyan
 logseq export-edn `
-    --graph "$GRAPH_PATH" `
-    --output "$OUTPUT_DIR\logseq_db_Templates.edn" `
-    --ignore-builtin-pages `
+    "$GRAPH_PATH_CLI" `
+    --file "$OUTPUT_FILE" `
+    --exclude-built-in-pages `
     --exclude-namespaces "logseq.kv"
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✅ Minimal template exported" -ForegroundColor Green
+    Write-Host "✅ Template exported" -ForegroundColor Green
 } else {
-    Write-Host "❌ Failed to export minimal template" -ForegroundColor Red
-    exit 1
-}
-
-# Export full version (with timestamps and full metadata)
-Write-Host "📦 Exporting full template (with all metadata)..." -ForegroundColor Yellow
-logseq export-edn `
-    --graph "$GRAPH_PATH" `
-    --output "$OUTPUT_DIR\logseq_db_Templates_full.edn" `
-    --include-timestamps
-
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "✅ Full template exported" -ForegroundColor Green
-} else {
-    Write-Host "❌ Failed to export full template" -ForegroundColor Red
+    Write-Host "❌ Failed to export template" -ForegroundColor Red
     exit 1
 }
 
@@ -58,18 +60,14 @@ Write-Host "✅ Export complete!" -ForegroundColor Green
 Write-Host ""
 
 # Show statistics
-if (Test-Path "$OUTPUT_DIR\logseq_db_Templates.edn") {
-    $MinimalLines = (Get-Content "$OUTPUT_DIR\logseq_db_Templates.edn" | Measure-Object -Line).Lines
-    $FullLines = (Get-Content "$OUTPUT_DIR\logseq_db_Templates_full.edn" | Measure-Object -Line).Lines
-
-    Write-Host "📊 Statistics:" -ForegroundColor Cyan
-    Write-Host "   Minimal: $MinimalLines lines"
-    Write-Host "   Full: $FullLines lines"
-
-    $Content = Get-Content "$OUTPUT_DIR\logseq_db_Templates.edn" -Raw
+if (Test-Path "logseq_db_Templates.edn") {
+    $Lines = (Get-Content "logseq_db_Templates.edn" | Measure-Object -Line).Lines
+    $Content = Get-Content "logseq_db_Templates.edn" -Raw
     $PropCount = ([regex]::Matches($Content, "user\.property/")).Count
     $ClassCount = ([regex]::Matches($Content, "user\.class/")).Count
 
+    Write-Host "📊 Statistics:" -ForegroundColor Cyan
+    Write-Host "   Lines: $Lines"
     Write-Host "   Properties: $PropCount"
     Write-Host "   Classes: $ClassCount"
 }
@@ -80,7 +78,7 @@ Write-Host ""
 if (Get-Command git -ErrorAction SilentlyContinue) {
     if (Test-Path .git) {
         Write-Host "📊 Git changes:" -ForegroundColor Cyan
-        git diff --stat logseq_db_Templates.edn logseq_db_Templates_full.edn 2>$null
+        git diff --stat logseq_db_Templates.edn 2>$null
         if (-not $?) {
             Write-Host "   No changes detected"
         }
@@ -100,7 +98,7 @@ if ($Response -match "^[Yy]$") {
         $CommitMsg = "chore: auto-export templates on $DATE"
     }
 
-    git add logseq_db_Templates.edn logseq_db_Templates_full.edn
+    git add logseq_db_Templates.edn
     git commit -m "$CommitMsg"
 
     if ($LASTEXITCODE -eq 0) {
