@@ -1,0 +1,57 @@
+name: Validate EDN Files
+
+on:
+  pull_request:
+    paths:
+      - '**/*.edn'
+      - 'source/**'
+  push:
+    branches: [main]
+    paths:
+      - '**/*.edn'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install && ./install && rm install
+
+      - name: Validate EDN syntax (Babashka)
+        run: |
+          echo "Validating EDN files with Babashka..."
+          find . -name "*.edn" -type f | while read file; do
+            echo "Checking: $file"
+            bb -e "(clojure.edn/read-string (slurp \"$file\"))" || exit 1
+          done
+
+      - name: Run validation script
+        run: |
+          if [ -f "scripts/validate.sh" ]; then
+            chmod +x scripts/validate.sh
+            for file in *.edn source/**/*.edn; do
+              if [ -f "$file" ]; then
+                ./scripts/validate.sh "$file"
+              fi
+            done
+          fi
+
+      - name: Check for export-type marker
+        run: |
+          echo "Checking for required export-type marker..."
+          for file in logseq_db_Templates*.edn; do
+            if [ -f "$file" ]; then
+              if ! grep -q ":logseq.db.sqlite.export/export-type :graph-ontology" "$file"; then
+                echo "❌ Missing export-type marker in $file"
+                exit 1
+              else
+                echo "✅ $file has export-type marker"
+              fi
+            fi
+          done
