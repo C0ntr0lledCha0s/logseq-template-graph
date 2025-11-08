@@ -157,6 +157,55 @@ Claude activates schema-research skill and provides:
 
 ---
 
+### 🐛 github-issues
+
+**Purpose:** Intelligent GitHub issues management with validation and relationship tracking
+
+**Capabilities:**
+- Validate issues before responding (never assume reporter is correct)
+- Search codebase/git history to verify bug reports
+- Detect duplicate issues across open/closed states
+- Map issue relationships (duplicates, blocked by, dependencies, etc.)
+- Triage and label issues appropriately
+- Generate implementation plans for valid features
+- Create pull requests for simple fixes
+- Request additional information when needed
+- Track issue lifecycles from open to closed
+- Update metadata fields automatically
+
+**When to use:**
+- "Validate issue #123"
+- "Is this bug still present?"
+- "Find duplicates of this issue"
+- "Create implementation plan for #456"
+- "What issues block #789?"
+- "Respond to GitHub issue #42"
+- "Check if Recipe class is already implemented"
+
+**Example:**
+```
+You: "Validate issue #123 about Recipe class missing"
+
+Claude activates github-issues skill and:
+1. Reads the issue details
+2. Searches codebase: grep -r "Recipe" source/
+3. Checks git history: git log --grep="Recipe"
+4. Searches closed issues for duplicates
+5. Determines validation result:
+   ✅ Valid - Recipe not found
+   OR
+   ❌ Invalid - Recipe exists in source/creative-work/classes.edn:45
+6. Maps relationships (duplicates, related issues)
+7. Responds with:
+   - Validation results with evidence
+   - Related issues list
+   - Implementation plan OR
+   - "Already implemented" with file locations
+8. Updates labels and metadata
+```
+
+---
+
 ### 📝 documentation-writer
 
 **Purpose:** Expert technical writer for generating project documentation
