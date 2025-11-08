@@ -33,12 +33,12 @@ if ($changedFiles -match "^source/") {
     }
     catch {
         Write-Host ""
-        Write-Host "❌ Build failed after commit!" -ForegroundColor Red
+        Write-Host "Build failed after commit!" -ForegroundColor Red
         Write-Host ""
-        Write-Host "💡 Options:" -ForegroundColor Yellow
-        Write-Host "  1. Run '/diagnose full' in Claude Code for analysis"
-        Write-Host "  2. git reset HEAD~  - Undo the commit"
-        Write-Host "  3. git commit --amend  - Fix and retry"
+        Write-Host "Options:" -ForegroundColor Yellow
+        Write-Host "  1. Run /diagnose full in Claude Code for analysis"
+        Write-Host "  2. git reset HEAD~ to undo the commit"
+        Write-Host "  3. git commit --amend to fix and retry"
         Write-Host ""
         Write-Host "Review the error above or run /diagnose for help."
         exit 1

@@ -30,9 +30,9 @@ if ($changedFiles -match "^source/") {
     }
     catch {
         Write-Host ""
-        Write-Host "❌ Build failed after merge!" -ForegroundColor Red
+        Write-Host "Build failed after merge!" -ForegroundColor Red
         Write-Host ""
-        Write-Host "💡 Run '/diagnose full' in Claude Code for analysis" -ForegroundColor Yellow
+        Write-Host "Run /diagnose full in Claude Code for analysis" -ForegroundColor Yellow
         Write-Host "Or run: npm run build:full"
         Write-Host ""
         exit 1

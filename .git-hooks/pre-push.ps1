@@ -57,7 +57,7 @@ catch {
 
 if ($buildFailed) {
     Write-Host ""
-    Write-Host "💡 Run '/diagnose' in Claude Code for detailed analysis" -ForegroundColor Yellow
+    Write-Host "Run /diagnose in Claude Code for detailed analysis" -ForegroundColor Yellow
     Write-Host "Or run: npm run build:full"
     Write-Host ""
     exit 1
