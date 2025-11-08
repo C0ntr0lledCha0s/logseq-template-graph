@@ -40,11 +40,13 @@
 
 ### 📊 Statistics
 
-- **Template Size:** 15,422 lines (across modular sources)
-- **Classes:** 632 (from Schema.org)
-- **Properties:** 1,033 (with rich metadata)
+**Full Template:**
+- **Classes:** 296 (from Schema.org vocabulary)
+- **Properties:** 475 (with rich metadata and type validation)
 - **Source Modules:** 14 (base, person, organization, event, place, creative-work, product, action, intangible, health, misc, common)
-- **Preset Variants:** 6 (ranging from 1,500 to 15,422 lines)
+- **Preset Variants:** 6 (full, CRM, research, events, content, student-life)
+
+**Code Changes:**
 - **Files Changed:** 125 (+28,693 insertions, -8,809 deletions)
 
 ### 🔧 Technical Improvements
