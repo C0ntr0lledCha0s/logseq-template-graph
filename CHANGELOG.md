@@ -1,14 +1,30 @@
-## **Unreleased**
+## **1.1.0**&emsp;<sub><sup>2025-11-09 ([c55b4b8...5419842](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/c55b4b85aa934461ba423b806acb44d46092fe57...541984276ebc3bfc74733e0db8046fe5431310d5))</sup></sub>
 
-### Features
+### Documentation
 
-- **TechArticle class** ([#22](https://github.com/C0ntr0lledCha0s/logseq-template-graph/issues/22)) - Added TechArticle class from Schema.org for technical how-to articles, procedural troubleshooting, and specifications
-  - New `dependencies` property (many) - Track prerequisites needed for articles
-  - New `proficiencyLevel` property (one) - Indicate skill level (Beginner/Intermediate/Expert)
-  - Follows Schema.org hierarchy: Thing > CreativeWork > Article > TechArticle
-  - Creative-work module: 47 classes (was 46)
+- add TechArticle feature to unreleased section in changelog ([5419842](https://github.com/C0ntr0lledCha0s/logseq-template-graph/commit/541984276ebc3bfc74733e0db8046fe5431310d5))
 
----
+##### &ensp;`release`
+
+- clear unreleased section after v1\.0\.0 release ([c55b4b8](https://github.com/C0ntr0lledCha0s/logseq-template-graph/commit/c55b4b85aa934461ba423b806acb44d46092fe57))
+
+### Features & Enhancements
+
+##### &ensp;`classes`
+
+- add TechArticle class with dependencies and proficiencyLevel properties ([76e2f19](https://github.com/C0ntr0lledCha0s/logseq-template-graph/commit/76e2f19113ed9f713f1d6f6d4cc7c9cc178d1a0f), [#22](https://github.com/C0ntr0lledCha0s/logseq-template-graph/issues/#22))
+
+### Bug Fixes
+
+##### &ensp;`docs`
+
+- correct v1\.0\.0 statistics with accurate counts ([8abb8bc](https://github.com/C0ntr0lledCha0s/logseq-template-graph/commit/8abb8bcabffdf97c743ac600f8493b2bc3c6ca56))
+
+##### &ensp;`scripts`
+
+- correct class/property counting to show unique definitions ([93a5196](https://github.com/C0ntr0lledCha0s/logseq-template-graph/commit/93a5196bf724ae9a288cdd66e78c462cf3a7d337))
+
+<br>
 
 ## **1.0.0** - 2025-11-09 &emsp;<sub><sup>([4d06db2...2b5a699](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/4d06db2996960e9541c0a40c226686592bfe1856...2b5a699fc3c6a0266b596af416e29ba5dea9bcaa))</sup></sub>
 
