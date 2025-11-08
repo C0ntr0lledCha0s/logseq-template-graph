@@ -8,7 +8,12 @@
       "Bash(cat:*)",
       "Bash(test:*)",
       "Bash(logseq export-edn:*)",
-      "Bash(logseq:*)"
+      "Bash(logseq:*)",
+      "Bash(gh workflow run:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run watch:*)",
+      "Bash(gh run view:*)",
+      "Bash(bash scripts/validate.sh:*)"
     ],
     "deny": [],
     "ask": []

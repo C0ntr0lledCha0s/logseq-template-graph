@@ -17,8 +17,15 @@ echo ""
 
 ERRORS=0
 
+# If arguments provided, validate those files; otherwise use defaults
+if [ $# -gt 0 ]; then
+    FILES=("$@")
+else
+    FILES=(logseq_db_Templates.edn logseq_db_Templates_full.edn)
+fi
+
 # Check if files exist
-for file in logseq_db_Templates.edn logseq_db_Templates_full.edn; do
+for file in "${FILES[@]}"; do
     if [ ! -f "$file" ]; then
         echo -e "${RED}❌ $file not found!${NC}"
         ERRORS=$((ERRORS + 1))
