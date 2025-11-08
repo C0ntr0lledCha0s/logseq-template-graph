@@ -47,34 +47,47 @@ jobs:
       - name: Detect commit type
         id: detect
         run: |
-          # Check if this is a merge commit
-          PARENT_COUNT=$(git rev-list --parents -n 1 HEAD | wc -w)
+          # Get commit message
+          COMMIT_MSG=$(git log -1 --pretty=%B)
 
+          # Check if this is a merge commit or squashed PR
+          PARENT_COUNT=$(git rev-list --parents -n 1 HEAD | wc -w)
+          IS_PR=$(echo "$COMMIT_MSG" | grep -c "(#[0-9]\+)" || true)
+
+          # Check if from dev branch (merge or squash)
           if [ "$PARENT_COUNT" -gt 2 ]; then
-            # Merge commit - check if from dev branch
-            MERGE_MSG=$(git log -1 --pretty=%B)
-            if echo "$MERGE_MSG" | grep -q "Merge pull request.*from.*dev"; then
+            # True merge commit
+            if echo "$COMMIT_MSG" | grep -q "Merge pull request.*from.*dev\|Merge.*dev"; then
               echo "type=merge" >> $GITHUB_OUTPUT
               echo "source=dev" >> $GITHUB_OUTPUT
               echo "bump=auto" >> $GITHUB_OUTPUT
+              DETECTED="Merge from dev"
             else
               echo "type=merge" >> $GITHUB_OUTPUT
               echo "source=other" >> $GITHUB_OUTPUT
               echo "bump=auto" >> $GITHUB_OUTPUT
+              DETECTED="Merge from other branch"
             fi
+          elif [ "$IS_PR" -gt 0 ]; then
+            # Squashed PR commit (has PR number like #25)
+            # Check if commit is authored by github-actions or has conventional commit
+            echo "type=squash" >> $GITHUB_OUTPUT
+            echo "source=dev" >> $GITHUB_OUTPUT
+            echo "bump=auto" >> $GITHUB_OUTPUT
+            DETECTED="Squashed PR (likely from dev)"
           else
             # Direct commit (hotfix)
             echo "type=commit" >> $GITHUB_OUTPUT
             echo "source=hotfix" >> $GITHUB_OUTPUT
             echo "bump=patch" >> $GITHUB_OUTPUT
+            DETECTED="Direct commit (hotfix)"
           fi
 
           echo "### Commit Analysis" >> $GITHUB_STEP_SUMMARY
-          echo "**Type:** $([ "$PARENT_COUNT" -gt 2 ] && echo 'Merge' || echo 'Direct commit')" >> $GITHUB_STEP_SUMMARY
-          echo "**Source:** $(cat <<EOF | grep 'source=' | cut -d= -f2
-          $(cat $GITHUB_OUTPUT)
-          EOF
-          )" >> $GITHUB_STEP_SUMMARY
+          echo "**Detection:** $DETECTED" >> $GITHUB_STEP_SUMMARY
+          echo "**Parent Count:** $PARENT_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "**Has PR Number:** $([ "$IS_PR" -gt 0 ] && echo 'Yes' || echo 'No')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
