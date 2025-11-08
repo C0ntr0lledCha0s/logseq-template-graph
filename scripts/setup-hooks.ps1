@@ -15,7 +15,7 @@ powershell.exe -ExecutionPolicy Bypass -File .git-hooks/commit-msg.ps1 `$1
     # Write the shell wrapper that calls PowerShell
     Set-Content -Path ".git-hooks\commit-msg" -Value $hookContent -NoNewline
 
-    Write-Host "✓ Git hooks configured successfully!" -ForegroundColor Green
+    Write-Host "[OK] Git hooks configured successfully!" -ForegroundColor Green
     Write-Host ""
     Write-Host "Commit messages will now be validated against conventional commits standard." -ForegroundColor Yellow
     Write-Host "Example valid commit: feat(templates): add Recipe class with ingredients property" -ForegroundColor Gray

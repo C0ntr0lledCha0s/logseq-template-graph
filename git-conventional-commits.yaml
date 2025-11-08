@@ -2,8 +2,8 @@
 # Documentation: https://github.com/qoomon/git-conventional-commits
 
 convention:
-  # Commit message pattern
-  commitMessageRegexPattern: '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(\w+\))?!?: .{1,100}'
+  # Commit message pattern with named capture groups
+  commitMessageRegexPattern: '^(?<type>feat|fix|docs|style|refactor|perf|test|build|ops|chore)(?:\((?<scope>\w+)\))?(?<breaking>!)?:\s(?<description>.{1,100})'
 
   # Allowed commit types
   commitTypes:

@@ -21,7 +21,10 @@
       "Bash(git commit:*)",
       "Bash(gh release delete:*)",
       "Bash(gh release view:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run version:*)",
+      "Bash(npm run changelog:*)"
     ],
     "deny": [],
     "ask": []
