@@ -436,7 +436,7 @@ tree source/                   # Browse modules
 
 ## Next Steps
 
-1. ✅ Run `./scripts/init-modular.sh`
+1. ✅ Export and split: `./scripts/export.sh` (auto-creates `source/`)
 2. ✅ Review `source/` directory structure
 3. ✅ Build full template: `bb scripts/build.clj full`
 4. ✅ Test import in Logseq
