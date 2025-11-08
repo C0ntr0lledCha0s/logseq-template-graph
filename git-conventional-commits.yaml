@@ -29,6 +29,7 @@ convention:
     - release     # Release-related changes
     - modular     # Modular architecture changes
     - workflow    # Development workflow improvements
+    - settings    # Configuration/settings changes
 
   # Release tag pattern (semantic versioning)
   releaseTagGlobPattern: 'v[0-9]*.[0-9]*.[0-9]*'

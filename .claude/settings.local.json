@@ -36,7 +36,8 @@
       "Bash(gh pr checks:*)",
       "Bash(npx git-conventional-commits:*)",
       "Bash(gh issue view:*)",
-      "Bash(npm run validate:*)"
+      "Bash(npm run validate:*)",
+      "Bash(npm run changelog:write:*)"
     ],
     "deny": [],
     "ask": []
