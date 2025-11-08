@@ -43,7 +43,7 @@ jobs:
             echo "Checking commit: $commit - $MESSAGE"
 
             # Skip merge commits (they're auto-generated)
-            if echo "$MESSAGE" | grep -qE '^Merge (branch|pull request)'; then
+            if echo "$MESSAGE" | grep -qE '^Merge (branch|pull request|[a-f0-9]{40})'; then
               echo "  ⏭️  Skipping merge commit"
               continue
             fi
