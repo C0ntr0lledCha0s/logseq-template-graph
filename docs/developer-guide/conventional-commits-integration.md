@@ -42,18 +42,18 @@ This document summarizes the integration of [Conventional Commits](https://www.c
 | [`scripts/setup-hooks.sh`](scripts/setup-hooks.sh) | Unix/Linux setup script for git hooks |
 | [`scripts/setup-hooks.ps1`](scripts/setup-hooks.ps1) | Windows PowerShell setup script for git hooks |
 | [`.github/workflows/validate-commits.yml`](.github/workflows/validate-commits.yml) | GitHub Actions workflow to validate PR commits |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Complete contributing guide with commit standards |
-| [`docs/developer-guide/conventional-commits-guide.md`](docs/developer-guide/conventional-commits-guide.md) | Comprehensive guide for conventional commits |
-| `CONVENTIONAL_COMMITS_INTEGRATION.md` | This file - integration summary |
+| [`CONTRIBUTING.md`](../../CONTRIBUTING.md) | Complete contributing guide with commit standards |
+| [`docs/developer-guide/conventional-commits-guide.md`](conventional-commits-guide.md) | Comprehensive guide for conventional commits |
+| [`docs/developer-guide/conventional-commits-integration.md`](conventional-commits-integration.md) | This file - integration summary |
 
 ### Modified Files
 
 | File | Changes |
 |------|---------|
-| [`CLAUDE.md`](CLAUDE.md) | Updated Git Workflow section with conventional commits guidelines |
-| [`.github/workflows/release.yml`](.github/workflows/release.yml) | Enhanced to generate changelogs from commits automatically |
-| [`.gitignore`](.gitignore) | Added node_modules and conventional commits temp files |
-| [`docs/README.md`](docs/README.md) | Added links to Contributing and Conventional Commits guides |
+| [`CLAUDE.md`](../../CLAUDE.md) | Updated Git Workflow section with conventional commits guidelines |
+| [`.github/workflows/release.yml`](../../.github/workflows/release.yml) | Enhanced to generate changelogs from commits automatically |
+| [`.gitignore`](../../.gitignore) | Added node_modules and conventional commits temp files |
+| [`docs/README.md`](../README.md) | Added links to Contributing and Conventional Commits guides |
 
 ---
 
@@ -278,7 +278,7 @@ chore(templates): auto-export templates
 
 ### For New Contributors
 
-Follow the [CONTRIBUTING.md](CONTRIBUTING.md) guide which includes conventional commits from the start.
+Follow the [CONTRIBUTING.md](../../CONTRIBUTING.md) guide which includes conventional commits from the start.
 
 ---
 
@@ -339,13 +339,13 @@ npm run changelog
    - Document any non-standard commits
 
 2. **Update documentation links:**
-   - Ensure all docs reference CONTRIBUTING.md
+   - Ensure all docs reference [CONTRIBUTING.md](../../CONTRIBUTING.md)
    - Add conventional commits badge to README
    - Update quick start guides
 
 3. **Team communication:**
    - Notify all contributors of new requirements
-   - Share CONTRIBUTING.md and conventional commits guide
+   - Share [CONTRIBUTING.md](../../CONTRIBUTING.md) and conventional commits guide
    - Provide examples and answer questions
 
 4. **Monitor adoption:**
@@ -375,9 +375,9 @@ npm run changelog
 
 ### Project Documentation
 
-- [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute with conventional commits
-- [docs/developer-guide/conventional-commits-guide.md](docs/developer-guide/conventional-commits-guide.md) - Comprehensive guide
-- [CLAUDE.md](CLAUDE.md) - AI assistant guidelines including commit standards
+- [CONTRIBUTING.md](../../CONTRIBUTING.md) - How to contribute with conventional commits
+- [Conventional Commits Guide](conventional-commits-guide.md) - Comprehensive guide
+- [CLAUDE.md](../../CLAUDE.md) - AI assistant guidelines including commit standards
 
 ### Examples
 
@@ -390,7 +390,7 @@ npm run changelog
 
 - **Technical Issues:** [GitHub Issues](https://github.com/C0ntr0lledCha0s/logseq-template-graph/issues)
 - **Questions:** [GitHub Discussions](https://github.com/C0ntr0lledCha0s/logseq-template-graph/discussions)
-- **Documentation:** See [docs/README.md](docs/README.md)
+- **Documentation:** See [Documentation Portal](../README.md)
 
 ---
 
