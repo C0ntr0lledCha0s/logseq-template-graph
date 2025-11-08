@@ -66,7 +66,7 @@ jobs:
           echo "" >> release_notes.txt
           echo "**Download the template files below (`.edn` files only):**" >> release_notes.txt
           echo "" >> release_notes.txt
-          echo "> ⚠️ **Important:** Do NOT download the \"Source code\" archives. They contain development files, not the ready-to-use templates." >> release_notes.txt
+          echo "> ⚠️ **Important:** Do NOT download the \"Source code\" archives if you only need edn templates. They contain development files for version control and devops, not the ready-to-use templates." >> release_notes.txt
           echo "" >> release_notes.txt
           echo "## Template Variants" >> release_notes.txt
           echo "" >> release_notes.txt
