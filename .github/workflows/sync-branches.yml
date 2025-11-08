@@ -1,0 +1,74 @@
+name: Sync Branches
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-main-to-dev:
+    name: Sync main → dev
+    runs-on: ubuntu-latest
+
+    # Only run if this was a direct commit (hotfix), not a merge from dev
+    if: |
+      !contains(github.event.head_commit.message, 'Merge pull request') &&
+      !contains(github.event.head_commit.message, 'chore(release):')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync main to dev
+        run: |
+          # Fetch latest
+          git fetch origin main
+          git fetch origin dev
+
+          # Switch to dev
+          git checkout dev
+
+          # Merge main into dev
+          git merge origin/main --no-ff -m "chore(sync): sync main → dev
+
+          Syncing hotfix from main branch to dev.
+
+          🤖 Automated sync by GitHub Actions"
+
+          # Push to dev
+          git push origin dev
+
+      - name: Summary
+        run: |
+          echo "## ✅ Branch Sync Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**main** has been merged into **dev**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "This ensures hotfixes from main are available in dev." >> $GITHUB_STEP_SUMMARY
+
+  skip-notification:
+    name: Skip sync (merge from dev)
+    runs-on: ubuntu-latest
+
+    if: |
+      contains(github.event.head_commit.message, 'Merge pull request') ||
+      contains(github.event.head_commit.message, 'chore(release):')
+
+    steps:
+      - name: Notify skip
+        run: |
+          echo "## ℹ️ Sync Skipped" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "This was a merge from dev or a release commit." >> $GITHUB_STEP_SUMMARY
+          echo "No sync needed (dev is already ahead of main)." >> $GITHUB_STEP_SUMMARY

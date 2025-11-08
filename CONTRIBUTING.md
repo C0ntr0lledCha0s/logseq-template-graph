@@ -50,10 +50,118 @@ npm run setup
 
 ## Development Workflow
 
-### Standard Workflow (Monolithic)
+### Branch Strategy
+
+This project uses a **dev/main branching model** with automated releases:
+
+- **`dev`** - Development branch (default, most work happens here)
+- **`main`** - Production/release branch (protected)
+
+**Automated Release Logic:**
+- **Merge `dev` → `main`** = Minor/Major release (v1.1.0 → v1.2.0)
+- **Direct commit to `main`** = Patch release (v1.1.0 → v1.1.1, hotfixes only)
+- **Version determined automatically** from conventional commits
+- **Changelog and tags created automatically** by GitHub Actions
+
+### Regular Development (95% of work)
+
+Work on the `dev` branch for all normal development:
 
 ```bash
-# 1. Create a feature branch
+# 1. Switch to dev branch
+git checkout dev
+git pull origin dev
+
+# 2. Make changes in Logseq desktop app
+# ... edit classes, properties ...
+
+# 3. Export and build (modular workflow)
+npm run export                # Export + auto-split into source/ modules
+npm run build:full            # Build template variant
+
+# 4. Review changes
+git diff source/              # Check modular source changes
+
+# 5. Commit with conventional commit message
+git commit -m "feat(classes): add Recipe class with ingredients property"
+
+# 6. Push to dev
+git push origin dev
+
+# GitHub Actions will run tests and validate builds
+```
+
+### Creating a Release
+
+When you're ready to release the features from `dev`:
+
+```bash
+# 1. Ensure dev is up to date and all tests pass
+git checkout dev
+git pull origin dev
+
+# 2. Create PR from dev → main
+gh pr create --base main --head dev --title "Release v1.2.0" --body "Release new features"
+
+# Or via GitHub UI:
+# - Go to Pull Requests
+# - Click "New pull request"
+# - Base: main, Compare: dev
+# - Create pull request
+
+# 3. Review the PR
+# - Check all commits included
+# - Verify CI passes
+# - Preview changelog in PR
+
+# 4. Merge PR → main
+# GitHub Actions will automatically:
+# - Determine version from commits (v1.2.0)
+# - Generate CHANGELOG.md
+# - Create git tag (v1.2.0)
+# - Build all template variants
+# - Create GitHub release
+
+# 5. Sync is automatic
+# main → dev sync happens automatically after hotfixes
+```
+
+### Hotfix Workflow (Emergency Patch)
+
+For urgent production fixes only:
+
+```bash
+# 1. Work directly on main branch
+git checkout main
+git pull origin main
+
+# 2. Fix the critical issue
+# ... make minimal fix ...
+
+# 3. Commit with conventional commit
+git commit -m "fix(security): patch XSS vulnerability"
+
+# 4. Push to main
+git push origin main
+
+# GitHub Actions will automatically:
+# - Detect hotfix (direct commit)
+# - Create PATCH version (v1.1.0 → v1.1.1)
+# - Generate changelog
+# - Create git tag
+# - Create release
+# - Sync main → dev
+
+# ⚠️ Use hotfixes sparingly - prefer dev → main workflow
+```
+
+### Standard Workflow (Monolithic, Legacy)
+
+If not using modular architecture:
+
+```bash
+# 1. Create a feature branch from dev
+git checkout dev
 git checkout -b feat/add-recipe-class
 
 # 2. Make changes in Logseq desktop app
@@ -68,33 +176,9 @@ git diff
 # 5. Commit with conventional commit message
 git commit -m "feat(classes): add Recipe class with ingredients property"
 
-# 6. Push and create pull request
+# 6. Push and create pull request to dev
 git push origin feat/add-recipe-class
-```
-
-### Modular Workflow (Recommended for Large Templates)
-
-```bash
-# 1. Create feature branch
-git checkout -b feat/add-person-properties
-
-# 2. Make changes in Logseq
-
-# 3. Export and split into modules
-bb scripts/split.clj
-
-# 4. Build variants
-bb scripts/build.clj full
-bb scripts/build.clj crm
-
-# 5. Test imports
-# Import build/*.edn files into test graph
-
-# 6. Commit changes
-git commit -m "feat(properties): add birthPlace and deathPlace to Person"
-
-# 7. Push and create PR
-git push origin feat/add-person-properties
+gh pr create --base dev --head feat/add-recipe-class
 ```
 
 ---
