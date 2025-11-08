@@ -279,6 +279,55 @@ npm run setup
 npm run validate:commits
 ```
 
+### Git Hooks
+
+**This project uses git hooks for automated validation and build safety.**
+
+The following hooks are automatically installed via `npm run setup`:
+
+#### Active Hooks
+
+1. **`commit-msg`** - Validates conventional commits format
+   - Checks commit message follows conventional commits standard
+   - Validates commit types and scopes
+   - Runs before commit is created
+
+2. **`post-commit`** - Validates build after source/ changes
+   - Detects if `source/` directory was modified
+   - Runs `npm run build:full` to validate changes
+   - Reports build success or failure
+   - Suggests `/diagnose` command on failure
+
+3. **`pre-push`** - Comprehensive validation before pushing
+   - Builds all template variants (full, CRM, research)
+   - Validates all conventional commit messages
+   - Checks for uncommitted changes in `source/`
+   - Blocks push if any validation fails
+
+4. **`post-merge`** - Auto-rebuild after merge/pull
+   - Detects if `source/` changed during merge
+   - Auto-runs `npm run build:full`
+   - Notifies about changes to review
+
+#### Hook Locations
+
+- **Hook templates:** `.git-hooks/` (versioned in git)
+- **Setup scripts:** `scripts/setup-hooks.sh` and `scripts/setup-hooks.ps1`
+- **Git configuration:** `core.hooksPath = .git-hooks`
+
+#### Bypassing Hooks
+
+```bash
+# Bypass all hooks (not recommended)
+git commit --no-verify
+git push --no-verify
+
+# Or bypass specific validations
+git commit --no-verify -m "WIP: experimental changes"
+```
+
+**Note:** Hooks are cross-platform (Unix + Windows PowerShell).
+
 ### Release Process
 
 **Automated with Conventional Commits:**

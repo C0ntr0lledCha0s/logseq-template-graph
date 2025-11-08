@@ -102,7 +102,11 @@ npm install
 This installs:
 - `@logseq/cli` - For exporting templates
 - `git-conventional-commits` - For automated changelog generation
-- Git hooks for commit validation
+- Git hooks for validation:
+  - `commit-msg` - Validates conventional commits format
+  - `post-commit` - Validates builds after source/ changes
+  - `pre-push` - Comprehensive validation before pushing
+  - `post-merge` - Auto-rebuild after merge/pull
 
 The installer will also check for Babashka (required for modular workflow).
 
