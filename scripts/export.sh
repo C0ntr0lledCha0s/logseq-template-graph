@@ -7,7 +7,7 @@ set -e  # Exit on error
 
 # Configuration
 GRAPH_PATH="${LOGSEQ_GRAPH_PATH:-$HOME/logseq/graphs/Test Build}"
-OUTPUT_DIR="${LOGSEQ_OUTPUT_DIR:-.}"
+OUTPUT_DIR="${LOGSEQ_OUTPUT_DIR:-archive/pre-modular}"
 DATE=$(date +%Y-%m-%d)
 
 # Colors for output
@@ -38,8 +38,16 @@ fi
 # Get absolute path for output directory
 if [ "$OUTPUT_DIR" = "." ]; then
     OUTPUT_DIR_ABS="$(pwd)"
-else
+elif [ -d "$OUTPUT_DIR" ]; then
     OUTPUT_DIR_ABS="$(cd "$OUTPUT_DIR" && pwd)"
+else
+    # Handle relative paths that don't exist yet
+    OUTPUT_DIR_ABS="$(pwd)/$OUTPUT_DIR"
+    # Create directory if it doesn't exist
+    if [ ! -d "$OUTPUT_DIR_ABS" ]; then
+        mkdir -p "$OUTPUT_DIR_ABS"
+        echo -e "${GREEN}Created output directory: $OUTPUT_DIR_ABS${NC}"
+    fi
 fi
 
 echo -e "${CYAN}Output directory: $OUTPUT_DIR_ABS${NC}"
@@ -67,15 +75,16 @@ echo -e "${GREEN}✅ Export complete!${NC}"
 echo ""
 
 # Show statistics
-if command -v wc &> /dev/null; then
-    LINES=$(wc -l < "logseq_db_Templates.edn")
+TEMPLATE_FILE="$OUTPUT_DIR_ABS/logseq_db_Templates.edn"
+if command -v wc &> /dev/null && [ -f "$TEMPLATE_FILE" ]; then
+    LINES=$(wc -l < "$TEMPLATE_FILE")
     echo -e "${CYAN}📊 Statistics:${NC}"
     echo -e "   Lines: ${LINES}"
 fi
 
-if command -v grep &> /dev/null; then
-    PROP_COUNT=$(grep -c "user.property/" "logseq_db_Templates.edn" || echo "0")
-    CLASS_COUNT=$(grep -c "user.class/" "logseq_db_Templates.edn" || echo "0")
+if command -v grep &> /dev/null && [ -f "$TEMPLATE_FILE" ]; then
+    PROP_COUNT=$(grep -c "user.property/" "$TEMPLATE_FILE" || echo "0")
+    CLASS_COUNT=$(grep -c "user.class/" "$TEMPLATE_FILE" || echo "0")
     echo -e "   Properties: ${PROP_COUNT}"
     echo -e "   Classes: ${CLASS_COUNT}"
 fi
@@ -85,7 +94,7 @@ echo ""
 # Show git changes
 if command -v git &> /dev/null && [ -d .git ]; then
     echo -e "${CYAN}📊 Git changes:${NC}"
-    git diff --stat logseq_db_Templates.edn 2>/dev/null || echo "   No changes detected"
+    git diff --stat archive/pre-modular/logseq_db_Templates.edn 2>/dev/null || echo "   No changes detected"
     echo ""
 fi
 
@@ -102,7 +111,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         COMMIT_MSG="chore: auto-export templates on $DATE"
     fi
 
-    git add logseq_db_Templates.edn
+    git add archive/pre-modular/logseq_db_Templates.edn
     git commit -m "$COMMIT_MSG"
 
     if [ $? -eq 0 ]; then
@@ -119,7 +128,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo -e "${RED}❌ Failed to commit changes${NC}"
     fi
 else
-    echo -e "${YELLOW}💡 Tip: Review changes with: git diff logseq_db_Templates.edn${NC}"
+    echo -e "${YELLOW}💡 Tip: Review changes with: git diff archive/pre-modular/logseq_db_Templates.edn${NC}"
 fi
 
 echo ""

@@ -49,13 +49,13 @@ Get up and running with the Logseq Template Graph in 5 minutes!
 
 ### Step 1: Download the Template
 
-Download [logseq_db_Templates.edn](logseq_db_Templates.edn) from this repository.
+Download [logseq_db_Templates.edn](archive/pre-modular/logseq_db_Templates.edn) from this repository.
 
 ### Step 2: Import into Logseq
 
 1. Open your Logseq **Database Graph**
 2. Go to: Settings (⚙️) → Import → **EDN to DB Graph**
-3. Select the downloaded `logseq_db_Templates.edn` file
+3. Select the downloaded `logseq_db_Templates.edn` file (from `archive/pre-modular/`)
 4. Wait for import to complete (should take a few seconds)
 
 ### Step 3: Start Using!
@@ -159,7 +159,7 @@ You should see:
 ## Step 5: Review Changes
 
 ```bash
-git diff logseq_db_Templates.edn
+git diff archive/pre-modular/logseq_db_Templates.edn
 ```
 
 ## Step 6: Commit and Push
