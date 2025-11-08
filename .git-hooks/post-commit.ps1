@@ -9,7 +9,7 @@ $changedFiles = git diff HEAD~1 HEAD --name-only
 
 if ($changedFiles -match "^source/") {
     Write-Host ""
-    Write-Host "🔨 Source files modified - validating build..." -ForegroundColor Cyan
+    Write-Host "Source files modified - validating build..." -ForegroundColor Cyan
     Write-Host ""
 
     # Run build
@@ -22,12 +22,12 @@ if ($changedFiles -match "^source/") {
         if (Test-Path $buildFile) {
             $lineCount = (Get-Content $buildFile).Count
             Write-Host ""
-            Write-Host "✓ Build validated successfully! ($lineCount lines)" -ForegroundColor Green
+            Write-Host "Build validated successfully! ($lineCount lines)" -ForegroundColor Green
             Write-Host ""
         }
         else {
             Write-Host ""
-            Write-Host "✓ Build completed" -ForegroundColor Green
+            Write-Host "Build completed" -ForegroundColor Green
             Write-Host ""
         }
     }
