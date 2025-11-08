@@ -63,9 +63,8 @@ docs/
 - `check-deps.js` - Verify Babashka installation (runs on npm install)
 
 **Modular Development (Babashka required):**
-- `split.clj` - Split monolith into modules
+- `split.clj` - Split monolith into modules (auto-runs after export)
 - `build.clj` - Build template variants (full, CRM, research, etc.)
-- `init-modular.sh` - One-command modular setup (legacy)
 
 ---
 

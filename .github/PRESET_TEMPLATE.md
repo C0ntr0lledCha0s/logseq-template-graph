@@ -252,9 +252,9 @@ Some modules naturally work together:
 
 ### Build fails: "source/ directory not found"
 
-**Solution:** Run initialization first:
+**Solution:** Export and split the template first:
 ```bash
-./scripts/init-modular.sh
+./scripts/export.sh  # Exports and auto-splits into source/ modules
 ```
 
 ### Preset not found

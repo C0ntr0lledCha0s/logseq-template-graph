@@ -42,10 +42,8 @@ npm install
 # 3. Setup git hooks for commit validation
 npm run setup
 
-# 4. (Optional) Setup modular development
-./scripts/init-modular.sh  # Mac/Linux
-# or
-.\scripts\init-modular.ps1  # Windows
+# 4. (Optional) Install Babashka for modular workflow
+# See: https://babashka.org/
 ```
 
 ---

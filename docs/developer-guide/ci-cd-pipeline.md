@@ -219,17 +219,11 @@ Use modular workflow when you have:
 ### Quick Start with Modular Workflow
 
 ```bash
-# 1. One-time setup (installs Babashka, creates structure)
-./scripts/init-modular.sh
-
-# 2. Work in Logseq as usual
+# 1. Work in Logseq as usual
 # ... make changes to classes and properties ...
 
-# 3. Export from Logseq
+# 2. Export from Logseq (auto-splits into modules)
 ./scripts/export.sh
-
-# 4. Split into modules
-bb scripts/split.clj
 
 # 5. Review modular changes (much cleaner diffs!)
 git diff source/person/properties.edn    # 15 lines changed

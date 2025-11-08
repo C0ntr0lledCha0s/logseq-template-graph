@@ -165,9 +165,8 @@ build/                           # GENERATED (compiled artifacts)
 scripts/
 ├── split.clj                   # Split monolith → modules
 ├── build.clj                   # Merge modules → artifacts
-├── export.sh                   # Export from Logseq
-├── validate.sh                 # Validate EDN
-└── init-modular.sh             # One-time setup
+├── export.sh / export.ps1      # Export from Logseq (auto-runs split)
+└── validate.sh                 # Validate EDN
 ```
 
 ---
@@ -319,12 +318,11 @@ bb scripts/build.clj mypreset
 
 **Linux/macOS:**
 ```bash
-# Will auto-install via init script
-./scripts/init-modular.sh
+# macOS:
+brew install borkdude/brew/babashka
 
-# Or manually:
-# macOS: brew install borkdude/brew/babashka
-# Linux: bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
+# Linux:
+bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
 ```
 
 **Windows:**
@@ -412,12 +410,8 @@ jobs:
 ## Commands Cheat Sheet
 
 ```bash
-# Setup (one-time)
-./scripts/init-modular.sh
-
-# Daily workflow
-./scripts/export.sh           # Export from Logseq
-bb scripts/split.clj           # Split into modules
+# Daily workflow (export auto-runs split)
+./scripts/export.sh           # Export from Logseq + split into modules
 git diff source/               # Review changes
 bb scripts/build.clj full      # Build templates
 ./scripts/validate.sh build/*  # Validate
