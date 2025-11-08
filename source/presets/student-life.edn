@@ -1,0 +1,7 @@
+{:name "Student Life Template"
+ :description "Student course and assignment tracking"
+ :use-case "Students tracking courses, assignments, professors, and study materials"
+ :include ["base" "common" "person" "creative-work" "event" "place" "intangible"]
+ :metadata
+ {:created "2025-11-08"
+  :version "1.0"}}

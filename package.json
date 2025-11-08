@@ -20,6 +20,7 @@
     "build:full": "bb scripts/build.clj full",
     "build:crm": "bb scripts/build.clj crm",
     "build:research": "bb scripts/build.clj research",
+    "build:student-life": "bb scripts/build.clj student-life",
     "version": "npx git-conventional-commits version",
     "changelog": "npx git-conventional-commits changelog",
     "changelog:release": "npx git-conventional-commits changelog --release $(npx git-conventional-commits version)",
