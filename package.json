@@ -1,6 +1,6 @@
 {
   "name": "logseq-template-graph",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Logseq DB template graph with Schema.org ontology (632 classes, 1,033 properties)",
   "repository": {
     "type": "git",
