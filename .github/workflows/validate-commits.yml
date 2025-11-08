@@ -48,6 +48,12 @@ jobs:
               continue
             fi
 
+            # Skip GitHub web interface commits (legacy)
+            if echo "$MESSAGE" | grep -qE '^(Update|Create|Delete|Rename) '; then
+              echo "  ⏭️  Skipping GitHub web interface commit (legacy)"
+              continue
+            fi
+
             # Check if commit message follows conventional commits
             if ! echo "$MESSAGE" | grep -qE '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?!?: .{1,100}'; then
               INVALID_COMMITS+=("$commit: $MESSAGE")
