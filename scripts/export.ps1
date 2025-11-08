@@ -3,7 +3,7 @@
 
 # Configuration
 $GRAPH_PATH = if ($env:LOGSEQ_GRAPH_PATH) { $env:LOGSEQ_GRAPH_PATH } else { "$env:USERPROFILE\logseq\graphs\Test Build" }
-$OUTPUT_DIR = if ($env:LOGSEQ_OUTPUT_DIR) { $env:LOGSEQ_OUTPUT_DIR } else { "." }
+$OUTPUT_DIR = if ($env:LOGSEQ_OUTPUT_DIR) { $env:LOGSEQ_OUTPUT_DIR } else { "archive/pre-modular" }
 $DATE = Get-Date -Format "yyyy-MM-dd"
 
 Write-Host "🚀 Exporting Logseq Template Graph..." -ForegroundColor Cyan
@@ -28,10 +28,18 @@ if (-not (Test-Path $GRAPH_PATH)) {
 $GRAPH_PATH_CLI = $GRAPH_PATH -replace '\\', '/'
 
 # Get absolute path for output directory
-$OUTPUT_DIR_ABS = if ($OUTPUT_DIR -eq ".") {
-    (Get-Location).Path
+if ($OUTPUT_DIR -eq ".") {
+    $OUTPUT_DIR_ABS = (Get-Location).Path
+} elseif (Test-Path $OUTPUT_DIR) {
+    $OUTPUT_DIR_ABS = (Resolve-Path $OUTPUT_DIR).Path
 } else {
-    (Resolve-Path $OUTPUT_DIR).Path
+    # Handle relative paths that don't exist yet
+    $OUTPUT_DIR_ABS = Join-Path (Get-Location).Path $OUTPUT_DIR
+    # Create directory if it doesn't exist
+    if (-not (Test-Path $OUTPUT_DIR_ABS)) {
+        New-Item -ItemType Directory -Path $OUTPUT_DIR_ABS -Force | Out-Null
+        Write-Host "Created output directory: $OUTPUT_DIR_ABS" -ForegroundColor Green
+    }
 }
 $OUTPUT_DIR_CLI = $OUTPUT_DIR_ABS -replace '\\', '/'
 
@@ -60,9 +68,10 @@ Write-Host "✅ Export complete!" -ForegroundColor Green
 Write-Host ""
 
 # Show statistics
-if (Test-Path "logseq_db_Templates.edn") {
-    $Lines = (Get-Content "logseq_db_Templates.edn" | Measure-Object -Line).Lines
-    $Content = Get-Content "logseq_db_Templates.edn" -Raw
+$TemplateFile = Join-Path $OUTPUT_DIR_ABS "logseq_db_Templates.edn"
+if (Test-Path $TemplateFile) {
+    $Lines = (Get-Content $TemplateFile | Measure-Object -Line).Lines
+    $Content = Get-Content $TemplateFile -Raw
     $PropCount = ([regex]::Matches($Content, "user\.property/")).Count
     $ClassCount = ([regex]::Matches($Content, "user\.class/")).Count
 
@@ -78,7 +87,7 @@ Write-Host ""
 if (Get-Command git -ErrorAction SilentlyContinue) {
     if (Test-Path .git) {
         Write-Host "📊 Git changes:" -ForegroundColor Cyan
-        git diff --stat logseq_db_Templates.edn 2>$null
+        git diff --stat archive/pre-modular/logseq_db_Templates.edn 2>$null
         if (-not $?) {
             Write-Host "   No changes detected"
         }
@@ -98,7 +107,7 @@ if ($Response -match "^[Yy]$") {
         $CommitMsg = "chore: auto-export templates on $DATE"
     }
 
-    git add logseq_db_Templates.edn
+    git add archive/pre-modular/logseq_db_Templates.edn
     git commit -m "$CommitMsg"
 
     if ($LASTEXITCODE -eq 0) {
@@ -114,7 +123,7 @@ if ($Response -match "^[Yy]$") {
         Write-Host "❌ Failed to commit changes" -ForegroundColor Red
     }
 } else {
-    Write-Host "💡 Tip: Review changes with: git diff logseq_db_Templates.edn" -ForegroundColor Yellow
+    Write-Host "💡 Tip: Review changes with: git diff archive/pre-modular/logseq_db_Templates.edn" -ForegroundColor Yellow
 }
 
 Write-Host ""

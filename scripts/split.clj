@@ -265,10 +265,12 @@
     (println "  3. Test: ./scripts/validate.sh build/logseq_db_Templates_full.edn")))
 
 ;; Run
-(def input (or (first *command-line-args*) "logseq_db_Templates.edn"))
+(def input (or (first *command-line-args*) "archive/pre-modular/logseq_db_Templates.edn"))
 
 (if (.exists (io/file input))
   (split-template input)
   (do
     (println (colorize :red (str "❌ Error: File not found: " input)))
+    (println (colorize :yellow "\n💡 Make sure you've exported from Logseq using ./scripts/export.sh"))
+    (println (colorize :yellow "   The file should be at: archive/pre-modular/logseq_db_Templates.edn"))
     (System/exit 1)))
