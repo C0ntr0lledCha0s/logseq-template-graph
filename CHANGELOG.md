@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.2.0] - 2025-01-XX
+## [0.2.0] - 2025-11-06
 
 ### Added
 - Comprehensive documentation in `docs/` folder
@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.1.0] - 2024-XX-XX
+## [0.1.0] - 2025-03-31
 
 ### Added
 - Initial template with 632 classes from Schema.org

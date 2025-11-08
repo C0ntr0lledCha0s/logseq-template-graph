@@ -23,7 +23,11 @@ For people who want to **contribute** or **customize** templates.
 | Document | Description |
 |----------|-------------|
 | [Developer Setup](../QUICK_START.md#for-developers-set-up-development-environment) | Set up your development environment |
+| [Contributing Guide](../CONTRIBUTING.md) | How to contribute to the project |
+| [Conventional Commits Guide](developer-guide/conventional-commits-guide.md) | Automated changelog generation and semantic versioning |
+| [Conventional Commits Integration](developer-guide/conventional-commits-integration.md) | Integration details, setup, and troubleshooting |
 | [CI/CD Pipeline](developer-guide/ci-cd-pipeline.md) | Automated export workflow and git integration |
+| [Modularization Review](developer-guide/modularization-review.md) | GitHub Actions implementation and testing plans |
 | [Implementation Summary](developer-guide/implementation-summary.md) | Overview of what was built and how |
 
 ### Modular Development
@@ -33,6 +37,7 @@ For working with **large templates** (5,000+ lines, 100+ classes).
 |----------|-------------|
 | [Modular Quickstart](modular/quickstart.md) | 5-minute guide to modular workflow |
 | [Modularization Strategy](modular/strategy.md) | Complete plan for splitting and building templates |
+| [Architecture Report](modular/architecture-report.md) | Complete modular architecture status and roadmap |
 
 ### Architecture
 Technical deep-dives for understanding **how it works**.
@@ -83,7 +88,7 @@ Background information and comparative analysis.
 → [Quick Start - For Users](../QUICK_START.md#for-users-import-templates)
 
 **I want to contribute a new class**
-→ [Developer Setup](../QUICK_START.md#for-developers-set-up-development-environment) → [CI/CD Pipeline](developer-guide/ci-cd-pipeline.md)
+→ [Developer Setup](../QUICK_START.md#for-developers-set-up-development-environment) → [Contributing Guide](../CONTRIBUTING.md) → [Conventional Commits](developer-guide/conventional-commits-guide.md)
 
 **My template is huge (15K+ lines)**
 → [Modular Quickstart](modular/quickstart.md)

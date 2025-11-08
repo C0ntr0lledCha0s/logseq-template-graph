@@ -1,0 +1,99 @@
+name: Validate Conventional Commits
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-commits:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history to validate all PR commits
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate PR commits
+        run: |
+          echo "Validating commits in pull request..."
+
+          # Get the base branch (usually main)
+          BASE_REF="${{ github.event.pull_request.base.ref }}"
+          HEAD_REF="${{ github.event.pull_request.head.ref }}"
+
+          echo "Checking commits from $BASE_REF to $HEAD_REF"
+
+          # Get list of commits in this PR
+          COMMITS=$(git log --format="%H" origin/$BASE_REF..HEAD)
+
+          INVALID_COMMITS=()
+
+          # Validate each commit message
+          for commit in $COMMITS; do
+            MESSAGE=$(git log -1 --format="%s" $commit)
+            echo "Checking commit: $commit - $MESSAGE"
+
+            # Skip merge commits (they're auto-generated)
+            if echo "$MESSAGE" | grep -qE '^Merge (branch|pull request|[a-f0-9]{40})'; then
+              echo "  ⏭️  Skipping merge commit"
+              continue
+            fi
+
+            # Skip specific legacy commits (before conventional commits were adopted)
+            # Only add commits here that predate the conventional commits requirement
+            LEGACY_COMMITS="8283234"  # "Update organization..." from Nov 6, before CC adoption
+            if echo "$LEGACY_COMMITS" | grep -q "${commit:0:7}"; then
+              echo "  ⏭️  Skipping legacy commit (before conventional commits)"
+              continue
+            fi
+
+            # Check if commit message follows conventional commits
+            if ! echo "$MESSAGE" | grep -qE '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?!?: .{1,100}'; then
+              INVALID_COMMITS+=("$commit: $MESSAGE")
+            fi
+          done
+
+          # Report results
+          if [ ${#INVALID_COMMITS[@]} -eq 0 ]; then
+            echo "✅ All commits follow conventional commits format"
+            exit 0
+          else
+            echo "❌ Found ${#INVALID_COMMITS[@]} invalid commit(s):"
+            printf '%s\n' "${INVALID_COMMITS[@]}"
+            echo ""
+            echo "Commit messages must follow the format:"
+            echo "  type(scope): description"
+            echo ""
+            echo "Valid types: feat, fix, docs, style, refactor, perf, test, build, ops, chore"
+            echo "Scopes (optional): templates, classes, properties, ci, scripts, docs, release, modular, workflow"
+            echo ""
+            echo "Examples:"
+            echo "  feat(classes): add Recipe class"
+            echo "  fix(templates): correct cardinality for spouse property"
+            echo "  docs: update installation instructions"
+            echo ""
+            echo "See CONTRIBUTING.md for more details"
+            exit 1
+          fi
+
+      - name: Post validation summary
+        if: always()
+        run: |
+          echo "## Commit Validation Results" >> $GITHUB_STEP_SUMMARY
+
+          if [ $? -eq 0 ]; then
+            echo "✅ All commits follow conventional commits format" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Some commits do not follow conventional commits format" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please review [CONTRIBUTING.md](../CONTRIBUTING.md#commit-message-guidelines)" >> $GITHUB_STEP_SUMMARY
+          fi

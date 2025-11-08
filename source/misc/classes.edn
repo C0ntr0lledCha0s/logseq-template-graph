@@ -1,0 +1,18 @@
+{:classes
+ #:user.class{:Language-SMD4JFAN #:block{:title "Language"},
+              :FamilyGroup-CmI2Ne2A
+              {:block/title "FamilyGroup",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/event-TnZsBTQU
+                :user.property/keywords-SmmwpeIY
+                :user.property/contactPoint-NixCcjXJ
+                :user.property/parentFamilyGroup-QduiTy2X
+                :user.property/subFamilyGroup-FDjn_0z4],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "man-woman-girl-girl",
+                                  :type :emoji},
+                                 :description
+                                 "A [[680750e7-0d81-417e-8a5d-3b5721c4b217]] such as parents and their children."}}}}

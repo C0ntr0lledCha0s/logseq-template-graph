@@ -49,13 +49,20 @@ Get up and running with the Logseq Template Graph in 5 minutes!
 
 ### Step 1: Download the Template
 
-Download [logseq_db_Templates.edn](logseq_db_Templates.edn) from this repository.
+Download the latest template from the [Releases page](https://github.com/C0ntr0lledCha0s/logseq-template-graph/releases/latest).
+
+**Available variants:**
+- **logseq_db_Templates_full.edn** - Complete template (632 classes, 1,033 properties)
+- **logseq_db_Templates_crm.edn** - CRM preset (Person, Organization focused)
+- **logseq_db_Templates_research.edn** - Research preset (Books, Articles, Academic)
+
+**Tip:** Start with the full template, or choose a preset that matches your use case.
 
 ### Step 2: Import into Logseq
 
 1. Open your Logseq **Database Graph**
 2. Go to: Settings (⚙️) → Import → **EDN to DB Graph**
-3. Select the downloaded `logseq_db_Templates.edn` file
+3. Select the downloaded `.edn` file
 4. Wait for import to complete (should take a few seconds)
 
 ### Step 3: Start Using!
@@ -82,15 +89,43 @@ Want to contribute or customize templates? Follow these steps.
 - ✅ A Logseq DB graph for template development
 - ✅ Git installed
 
-### Step 1: Install Logseq CLI
+### Step 1: Install Dependencies
+
+Clone the repository and install all dependencies:
 
 ```bash
-npm install -g @logseq/cli
+git clone https://github.com/C0ntr0lledCha0s/logseq-template-graph.git
+cd logseq-template-graph
+npm install
 ```
 
-Verify installation:
+This installs:
+- `@logseq/cli` - For exporting templates
+- `git-conventional-commits` - For automated changelog generation
+- Git hooks for validation:
+  - `commit-msg` - Validates conventional commits format
+  - `post-commit` - Validates builds after source/ changes
+  - `pre-push` - Comprehensive validation before pushing
+  - `post-merge` - Auto-rebuild after merge/pull
+
+The installer will also check for Babashka (required for modular workflow).
+
+**Install Babashka (optional but recommended):**
+
 ```bash
-logseq --version
+# Mac
+brew install borkdude/brew/babashka
+
+# Windows
+scoop install babashka
+
+# Linux
+bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
+```
+
+Verify:
+```bash
+bb --version
 ```
 
 ## Step 2: Configure Your Graph Path
@@ -100,16 +135,16 @@ logseq --version
 **Windows (PowerShell):**
 ```powershell
 # Temporary (current session)
-$env:LOGSEQ_GRAPH_PATH = "C:\Users\YourName\Logseq\template-dev"
+$env:LOGSEQ_GRAPH_PATH = "C:\Users\YourName\logseq\template-dev"
 
 # Permanent
-[System.Environment]::SetEnvironmentVariable('LOGSEQ_GRAPH_PATH', 'C:\Users\YourName\Logseq\template-dev', 'User')
+[System.Environment]::SetEnvironmentVariable('LOGSEQ_GRAPH_PATH', 'C:\Users\YourName\logseq\template-dev', 'User')
 ```
 
 **Mac/Linux (Bash):**
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
-export LOGSEQ_GRAPH_PATH="$HOME/Logseq/template-dev"
+export LOGSEQ_GRAPH_PATH="$HOME/logseq/template-dev"
 
 # Reload
 source ~/.bashrc
@@ -119,22 +154,23 @@ source ~/.bashrc
 
 Edit `scripts/export.sh` or `scripts/export.ps1` and change:
 ```bash
-GRAPH_PATH="C:/Users/YourName/Logseq/template-dev"
+GRAPH_PATH="C:/Users/YourName/logseq/template-dev"
 ```
 
 To your actual path:
 ```bash
-GRAPH_PATH="C:/Users/YourName/Logseq/your-graph-name"
+GRAPH_PATH="C:/Users/YourName/logseq/your-graph-name"
 ```
 
-## Step 3: Make Scripts Executable (Mac/Linux only)
+## Step 3: Run Your First Export
+
+Now you can use npm scripts for all operations:
 
 ```bash
-chmod +x scripts/export.sh
-chmod +x scripts/validate.sh
+npm run export
 ```
 
-## Step 4: Run Your First Export
+Or run the scripts directly (for advanced usage):
 
 **Windows:**
 ```powershell
@@ -146,29 +182,58 @@ chmod +x scripts/validate.sh
 ./scripts/export.sh
 ```
 
+**Note:** Scripts may need to be made executable on Mac/Linux:
+```bash
+chmod +x scripts/*.sh
+```
+
 You should see:
 ```
 🚀 Exporting Logseq Template Graph...
-📦 Exporting minimal template...
-✅ Minimal template exported
-📦 Exporting full template...
-✅ Full template exported
+📦 Exporting template...
+✅ Template exported
 ✅ Export complete!
+📊 Statistics:
+   Lines: 15422
+   Properties: 1033
+   Classes: 632
 ```
 
-## Step 5: Review Changes
+## Step 4: Review Modular Changes
+
+The export automatically splits into modules (if Babashka is installed). Review modular source files:
 
 ```bash
-git diff logseq_db_Templates.edn
+# Review specific module changes (much easier than 15K line diff!)
+git diff src/person/properties.edn
+git diff src/event/classes.edn
+
+# Or review all modular changes
+git diff src/
 ```
 
-## Step 6: Commit and Push
+**Note:** The monolith file (`archive/pre-modular/logseq_db_Templates.edn`) is ignored by git.
 
-The script will prompt you, or manually:
+## Step 5: Build & Commit
+
+Build template variants (optional):
 
 ```bash
-git add logseq_db_Templates*.edn
-git commit -m "feat: add new classes and properties"
+npm run build:full      # Full template
+npm run build:crm       # CRM preset
+npm run build:research  # Research preset
+```
+
+Commit modular source using [conventional commits](https://www.conventionalcommits.org/):
+
+```bash
+# Add modular source files
+git add src/
+
+# Commit with descriptive message
+git commit -m "feat(classes): add Recipe class with ingredients property"
+
+# Push to remote
 git push
 ```
 
@@ -180,22 +245,61 @@ git push
 # 1. Work in Logseq on your template
 # ... make changes ...
 
-# 2. Export
-./scripts/export.sh    # or .\scripts\export.ps1
+# 2. Export and split into modules
+npm run export          # Auto-runs split if Babashka is installed
 
-# 3. Review and commit
-# (script will prompt you)
+# 3. Build template variants (optional)
+npm run build:full      # Full template with all classes
+npm run build:crm       # CRM preset
+npm run build:research  # Research preset
+
+# 4. Review and commit modular source
+git diff src/           # Review modular source changes (not archive/)
+git add src/            # Only commit src/ (archive/ is gitignored)
+git commit -m "feat(classes): add Recipe class"
+git push
+```
+
+**Available npm scripts:**
+
+**Export & Workflow:**
+```bash
+npm run export          # Export from Logseq + auto-split into modules
+npm run export:full     # Export with timestamps (if available)
+npm run validate        # Validate EDN syntax
+```
+
+**Modular Workflow (requires Babashka):**
+```bash
+npm run split           # Split monolith into src/ modules
+npm run build           # Build default template variant
+npm run build:full      # Build full template (all 632 classes)
+npm run build:crm       # Build CRM preset
+npm run build:research  # Build research preset
+```
+
+**Version & Changelog:**
+```bash
+npm run version         # Show next semantic version
+npm run changelog       # Generate changelog
+npm run changelog:write # Write changelog to CHANGELOG.md
 ```
 
 ---
 
 ## Troubleshooting
 
-### "logseq: command not found"
+### "npx: command not found" or "logseq: command not found"
 
-Install the CLI:
+Make sure you've installed dependencies:
 ```bash
-npm install -g @logseq/cli
+npm install
+```
+
+If the issue persists, ensure Node.js is installed:
+```bash
+node --version  # Should be 16.0.0 or higher
+npm --version
 ```
 
 Verify npm global path is in your PATH:

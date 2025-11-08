@@ -46,6 +46,9 @@ Complete guide to all documentation in the Logseq Template Graph project.
 | File | Description |
 |------|-------------|
 | [ci-cd-pipeline.md](docs/developer-guide/ci-cd-pipeline.md) | Complete CI/CD workflow, automation, git integration |
+| [conventional-commits-guide.md](docs/developer-guide/conventional-commits-guide.md) | Automated changelog generation and semantic versioning |
+| [conventional-commits-integration.md](docs/developer-guide/conventional-commits-integration.md) | Integration details, setup, and troubleshooting |
+| [modularization-review.md](docs/developer-guide/modularization-review.md) | GitHub Actions implementation and testing plans |
 | [implementation-summary.md](docs/developer-guide/implementation-summary.md) | Overview of what was built |
 
 ### Modular Development (`docs/modular/`)
@@ -54,6 +57,7 @@ Complete guide to all documentation in the Logseq Template Graph project.
 |------|-------------|
 | [quickstart.md](docs/modular/quickstart.md) | 5-minute modular workflow guide |
 | [strategy.md](docs/modular/strategy.md) | Complete modularization plan with split/build scripts |
+| [architecture-report.md](docs/modular/architecture-report.md) | Complete modular architecture status and roadmap |
 
 ### Architecture (`docs/architecture/`)
 
@@ -89,10 +93,10 @@ Complete guide to all documentation in the Logseq Template Graph project.
 
 ## 📊 Documentation Stats
 
-- **Total Documents**: 11 comprehensive guides
-- **Total Lines**: 4,400+ lines of documentation
+- **Total Documents**: 14 comprehensive guides
+- **Total Lines**: 6,000+ lines of documentation
 - **Organization**: Categorized in `docs/` folder
-- **Last Major Update**: November 2025 (modular workflow added)
+- **Last Major Update**: November 2025 (modular workflow and conventional commits added)
 
 ---
 
@@ -136,11 +140,15 @@ logseq-template-graph/
     │
     ├── developer-guide/                   ← For contributors
     │   ├── ci-cd-pipeline.md              ← Workflows & automation
+    │   ├── conventional-commits-guide.md  ← Commit standards
+    │   ├── conventional-commits-integration.md ← Setup & troubleshooting
+    │   ├── modularization-review.md       ← GitHub Actions implementation
     │   └── implementation-summary.md      ← What was built
     │
     ├── modular/                           ← For large templates
     │   ├── quickstart.md                  ← Quick modular guide
-    │   └── strategy.md                    ← Complete plan
+    │   ├── strategy.md                    ← Complete plan
+    │   └── architecture-report.md         ← Status & roadmap
     │
     ├── architecture/                      ← Technical deep-dives
     │   └── technical-reference.md         ← EDN format, classes

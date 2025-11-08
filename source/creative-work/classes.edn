@@ -1,0 +1,638 @@
+{:classes
+ #:user.class{:Conversation-nePZ1m6p
+              {:block/title "Conversation",
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "speech_balloon", :type :emoji},
+                                 :description
+                                 "One or more messages between organizations or people on a particular topic. Individual messages can be linked to the conversation with isPartOf or hasPart properties."}},
+              :Review-lv8JXdKK
+              {:block/title "Review",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/itemReviewed-I5jEm4tv
+                :user.property/reviewAspect-CUiKDJLe
+                :user.property/reviewRating-QBDiKkwj
+                :user.property/associatedClaimReview-sI_cmxtZ
+                :user.property/associatedMediaReview-kQDY_aNa
+                :user.property/associatedReview-Gg9tUlWS],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "thinking_face", :type :emoji},
+                                 :description
+                                 "A review of an item - for example, of a restaurant, movie, or store."}},
+              :NewsArticle-GdyxYLHe
+              {:block/title "NewsArticle",
+               :build/class-extends [:user.class/Article-DHvKxEmc],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "rolled_up_newspaper",
+                                  :type :emoji},
+                                 :description
+                                 "A NewsArticle is an article whose content reports news, or provides background context and supporting materials for understanding the news."}},
+              :AnalysisNewsArticle-rIVFu8hp
+              {:block/title "AnalysisNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon {:id "brain", :type :emoji},
+                                 :description
+                                 "An AnalysisNewsArticle is a [NewsArticle](https://schema.org/NewsArticle) that, while based on factual reporting, incorporates the expertise of the author/producer, offering interpretations and conclusions."}},
+              :VideoGame-wWWTJbYj
+              {:block/title "VideoGame",
+               :build/class-properties
+               [:user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/gameEdition-xDnH4o1U
+                :user.property/gamePlatform-FyB01r7I],
+               :build/class-extends [:user.class/Game-oZQ8o7Dt],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "video_game", :type :emoji},
+                                 :description
+                                 "A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device."}},
+              :CriticReview-vgx67W_W
+              {:block/title "CriticReview",
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "thinking_face", :type :emoji},
+                :logseq.property/description
+                "A [CriticReview](https://schema.org/CriticReview) is a more specialized form of Review written or published by a source that is recognized for its reviewing activities. These can include online columns, travel and food guides, TV and radio shows, blogs and other independent Web sites. [CriticReview](https://schema.org/CriticReview)s are typically more in-depth and professionally written. For simpler, casually written user/visitor/viewer/customer reviews, it is more appropriate to use the [UserReview](https://schema.org/UserReview) type. Review aggregator sites such as Metacritic already separate out the site's user reviews from selected critic reviews that originate from third-party sources."}},
+              :OpinionNewsArticle-g2sUdH3Y
+              {:block/title "OpinionNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "thought_balloon", :type :emoji},
+                                 :description
+                                 "An [OpinionNewsArticle](https://schema.org/OpinionNewsArticle) is a [NewsArticle](https://schema.org/NewsArticle) that primarily expresses opinions rather than journalistic reporting of news and events. For example, a [NewsArticle](https://schema.org/NewsArticle) consisting of a column or [Blog](https://schema.org/Blog)/[BlogPosting](https://schema.org/BlogPosting) entry in the Opinions section of a news publication."}},
+              :Audiobook-VnMpBcb8
+              {:block/title "Audiobook",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/readBy-Swh1B994],
+               :build/class-extends [:user.class/Book-NGA-89uv],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "headphones", :type :emoji},
+                :logseq.property/description "An audiobook."}},
+              :DigitalDocument-Qh9W9pN5
+              {:block/title "DigitalDocument",
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "FileDigit",
+                 :type :tabler-icon,
+                 :color "inherit"},
+                :logseq.property/description
+                "An electronic file or document."}},
+              :MusicComposition-SIPTMhhl
+              {:block/title "MusicComposition",
+               :build/class-properties
+               [:user.property/composer-DqXekXpv
+                :user.property/iswcCode-Yt6dq2KL
+                :user.property/lyricist-z_QwYyda
+                :user.property/recordedAs-WuH0Xf_E],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "musical_score", :type :emoji},
+                                 :description
+                                 "A musical composition."}},
+              :MusicRecording-OBFMQQGG
+              {:block/title "MusicRecording",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/byArtist-w5s-7l1v
+                :user.property/inAlbum-unC1TYO9
+                :user.property/inPlaylist-Jwz10SOO
+                :user.property/isrcCode-MT8UcoMv
+                :user.property/recordingOf-HG76I4BO],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "cd", :type :emoji},
+                                 :description
+                                 "A music recording (track), usually a single song."}},
+              :CreativeWork-B7DmUg1j
+              {:block/title "CreativeWork",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/sponsor-B3edgyM3
+                :user.property/review-DCP-Kpw4
+                :user.property/commentCount-FviA_HOv
+                :user.property/publisher-FX1fL5XC
+                :user.property/contentLocation-QNbnwDey
+                :user.property/author-cpCBlhLV
+                :user.property/contributor-oxEX00r_
+                :user.property/alternativeHeadline-DdoUESHZ
+                :user.property/character-CpH6W1eR
+                :user.property/isBasedOn-LoJm5WMC
+                :user.property/timeRequired-DIShrfI7
+                :user.property/hasPart-MU18tG77
+                :user.property/comment-TluJyr6W
+                :user.property/inLanguage-hmAiIzlE
+                :user.property/headline-Ic1Lhkuq
+                :user.property/editor-M9WJEe3r
+                :user.property/isPartOf-nCfhGBzX
+                :user.property/genre-XAO6sAh5
+                :user.property/datePublished-sLI9lZvT
+                :user.property/dateModified-Ou9z6VDL
+                :user.property/about-nsPvSRUP
+                :user.property/dateCreated-T1y0l7V0
+                :user.property/license-YrKpjYhb
+                :user.property/audience-hpnGPafX
+                :user.property/creator-DoXW8XMs
+                :user.property/maintainer-q7oS2Alh
+                :user.property/provider-M4XBuYkt
+                :user.property/keywords-SmmwpeIY
+                :user.property/producer-tDHINIQi],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "art", :type :emoji},
+                :logseq.property/description
+                "The most generic kind of creative work, including books, movies, photographs, software programs, etc."}},
+              :Certification-LU3sgAuM
+              {:block/title "Certification",
+               :build/class-properties
+               [:user.property/expires-buw30WDd
+                :user.property/certificationStatus-KtfX6leC
+                :user.property/auditDate-IIUQNOsg
+                :user.property/certificationIdentification-y9GPkyy_
+                :user.property/certificationRating-D7xMAVtS
+                :user.property/issuedBy-bKx7IVz5
+                :user.property/datePublished-sLI9lZvT
+                :user.property/about-nsPvSRUP
+                :user.property/validIn-VDYGrCTd
+                :user.property/validFrom-YK1SD77t
+                :user.property/logo-G3qEV2JH],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "+1", :type :emoji},
+                :logseq.property/description
+                "A Certification is an official and authoritative statement about a subject, for example a product, service, person, or organization. A certification is typically issued by an indendent certification body, for example a professional organization or government. It formally attests certain characteristics about the subject, for example Organizations can be ISO certified, Food products can be certified Organic or Vegan, a Person can be a certified professional, a Place can be certified for food processing. There are certifications for many domains: regulatory, organizational, recycling, food, efficiency, educational, ecological, etc. A certification is a form of credential, as are accreditations and licenses. Mapped from the [gs1:CertificationDetails](https://www.gs1.org/voc/CertificationDetails) class in the GS1 Web Vocabulary."}},
+              :CreativeWorkSeries-KpLORY2e
+              {:block/title "CreativeWorkSeries",
+               :build/class-properties
+               [:user.property/startDate-pTZGr2us
+                :user.property/endDate-S6oT3xL4],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "art", :type :emoji},
+                                 :description
+                                 "A CreativeWorkSeries in schema.org is a group of related items, typically but not necessarily of the same kind."}},
+              :SoftwareSourceCode-PyFWyRpz
+              {:block/title "SoftwareSourceCode",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/codeRepository-OmAGGRv5
+                :user.property/codeSampleType-kgSynuQb
+                :user.property/programmingLanguage-rXiRDkVx
+                :user.property/targetProduct-RnSz4FxE],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Code",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates."}},
+              :BackgroundNewsArticle-i_gcHV7-
+              {:block/title "BackgroundNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon {:id "scroll", :type :emoji},
+                                 :description
+                                 "A [NewsArticle](https://schema.org/NewsArticle) providing historical context, definition and detail on a specific topic (aka \"explainer\" or \"backgrounder\")."}},
+              :TextDigitalDocument-p9crar5l
+              {:block/title "TextDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Text",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A file composed primarily of text."}},
+              :NoteDigitalDocument-krt2kIk5
+              {:block/title "NoteDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "spiral_note_pad", :type :emoji},
+                                 :description
+                                 "A file containing a note, primarily for the author."}},
+              :Syllabus-nfgb0rMr
+              {:block/title "Syllabus",
+               :build/class-properties
+               [:user.property/assesses-IP45ixk-
+                :user.property/competencyRequired-Cs6MsGxD
+                :user.property/educationalAlignment-U0xgyOCF
+                :user.property/educationalLevel-VdDtKf3f
+                :user.property/educationalUse-REEoXbDH
+                :user.property/learningResourceType-K_-tkOTS
+                :user.property/teaches-vy8FF52w],
+               :build/class-extends
+               [:user.class/LearningResource-IPa2Mad_],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "school", :type :emoji},
+                :logseq.property/description
+                "A syllabus that describes the material covered in a course, often with several such sections per [Course](https://schema.org/Course) so that a distinct [timeRequired](https://schema.org/timeRequired) can be provided for that section of the [Course](https://schema.org/Course)."}},
+              :MusicPlaylist-Km-QRe6j
+              {:block/title "MusicPlaylist",
+               :build/class-properties
+               [:user.property/track-GQbs8YMa
+                :user.property/numTracks-tU9asfzE],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "arrow_forward", :type :emoji},
+                                 :description
+                                 "A collection of music tracks in playlist form."}},
+              :Report-LdfQ0yvd
+              {:block/title "Report",
+               :build/class-properties
+               [:user.property/reportNumber-ppuVqO8M],
+               :build/class-extends [:user.class/Article-DHvKxEmc],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "clipboard", :type :emoji},
+                :logseq.property/description
+                "A Report generated by governmental or non-governmental organization."}},
+              :SoftwareApplication-wXYtaQzn
+              {:block/title "SoftwareApplication",
+               :build/class-properties
+               [:user.property/applicationCategory-WZNoKEnr
+                :user.property/applicationSubCategory-lPAdUgRE
+                :user.property/applicationSuite-jFY1fq7w
+                :user.property/downloadUrl-SetggybQ
+                :user.property/featureList-OHaRyDei
+                :user.property/softwareAddOn-IqkhZtNk
+                :user.property/softwareHelp-IGa29x9T],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "AppsFilled",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A software application."}},
+              :Article-DHvKxEmc
+              {:block/title "Article",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/articleSection-DNFDM1UG
+                :user.property/backStory-C8a5xvyE],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "scroll", :type :emoji},
+                :logseq.property/description
+                "An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all."}},
+              :Course-G32kzYLY
+              {:block/title "Course",
+               :build/class-properties
+               [:user.property/courseCode-LmNG6oGT
+                :user.property/coursePrerequisites-BVkZhygE
+                :user.property/educationalCredentialAwarded-z_pdTnql
+                :user.property/numberOfCredits-WIlf3zow
+                :user.property/occupationalCredentialAwarded-GwMjpAQg
+                :user.property/hasCourseInstance-tE_A5mgp
+                :user.property/syllabusSections-RfyrTa6L],
+               :build/class-extends
+               [:user.class/LearningResource-IPa2Mad_],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "A description of an educational course which may be offered as distinct instances which take place at different times or take place at different locations, or be offered through different media or modes of study. An educational course is a sequence of one or more educational events and/or creative works which aims to build knowledge, competence or ability of learners."}},
+              :ClaimReview-eGazuFfz
+              {:block/title "ClaimReview",
+               :build/class-properties
+               [:user.property/claimReviewed-O7g5QHqG],
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "thinking_face", :type :emoji},
+                :logseq.property/description
+                "A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed)."}},
+              :TVEpisode-iqStiz4R
+              {:block/title "TVEpisode",
+               :build/class-properties
+               [:user.property/titleEIDR-on2y7Xb2],
+               :build/class-extends [:user.class/Episode-QaUtLF63],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "tv", :type :emoji},
+                :logseq.property/description
+                "A TV episode which can be part of a series or season."}},
+              :Recommendation-qBw5UMwf
+              {:block/title "Recommendation",
+               :build/class-properties
+               [:user.property/category-wiulLpkL],
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "first_place_medal",
+                                  :type :emoji},
+                                 :description
+                                 "[Recommendation](https://schema.org/Recommendation) is a type of [Review](https://schema.org/Review) that suggests or proposes something as the best option or best course of action. Recommendations may be for products or services, or other concrete things, as in the case of a ranked list or product guide. A [Guide](https://schema.org/Guide) may list multiple recommendations for different categories."}},
+              :Website-crbLAW_E
+              {:block/title "Website",
+               :build/class-properties [:user.property/issn-NVWcUYs-],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "WorldWww",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs."}},
+              :Game-oZQ8o7Dt
+              {:block/title "Game",
+               :build/class-properties
+               [:user.property/characterAttribute-Pwu1TSqS
+                :user.property/gameItem-mHVgMpnS
+                :user.property/gameLocation-wfV16uwE
+                :user.property/numberOfPlayers-RAmSTkGI
+                :user.property/quest-DCLjpQXr],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "game_die", :type :emoji},
+                                 :description
+                                 "The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting."}},
+              :Book-NGA-89uv
+              {:block/title "Book",
+               :build/class-properties
+               [:user.property/bookEdition-rNhd8OND
+                :user.property/bookFormat-xoZSEDrb
+                :user.property/illustrator-gBU5450B
+                :user.property/isbn-t79SXlCN
+                :user.property/numberOfPages-uA4zuqoz],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "book", :type :emoji},
+                :logseq.property/description "A book."}},
+              :MovieSeries-KOBEpTTJ
+              {:block/title "MovieSeries",
+               :build/class-properties
+               [:user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/productionCompany-gj-DihDM
+                :user.property/musicBy-f4bfH8ib],
+               :build/class-extends
+               [:user.class/CreativeWorkSeries-KpLORY2e],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "film_projector", :type :emoji},
+                :logseq.property/description
+                "A series of movies. Included movies can be indicated with the hasPart property."}},
+              :PresentationDigitalDocument-tAPLgpbo
+              {:block/title "PresentationDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "chart_with_upwards_trend",
+                                  :type :emoji},
+                                 :description
+                                 "A file containing slides or used for a presentation."}},
+              :TVSeason-V--6DIX3
+              {:block/title "TVSeason",
+               :build/class-properties
+               [:user.property/titleEIDR-on2y7Xb2],
+               :build/class-extends
+               [:user.class/CreativeWorkSeason-efeV26fq],
+               :build/properties
+               #:logseq.property{:icon {:id "tv", :type :emoji},
+                                 :description ""}},
+              :Movie-eabsTS9z
+              {:block/title "Movie",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/productionCompany-gj-DihDM
+                :user.property/musicBy-f4bfH8ib
+                :user.property/titleEIDR-on2y7Xb2],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "film_projector", :type :emoji},
+                                 :description "A movie."}},
+              :BookSeries-IiyE5agy
+              {:block/title "BookSeries",
+               :build/class-properties
+               [:user.property/startDate-pTZGr2us
+                :user.property/endDate-S6oT3xL4
+                :user.property/issn-NVWcUYs-],
+               :build/class-extends
+               [:user.class/CreativeWorkSeries-KpLORY2e],
+               :build/properties
+               #:logseq.property{:icon {:id "book", :type :emoji},
+                                 :description
+                                 "A series of books. Included books can be indicated with the hasPart property."}},
+              :Episode-QaUtLF63
+              {:block/title "Episode",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/actor-OdNUErVt
+                :user.property/director-SR7t7H8b
+                :user.property/partOfSeries-j6j10CyU
+                :user.property/productionCompany-gj-DihDM
+                :user.property/episodeNumber-FVyvDhd8
+                :user.property/partOfSeason-RuKvwZB3],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "tv", :type :emoji},
+                                 :description
+                                 "A media episode (e.g. TV, radio, video game) which can be part of a series or season."}},
+              :LearningResource-IPa2Mad_
+              {:block/title "LearningResource",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/assesses-IP45ixk-
+                :user.property/competencyRequired-Cs6MsGxD
+                :user.property/educationalAlignment-U0xgyOCF
+                :user.property/educationalLevel-VdDtKf3f
+                :user.property/educationalUse-REEoXbDH
+                :user.property/learningResourceType-K_-tkOTS
+                :user.property/teaches-vy8FF52w],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "book", :type :emoji},
+                                 :description
+                                 "The LearningResource type can be used to indicate [CreativeWork](https://schema.org/CreativeWork)s (whether physical or digital) that have a particular and explicit orientation towards learning, education, skill acquisition, and other educational purposes."}},
+              :TVSeries-xwvH8URL
+              {:block/title "TVSeries",
+               :build/class-properties
+               [:user.property/containsSeason-lPZoUCIK
+                :user.property/director-SR7t7H8b
+                :user.property/numberOfSeasons-VS_hMs2_
+                :user.property/titleEIDR-on2y7Xb2
+                :user.property/episode-vIvdyDrO
+                :user.property/actor-OdNUErVt
+                :user.property/musicBy-f4bfH8ib
+                :user.property/productionCompany-gj-DihDM
+                :user.property/numberOfEpisodes-zdrIalSK],
+               :build/class-extends
+               [:user.class/CreativeWorkSeries-KpLORY2e],
+               :build/properties
+               #:logseq.property{:icon {:id "tv", :type :emoji},
+                                 :description
+                                 "CreativeWorkSeries dedicated to TV broadcast and associated online delivery."}},
+              :MusicAlbum-h41DK9DK
+              {:block/title "MusicAlbum",
+               :build/class-properties
+               [:user.property/byArtist-w5s-7l1v
+                :user.property/albumProductionType-TxGU69q7
+                :user.property/albumRelease-gvGdSEW9
+                :user.property/albumReleaseType-tDrQxk36],
+               :build/class-extends
+               [:user.class/MusicPlaylist-Km-QRe6j],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "Album",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A collection of music tracks."}},
+              :SpreadsheetDigitalDocument-IULdoRLh
+              {:block/title "SpreadsheetDigitalDocument",
+               :build/class-extends
+               [:user.class/DigitalDocument-Qh9W9pN5],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "FileSpreadsheet",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description "A spreadsheet file."}},
+              :MusicRelease-bDhA9VSI
+              {:block/title "MusicRelease",
+               :build/class-properties
+               [:user.property/duration-vlF3wNCy
+                :user.property/catalogNumber-Dz2SUuXx
+                :user.property/creditedTo-AxWjd9hw
+                :user.property/musicReleaseFormat-XEW4zCsl
+                :user.property/recordLabel-rW9jy_mt
+                :user.property/releaseOf-b9vCUFY_],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "cd", :type :emoji},
+                :logseq.property/description
+                "A MusicRelease is a specific release of a music album."}},
+              :CreativeWorkSeason-efeV26fq
+              {:block/title "CreativeWorkSeason",
+               :build/class-properties
+               [:user.property/director-SR7t7H8b
+                :user.property/episode-vIvdyDrO
+                :user.property/actor-OdNUErVt
+                :user.property/startDate-pTZGr2us
+                :user.property/endDate-S6oT3xL4
+                :user.property/seasonNumber-tNhJ6d_I
+                :user.property/productionCompany-gj-DihDM
+                :user.property/numberOfEpisodes-zdrIalSK
+                :user.property/partOfSeries-j6j10CyU],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               #:logseq.property{:icon {:id "art", :type :emoji},
+                                 :description
+                                 "A media season, e.g. TV, radio, video game etc."}},
+              :ReportageNewsArticle-dtL67Ipf
+              {:block/title "ReportageNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "ReportSearch",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "The [ReportageNewsArticle](https://schema.org/ReportageNewsArticle) type is a subtype of [NewsArticle](https://schema.org/NewsArticle) representing news articles which are the result of journalistic news reporting conventions."}},
+              :ReviewNewsArticle-EUXadt4S
+              {:block/title "ReviewNewsArticle",
+               :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "InReview",
+                                  :type :tabler-icon,
+                                  :color "inherit"},
+                                 :description
+                                 "A [NewsArticle](https://schema.org/NewsArticle) and [CriticReview](https://schema.org/CriticReview) providing a professional critic's assessment of a service, product, performance, or artistic or literary work."}},
+              :Guide-yABdLmqC
+              {:block/title "Guide",
+               :build/class-properties
+               [:user.property/reviewAspect-CUiKDJLe],
+               :build/class-extends
+               [:user.class/CreativeWork-B7DmUg1j],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "guide_dog", :type :emoji},
+                :logseq.property/description
+                "[Guide](https://schema.org/Guide) is a page or article that recommends specific products or services, or aspects of a thing for a user to consider. A [Guide](https://schema.org/Guide) may represent a Buying Guide and detail aspects of products or services for a user to consider. A [Guide](https://schema.org/Guide) may represent a Product Guide and recommend specific products or services. A [Guide](https://schema.org/Guide) may represent a Ranked List and recommend specific products or services with ranking."}},
+              :UserReview-EsP1eHLo
+              {:block/title "UserReview",
+               :build/class-extends [:user.class/Review-lv8JXdKK],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "speaking_head_in_silhouette", :type :emoji},
+                :logseq.property/description
+                "A review created by an end-user (e.g. consumer, purchaser, attendee etc.), in contrast with [CriticReview](https://schema.org/CriticReview)."}}}}

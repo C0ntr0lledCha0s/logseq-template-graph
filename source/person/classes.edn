@@ -1,0 +1,44 @@
+{:classes
+ #:user.class{:Person-cB8UklzM
+              {:block/title "Person",
+               :block/collapsed? true,
+               :build/class-properties
+               [:user.property/familyName-oYsgEthj
+                :user.property/givenName-BH3hBESZ
+                :user.property/children-XxOZD4XD
+                :user.property/Parents-TJpz00YQ
+                :user.property/homeLocation-weuUMB3U
+                :user.property/birthPlace-lkalc5Dz
+                :user.property/hasOccupation-akPVvWXJ
+                :user.property/workLocation-lmGSYhty
+                :user.property/colleague-dgX2eJjr
+                :user.property/spouse-lsSSFZqv
+                :user.property/telephone-MNlPt6MU
+                :user.property/address-Dw4sxM8a
+                :user.property/skills-AxlhRSPo
+                :user.property/relatedTo-E2UsHj53
+                :user.property/worksFor-yZ0vsbqH
+                :user.property/sibling-i6Kk0Lvr
+                :user.property/knows-tKhsJ816
+                :user.property/knowsAbout-zgLDOg28
+                :user.property/birthDate-YbUCqWiL
+                :user.property/jobTitle-UxYujkgK
+                :user.property/email-UL_S9FXV
+                :user.property/alumniOf-FESzI1jT
+                :user.property/affiliation-jA_dztvu
+                :user.property/additionalName-z4bHQglc],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:type :emoji, :id "bust_in_silhouette"},
+                :logseq.property/description
+                "A person (alive, dead, undead, or fictional)."}},
+              :BusinessPerson-KTUsLEhR
+              {:block/title "BusinessPerson",
+               :build/properties
+               #:user.property{:sourceSchema-mW7IZAwI
+                               [:block/uuid
+                                #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"]}}}}

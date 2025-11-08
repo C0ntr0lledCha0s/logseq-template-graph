@@ -1,0 +1,197 @@
+{:classes
+ #:user.class{:ComedyEvent-ZtJozLfl
+              {:block/title "ComedyEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "rolling_on_the_floor_laughing", :type :emoji},
+                :logseq.property/description
+                "Event type: Comedy event."}},
+              :ChildernsEvent-NjkrE9hz
+              {:block/title "ChildernsEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               #:logseq.property{:icon
+                                 {:id "children_crossing",
+                                  :type :emoji},
+                                 :description
+                                 "Event type: Children's event."}},
+              :Event-eokdG-Nd
+              {:block/title "Event",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/superEvent-AdQv8SI-
+                :user.property/subEvent-GTo4BJ_-
+                :user.property/eventStatus-WPAU8yOp
+                :user.property/eventSchedule-Ws3P6bR2
+                :user.property/location-rtPRwp3c
+                :user.property/duration-vlF3wNCy
+                :user.property/startDate-pTZGr2us
+                :user.property/endDate-S6oT3xL4
+                :user.property/attendee-ltKyBpcg
+                :user.property/about-nsPvSRUP
+                :user.property/audience-hpnGPafX
+                :user.property/keywords-SmmwpeIY],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "ticket", :type :emoji},
+                                 :description
+                                 "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [offers](https://schema.org/offers) property. Repeated events may be structured as separate Event objects."}},
+              :SportsEvent-ZjD5q-k0
+              {:block/title "SportsEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "football", :type :emoji},
+                :logseq.property/description
+                "Event type: Sports event."}},
+              :SocialEvent-JDajcDQZ
+              {:block/title "SocialEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "beers", :type :emoji},
+                :logseq.property/description
+                "Event type: Social event."}},
+              :ScreeningEvent-YEZ5-DhQ
+              {:block/title "ScreeningEvent",
+               :build/class-properties
+               [:user.property/workPresented-F87jbUtZ],
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "popcorn", :type :emoji},
+                :logseq.property/description
+                "A screening of a movie or other video."}},
+              :EducationEvent-hQ3etcnz
+              {:block/title "EducationEvent",
+               :build/class-properties
+               [:user.property/assesses-IP45ixk-
+                :user.property/educationalLevel-VdDtKf3f
+                :user.property/teaches-vy8FF52w],
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "school", :type :emoji},
+                :logseq.property/description
+                "Event type: Education event."}},
+              :MusicEvent-UEfpSEpf
+              {:block/title "MusicEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "notes", :type :emoji},
+                :logseq.property/description
+                "Event type: Music event."}},
+              :FoodEvent-xOOX39Uc
+              {:block/title "FoodEvent",
+               :block/collapsed? false,
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "pretzel", :type :emoji},
+                :logseq.property/description
+                "Event type: Food event."}},
+              :Festival-iRcg-Qju
+              {:block/title "Festival",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "confetti_ball", :type :emoji},
+                :logseq.property/description "Event type: Festival."}},
+              :TheaterEvent-ClXLSIs5
+              {:block/title "TheaterEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "performing_arts", :type :emoji},
+                :logseq.property/description
+                "Event type: Theater performance."}},
+              :Schedule-pPoEOCph
+              {:block/title "Schedule",
+               :block/collapsed? false,
+               :build/class-properties
+               [:user.property/byMonthDay-WoK8yoLn
+                :user.property/byMonth-BFjfMsoj
+                :user.property/byDay-TWKD36wS
+                :user.property/duration-vlF3wNCy
+                :user.property/startDate-pTZGr2us
+                :user.property/byMonthWeek-bx-sZkN6
+                :user.property/exceptDate-N1aeS-A_
+                :user.property/repeatCount-dGv-E9Rt
+                :user.property/repeatFrequency-Q0bQ9SOb
+                :user.property/endDate-S6oT3xL4
+                :user.property/startTime-PHj9fR0A
+                :user.property/endTime-I4vdeV9O
+                :user.property/scheduleTimezone-q9Mw6rV4],
+               :build/properties
+               #:logseq.property{:icon {:id "stopwatch", :type :emoji},
+                                 :description
+                                 "A schedule defines a repeating time period used to describe a regularly occurring [Event](https://schema.org/Event). At a minimum a schedule will specify [repeatFrequency](https://schema.org/repeatFrequency) which describes the interval between occurrences of the event. Additional information can be provided to specify the schedule more precisely."}},
+              :LiteraryEvent-uYNdlFXR
+              {:block/title "LiteraryEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "bookmark", :type :emoji},
+                :logseq.property/description
+                "Event type: Literary event."}},
+              :CourseInstance-MqjA3ZLE
+              {:block/title "CourseInstance",
+               :build/class-properties
+               [:user.property/courseMode-PrUwU06T
+                :user.property/courseSchedule-YgJyelJz
+                :user.property/courseWorkload-D2r1XolO
+                :user.property/instructor-WAvJotJ-],
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               #:logseq.property{:icon {:id "school", :type :emoji},
+                                 :description
+                                 "An instance of a [Course](https://schema.org/Course) which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students."}},
+              :EventSeries-RttAZrnB
+              {:block/title "EventSeries",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               #:logseq.property{:icon {:id "ticket", :type :emoji},
+                                 :description
+                                 "A series of [Event](https://schema.org/Event)s. Included events can relate with the series using the [superEvent](https://schema.org/superEvent) property."}},
+              :DanceEvent-UGj78Ond
+              {:block/title "DanceEvent",
+               :build/class-extends [:user.class/Event-eokdG-Nd],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "dancer", :type :emoji},
+                :logseq.property/description
+                "Event type: A social dance."}},
+              :EventReservation-qEonjmvY
+              {:block/title "EventReservation",
+               :build/class-extends [:user.class/Reservation-tDje6vAq],
+               :build/properties
+               #:logseq.property{:icon {:id "ticket", :type :emoji},
+                                 :description
+                                 "A reservation for an event like a concert, sporting event, or lecture."}}}}

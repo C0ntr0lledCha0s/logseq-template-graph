@@ -4,18 +4,39 @@ Your template has grown to **15,422 lines** with **1,033 properties** and **632 
 
 ---
 
-## One-Command Setup
+## Setup
+
+### 1. Install Dependencies
 
 ```bash
-./scripts/init-modular.sh
+# Install npm dependencies (includes @logseq/cli)
+npm install
+
+# Install Babashka (required for modular workflow)
+# Mac:
+brew install borkdude/brew/babashka
+
+# Windows:
+scoop install babashka
+
+# Linux:
+bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
+
+# Verify:
+bb --version
 ```
 
-This will:
-1. ✅ Install Babashka (if needed)
-2. ✅ Create modular directory structure
-3. ✅ Split your monolithic template into modules
-4. ✅ Create preset configurations
-5. ✅ Archive the original
+### 2. Configure Graph Path
+
+```bash
+# Mac/Linux:
+export LOGSEQ_GRAPH_PATH="$HOME/logseq/template-dev"
+
+# Windows (PowerShell):
+$env:LOGSEQ_GRAPH_PATH = "C:\Users\YourName\logseq\template-dev"
+```
+
+**The modular workflow is now automatic!** Just use `npm run export`.
 
 ---
 
@@ -26,30 +47,39 @@ This will:
 (Make changes to classes and properties in your Logseq graph)
 ```
 
-### 2. Export & Split
+### 2. Export & Auto-Split
 ```bash
-# Export from Logseq (unchanged)
-./scripts/export.sh
+# One command does it all!
+npm run export
 
-# Split into modules (NEW!)
-bb scripts/split.clj
+# This automatically:
+# - Exports from Logseq → archive/pre-modular/logseq_db_Templates.edn
+# - Splits into modules → src/
+# - Shows statistics and next steps
 ```
 
-### 3. Review Changes
+### 3. Review Modular Changes
 ```bash
 # Instead of 15,422-line diff, you see:
-git diff source/person/properties.edn    # 15 lines changed
-git diff source/event/classes.edn        # 8 lines changed
+git diff src/person/properties.edn    # 15 lines changed
+git diff src/event/classes.edn        # 8 lines changed
+
+# Much easier to review and understand!
 ```
 
-### 4. Build Variants
+### 4. Build Variants (Optional)
 ```bash
-# Build all templates
-bb scripts/build.clj full      # Everything (15K+ lines)
-bb scripts/build.clj crm       # Person + Org only (~2K lines)
-bb scripts/build.clj research  # Books + Articles (~3K lines)
-bb scripts/build.clj content   # Creative works (~2K lines)
-bb scripts/build.clj events    # Event management (~1.5K lines)
+# Build specific template variants using npm scripts
+npm run build:full      # Everything (15K+ lines, 632 classes)
+npm run build:crm       # Person + Org only (~2K lines)
+npm run build:research  # Books + Articles (~3K lines)
+
+# Or use Babashka directly for more options:
+bb scripts/build.clj full      # Full template
+bb scripts/build.clj crm       # CRM preset
+bb scripts/build.clj research  # Research preset
+bb scripts/build.clj content   # Creative works preset
+bb scripts/build.clj events    # Event management preset
 ```
 
 ### 5. Validate & Test
@@ -78,24 +108,46 @@ git push
 ```
 source/                          # EDIT THESE (modular source)
 ├── base/
-│   ├── classes.edn             # Thing, Resource
-│   ├── properties.edn          # Base properties
+│   ├── classes.edn             # Thing, Agent (2 classes)
 │   └── README.md
 ├── person/
-│   ├── classes.edn             # Person class
-│   ├── properties.edn          # 150+ person properties
+│   ├── classes.edn             # Person, Patient (2 classes)
+│   ├── properties.edn          # 36 person properties
 │   └── README.md
 ├── organization/
-│   ├── classes.edn             # Organization, Occupation
-│   ├── properties.edn          # Org properties
+│   ├── classes.edn             # Organization, NGO, GovernmentOrganization, Consortium (4 classes)
+│   ├── properties.edn          # 15 org properties
 │   └── README.md
 ├── event/
-│   ├── classes.edn             # Event, EventSeries, Meeting
-│   ├── properties.edn          # Event properties
+│   ├── classes.edn             # Event, PublicationEvent, Meeting, etc. (17 classes)
+│   ├── properties.edn          # 6 event properties
 │   └── README.md
 ├── creative-work/
-│   ├── classes.edn             # Book, Article, Video, etc.
-│   ├── properties.edn          # Creative work properties
+│   ├── classes.edn             # Book, Article, Video, etc. (14 classes)
+│   ├── properties.edn          # 7 creative work properties
+│   └── README.md
+├── place/
+│   ├── classes.edn             # Place, AdministrativeArea (2 classes)
+│   ├── properties.edn          # 9 place properties
+│   └── README.md
+├── product/
+│   ├── classes.edn             # Product (1 class)
+│   ├── properties.edn          # 2 product properties
+│   └── README.md
+├── intangible/
+│   ├── classes.edn             # Rating, StructuredValue, etc. (9 classes)
+│   ├── properties.edn          # 9 intangible properties
+│   └── README.md
+├── action/
+│   ├── classes.edn             # Action (1 class)
+│   ├── properties.edn          # 1 action property
+│   └── README.md
+├── common/
+│   ├── properties.edn          # 189 shared properties across all domains
+│   └── README.md
+├── misc/
+│   ├── classes.edn             # 82 miscellaneous classes
+│   ├── properties.edn          # 59 misc properties
 │   └── README.md
 └── presets/
     ├── full.edn                # All modules
@@ -113,9 +165,8 @@ build/                           # GENERATED (compiled artifacts)
 scripts/
 ├── split.clj                   # Split monolith → modules
 ├── build.clj                   # Merge modules → artifacts
-├── export.sh                   # Export from Logseq
-├── validate.sh                 # Validate EDN
-└── init-modular.sh             # One-time setup
+├── export.sh / export.ps1      # Export from Logseq (auto-runs split)
+└── validate.sh                 # Validate EDN
 ```
 
 ---
@@ -126,14 +177,16 @@ scripts/
 ```bash
 bb scripts/build.clj full
 # Output: build/logseq_db_Templates_full.edn
-# Includes: Everything (632 classes, 1033 properties)
+# Size: 8,931 lines, 497 KB
+# Includes: Everything (134 classes, 333 properties)
 ```
 
 ### CRM Template
 ```bash
 bb scripts/build.clj crm
 # Output: build/logseq_db_Templates_crm.edn
-# Includes: Person, Organization, Contact, Base
+# Size: 5,386 lines, 298 KB
+# Includes: Person, Organization, Contact, Base (8 classes, 240 properties)
 # Use for: Customer relationship management
 ```
 
@@ -141,7 +194,8 @@ bb scripts/build.clj crm
 ```bash
 bb scripts/build.clj research
 # Output: build/logseq_db_Templates_research.edn
-# Includes: Person, Organization, Books, Articles, Base
+# Size: 5,713 lines, 317 KB
+# Includes: Person, Organization, Books, Articles, Base (22 classes, 247 properties)
 # Use for: Academic research, literature notes
 ```
 
@@ -261,14 +315,30 @@ bb scripts/build.clj mypreset
 ## Troubleshooting
 
 ### "bb: command not found"
-```bash
-# Install Babashka
-./scripts/init-modular.sh  # Will auto-install
 
-# Or manually:
-# macOS: brew install borkdude/brew/babashka
-# Linux: bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
+**Linux/macOS:**
+```bash
+# macOS:
+brew install borkdude/brew/babashka
+
+# Linux:
+bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
 ```
+
+**Windows:**
+```powershell
+# Install Scoop if needed
+# Visit: https://scoop.sh/
+
+# Add Clojure bucket and install Babashka
+scoop bucket add scoop-clojure https://github.com/littleli/scoop-clojure
+scoop install babashka -s
+
+# Verify installation
+bb --version
+```
+
+**Note:** The `-s` flag skips hash verification if there's a temporary hash mismatch with vcredist2022 dependency.
 
 ### "source/ directory not found"
 ```bash
@@ -340,12 +410,8 @@ jobs:
 ## Commands Cheat Sheet
 
 ```bash
-# Setup (one-time)
-./scripts/init-modular.sh
-
-# Daily workflow
-./scripts/export.sh           # Export from Logseq
-bb scripts/split.clj           # Split into modules
+# Daily workflow (export auto-runs split)
+./scripts/export.sh           # Export from Logseq + split into modules
 git diff source/               # Review changes
 bb scripts/build.clj full      # Build templates
 ./scripts/validate.sh build/*  # Validate
@@ -370,7 +436,7 @@ tree source/                   # Browse modules
 
 ## Next Steps
 
-1. ✅ Run `./scripts/init-modular.sh`
+1. ✅ Export and split: `./scripts/export.sh` (auto-creates `source/`)
 2. ✅ Review `source/` directory structure
 3. ✅ Build full template: `bb scripts/build.clj full`
 4. ✅ Test import in Logseq

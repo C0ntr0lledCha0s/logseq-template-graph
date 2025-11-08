@@ -57,44 +57,50 @@ docs/
 **Location:** `scripts/`
 
 **Core Export Scripts:**
-- `export.sh` / `export.ps1` - Export from Logseq using CLI
+- `export.sh` / `export.ps1` - Export from Logseq + auto-split into modules
 - `validate.sh` - EDN validation
 - `analyze.sh` - Template statistics
+- `check-deps.js` - Verify Babashka installation (runs on npm install)
 
-**Modular Development (for 15K+ line templates):**
-- `split.clj` - Split monolith into modules (Babashka)
+**Modular Development (Babashka required):**
+- `split.clj` - Split monolith into modules (auto-runs after export)
 - `build.clj` - Build template variants (full, CRM, research, etc.)
-- `init-modular.sh` - One-command modular setup
 
 ---
 
 ## Development Workflow
 
-### Standard Workflow (Monolithic)
+### Recommended Workflow (Modular - Default for 15K+ lines)
 ```bash
 # 1. Make changes in Logseq
-# 2. Export templates
+# ... edit classes, properties ...
+
+# 2. Export and auto-split
+npm run export                # Exports → auto-splits into src/ modules
+
+# 3. Build template variants (optional)
+npm run build:full            # Full template (632 classes)
+npm run build:crm             # CRM preset
+npm run build:research        # Research preset
+
+# 4. Review and commit
+git diff src/                 # Review modular source changes
+git add .
+git commit -m "feat(classes): add Recipe class"
+git push
+```
+
+### Alternative: Direct Script Execution
+```bash
+# Run scripts directly (bypasses npm):
 ./scripts/export.sh           # Mac/Linux
 .\scripts\export.ps1           # Windows
 
-# 3. Script auto-displays: stats, git diff, commit prompt
-```
-
-### Modular Workflow (Recommended for 15K+ lines)
-```bash
-# One-time setup
-./scripts/init-modular.sh
-
-# Daily workflow
-# 1. Make changes in Logseq
-# 2. Export from UI or CLI
-# 3. Split into modules
+# Manual split (if needed):
 bb scripts/split.clj
 
-# 4. Build variants
-bb scripts/build.clj full      # Full template
-bb scripts/build.clj crm       # CRM preset
-bb scripts/build.clj research  # Research preset
+# Manual build:
+bb scripts/build.clj full
 ```
 
 **See:** [docs/modular/quickstart.md](docs/modular/quickstart.md)
@@ -199,17 +205,249 @@ Standard vocabulary from schema.org:
 
 ---
 
-## Git Workflow
+## PowerShell Script Guidelines
 
-### Semantic Commits
-```bash
-git commit -m "feat: add Recipe class with ingredients property"
-git commit -m "fix: correct cardinality for spouse property"
-git commit -m "docs: update installation instructions"
-git commit -m "chore: auto-export templates"
+When working with PowerShell scripts (`.ps1` files), especially git hooks:
+
+### Avoid Emojis in PowerShell Scripts
+
+Emojis can become corrupted due to encoding issues, causing syntax errors.
+
+**❌ Bad (causes errors):**
+```powershell
+Write-Host "❌ Error message" -ForegroundColor Red
+Write-Host "✅ Success message" -ForegroundColor Green
 ```
 
+**✅ Good (ASCII-safe):**
+```powershell
+Write-Host "[ERROR] Error message" -ForegroundColor Red
+Write-Host "[SUCCESS] Success message" -ForegroundColor Green
+```
+
+### ASCII-Safe Alternatives
+
+Use these instead of emojis:
+
+| Emoji | ASCII Alternative | Use Case |
+|-------|-------------------|----------|
+| ❌ | `[ERROR]` or `[X]` | Errors, failures |
+| ✅ | `[SUCCESS]` or `[OK]` | Success, passed checks |
+| ⚠️ | `[WARNING]` or `[!]` | Warnings, attention needed |
+| 📝 | `[CHECK]` or `[i]` | Info, checking |
+| 🔍 | `[SCAN]` or `[?]` | Searching, analyzing |
+| 📦 | `[BUILD]` or `[*]` | Building, packaging |
+| 🚀 | `[PUSH]` or `[>>]` | Pushing, deploying |
+
+### String Quoting Rules
+
+PowerShell interprets characters differently in single vs. double quotes:
+
+**Use single quotes for literal strings:**
+```powershell
+# Good - prevents PowerShell from interpreting special chars
+$pattern = '^(feat|fix|docs)(\(.+\))?: .+'
+Write-Host 'Expected format: type(scope): description'
+```
+
+**Use double quotes only when you need variable expansion:**
+```powershell
+# Good - expands $commitMsg variable
+Write-Host "   $commitMsg" -ForegroundColor Yellow
+```
+
+### Testing PowerShell Scripts
+
+Always test on both PowerShell versions:
+```powershell
+# Test on PowerShell 5.1 (Windows default)
+powershell.exe -NoProfile -File script.ps1
+
+# Test on PowerShell 7+ (if installed)
+pwsh -NoProfile -File script.ps1
+```
+
+### Common Issues
+
+1. **Pipe `|` interpreted as command separator** - Use single quotes
+2. **Parentheses `()` cause parsing errors** - Use single quotes
+3. **Emoji corruption** - Use ASCII alternatives
+4. **Line endings** - Git may show CRLF warnings (normal on Windows)
+
+---
+
+## Git Workflow
+
+### Conventional Commits
+
+**This project uses [Conventional Commits](https://www.conventionalcommits.org/) for automated changelog generation and semantic versioning.**
+
+#### Commit Message Format
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+#### Commit Types
+- `feat` - New features or feature enhancements
+- `fix` - Bug fixes
+- `docs` - Documentation changes
+- `style` - Code style/formatting (no logic changes)
+- `refactor` - Code restructuring without behavior changes
+- `perf` - Performance improvements
+- `test` - Test additions or corrections
+- `build` - Build system, dependencies, CI/CD changes
+- `ops` - Infrastructure and deployment
+- `chore` - Miscellaneous (e.g., .gitignore updates)
+
+#### Scopes (optional but recommended)
+- `templates` - Changes to .edn template files
+- `classes` - Schema.org class additions/modifications
+- `properties` - Schema.org property additions/modifications
+- `ci` - CI/CD pipeline changes
+- `scripts` - Build, export, validation scripts
+- `docs` - Documentation files
+- `release` - Release-related changes
+- `modular` - Modular architecture changes
+- `workflow` - Development workflow improvements
+
+#### Examples
+```bash
+# Feature commits
+git commit -m "feat(classes): add Recipe class with ingredients property"
+git commit -m "feat(properties): add cookTime property to Recipe class"
+
+# Bug fixes
+git commit -m "fix(templates): correct cardinality for spouse property"
+git commit -m "fix(scripts): handle empty property lists in validation"
+
+# Documentation
+git commit -m "docs: update installation instructions"
+git commit -m "docs(contributing): add commit message guidelines"
+
+# Chores
+git commit -m "chore(templates): auto-export templates"
+git commit -m "chore: update dependencies"
+
+# Breaking changes
+git commit -m "feat(classes)!: remove deprecated Customer class
+
+BREAKING CHANGE: Customer class removed, use Person with customerRole property instead"
+```
+
+#### Handling Merge Commits
+
+**Merge commits are automatically skipped during validation** since they're auto-generated by Git/GitHub.
+
+**Best Practices:**
+- **Prefer rebase over merge** for feature branches to maintain linear history
+- **Squash commits** before merging to keep history clean
+- **Merge commits are allowed** for:
+  - Pull request merges from GitHub
+  - Emergency hotfix merges
+  - Branch synchronization with main
+
+**When merge commits occur**, they're recognized by these patterns:
+- `Merge branch 'branch-name'`
+- `Merge pull request #123 from user/branch`
+- `Merge <commit-hash> into <commit-hash>` (auto-generated)
+
+The CI/CD validation automatically skips these without requiring fixes.
+
+#### Setup Commit Validation
+```bash
+# Install dependencies
+npm install
+
+# Setup git hooks (automatic validation)
+npm run setup
+
+# Validate commits manually
+npm run validate:commits
+```
+
+### Git Hooks
+
+**This project uses git hooks for automated validation and build safety.**
+
+The following hooks are automatically installed via `npm run setup`:
+
+#### Active Hooks
+
+1. **`commit-msg`** - Validates conventional commits format
+   - Checks commit message follows conventional commits standard
+   - Validates commit types and scopes
+   - Runs before commit is created
+
+2. **`post-commit`** - Validates build after source/ changes
+   - Detects if `source/` directory was modified
+   - Runs `npm run build:full` to validate changes
+   - Reports build success or failure
+   - Suggests `/diagnose` command on failure
+
+3. **`pre-push`** - Comprehensive validation before pushing
+   - Builds all template variants (full, CRM, research)
+   - Validates all conventional commit messages
+   - Checks for uncommitted changes in `source/`
+   - Blocks push if any validation fails
+
+4. **`post-merge`** - Auto-rebuild after merge/pull
+   - Detects if `source/` changed during merge
+   - Auto-runs `npm run build:full`
+   - Notifies about changes to review
+
+#### Hook Locations
+
+- **Hook templates:** `.git-hooks/` (versioned in git)
+- **Setup scripts:** `scripts/setup-hooks.sh` and `scripts/setup-hooks.ps1`
+- **Git configuration:** `core.hooksPath = .git-hooks`
+
+#### Bypassing Hooks
+
+```bash
+# Bypass all hooks (not recommended)
+git commit --no-verify
+git push --no-verify
+
+# Or bypass specific validations
+git commit --no-verify -m "WIP: experimental changes"
+```
+
+**Note:** Hooks are cross-platform (Unix + Windows PowerShell).
+
 ### Release Process
+
+**Automated with Conventional Commits:**
+
+```bash
+# 1. Make changes and commit using conventional commits
+git commit -m "feat(classes): add Book class with author property"
+
+# 2. Determine next version (automatic based on commits)
+npm run version
+# Output: 0.3.0 (if there are new features)
+
+# 3. Update CHANGELOG.md (automatic)
+npm run changelog:write
+
+# 4. Commit changelog
+git commit -am "docs(release): update changelog for v0.3.0"
+
+# 5. Tag release
+git tag v0.3.0
+git push --tags
+
+# 6. GitHub Actions automatically:
+#    - Builds all template variants
+#    - Generates release notes
+#    - Creates GitHub release with .edn files
+```
+
+**Manual Release (legacy):**
+
 ```bash
 # 1. Export and test
 ./scripts/export.sh
@@ -218,12 +456,7 @@ git commit -m "chore: auto-export templates"
 git tag v0.3.0
 git push --tags
 
-# 3. Create GitHub release
-gh release create v0.3.0 \
-  --title "v0.3.0 - CreativeWork Classes" \
-  --notes "Added Book, Article, Recipe" \
-  logseq_db_Templates.edn \
-  logseq_db_Templates_full.edn
+# 3. GitHub Actions handles the rest automatically
 ```
 
 ---

@@ -81,9 +81,8 @@ Located in [../../scripts/](../../scripts/):
 - **analyze.sh** - Template analysis and statistics
 
 **Modular Development Scripts (for 15K+ line templates):**
-- **split.clj** - Babashka script to split monolith into modules
+- **split.clj** - Babashka script to split monolith into modules (auto-runs after export)
 - **build.clj** - Build automation for creating template variants
-- **init-modular.sh** - One-command setup for modular workflow
 
 See [CI/CD Pipeline](../developer-guide/ci-cd-pipeline.md) for complete workflow documentation.
 

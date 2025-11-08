@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh label create:*)",
+      "Bash(gh issue create:*)",
+      "Bash(gh issue edit:*)",
+      "Bash(bb:*)",
+      "Bash(cat:*)",
+      "Bash(test:*)",
+      "Bash(logseq export-edn:*)",
+      "Bash(logseq:*)",
+      "Bash(gh workflow run:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run watch:*)",
+      "Bash(gh run view:*)",
+      "Bash(bash scripts/validate.sh:*)",
+      "Bash(git push)",
+      "Bash(git tag:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh release delete:*)",
+      "Bash(gh release view:*)",
+      "Bash(gh api:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run version:*)",
+      "Bash(npm run changelog:*)",
+      "Bash(npm view:*)",
+      "Bash(npm search:*)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File scripts/setup-hooks.ps1)",
+      "Bash(git config:*)",
+      "Bash(powershell.exe -NoProfile -Command \"Get-Content .git-hooks/pre-push.ps1 -Raw | Select-String -Pattern ''\"\"'' -AllMatches | ForEach-Object { $_Matches.Count }\")",
+      "Bash(npm run build:*)",
+      "Bash(powershell.exe -NoProfile -File .git-hooks/pre-push.ps1)",
+      "Bash(gh label:*)",
+      "Bash(gh pr checks:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

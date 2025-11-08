@@ -1,0 +1,2 @@
+#!/bin/sh
+powershell.exe -ExecutionPolicy Bypass -File .git-hooks/pre-push.ps1 $1 $2

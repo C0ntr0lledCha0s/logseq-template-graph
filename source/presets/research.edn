@@ -1,0 +1,3 @@
+{:name "Research Template"
+ :description "Academic and research notes - Books, Articles, Authors, Publications"
+ :include ["person" "organization" "creative-work" "base" "common"]}

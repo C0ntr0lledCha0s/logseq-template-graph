@@ -1,0 +1,336 @@
+name: Test Template Import
+
+on:
+  pull_request:
+    paths:
+      - 'source/**'
+      - 'build/**'
+      - '**/*.edn'
+      - 'scripts/**'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'source/**'
+      - 'scripts/**'
+  workflow_dispatch:
+    inputs:
+      variant:
+        description: 'Template variant to test (full, crm, research, content, events, all)'
+        required: false
+        default: 'all'
+
+jobs:
+  validate-structure:
+    name: Validate Template Structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install
+          ./install
+          rm install
+
+      - name: Verify Babashka installation
+        run: bb --version
+
+      - name: Build all variants
+        run: |
+          echo "Building template variants..."
+          bb scripts/build.clj full
+          bb scripts/build.clj crm
+          bb scripts/build.clj research
+          bb scripts/build.clj content
+          bb scripts/build.clj events
+
+      - name: Validate EDN syntax
+        run: |
+          echo "Validating EDN syntax..."
+          for file in build/*.edn; do
+            echo "Checking: $file"
+            bb -e "(clojure.edn/read-string (slurp \"$file\"))" || exit 1
+          done
+
+      - name: Check export-type marker
+        run: |
+          echo "Checking for required export-type marker..."
+          for file in build/*.edn; do
+            if ! grep -q ":logseq.db.sqlite.export/export-type :graph-ontology" "$file"; then
+              echo "❌ Missing export-type marker in $file"
+              exit 1
+            else
+              echo "✅ $file has export-type marker"
+            fi
+          done
+
+      - name: Validate template structure
+        run: |
+          echo "Validating template structure..."
+          bb -e '
+          (doseq [file (file-seq (clojure.java.io/file "build"))]
+            (when (.endsWith (.getName file) ".edn")
+              (let [data (clojure.edn/read-string (slurp file))
+                    props (get data :properties)
+                    classes (get data :classes)]
+                (println "File:" (.getName file))
+                (println "  Properties:" (count props))
+                (println "  Classes:" (count classes))
+                (when (or (nil? props) (nil? classes))
+                  (println "  ❌ INVALID: Missing :properties or :classes")
+                  (System/exit 1))
+                (when (not= :graph-ontology (get data :logseq.db.sqlite.export/export-type))
+                  (println "  ❌ INVALID: Wrong export-type")
+                  (System/exit 1))
+                (println "  ✅ Valid structure"))))'
+
+  test-properties:
+    name: Test Property Definitions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install && ./install && rm install
+
+      - name: Build templates
+        run: bb scripts/build.clj full
+
+      - name: Validate property cardinality
+        run: |
+          echo "Checking property cardinality values..."
+          bb -e '
+          (let [data (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
+                props (get data :properties)]
+            (doseq [[prop-key prop-data] props]
+              (let [cardinality (get prop-data :db/cardinality)]
+                (when-not (contains? #{:db.cardinality/one :db.cardinality/many} cardinality)
+                  (println "❌ Invalid cardinality for" prop-key ":" cardinality)
+                  (System/exit 1))))
+            (println "✅ All properties have valid cardinality"))'
+
+      - name: Validate property types
+        run: |
+          echo "Checking property types..."
+          bb -e '
+          (let [data (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
+                props (get data :properties)
+                valid-types #{:default :node :date :datetime :url :number :checkbox}]
+            (doseq [[prop-key prop-data] props]
+              (let [prop-type (get prop-data :logseq.property/type)]
+                (when-not (contains? valid-types prop-type)
+                  (println "❌ Invalid type for" prop-key ":" prop-type)
+                  (System/exit 1))))
+            (println "✅ All properties have valid types"))'
+
+      - name: Validate property metadata
+        run: |
+          echo "Checking property metadata..."
+          bb -e '
+          (let [data (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
+                props (get data :properties)]
+            (doseq [[prop-key prop-data] props]
+              (when-not (get prop-data :block/title)
+                (println "❌ Missing :block/title for" prop-key)
+                (System/exit 1)))
+            (println "✅ All properties have required metadata"))'
+
+  test-classes:
+    name: Test Class Definitions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install && ./install && rm install
+
+      - name: Build templates
+        run: bb scripts/build.clj full
+
+      - name: Validate class structure
+        run: |
+          echo "Checking class structure..."
+          bb -e '
+          (let [data (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
+                classes (get data :classes)]
+            (doseq [[class-key class-data] classes]
+              (when-not (get class-data :block/title)
+                (println "❌ Missing :block/title for" class-key)
+                (System/exit 1)))
+            (println "✅ All classes have required metadata"))'
+
+      - name: Validate class properties exist
+        run: |
+          echo "Checking class properties reference valid properties..."
+          bb -e '
+          (let [data (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
+                props (set (keys (get data :properties)))
+                classes (get data :classes)]
+            (doseq [[class-key class-data] classes]
+              (let [class-props (get-in class-data [:build/class-properties] [])]
+                (doseq [prop class-props]
+                  (when-not (contains? props prop)
+                    (println "❌ Class" class-key "references non-existent property:" prop)
+                    (System/exit 1)))))
+            (println "✅ All class properties reference valid properties"))'
+
+      - name: Validate class inheritance
+        run: |
+          echo "Checking class parent references..."
+          bb -e '
+          (let [data (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
+                classes (set (keys (get data :classes)))
+                class-data (get data :classes)]
+            (doseq [[class-key class-val] class-data]
+              (when-let [parent (get class-val :build/class-parent)]
+                (when-not (contains? classes parent)
+                  (println "❌ Class" class-key "has non-existent parent:" parent)
+                  (System/exit 1))))
+            (println "✅ All class parent references are valid"))'
+
+  test-variants:
+    name: Test Variant Completeness
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [full, crm, research, content, events]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install && ./install && rm install
+
+      - name: Build ${{ matrix.variant }} variant
+        run: bb scripts/build.clj ${{ matrix.variant }}
+
+      - name: Validate variant output
+        run: |
+          file="build/logseq_db_Templates_${{ matrix.variant }}.edn"
+          if [ ! -f "$file" ]; then
+            echo "❌ Variant ${{ matrix.variant }} was not built"
+            exit 1
+          fi
+
+          lines=$(wc -l < "$file")
+          size=$(du -h "$file" | cut -f1)
+
+          echo "## ${{ matrix.variant }} Variant" >> $GITHUB_STEP_SUMMARY
+          echo "- Size: $size" >> $GITHUB_STEP_SUMMARY
+          echo "- Lines: $lines" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+      - name: Count properties and classes
+        run: |
+          file="build/logseq_db_Templates_${{ matrix.variant }}.edn"
+          bb -e "
+          (let [data (clojure.edn/read-string (slurp \"$file\"))
+                props (count (get data :properties))
+                classes (count (get data :classes))]
+            (println \"Properties:\" props)
+            (println \"Classes:\" classes))"
+
+  test-consistency:
+    name: Test Cross-Variant Consistency
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install && ./install && rm install
+
+      - name: Build all variants
+        run: |
+          bb scripts/build.clj full
+          bb scripts/build.clj crm
+          bb scripts/build.clj research
+          bb scripts/build.clj content
+          bb scripts/build.clj events
+
+      - name: Verify full template contains all properties
+        run: |
+          echo "Verifying full template is superset of all variants..."
+          bb -e '
+          (let [full (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
+                full-props (set (keys (get full :properties)))
+                variants ["crm" "research" "content" "events"]]
+            (doseq [variant variants]
+              (let [variant-file (str "build/logseq_db_Templates_" variant ".edn")
+                    variant-data (clojure.edn/read-string (slurp variant-file))
+                    variant-props (set (keys (get variant-data :properties)))
+                    missing (clojure.set/difference variant-props full-props)]
+                (if (empty? missing)
+                  (println "✅" variant "properties are subset of full")
+                  (do
+                    (println "❌" variant "has properties not in full:" missing)
+                    (System/exit 1)))))
+            (println "✅ All variants are consistent with full template"))'
+
+  integration-test-setup:
+    name: Prepare Integration Tests (Future)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Babashka
+        run: |
+          curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
+          chmod +x install && ./install && rm install
+
+      - name: Build test variant
+        run: |
+          variant="${{ github.event.inputs.variant || 'full' }}"
+          if [ "$variant" = "all" ]; then
+            bb scripts/build.clj full
+            bb scripts/build.clj crm
+            bb scripts/build.clj research
+            bb scripts/build.clj content
+            bb scripts/build.clj events
+          else
+            bb scripts/build.clj "$variant"
+          fi
+
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-templates
+          path: build/*.edn
+          retention-days: 7
+
+      - name: Create test summary
+        run: |
+          echo "## Integration Test Preparation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Templates built and ready for manual import testing." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download artifacts from this workflow run" >> $GITHUB_STEP_SUMMARY
+          echo "2. Import into Logseq test graph" >> $GITHUB_STEP_SUMMARY
+          echo "3. Verify classes and properties appear correctly" >> $GITHUB_STEP_SUMMARY
+          echo "4. Test creating instances of each class" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Future Enhancement:" >> $GITHUB_STEP_SUMMARY
+          echo "- Automated Logseq CLI import testing" >> $GITHUB_STEP_SUMMARY
+          echo "- Screenshot validation" >> $GITHUB_STEP_SUMMARY
+          echo "- Property constraint testing" >> $GITHUB_STEP_SUMMARY

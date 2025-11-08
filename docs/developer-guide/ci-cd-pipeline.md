@@ -49,31 +49,57 @@ For this template project, we'll use **`@logseq/cli`** as it's designed for exte
 
 ---
 
-## Setup: Logseq CLI Installation
+## Setup: Dependencies Installation
 
 ### Prerequisites
 
-- Node.js 16+ and npm/yarn
+- Node.js 16+ installed
 - Logseq DB version installed on your system
 - A Logseq DB graph where you're building your templates
 
-### Install Logseq CLI
+### Install Project Dependencies
 
 ```bash
-# Install globally
-npm install -g @logseq/cli
+# Clone the repository
+git clone https://github.com/C0ntr0lledCha0s/logseq-template-graph.git
+cd logseq-template-graph
 
-# Verify installation
-logseq --version
+# Install npm dependencies (includes @logseq/cli)
+npm install
+
+# This automatically:
+# - Installs @logseq/cli as a dev dependency
+# - Sets up git commit hooks
+# - Checks for Babashka (optional, for modular workflow)
 ```
 
-### Available Commands
+### Install Babashka (Optional - Recommended)
+
+Babashka is required for the modular workflow (splitting large templates):
 
 ```bash
-logseq export-edn [options]    # Export DB graph as EDN
-logseq export [options]         # Export as Markdown
-logseq list                     # List all graphs
-logseq query                    # Query graph data
+# Mac
+brew install borkdude/brew/babashka
+
+# Windows
+scoop install babashka
+
+# Linux
+bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
+
+# Verify
+bb --version
+```
+
+### Available npm Scripts
+
+```bash
+npm run export          # Export + auto-split into modules
+npm run split           # Manually split template into modules
+npm run build:full      # Build full template from modules
+npm run build:crm       # Build CRM preset
+npm run build:research  # Build research preset
+npm run validate        # Validate EDN syntax
 ```
 
 ---
@@ -99,43 +125,77 @@ C:\Users\YourName\Logseq\
 - Test properties and classes before exporting
 - Keep a changelog in the graph itself
 
-### 2. Export via CLI (Not UI)
+### 2. Export via npm Scripts (Recommended)
 
-Instead of using the UI export (which adds timestamps), use CLI:
+Instead of using the UI export (which adds timestamps) or manual CLI commands, use npm scripts:
 
 ```bash
 # Navigate to your project directory
 cd C:\Users\YourName\Documents\Code Files\Logseq-db\logseq-template-graph
 
-# Export your development graph
-logseq export-edn --graph "C:\Users\YourName\Logseq\template-dev" --output logseq_db_Templates.edn
+# Export and auto-split (recommended)
+npm run export
 
-# For full version with timestamps
-logseq export-edn --graph "C:\Users\YourName\Logseq\template-dev" --output logseq_db_Templates_full.edn --include-timestamps
+# This automatically:
+# - Exports from Logseq → archive/pre-modular/logseq_db_Templates.edn
+# - Splits into modules → src/
+# - Shows statistics and git changes
 ```
 
-**Command Options:**
-- `--graph` or `-g` - Path to your Logseq DB graph directory
-- `--output` or `-o` - Output filename (consistent, no timestamps!)
-- `--include-timestamps` - Include `:block/created-at` and `:block/updated-at`
-- `--exclude-namespaces` - Omit specific namespaces (for cleaner exports)
-- `--ignore-builtin-pages` - Skip system pages
-
-### 3. Review Changes
+**Alternative: Direct Script Execution**
 
 ```bash
-# Check what changed
-git diff logseq_db_Templates.edn
+# Mac/Linux
+./scripts/export.sh
 
-# See the actual EDN structure
-head -100 logseq_db_Templates.edn
+# Windows
+.\scripts\export.ps1
 ```
 
-### 4. Commit and Push
+**What the export script does:**
+1. Exports using `npx logseq export-edn` (uses local CLI from node_modules)
+2. Excludes built-in pages and `logseq.kv` namespace
+3. Shows statistics (lines, properties, classes)
+4. Automatically splits into modules (if Babashka installed)
+5. Shows git diff summary
+6. Displays next steps
+
+### 3. Review Modular Changes
 
 ```bash
-git add logseq_db_Templates.edn logseq_db_Templates_full.edn
-git commit -m "feat: add Recipe and Book classes with author properties"
+# Review modular source files (much easier than 15K line diff!)
+git diff src/person/properties.edn
+git diff src/event/classes.edn
+
+# Review full diff summary
+git diff src/
+
+# Or review the monolith (if needed)
+git diff archive/pre-modular/logseq_db_Templates.edn
+```
+
+### 4. Build Template Variants (Optional)
+
+```bash
+# Build specific presets from modular source
+npm run build:full      # Full template (632 classes)
+npm run build:crm       # CRM preset
+npm run build:research  # Research preset
+
+# Files are created in build/ directory
+```
+
+### 5. Commit and Push
+
+```bash
+# Add all changes (modules + archives)
+git add src/ archive/
+
+# Commit with conventional commits format
+git commit -m "feat(classes): add Recipe and Book classes with author properties"
+
+# Push to remote
+git push
 git push origin main
 ```
 
@@ -159,17 +219,11 @@ Use modular workflow when you have:
 ### Quick Start with Modular Workflow
 
 ```bash
-# 1. One-time setup (installs Babashka, creates structure)
-./scripts/init-modular.sh
-
-# 2. Work in Logseq as usual
+# 1. Work in Logseq as usual
 # ... make changes to classes and properties ...
 
-# 3. Export from Logseq
+# 2. Export from Logseq (auto-splits into modules)
 ./scripts/export.sh
-
-# 4. Split into modules
-bb scripts/split.clj
 
 # 5. Review modular changes (much cleaner diffs!)
 git diff source/person/properties.edn    # 15 lines changed

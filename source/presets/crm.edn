@@ -1,0 +1,3 @@
+{:name "CRM Template"
+ :description "Customer relationship management - Person, Organization, and Contact"
+ :include ["person" "organization" "base" "common"]}

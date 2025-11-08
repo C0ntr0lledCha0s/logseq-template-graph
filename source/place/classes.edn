@@ -1,0 +1,144 @@
+{:classes
+ #:user.class{:AdministrativeArea-mVunGx8W
+              {:block/title "AdministrativeArea",
+               :build/class-extends [:user.class/Place-sWTwEwWP],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "world_map", :type :emoji},
+                :logseq.property/description
+                "A geographical region, typically under the jurisdiction of a particular government."}},
+              :TrainStation-GGs5Id8U
+              {:block/title "TrainStation",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "steam_locomotive", :type :emoji},
+                :logseq.property/description "A train station."}},
+              :BusStation-gi4OqHfp
+              {:block/title "BusStation",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "bus", :type :emoji},
+                :logseq.property/description "A bus station."}},
+              :BusStop-ucqGdOV8
+              {:block/title "BusStop",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "bus", :type :emoji},
+                :logseq.property/description "A bus stop."}},
+              :City-tX3ImtXS
+              {:block/title "City",
+               :build/class-extends
+               [:user.class/AdministrativeArea-mVunGx8W],
+               :build/properties
+               #:logseq.property{:icon {:id "cityscape", :type :emoji},
+                                 :description "A city or town."}},
+              :Country-wxqURStL
+              {:block/title "Country",
+               :build/class-extends
+               [:user.class/AdministrativeArea-mVunGx8W],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "earth_asia", :type :emoji},
+                :logseq.property/description "A country."}},
+              :TouristDestination-d0LESB-m
+              {:block/title "TouristDestination",
+               :build/class-properties
+               [:user.property/touristType-wqyyjviY
+                :user.property/includesAttraction-ThQoIDXb],
+               :build/class-extends [:user.class/Place-sWTwEwWP],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "camera", :type :emoji},
+                :logseq.property/description
+                "A tourist destination. In principle any [Place](https://schema.org/Place) can be a [TouristDestination](https://schema.org/TouristDestination) from a [City](https://schema.org/City), Region or [Country](https://schema.org/Country) to an [AmusementPark](https://schema.org/AmusementPark) or [Hotel](https://schema.org/Hotel). This Type can be used on its own to describe a general [TouristDestination](https://schema.org/TouristDestination), or be used as an [additionalType](https://schema.org/additionalType) to add tourist relevant properties to any other [Place](https://schema.org/Place). A [TouristDestination](https://schema.org/TouristDestination) is defined as a [Place](https://schema.org/Place) that contains, or is colocated with, one or more [TouristAttraction](https://schema.org/TouristAttraction)s, often linked by a similar theme or interest to a particular [touristType](https://schema.org/touristType). The [UNWTO](http://www2.unwto.org/) defines Destination (main destination of a tourism trip) as the place visited that is central to the decision to take the trip."}},
+              :BoatTerminal-KHUtlc7o
+              {:block/title "BoatTerminal",
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "boat", :type :emoji},
+                :logseq.property/description
+                "A terminal for boats, ships, and other water vessels."}},
+              :CivicStructure-y8-1eXjA
+              {:block/title "CivicStructure",
+               :build/class-properties
+               [:user.property/openingHours-bnyE7wOV],
+               :build/class-extends [:user.class/Place-sWTwEwWP],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "classical_building", :type :emoji},
+                :logseq.property/description
+                "A public structure, such as a town hall or concert hall."}},
+              :Airport-QAVQIBiI
+              {:block/title "Airport",
+               :build/class-properties
+               [:user.property/iataCode-LWJS7zmV
+                :user.property/icaoCode-fi0_lvU4],
+               :build/class-extends
+               [:user.class/CivicStructure-y8-1eXjA],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon {:id "airplane", :type :emoji},
+                :logseq.property/description "An airport."}},
+              :VirtualLocation-xrGDVABU
+              {:block/title "VirtualLocation",
+               :build/class-extends [:user.class/Intangible-nCPCNu8i],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "desktop_computer", :type :emoji},
+                :logseq.property/description
+                "An online or virtual location for attending events. For example, one may attend an online seminar or educational event. While a virtual location may be used as the location of an event, virtual locations should not be confused with physical locations in the real world."}},
+              :CountryState-NEWaiJWB
+              {:block/title "CountryState",
+               :build/class-extends
+               [:user.class/AdministrativeArea-mVunGx8W],
+               :build/properties
+               {:user.property/sourceSchema-mW7IZAwI
+                [:block/uuid
+                 #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
+                :logseq.property/icon
+                {:id "earth_americas", :type :emoji},
+                :logseq.property/description
+                "A state or province of a country."}},
+              :Place-sWTwEwWP
+              {:block/title "Place",
+               :block/collapsed? true,
+               :build/class-properties
+               [:user.property/address-Dw4sxM8a
+                :user.property/event-TnZsBTQU
+                :user.property/keywords-SmmwpeIY],
+               :build/class-extends [:user.class/Thing-K1x5zUhw],
+               :build/properties
+               #:logseq.property{:icon {:id "world_map", :type :emoji},
+                                 :description
+                                 "Entities that have a somewhat fixed, physical extension."}}}}

@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - 'v*'
+    paths:
+      - 'source/**'
+      - 'scripts/build.clj'
+      - 'scripts/split.clj'
+      - '.github/workflows/release.yml'
   workflow_dispatch:
     inputs:
       tag:
@@ -14,10 +19,22 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for changelog generation
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Install Babashka
         run: |
@@ -45,20 +62,34 @@ jobs:
           TAG="${GITHUB_REF#refs/tags/}"
           echo "TAG=$TAG" >> $GITHUB_OUTPUT
 
-          # Extract changelog section if exists
-          if [ -f "CHANGELOG.md" ]; then
+          # Generate changelog from conventional commits
+          echo "Generating changelog from conventional commits..."
+          if npx git-conventional-commits changelog --release "$TAG" > conventional_notes.txt 2>/dev/null; then
+            echo "Using generated changelog from commits"
+            cat conventional_notes.txt > release_notes.txt
+          elif [ -f "CHANGELOG.md" ]; then
+            echo "Using existing CHANGELOG.md"
             NOTES=$(sed -n "/## $TAG/,/## /p" CHANGELOG.md | sed '$d')
+            echo "$NOTES" > release_notes.txt
           else
-            NOTES="Release $TAG"
+            echo "Release $TAG" > release_notes.txt
           fi
 
-          # Add build statistics
-          echo "$NOTES" > release_notes.txt
+          # Add download instructions
+          echo "" >> release_notes.txt
+          echo "---" >> release_notes.txt
+          echo "" >> release_notes.txt
+          echo "## 📥 Download Instructions" >> release_notes.txt
+          echo "" >> release_notes.txt
+          echo "**Download the template files below (`.edn` files only):**" >> release_notes.txt
+          echo "" >> release_notes.txt
+          echo "> ⚠️ **Important:** Do NOT download the \"Source code\" archives if you only need edn templates. They contain development files for version control and devops, not the ready-to-use templates." >> release_notes.txt
           echo "" >> release_notes.txt
           echo "## Template Variants" >> release_notes.txt
           echo "" >> release_notes.txt
 
-          for file in build/*.edn logseq_db_Templates*.edn; do
+          # Only include files from build/ directory
+          for file in build/*.edn; do
             if [ -f "$file" ]; then
               name=$(basename "$file")
               lines=$(wc -l < "$file")
@@ -77,12 +108,11 @@ jobs:
         with:
           name: Release ${{ steps.release_notes.outputs.TAG }}
           body_path: release_notes.txt
-          files: |
-            build/*.edn
-            logseq_db_Templates.edn
-            logseq_db_Templates_full.edn
+          files: build/*.edn
           draft: false
           prerelease: false
+          generate_release_notes: false
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
