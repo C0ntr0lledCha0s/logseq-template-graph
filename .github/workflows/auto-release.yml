@@ -1,0 +1,212 @@
+name: Auto Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'source/**'
+      - 'scripts/**'
+      - 'build.clj'
+      - '.github/workflows/auto-release.yml'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Force version (e.g., 2.0.0) - leave blank for auto'
+        required: false
+        type: string
+      skip_release:
+        description: 'Dry-run only (no tag/release created)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  # Set to 'true' to enable automatic releases, 'false' for dry-run only
+  AUTO_RELEASE_ENABLED: 'false'
+
+jobs:
+  auto-release:
+    name: Automatic Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Detect commit type
+        id: detect
+        run: |
+          # Check if this is a merge commit
+          PARENT_COUNT=$(git rev-list --parents -n 1 HEAD | wc -w)
+
+          if [ "$PARENT_COUNT" -gt 2 ]; then
+            # Merge commit - check if from dev branch
+            MERGE_MSG=$(git log -1 --pretty=%B)
+            if echo "$MERGE_MSG" | grep -q "Merge pull request.*from.*dev"; then
+              echo "type=merge" >> $GITHUB_OUTPUT
+              echo "source=dev" >> $GITHUB_OUTPUT
+              echo "bump=auto" >> $GITHUB_OUTPUT
+            else
+              echo "type=merge" >> $GITHUB_OUTPUT
+              echo "source=other" >> $GITHUB_OUTPUT
+              echo "bump=auto" >> $GITHUB_OUTPUT
+            fi
+          else
+            # Direct commit (hotfix)
+            echo "type=commit" >> $GITHUB_OUTPUT
+            echo "source=hotfix" >> $GITHUB_OUTPUT
+            echo "bump=patch" >> $GITHUB_OUTPUT
+          fi
+
+          echo "### Commit Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "**Type:** $([ "$PARENT_COUNT" -gt 2 ] && echo 'Merge' || echo 'Direct commit')" >> $GITHUB_STEP_SUMMARY
+          echo "**Source:** $(cat <<EOF | grep 'source=' | cut -d= -f2
+          $(cat $GITHUB_OUTPUT)
+          EOF
+          )" >> $GITHUB_STEP_SUMMARY
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Get current version
+        id: current
+        run: |
+          CURRENT=$(node -p "require('./package.json').version")
+          echo "version=$CURRENT" >> $GITHUB_OUTPUT
+          echo "**Current Version:** v$CURRENT" >> $GITHUB_STEP_SUMMARY
+
+      - name: Determine next version
+        id: version
+        run: |
+          CURRENT="${{ steps.current.outputs.version }}"
+
+          # Manual override takes precedence
+          if [ -n "${{ inputs.version }}" ]; then
+            NEXT="${{ inputs.version }}"
+            echo "Using manual override: $NEXT"
+          elif [ "${{ steps.detect.outputs.bump }}" == "patch" ]; then
+            # Hotfix: patch version
+            NEXT=$(npx semver -i patch $CURRENT)
+            echo "Using patch version for hotfix: $NEXT"
+          else
+            # Merge from dev: use conventional commits
+            NEXT=$(npx git-conventional-commits version)
+            echo "Using automatic version from commits: $NEXT"
+          fi
+
+          echo "next=$NEXT" >> $GITHUB_OUTPUT
+          echo "tag=v$NEXT" >> $GITHUB_OUTPUT
+
+          echo "**Next Version:** v$NEXT" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Generate changelog entry
+          npx git-conventional-commits changelog \
+            --release ${{ steps.version.outputs.next }} > /tmp/changelog_preview.md
+
+          echo "### Changelog Preview" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat /tmp/changelog_preview.md >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+      - name: Check if release should be created
+        id: should_release
+        run: |
+          DRY_RUN="false"
+
+          # Check manual dry-run flag
+          if [ "${{ inputs.skip_release }}" == "true" ]; then
+            DRY_RUN="true"
+            echo "reason=Manual dry-run requested" >> $GITHUB_OUTPUT
+          fi
+
+          # Check environment variable
+          if [ "${{ env.AUTO_RELEASE_ENABLED }}" != "true" ]; then
+            DRY_RUN="true"
+            echo "reason=AUTO_RELEASE_ENABLED is false (safety mode)" >> $GITHUB_OUTPUT
+          fi
+
+          echo "dry_run=$DRY_RUN" >> $GITHUB_OUTPUT
+
+          if [ "$DRY_RUN" == "true" ]; then
+            echo "## ⚠️ DRY-RUN MODE" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "No tag or release will be created." >> $GITHUB_STEP_SUMMARY
+            echo "**Reason:** $(cat $GITHUB_OUTPUT | grep 'reason=' | cut -d= -f2-)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "To enable automatic releases, set \`AUTO_RELEASE_ENABLED: 'true'\` in the workflow." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "## ✅ RELEASE MODE" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Tag and release will be created." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+      - name: Update CHANGELOG.md
+        if: steps.should_release.outputs.dry_run == 'false'
+        run: |
+          npx git-conventional-commits changelog \
+            --release ${{ steps.version.outputs.next }} \
+            --file CHANGELOG.md
+
+      - name: Update package.json
+        if: steps.should_release.outputs.dry_run == 'false'
+        run: |
+          npm version ${{ steps.version.outputs.next }} --no-git-tag-version
+
+      - name: Commit release changes
+        if: steps.should_release.outputs.dry_run == 'false'
+        run: |
+          git add CHANGELOG.md package.json package-lock.json
+          git commit -m "chore(release): prepare version ${{ steps.version.outputs.next }}
+
+          Release type: ${{ steps.detect.outputs.source }}
+          Previous version: v${{ steps.current.outputs.version }}
+          New version: ${{ steps.version.outputs.tag }}
+
+          🤖 Automated release by GitHub Actions"
+
+      - name: Create and push tag
+        if: steps.should_release.outputs.dry_run == 'false'
+        run: |
+          git tag ${{ steps.version.outputs.tag }}
+          git push origin main
+          git push origin ${{ steps.version.outputs.tag }}
+
+      - name: Final summary
+        run: |
+          if [ "${{ steps.should_release.outputs.dry_run }}" == "true" ]; then
+            echo "### 📋 Summary" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "This was a **dry-run**. To create the actual release:" >> $GITHUB_STEP_SUMMARY
+            echo "1. Review the changelog preview above" >> $GITHUB_STEP_SUMMARY
+            echo "2. If everything looks good, set \`AUTO_RELEASE_ENABLED: 'true'\`" >> $GITHUB_STEP_SUMMARY
+            echo "3. Re-run this workflow or push another change" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### 🚀 Release Created" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Tag:** ${{ steps.version.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+            echo "**Changelog:** Updated" >> $GITHUB_STEP_SUMMARY
+            echo "**Status:** Tag pushed, release workflow triggered" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Monitor the [Release workflow](https://github.com/${{ github.repository }}/actions/workflows/release.yml) for build status." >> $GITHUB_STEP_SUMMARY
+          fi
