@@ -76,24 +76,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Modular template structure with 11 Schema.org categories
-- 5 preset variants: full, crm, research, content, events
-- GitHub Actions CI/CD pipeline (build, validate, release)
-- Automated template building on source changes
-- Automated EDN validation on pull requests
-- Automated release creation with all variants
+- (No unreleased changes yet)
 
 ### Changed
-- Migrated from monolithic 15,422-line file to modular structure
-- Build process now uses Babashka + EDN merging
-- Git diffs reduced from 500+ lines to 10-20 lines per change
+- (No unreleased changes yet)
 
-### Technical Details
-- **Total Lines:** 15,422 (distributed across modules)
-- **Properties:** 1,033 (organized by Schema.org categories)
-- **Classes:** 632 (hierarchical structure)
-- **Modules:** 11 (base, person, organization, event, place, creative-work, product, action, intangible, misc, common)
-- **Presets:** 5 (full, crm, research, content, events)
+### Fixed
+- (No unreleased changes yet)
 
 ---
 
