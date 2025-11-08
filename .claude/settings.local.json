@@ -18,7 +18,9 @@
       "Bash(git tag:*)",
       "Bash(git push:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(gh release delete:*)",
+      "Bash(gh release view:*)"
     ],
     "deny": [],
     "ask": []
