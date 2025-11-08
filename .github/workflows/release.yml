@@ -25,6 +25,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for changelog generation
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Install Babashka
         run: |
@@ -52,15 +62,22 @@ jobs:
           TAG="${GITHUB_REF#refs/tags/}"
           echo "TAG=$TAG" >> $GITHUB_OUTPUT
 
-          # Extract changelog section if exists
-          if [ -f "CHANGELOG.md" ]; then
+          # Generate changelog from conventional commits
+          echo "Generating changelog from conventional commits..."
+          if npx git-conventional-commits changelog --release "$TAG" > conventional_notes.txt 2>/dev/null; then
+            echo "Using generated changelog from commits"
+            cat conventional_notes.txt > release_notes.txt
+          elif [ -f "CHANGELOG.md" ]; then
+            echo "Using existing CHANGELOG.md"
             NOTES=$(sed -n "/## $TAG/,/## /p" CHANGELOG.md | sed '$d')
+            echo "$NOTES" > release_notes.txt
           else
-            NOTES="Release $TAG"
+            echo "Release $TAG" > release_notes.txt
           fi
 
-          # Add build statistics
-          echo "$NOTES" > release_notes.txt
+          # Add download instructions
+          echo "" >> release_notes.txt
+          echo "---" >> release_notes.txt
           echo "" >> release_notes.txt
           echo "## 📥 Download Instructions" >> release_notes.txt
           echo "" >> release_notes.txt

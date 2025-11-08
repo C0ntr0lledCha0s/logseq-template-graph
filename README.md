@@ -104,31 +104,53 @@ Want to contribute or customize templates?
 ### Quick Setup
 
 ```bash
-# 1. Install Logseq CLI
-npm install -g @logseq/cli
-
-# 2. Clone this repository
+# 1. Clone this repository
 git clone https://github.com/C0ntr0lledCha0s/logseq-template-graph.git
 cd logseq-template-graph
 
-# 3. Set your graph path
+# 2. Install dependencies
+npm install
+
+# 3. Setup git hooks for conventional commits
+npm run setup
+
+# 4. Install Logseq CLI
+npm install -g @logseq/cli
+
+# 5. Set your graph path
 export LOGSEQ_GRAPH_PATH="$HOME/Logseq/template-dev"
 
-# 4. Export your changes
+# 6. Export your changes
 ./scripts/export.sh
 ```
 
 ### Development Workflow
 
 ```bash
-# 1. Make changes in Logseq → 2. Export → 3. Review → 4. Commit
-./scripts/export.sh && git diff && git add . && git commit -m "feat: add Recipe class"
+# 1. Make changes in Logseq
+# 2. Export templates
+./scripts/export.sh
+
+# 3. Review changes
+git diff
+
+# 4. Commit using conventional commits format
+git commit -m "feat(classes): add Recipe class with cookTime property"
+
+# 5. Push to your fork
+git push origin feat/add-recipe-class
 ```
 
-**No more timestamp filenames!** 🎉 Scripts export to clean, version-controlled files.
+**Features:**
+- ✅ **No more timestamp filenames!** Scripts export to clean files
+- ✅ **Automated commit validation** using conventional commits
+- ✅ **Auto-generated changelogs** from commit history
+- ✅ **CI/CD integration** for releases and validation
 
 **Complete guides:**
+- [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute (includes commit standards)
 - [QUICK_START.md](QUICK_START.md) - 5-minute developer setup
+- [Conventional Commits Guide](docs/developer-guide/conventional-commits-guide.md) - Commit message standards
 - [CI/CD Pipeline](docs/developer-guide/ci-cd-pipeline.md) - Full automation workflow
 - [Modular Development](docs/modular/quickstart.md) - For large templates
 

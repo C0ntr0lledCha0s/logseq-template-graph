@@ -1,0 +1,68 @@
+# Git Conventional Commits Configuration
+# Documentation: https://github.com/qoomon/git-conventional-commits
+
+convention:
+  # Commit message pattern
+  commitMessageRegexPattern: '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(\w+\))?!?: .{1,100}'
+
+  # Allowed commit types
+  commitTypes:
+    - feat      # New features or feature enhancements
+    - fix       # Bug fixes
+    - docs      # Documentation changes
+    - style     # Code style/formatting (no logic changes)
+    - refactor  # Code restructuring without behavior changes
+    - perf      # Performance improvements
+    - test      # Test additions or corrections
+    - build     # Build system, dependencies, CI/CD changes
+    - ops       # Infrastructure and deployment
+    - chore     # Miscellaneous (e.g., .gitignore updates)
+
+  # Allowed scopes (optional but recommended)
+  commitScopes:
+    - templates   # Changes to .edn template files
+    - classes     # Schema.org class additions/modifications
+    - properties  # Schema.org property additions/modifications
+    - ci          # CI/CD pipeline changes
+    - scripts     # Build, export, validation scripts
+    - docs        # Documentation files
+    - release     # Release-related changes
+    - modular     # Modular architecture changes
+    - workflow    # Development workflow improvements
+
+  # Release tag pattern (semantic versioning)
+  releaseTagGlobPattern: 'v[0-9]*.[0-9]*.[0-9]*'
+
+changelog:
+  # Commit types to include in changelog
+  commitTypes:
+    - feat
+    - fix
+    - docs
+    - build
+    - refactor
+    - perf
+
+  # Include commits without proper scope
+  includeInvalidCommits: false
+
+  # Ignore work-in-progress commits
+  commitIgnoreRegexPattern: '^(WIP|wip)'
+
+  # Changelog section headlines
+  headlines:
+    feat: Features & Enhancements
+    fix: Bug Fixes
+    docs: Documentation
+    build: Build System & Dependencies
+    refactor: Code Improvements
+    perf: Performance Improvements
+    BREAKING CHANGE: Breaking Changes
+
+  # Repository URL templates (update with your repo)
+  commitUrl: 'https://github.com/C0ntr0lledCha0s/logseq-template-graph/commit/%commit%'
+  commitRangeUrl: 'https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/%from%...%to%'
+  issueUrl: 'https://github.com/C0ntr0lledCha0s/logseq-template-graph/issues/%issue%'
+
+  # Pattern to detect issue references in commits
+  issueRegexPattern: '#[0-9]+'

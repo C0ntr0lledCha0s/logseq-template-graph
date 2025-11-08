@@ -23,6 +23,8 @@ For people who want to **contribute** or **customize** templates.
 | Document | Description |
 |----------|-------------|
 | [Developer Setup](../QUICK_START.md#for-developers-set-up-development-environment) | Set up your development environment |
+| [Contributing Guide](../CONTRIBUTING.md) | How to contribute to the project |
+| [Conventional Commits Guide](developer-guide/conventional-commits-guide.md) | Automated changelog generation and semantic versioning |
 | [CI/CD Pipeline](developer-guide/ci-cd-pipeline.md) | Automated export workflow and git integration |
 | [Implementation Summary](developer-guide/implementation-summary.md) | Overview of what was built and how |
 
@@ -83,7 +85,7 @@ Background information and comparative analysis.
 → [Quick Start - For Users](../QUICK_START.md#for-users-import-templates)
 
 **I want to contribute a new class**
-→ [Developer Setup](../QUICK_START.md#for-developers-set-up-development-environment) → [CI/CD Pipeline](developer-guide/ci-cd-pipeline.md)
+→ [Developer Setup](../QUICK_START.md#for-developers-set-up-development-environment) → [Contributing Guide](../CONTRIBUTING.md) → [Conventional Commits](developer-guide/conventional-commits-guide.md)
 
 **My template is huge (15K+ lines)**
 → [Modular Quickstart](modular/quickstart.md)

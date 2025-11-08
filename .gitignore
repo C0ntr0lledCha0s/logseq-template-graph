@@ -42,3 +42,14 @@ desktop.ini
 # Temporary files
 *.tmp
 *.log
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Conventional commits temporary files
+conventional_notes.txt
+release_notes.txt

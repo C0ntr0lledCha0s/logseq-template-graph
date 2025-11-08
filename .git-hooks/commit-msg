@@ -1,0 +1,6 @@
+#!/bin/sh
+# Git conventional commits validation hook
+# This hook validates commit messages against the conventional commits standard
+
+# Run conventional commits validation
+npx --no -- git-conventional-commits commit-msg-hook "$1"

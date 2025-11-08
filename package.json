@@ -1,0 +1,38 @@
+{
+  "name": "logseq-template-graph",
+  "version": "0.2.0",
+  "description": "Logseq DB template graph with Schema.org ontology (632 classes, 1,033 properties)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/C0ntr0lledCha0s/logseq-template-graph.git"
+  },
+  "author": "C0ntr0lledCha0s",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "setup": "node -e \"require('child_process').execSync(process.platform === 'win32' ? 'powershell -ExecutionPolicy Bypass -File .\\\\scripts\\\\setup-hooks.ps1' : 'bash scripts/setup-hooks.sh', {stdio: 'inherit'})\"",
+    "version": "npx git-conventional-commits version",
+    "changelog": "npx git-conventional-commits changelog --release",
+    "changelog:write": "npx git-conventional-commits changelog --release --file CHANGELOG.md",
+    "validate:commits": "npx git-conventional-commits commit-msg-hook",
+    "prepare": "npm run setup"
+  },
+  "devDependencies": {
+    "git-conventional-commits": "^2.6.7"
+  },
+  "keywords": [
+    "logseq",
+    "template",
+    "schema.org",
+    "knowledge-graph",
+    "ontology",
+    "database",
+    "pkm",
+    "personal-knowledge-management",
+    "edn",
+    "supertags"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

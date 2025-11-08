@@ -201,15 +201,108 @@ Standard vocabulary from schema.org:
 
 ## Git Workflow
 
-### Semantic Commits
+### Conventional Commits
+
+**This project uses [Conventional Commits](https://www.conventionalcommits.org/) for automated changelog generation and semantic versioning.**
+
+#### Commit Message Format
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+#### Commit Types
+- `feat` - New features or feature enhancements
+- `fix` - Bug fixes
+- `docs` - Documentation changes
+- `style` - Code style/formatting (no logic changes)
+- `refactor` - Code restructuring without behavior changes
+- `perf` - Performance improvements
+- `test` - Test additions or corrections
+- `build` - Build system, dependencies, CI/CD changes
+- `ops` - Infrastructure and deployment
+- `chore` - Miscellaneous (e.g., .gitignore updates)
+
+#### Scopes (optional but recommended)
+- `templates` - Changes to .edn template files
+- `classes` - Schema.org class additions/modifications
+- `properties` - Schema.org property additions/modifications
+- `ci` - CI/CD pipeline changes
+- `scripts` - Build, export, validation scripts
+- `docs` - Documentation files
+- `release` - Release-related changes
+- `modular` - Modular architecture changes
+- `workflow` - Development workflow improvements
+
+#### Examples
 ```bash
-git commit -m "feat: add Recipe class with ingredients property"
-git commit -m "fix: correct cardinality for spouse property"
+# Feature commits
+git commit -m "feat(classes): add Recipe class with ingredients property"
+git commit -m "feat(properties): add cookTime property to Recipe class"
+
+# Bug fixes
+git commit -m "fix(templates): correct cardinality for spouse property"
+git commit -m "fix(scripts): handle empty property lists in validation"
+
+# Documentation
 git commit -m "docs: update installation instructions"
-git commit -m "chore: auto-export templates"
+git commit -m "docs(contributing): add commit message guidelines"
+
+# Chores
+git commit -m "chore(templates): auto-export templates"
+git commit -m "chore: update dependencies"
+
+# Breaking changes
+git commit -m "feat(classes)!: remove deprecated Customer class
+
+BREAKING CHANGE: Customer class removed, use Person with customerRole property instead"
+```
+
+#### Setup Commit Validation
+```bash
+# Install dependencies
+npm install
+
+# Setup git hooks (automatic validation)
+npm run setup
+
+# Validate commits manually
+npm run validate:commits
 ```
 
 ### Release Process
+
+**Automated with Conventional Commits:**
+
+```bash
+# 1. Make changes and commit using conventional commits
+git commit -m "feat(classes): add Book class with author property"
+
+# 2. Determine next version (automatic based on commits)
+npm run version
+# Output: 0.3.0 (if there are new features)
+
+# 3. Update CHANGELOG.md (automatic)
+npm run changelog:write
+
+# 4. Commit changelog
+git commit -am "docs(release): update changelog for v0.3.0"
+
+# 5. Tag release
+git tag v0.3.0
+git push --tags
+
+# 6. GitHub Actions automatically:
+#    - Builds all template variants
+#    - Generates release notes
+#    - Creates GitHub release with .edn files
+```
+
+**Manual Release (legacy):**
+
 ```bash
 # 1. Export and test
 ./scripts/export.sh
@@ -218,12 +311,7 @@ git commit -m "chore: auto-export templates"
 git tag v0.3.0
 git push --tags
 
-# 3. Create GitHub release
-gh release create v0.3.0 \
-  --title "v0.3.0 - CreativeWork Classes" \
-  --notes "Added Book, Article, Recipe" \
-  logseq_db_Templates.edn \
-  logseq_db_Templates_full.edn
+# 3. GitHub Actions handles the rest automatically
 ```
 
 ---
