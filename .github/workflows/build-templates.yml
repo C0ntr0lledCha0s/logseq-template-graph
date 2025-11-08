@@ -10,6 +10,8 @@ on:
   pull_request:
     paths:
       - 'source/**'
+      - 'scripts/build.clj'
+      - 'scripts/split.clj'
   workflow_dispatch:
 
 jobs:
@@ -32,20 +34,30 @@ jobs:
       - name: Verify Babashka installation
         run: bb --version
 
-      - name: Build Full variant
-        run: bb scripts/build.clj full
+      - name: Discover and build all preset variants
+        run: |
+          echo "Discovering presets in source/presets/..."
 
-      - name: Build CRM variant
-        run: bb scripts/build.clj crm
+          # Find all preset files and extract preset names
+          presets=$(find source/presets -name "*.edn" -type f -exec basename {} .edn \; | sort)
 
-      - name: Build Research variant
-        run: bb scripts/build.clj research
+          if [ -z "$presets" ]; then
+            echo "No presets found in source/presets/"
+            exit 1
+          fi
 
-      - name: Build Content variant
-        run: bb scripts/build.clj content
+          echo "Found presets:"
+          echo "$presets"
+          echo ""
 
-      - name: Build Events variant
-        run: bb scripts/build.clj events
+          # Build each preset
+          for preset in $presets; do
+            echo "Building $preset variant..."
+            bb scripts/build.clj "$preset"
+            echo ""
+          done
+
+          echo "All presets built successfully!"
 
       - name: Validate built templates
         run: |
