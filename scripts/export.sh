@@ -8,7 +8,6 @@ set -e  # Exit on error
 # Configuration
 GRAPH_PATH="${LOGSEQ_GRAPH_PATH:-$HOME/logseq/graphs/Test Build}"
 OUTPUT_DIR="${LOGSEQ_OUTPUT_DIR:-archive/pre-modular}"
-DATE=$(date +%Y-%m-%d)
 
 # Colors for output
 RED='\033[0;31m'
@@ -21,10 +20,10 @@ echo -e "${CYAN}🚀 Exporting Logseq Template Graph...${NC}"
 echo -e "${YELLOW}Graph: ${GRAPH_PATH}${NC}"
 echo ""
 
-# Check if Logseq CLI is installed
-if ! command -v logseq &> /dev/null; then
-    echo -e "${RED}❌ Error: Logseq CLI not found${NC}"
-    echo -e "${YELLOW}Install with: npm install -g @logseq/cli${NC}"
+# Check if Logseq CLI is available
+if ! command -v npx &> /dev/null; then
+    echo -e "${RED}❌ Error: npx not found (Node.js required)${NC}"
+    echo -e "${YELLOW}Install Node.js from: https://nodejs.org${NC}"
     exit 1
 fi
 
@@ -57,7 +56,7 @@ echo ""
 echo -e "${YELLOW}📦 Exporting template...${NC}"
 OUTPUT_FILE="$OUTPUT_DIR_ABS/logseq_db_Templates.edn"
 echo -e "${CYAN}Target file: $OUTPUT_FILE${NC}"
-logseq export-edn \
+npx logseq export-edn \
   "$GRAPH_PATH" \
   --file "$OUTPUT_FILE" \
   --exclude-built-in-pages \
@@ -98,38 +97,27 @@ if command -v git &> /dev/null && [ -d .git ]; then
     echo ""
 fi
 
-# Optional: Auto-commit prompt
-echo -e "${YELLOW}Would you like to commit these changes? (y/n)${NC}"
-read -p "> " -n 1 -r
 echo ""
+echo -e "${YELLOW}📦 Splitting template into modules...${NC}"
 
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo -e "${YELLOW}Enter commit message (or press Enter for default):${NC}"
-    read -p "> " COMMIT_MSG
-
-    if [ -z "$COMMIT_MSG" ]; then
-        COMMIT_MSG="chore: auto-export templates on $DATE"
-    fi
-
-    git add archive/pre-modular/logseq_db_Templates.edn
-    git commit -m "$COMMIT_MSG"
-
+# Check if babashka is available
+if command -v bb &> /dev/null; then
+    bb scripts/split.clj
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ Changes committed${NC}"
-        echo -e "${YELLOW}Push to remote? (y/n)${NC}"
-        read -p "> " -n 1 -r
-        echo ""
-
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            git push
-            echo -e "${GREEN}✅ Changes pushed${NC}"
-        fi
+        echo -e "${GREEN}✅ Modules updated successfully${NC}"
     else
-        echo -e "${RED}❌ Failed to commit changes${NC}"
+        echo -e "${RED}⚠️  Warning: Split script failed${NC}"
     fi
 else
-    echo -e "${YELLOW}💡 Tip: Review changes with: git diff archive/pre-modular/logseq_db_Templates.edn${NC}"
+    echo -e "${YELLOW}⚠️  Warning: Babashka (bb) not found - skipping module split${NC}"
+    echo -e "${NC}   Install from: https://babashka.org/${NC}"
 fi
 
 echo ""
 echo -e "${GREEN}🎉 Done!${NC}"
+echo ""
+echo -e "${CYAN}Next steps:${NC}"
+echo -e "${NC}  - Review changes: git diff src/${NC}"
+echo -e "${NC}  - Build variants: bb scripts/build.clj full${NC}"
+echo -e "${NC}  - Commit changes: git add . && git commit -m 'feat: describe changes'${NC}"
+echo -e "${NC}  - Push to remote: git push${NC}"

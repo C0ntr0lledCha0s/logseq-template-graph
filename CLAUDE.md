@@ -57,44 +57,51 @@ docs/
 **Location:** `scripts/`
 
 **Core Export Scripts:**
-- `export.sh` / `export.ps1` - Export from Logseq using CLI
+- `export.sh` / `export.ps1` - Export from Logseq + auto-split into modules
 - `validate.sh` - EDN validation
 - `analyze.sh` - Template statistics
+- `check-deps.js` - Verify Babashka installation (runs on npm install)
 
-**Modular Development (for 15K+ line templates):**
-- `split.clj` - Split monolith into modules (Babashka)
+**Modular Development (Babashka required):**
+- `split.clj` - Split monolith into modules
 - `build.clj` - Build template variants (full, CRM, research, etc.)
-- `init-modular.sh` - One-command modular setup
+- `init-modular.sh` - One-command modular setup (legacy)
 
 ---
 
 ## Development Workflow
 
-### Standard Workflow (Monolithic)
+### Recommended Workflow (Modular - Default for 15K+ lines)
 ```bash
 # 1. Make changes in Logseq
-# 2. Export templates
+# ... edit classes, properties ...
+
+# 2. Export and auto-split
+npm run export                # Exports → auto-splits into src/ modules
+
+# 3. Build template variants (optional)
+npm run build:full            # Full template (632 classes)
+npm run build:crm             # CRM preset
+npm run build:research        # Research preset
+
+# 4. Review and commit
+git diff src/                 # Review modular source changes
+git add .
+git commit -m "feat(classes): add Recipe class"
+git push
+```
+
+### Alternative: Direct Script Execution
+```bash
+# Run scripts directly (bypasses npm):
 ./scripts/export.sh           # Mac/Linux
 .\scripts\export.ps1           # Windows
 
-# 3. Script auto-displays: stats, git diff, commit prompt
-```
-
-### Modular Workflow (Recommended for 15K+ lines)
-```bash
-# One-time setup
-./scripts/init-modular.sh
-
-# Daily workflow
-# 1. Make changes in Logseq
-# 2. Export from UI or CLI
-# 3. Split into modules
+# Manual split (if needed):
 bb scripts/split.clj
 
-# 4. Build variants
-bb scripts/build.clj full      # Full template
-bb scripts/build.clj crm       # CRM preset
-bb scripts/build.clj research  # Research preset
+# Manual build:
+bb scripts/build.clj full
 ```
 
 **See:** [docs/modular/quickstart.md](docs/modular/quickstart.md)

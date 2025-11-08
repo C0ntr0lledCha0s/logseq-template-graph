@@ -38,11 +38,12 @@ This template provides **47 pre-built classes and 129 properties** that you can 
 
 **3-Step Setup:**
 
-1. **Download** the template: [logseq_db_Templates.edn](logseq_db_Templates.edn)
+1. **Download** the latest template from [Releases](https://github.com/C0ntr0lledCha0s/logseq-template-graph/releases/latest)
+   - Choose a variant: Full, CRM, or Research preset
 
 2. **Import** into Logseq:
    - Open Logseq → Settings (⚙️) → Import → **EDN to DB Graph**
-   - Select `logseq_db_Templates.edn`
+   - Select the downloaded `.edn` file
 
 3. **Start using** structured types:
    - `#Person` → email, jobTitle, birthDate, etc.
@@ -104,48 +105,60 @@ Want to contribute or customize templates?
 ### Quick Setup
 
 ```bash
-# 1. Clone this repository
+# 1. Clone repository
 git clone https://github.com/C0ntr0lledCha0s/logseq-template-graph.git
 cd logseq-template-graph
 
-# 2. Install dependencies
+# 2. Install all dependencies (includes @logseq/cli, git hooks)
 npm install
+# This installs Logseq CLI and checks for Babashka (optional)
 
-# 3. Setup git hooks for conventional commits
-npm run setup
+# 3. Install Babashka (for modular workflow - recommended)
+# Mac:     brew install borkdude/brew/babashka
+# Windows: scoop install babashka
+# Linux:   bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
 
-# 4. Install Logseq CLI
-npm install -g @logseq/cli
+# 4. Set your graph path
+export LOGSEQ_GRAPH_PATH="$HOME/Logseq/template-dev"  # Mac/Linux
+# Or: $env:LOGSEQ_GRAPH_PATH = "C:\Users\...\template-dev"  # Windows
 
-# 5. Set your graph path
-export LOGSEQ_GRAPH_PATH="$HOME/Logseq/template-dev"
-
-# 6. Export your changes
-./scripts/export.sh
+# 5. Start developing!
+npm run export
 ```
 
 ### Development Workflow
 
 ```bash
 # 1. Make changes in Logseq
-# 2. Export templates
-./scripts/export.sh
+# ... edit classes, properties ...
 
-# 3. Review changes
-git diff
+# 2. Export and auto-split into modules
+npm run export
 
-# 4. Commit using conventional commits format
+# 3. Build template variants (optional)
+npm run build:full      # Full template
+npm run build:crm       # CRM preset
+npm run build:research  # Research preset
+
+# 4. Review modular source changes
+git diff src/
+
+# 5. Commit using conventional commits
+git add .
 git commit -m "feat(classes): add Recipe class with cookTime property"
 
-# 5. Push to your fork
+# 6. Push to your fork
 git push origin feat/add-recipe-class
 ```
 
 **Features:**
-- ✅ **No more timestamp filenames!** Scripts export to clean files
-- ✅ **Automated commit validation** using conventional commits
-- ✅ **Auto-generated changelogs** from commit history
-- ✅ **CI/CD integration** for releases and validation
+- ✅ **NPM-based workflow** - No global installs needed
+- ✅ **Modular architecture** - Split 15K+ line templates into manageable modules
+- ✅ **Auto-split on export** - Automatically splits into `src/` modules
+- ✅ **Template variants** - Build full, CRM, research presets from modules
+- ✅ **Automated commit validation** - Conventional commits format
+- ✅ **Auto-generated changelogs** - From commit history
+- ✅ **CI/CD integration** - Automated releases and validation
 
 **Complete guides:**
 - [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute (includes commit standards)

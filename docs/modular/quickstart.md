@@ -4,31 +4,39 @@ Your template has grown to **15,422 lines** with **1,033 properties** and **632 
 
 ---
 
-## One-Command Setup
+## Setup
 
-### Linux/macOS
+### 1. Install Dependencies
+
 ```bash
-./scripts/init-modular.sh
+# Install npm dependencies (includes @logseq/cli)
+npm install
+
+# Install Babashka (required for modular workflow)
+# Mac:
+brew install borkdude/brew/babashka
+
+# Windows:
+scoop install babashka
+
+# Linux:
+bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
+
+# Verify:
+bb --version
 ```
 
-### Windows
-```powershell
-# First, install Babashka via Scoop (if not already installed)
-scoop bucket add scoop-clojure https://github.com/littleli/scoop-clojure
-scoop install babashka -s
+### 2. Configure Graph Path
 
-# Then run the init script
-bash ./scripts/init-modular.sh
+```bash
+# Mac/Linux:
+export LOGSEQ_GRAPH_PATH="$HOME/logseq/template-dev"
+
+# Windows (PowerShell):
+$env:LOGSEQ_GRAPH_PATH = "C:\Users\YourName\logseq\template-dev"
 ```
 
-This will:
-1. ✅ Install Babashka (automatic on Linux/macOS, manual on Windows)
-2. ✅ Create modular directory structure
-3. ✅ Split your monolithic template into modules
-4. ✅ Create preset configurations
-5. ✅ Archive the original
-
-**Note:** Windows users need [Scoop](https://scoop.sh/) package manager. The `-s` flag skips hash validation if needed.
+**The modular workflow is now automatic!** Just use `npm run export`.
 
 ---
 
@@ -39,30 +47,39 @@ This will:
 (Make changes to classes and properties in your Logseq graph)
 ```
 
-### 2. Export & Split
+### 2. Export & Auto-Split
 ```bash
-# Export from Logseq (unchanged)
-./scripts/export.sh
+# One command does it all!
+npm run export
 
-# Split into modules (NEW!)
-bb scripts/split.clj
+# This automatically:
+# - Exports from Logseq → archive/pre-modular/logseq_db_Templates.edn
+# - Splits into modules → src/
+# - Shows statistics and next steps
 ```
 
-### 3. Review Changes
+### 3. Review Modular Changes
 ```bash
 # Instead of 15,422-line diff, you see:
-git diff source/person/properties.edn    # 15 lines changed
-git diff source/event/classes.edn        # 8 lines changed
+git diff src/person/properties.edn    # 15 lines changed
+git diff src/event/classes.edn        # 8 lines changed
+
+# Much easier to review and understand!
 ```
 
-### 4. Build Variants
+### 4. Build Variants (Optional)
 ```bash
-# Build all templates
-bb scripts/build.clj full      # Everything (15K+ lines)
-bb scripts/build.clj crm       # Person + Org only (~2K lines)
-bb scripts/build.clj research  # Books + Articles (~3K lines)
-bb scripts/build.clj content   # Creative works (~2K lines)
-bb scripts/build.clj events    # Event management (~1.5K lines)
+# Build specific template variants using npm scripts
+npm run build:full      # Everything (15K+ lines, 632 classes)
+npm run build:crm       # Person + Org only (~2K lines)
+npm run build:research  # Books + Articles (~3K lines)
+
+# Or use Babashka directly for more options:
+bb scripts/build.clj full      # Full template
+bb scripts/build.clj crm       # CRM preset
+bb scripts/build.clj research  # Research preset
+bb scripts/build.clj content   # Creative works preset
+bb scripts/build.clj events    # Event management preset
 ```
 
 ### 5. Validate & Test

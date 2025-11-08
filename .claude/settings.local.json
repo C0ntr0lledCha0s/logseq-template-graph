@@ -24,7 +24,9 @@
       "Bash(gh api:*)",
       "Bash(npm install:*)",
       "Bash(npm run version:*)",
-      "Bash(npm run changelog:*)"
+      "Bash(npm run changelog:*)",
+      "Bash(npm view:*)",
+      "Bash(npm search:*)"
     ],
     "deny": [],
     "ask": []
