@@ -18,8 +18,18 @@ echo ""
 
 # Overall stats
 TOTAL_LINES=$(wc -l < "$FILE")
-PROP_COUNT=$(grep -c "user.property/" "$FILE")
-CLASS_COUNT=$(grep -c "user.class/" "$FILE")
+
+# Count unique class and property definitions
+# Check if this is a modular source file or complete template
+if [[ "$FILE" == source/* ]]; then
+    # Modular file - use simple count
+    PROP_COUNT=$(grep -c "user.property/" "$FILE")
+    CLASS_COUNT=$(grep -c "user.class/" "$FILE")
+else
+    # Complete template - count unique definitions
+    PROP_COUNT=$(sed -n '/:properties/,/:classes/p' "$FILE" | grep -E '^\s+:[a-z][a-zA-Z0-9]*-[a-zA-Z0-9_]+' | wc -l)
+    CLASS_COUNT=$(sed -n '/:classes/,/:logseq.db.sqlite.export/p' "$FILE" | grep -E '^\s+:[A-Z][a-zA-Z0-9]*-[a-zA-Z0-9_]+' | wc -l)
+fi
 
 echo "📊 Overall Statistics"
 echo "  Total lines: $TOTAL_LINES"

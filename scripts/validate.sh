@@ -86,8 +86,15 @@ for file in "${FILES[@]}"; do
     fi
 
     # Count properties and classes
-    PROP_COUNT=$(grep -c "user.property/" "$file" || echo "0")
-    CLASS_COUNT=$(grep -c "user.class/" "$file" || echo "0")
+    if [ "$IS_MODULAR" = false ]; then
+        # For complete templates, count unique definitions by looking for key patterns
+        PROP_COUNT=$(sed -n '/:properties/,/:classes/p' "$file" | grep -E '^\s+:[a-z][a-zA-Z0-9]*-[a-zA-Z0-9_]+' | wc -l)
+        CLASS_COUNT=$(sed -n '/:classes/,/:logseq.db.sqlite.export/p' "$file" | grep -E '^\s+:[A-Z][a-zA-Z0-9]*-[a-zA-Z0-9_]+' | wc -l)
+    else
+        # For modular files, count all occurrences (simpler approach)
+        PROP_COUNT=$(grep -c "user.property/" "$file" || echo "0")
+        CLASS_COUNT=$(grep -c "user.class/" "$file" || echo "0")
+    fi
 
     echo -e "${CYAN}  📊 Properties: ${PROP_COUNT}${NC}"
     echo -e "${CYAN}  📊 Classes: ${CLASS_COUNT}${NC}"

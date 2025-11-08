@@ -41,10 +41,18 @@
 ### 📊 Statistics
 
 **Full Template:**
-- **Classes:** 296 (from Schema.org vocabulary)
-- **Properties:** 475 (with rich metadata and type validation)
+- **Classes:** 134 (from Schema.org vocabulary)
+- **Properties:** 330 (with rich metadata and type validation)
 - **Source Modules:** 14 (base, person, organization, event, place, creative-work, product, action, intangible, health, misc, common)
 - **Preset Variants:** 6 (full, CRM, research, events, content, student-life)
+
+**Preset Variant Sizes:**
+- **Full:** 134 classes, 330 properties
+- **Student Life:** 112 classes, 299 properties
+- **Research:** 62 classes, 264 properties
+- **Content:** 49 classes, 249 properties
+- **Events:** 46 classes, 264 properties
+- **CRM:** 16 classes, 239 properties
 
 **Code Changes:**
 - **Files Changed:** 125 (+28,693 insertions, -8,809 deletions)
@@ -120,40 +128,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README with project overview
 - QUICK_START guide
 - Basic technical documentation
-
----
-
-## Template Variants (Unreleased)
-
-### Full Template
-- **Size:** ~15,422 lines
-- **Classes:** 632
-- **Properties:** 1,033
-- **Use case:** Complete Schema.org vocabulary
-
-### CRM Template
-- **Size:** ~2,000 lines (estimated)
-- **Classes:** Person, Organization, base
-- **Properties:** ~200
-- **Use case:** Customer relationship management
-
-### Research Template
-- **Size:** ~3,000 lines (estimated)
-- **Classes:** Person, CreativeWork, Event, base
-- **Properties:** ~300
-- **Use case:** Academic research and note-taking
-
-### Content Creator Template
-- **Size:** ~2,500 lines (estimated)
-- **Classes:** CreativeWork, Person, base
-- **Properties:** ~250
-- **Use case:** Bloggers, writers, content creators
-
-### Events Template
-- **Size:** ~1,500 lines (estimated)
-- **Classes:** Event, Person, Place, Organization, base
-- **Properties:** ~150
-- **Use case:** Event management and calendar
 
 ---
 
