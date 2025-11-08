@@ -65,7 +65,8 @@ jobs:
           echo "## Template Variants" >> release_notes.txt
           echo "" >> release_notes.txt
 
-          for file in build/*.edn logseq_db_Templates*.edn; do
+          # Only include files from build/ directory
+          for file in build/*.edn; do
             if [ -f "$file" ]; then
               name=$(basename "$file")
               lines=$(wc -l < "$file")
