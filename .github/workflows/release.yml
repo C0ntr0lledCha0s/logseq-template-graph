@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - 'v*'
+    paths:
+      - 'source/**'
+      - 'scripts/build.clj'
+      - 'scripts/split.clj'
+      - '.github/workflows/release.yml'
   workflow_dispatch:
     inputs:
       tag:
@@ -79,12 +84,11 @@ jobs:
         with:
           name: Release ${{ steps.release_notes.outputs.TAG }}
           body_path: release_notes.txt
-          files: |
-            build/*.edn
-            logseq_db_Templates.edn
-            logseq_db_Templates_full.edn
+          files: build/*.edn
           draft: false
           prerelease: false
+          generate_release_notes: false
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -13,7 +13,10 @@
       "Bash(gh run list:*)",
       "Bash(gh run watch:*)",
       "Bash(gh run view:*)",
-      "Bash(bash scripts/validate.sh:*)"
+      "Bash(bash scripts/validate.sh:*)",
+      "Bash(git push)",
+      "Bash(git tag:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
