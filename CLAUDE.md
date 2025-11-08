@@ -205,6 +205,77 @@ Standard vocabulary from schema.org:
 
 ---
 
+## PowerShell Script Guidelines
+
+When working with PowerShell scripts (`.ps1` files), especially git hooks:
+
+### Avoid Emojis in PowerShell Scripts
+
+Emojis can become corrupted due to encoding issues, causing syntax errors.
+
+**❌ Bad (causes errors):**
+```powershell
+Write-Host "❌ Error message" -ForegroundColor Red
+Write-Host "✅ Success message" -ForegroundColor Green
+```
+
+**✅ Good (ASCII-safe):**
+```powershell
+Write-Host "[ERROR] Error message" -ForegroundColor Red
+Write-Host "[SUCCESS] Success message" -ForegroundColor Green
+```
+
+### ASCII-Safe Alternatives
+
+Use these instead of emojis:
+
+| Emoji | ASCII Alternative | Use Case |
+|-------|-------------------|----------|
+| ❌ | `[ERROR]` or `[X]` | Errors, failures |
+| ✅ | `[SUCCESS]` or `[OK]` | Success, passed checks |
+| ⚠️ | `[WARNING]` or `[!]` | Warnings, attention needed |
+| 📝 | `[CHECK]` or `[i]` | Info, checking |
+| 🔍 | `[SCAN]` or `[?]` | Searching, analyzing |
+| 📦 | `[BUILD]` or `[*]` | Building, packaging |
+| 🚀 | `[PUSH]` or `[>>]` | Pushing, deploying |
+
+### String Quoting Rules
+
+PowerShell interprets characters differently in single vs. double quotes:
+
+**Use single quotes for literal strings:**
+```powershell
+# Good - prevents PowerShell from interpreting special chars
+$pattern = '^(feat|fix|docs)(\(.+\))?: .+'
+Write-Host 'Expected format: type(scope): description'
+```
+
+**Use double quotes only when you need variable expansion:**
+```powershell
+# Good - expands $commitMsg variable
+Write-Host "   $commitMsg" -ForegroundColor Yellow
+```
+
+### Testing PowerShell Scripts
+
+Always test on both PowerShell versions:
+```powershell
+# Test on PowerShell 5.1 (Windows default)
+powershell.exe -NoProfile -File script.ps1
+
+# Test on PowerShell 7+ (if installed)
+pwsh -NoProfile -File script.ps1
+```
+
+### Common Issues
+
+1. **Pipe `|` interpreted as command separator** - Use single quotes
+2. **Parentheses `()` cause parsing errors** - Use single quotes
+3. **Emoji corruption** - Use ASCII alternatives
+4. **Line endings** - Git may show CRLF warnings (normal on Windows)
+
+---
+
 ## Git Workflow
 
 ### Conventional Commits

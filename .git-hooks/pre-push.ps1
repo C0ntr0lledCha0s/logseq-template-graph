@@ -7,14 +7,14 @@ param($Remote, $RemoteUrl)
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "🔍 Running pre-push validation..." -ForegroundColor Cyan
+Write-Host "[PRE-PUSH] Running validation..." -ForegroundColor Cyan
 Write-Host ""
 
 # Check 1: Verify no uncommitted changes in source/
 $uncommittedChanges = git status --porcelain | Select-String "^.M source/"
 
 if ($uncommittedChanges) {
-    Write-Host "❌ Uncommitted changes detected in source/" -ForegroundColor Red
+    Write-Host "[ERROR] Uncommitted changes detected in source/" -ForegroundColor Red
     Write-Host ""
     Write-Host "Please commit or stash changes before pushing:"
     $uncommittedChanges | ForEach-Object { Write-Host "  $_" }
@@ -23,7 +23,7 @@ if ($uncommittedChanges) {
 }
 
 # Check 2: Validate all template variants build successfully
-Write-Host "📦 Building all template variants..." -ForegroundColor Cyan
+Write-Host "[BUILD] Building all template variants..." -ForegroundColor Cyan
 Write-Host ""
 
 $buildFailed = $false
@@ -33,7 +33,7 @@ try {
     npm run build:full 2>&1 | Out-Null
 }
 catch {
-    Write-Host "❌ Full template build failed" -ForegroundColor Red
+    Write-Host "[ERROR] Full template build failed" -ForegroundColor Red
     $buildFailed = $true
 }
 
@@ -42,7 +42,7 @@ try {
     npm run build:crm 2>&1 | Out-Null
 }
 catch {
-    Write-Host "❌ CRM template build failed" -ForegroundColor Red
+    Write-Host "[ERROR] CRM template build failed" -ForegroundColor Red
     $buildFailed = $true
 }
 
@@ -51,7 +51,7 @@ try {
     npm run build:research 2>&1 | Out-Null
 }
 catch {
-    Write-Host "❌ Research template build failed" -ForegroundColor Red
+    Write-Host "[ERROR] Research template build failed" -ForegroundColor Red
     $buildFailed = $true
 }
 
@@ -67,7 +67,7 @@ Write-Host "✓ All template variants built successfully" -ForegroundColor Green
 Write-Host ""
 
 # Check 3: Validate conventional commit messages for unpushed commits
-Write-Host "📝 Validating commit messages..." -ForegroundColor Cyan
+Write-Host "[CHECK] Validating commit messages..." -ForegroundColor Cyan
 
 # Get the remote branch we're pushing to
 $remoteBranch = git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>$null
@@ -82,20 +82,20 @@ if (-not $unpushedCommits) {
 }
 
 if ($unpushedCommits) {
-    $conventionalPattern = "^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?: .+"
+    $conventionalPattern = '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?: .+'
 
     foreach ($commit in $unpushedCommits) {
         $commitMsg = $commit -replace '^\w+\s+', ''
 
         if ($commitMsg -notmatch $conventionalPattern) {
             Write-Host ""
-            Write-Host "❌ Invalid commit message format detected:" -ForegroundColor Red
+            Write-Host "[ERROR] Invalid commit message format detected:" -ForegroundColor Red
             Write-Host "   $commitMsg" -ForegroundColor Yellow
             Write-Host ""
-            Write-Host "Expected format: type(scope): description"
-            Write-Host "Example: feat(classes): add Recipe class"
+            Write-Host 'Expected format: type(scope): description'
+            Write-Host 'Example: feat(classes): add Recipe class'
             Write-Host ""
-            Write-Host "Valid types: feat, fix, docs, style, refactor, perf, test, build, ops, chore"
+            Write-Host 'Valid types: feat, fix, docs, style, refactor, perf, test, build, ops, chore'
             Write-Host ""
             exit 1
         }
@@ -106,9 +106,9 @@ Write-Host "✓ All commit messages follow conventional commits format" -Foregro
 Write-Host ""
 
 # All checks passed
-Write-Host "✅ Pre-push validation completed successfully!" -ForegroundColor Green
+Write-Host "[SUCCESS] Pre-push validation completed successfully!" -ForegroundColor Green
 Write-Host ""
-Write-Host "Pushing to remote..." -ForegroundColor Cyan
+Write-Host "[PUSH] Pushing to remote..." -ForegroundColor Cyan
 Write-Host ""
 
 exit 0
