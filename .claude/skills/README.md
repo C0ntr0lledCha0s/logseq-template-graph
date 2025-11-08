@@ -6,6 +6,17 @@ This directory contains specialized skills that enhance Claude Code's capabiliti
 
 Skills are specialized prompts that give Claude Code deep expertise in specific domains. Unlike commands (which guide workflows), skills provide domain knowledge and analytical capabilities.
 
+## Skill Structure
+
+Each skill is a directory containing:
+```
+skill-name/
+├── SKILL.md (required) - Main skill prompt with YAML frontmatter
+├── reference.md (optional) - Additional documentation
+├── examples.md (optional) - Usage examples
+└── scripts/ (optional) - Helper utilities
+```
+
 ## Available Skills
 
 ### 🔍 edn-analyzer
@@ -152,15 +163,21 @@ Skills often work together with commands:
 To create a new skill:
 
 1. **Identify a domain** where Claude needs specialized knowledge
-2. **Create skill file**: `.claude/skills/skill-name.md`
-3. **Define capabilities** in the skill prompt
-4. **Provide examples** of when to activate
-5. **Specify output format** and analysis process
-6. **Document in this README**
+2. **Create skill directory**: `.claude/skills/skill-name/`
+3. **Create SKILL.md** with YAML frontmatter and skill prompt
+4. **Add optional files** (reference.md, examples.md, scripts/)
+5. **Document in this README**
 
 ### Skill Template
 
+Create `.claude/skills/skill-name/SKILL.md`:
+
 ```markdown
+---
+name: skill-name
+description: Brief description of what this skill does and when to use it (max 1024 chars). Include both capabilities and activation triggers.
+---
+
 # Skill Name
 
 You are a [domain] expert for the Logseq Template Graph project.
@@ -190,6 +207,12 @@ You are a [domain] expert for the Logseq Template Graph project.
 
 **When activated, you become an expert in [domain].**
 ```
+
+### YAML Frontmatter Requirements
+
+- **name**: Lowercase letters, numbers, and hyphens only (max 64 chars)
+- **description**: What the skill does AND when to use it (max 1024 chars)
+- **allowed-tools** (optional): Restrict which tools Claude can use
 
 ## Skill Ideas for Future
 

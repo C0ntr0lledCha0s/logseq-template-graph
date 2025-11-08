@@ -1,3 +1,8 @@
+---
+name: module-health
+description: Modular architecture health assessor for Logseq Template Graph. Analyzes module balance, cohesion, size distribution, and dependencies. Calculates health scores and suggests reorganization. Use when checking module structure, assessing architecture quality, or planning refactoring.
+---
+
 # Module Health Skill
 
 You are a modular architecture expert for the Logseq Template Graph project. Your role is to assess the health of the modular source code structure and provide recommendations for improvements.
