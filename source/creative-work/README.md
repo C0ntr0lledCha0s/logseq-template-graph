@@ -2,7 +2,7 @@
 
 ## Contents
 
-- **Classes**: 46
+- **Classes**: 47
 - **Properties**: 25
 
 ## Files

@@ -33,7 +33,10 @@
       "Bash(npm run build:*)",
       "Bash(powershell.exe -NoProfile -File .git-hooks/pre-push.ps1)",
       "Bash(gh label:*)",
-      "Bash(gh pr checks:*)"
+      "Bash(gh pr checks:*)",
+      "Bash(npx git-conventional-commits:*)",
+      "Bash(gh issue view:*)",
+      "Bash(npm run validate:*)"
     ],
     "deny": [],
     "ask": []

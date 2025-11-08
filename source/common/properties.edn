@@ -3982,4 +3982,52 @@
                                      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
                                      :type :emoji},
                                     :description
-                                    "Identifier of the flight's departure gate."}}}}
+                                    "Identifier of the flight's departure gate."}},
+                 :dependencies-Kp8Nx2Vm
+                 {:db/cardinality :db.cardinality/many,
+                  :logseq.property/type :default,
+                  :block/title "dependencies",
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "link",
+                                     :name "Link",
+                                     :keywords ["rings" "url"],
+                                     :skins
+                                     [{:unified "1f517",
+                                       :native "🔗",
+                                       :shortcodes ":link:"}],
+                                     :version 1,
+                                     :search ",link,link,rings,url,🔗",
+                                     :type :emoji},
+                                    :description
+                                    "Prerequisites needed to fulfill steps in article."}},
+                 :proficiencyLevel-Yw4Qm7Tn
+                 {:db/cardinality :db.cardinality/one,
+                  :logseq.property/type :default,
+                  :block/title "proficiencyLevel",
+                  :build/properties
+                  #:logseq.property{:icon
+                                    {:id "chart_with_upwards_trend",
+                                     :name "Chart Increasing",
+                                     :keywords
+                                     ["graph"
+                                      "presentation"
+                                      "stats"
+                                      "recovery"
+                                      "business"
+                                      "economics"
+                                      "money"
+                                      "sales"
+                                      "good"
+                                      "success"],
+                                     :skins
+                                     [{:unified "1f4c8",
+                                       :native "📈",
+                                       :shortcodes
+                                       ":chart_with_upwards_trend:"}],
+                                     :version 1,
+                                     :search
+                                     ",chart_with_upwards_trend,chart,increasing,with,upwards,trend,graph,presentation,stats,recovery,business,economics,money,sales,good,success,📈",
+                                     :type :emoji},
+                                    :description
+                                    "Proficiency needed for this content; expected values are 'Beginner', 'Intermediate', or 'Expert'."}}}}
