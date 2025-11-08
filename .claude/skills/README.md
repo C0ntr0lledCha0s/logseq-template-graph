@@ -118,6 +118,45 @@ Claude activates module-health skill and provides:
 
 ---
 
+### 🔬 schema-research
+
+**Purpose:** Schema.org research and integration assistant
+
+**Capabilities:**
+- Fetch Schema.org class/property definitions
+- Analyze class hierarchies and inheritance
+- Map Schema.org types to Logseq types
+- Determine property cardinality (:one vs :many)
+- Check template for existing implementations
+- Suggest module placement for new classes
+- Recommend property additions for classes
+- Provide real-world usage examples
+
+**When to use:**
+- "Research the Recipe class from Schema.org"
+- "What properties are missing for Person?"
+- "Should birthDate be :date or :default?"
+- "Which classes should use 'location' property?"
+- "Show hierarchy for MedicalCondition"
+- "Where should I add the Event class?"
+
+**Example:**
+```
+You: "Research the Recipe class before I add it to the template"
+
+Claude activates schema-research skill and provides:
+- Complete Schema.org definition and hierarchy
+- All properties (inherited + direct)
+- Template status check (parent class exists?)
+- Module placement recommendation (creative-work/)
+- Property type mappings (cookTime → :default)
+- Cardinality decisions (recipeIngredient → :many)
+- Integration steps and commit message
+- Estimated implementation effort
+```
+
+---
+
 ## How Skills Work
 
 ### Activation
