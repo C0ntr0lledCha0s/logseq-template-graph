@@ -100,16 +100,16 @@ logseq --version
 **Windows (PowerShell):**
 ```powershell
 # Temporary (current session)
-$env:LOGSEQ_GRAPH_PATH = "C:\Users\YourName\Logseq\template-dev"
+$env:LOGSEQ_GRAPH_PATH = "C:\Users\YourName\logseq\template-dev"
 
 # Permanent
-[System.Environment]::SetEnvironmentVariable('LOGSEQ_GRAPH_PATH', 'C:\Users\YourName\Logseq\template-dev', 'User')
+[System.Environment]::SetEnvironmentVariable('LOGSEQ_GRAPH_PATH', 'C:\Users\YourName\logseq\template-dev', 'User')
 ```
 
 **Mac/Linux (Bash):**
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
-export LOGSEQ_GRAPH_PATH="$HOME/Logseq/template-dev"
+export LOGSEQ_GRAPH_PATH="$HOME/logseq/template-dev"
 
 # Reload
 source ~/.bashrc
@@ -119,12 +119,12 @@ source ~/.bashrc
 
 Edit `scripts/export.sh` or `scripts/export.ps1` and change:
 ```bash
-GRAPH_PATH="C:/Users/YourName/Logseq/template-dev"
+GRAPH_PATH="C:/Users/YourName/logseq/template-dev"
 ```
 
 To your actual path:
 ```bash
-GRAPH_PATH="C:/Users/YourName/Logseq/your-graph-name"
+GRAPH_PATH="C:/Users/YourName/logseq/your-graph-name"
 ```
 
 ## Step 3: Make Scripts Executable (Mac/Linux only)
