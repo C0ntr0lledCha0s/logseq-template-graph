@@ -1,3 +1,15 @@
+## **Unreleased**
+
+### Features
+
+- **TechArticle class** ([#22](https://github.com/C0ntr0lledCha0s/logseq-template-graph/issues/22)) - Added TechArticle class from Schema.org for technical how-to articles, procedural troubleshooting, and specifications
+  - New `dependencies` property (many) - Track prerequisites needed for articles
+  - New `proficiencyLevel` property (one) - Indicate skill level (Beginner/Intermediate/Expert)
+  - Follows Schema.org hierarchy: Thing > CreativeWork > Article > TechArticle
+  - Creative-work module: 47 classes (was 46)
+
+---
+
 ## **1.0.0** - 2025-11-09 &emsp;<sub><sup>([4d06db2...2b5a699](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/4d06db2996960e9541c0a40c226686592bfe1856...2b5a699fc3c6a0266b596af416e29ba5dea9bcaa))</sup></sub>
 
 **Major Release:** Complete modular workflow system with enterprise-grade CI/CD pipeline, Claude Code integration, and comprehensive documentation.
