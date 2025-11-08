@@ -206,6 +206,58 @@ Claude activates github-issues skill and:
 
 ---
 
+### 🔄 self-improvement
+
+**Purpose:** Meta-learning skill that analyzes Claude Code's own performance and creates self-improving feedback loops
+
+**Capabilities:**
+- Analyze error patterns from git history
+- Identify tool invocation failures and root causes
+- Monitor CLAUDE.md size and structure health
+- Suggest documentation extractions and optimizations
+- Create automated feedback loops
+- Track error recurrence and prevention success
+- Extract learnings from successful patterns
+- Generate improvement recommendations
+- Build knowledge base from past mistakes
+
+**When to use:**
+- "Analyze why X failed"
+- "How can we prevent this error?"
+- "Is CLAUDE.md getting too bloated?"
+- "What can we learn from this mistake?"
+- "Check documentation health"
+- "Review Claude Code performance"
+- "Extract learnings from recent errors"
+- After any significant error or failure
+
+**Example:**
+```
+You: "The PowerShell hook failed. Can we improve the feedback loop?"
+
+Claude activates self-improvement skill and:
+1. Analyzes the error (emoji corruption in .ps1 file)
+2. Classifies root cause (ENCODING issue)
+3. Checks if preventable (Yes - no guidance existed)
+4. Generates learning:
+   - Error Pattern: PowerShell Emoji Corruption
+   - Root Cause: Edit tool encoding issues
+   - Solution: Use ASCII alternatives ([ERROR], [SUCCESS])
+   - Prevention: Add PowerShell guidelines to CLAUDE.md
+5. Implements improvement:
+   - Adds PowerShell Script Guidelines section
+   - Creates ASCII alternatives table
+   - Documents pattern in skill's error catalog
+   - Updates all affected scripts
+6. Tracks metrics for future prevention
+```
+
+**Supporting Scripts:**
+- `analyze-errors.sh/ps1` - Analyze error patterns from git history
+- `claude-health-check.sh/ps1` - Check CLAUDE.md health metrics
+
+---
+
 ### 📝 documentation-writer
 
 **Purpose:** Expert technical writer for generating project documentation
