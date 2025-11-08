@@ -20,6 +20,7 @@ build/
 # .claude/commands/ should be committed (team commands)
 # User can create .claude/local/ for personal commands (not tracked)
 .claude/local/
+.claude/analysis/
 
 # Backups
 *.backup
