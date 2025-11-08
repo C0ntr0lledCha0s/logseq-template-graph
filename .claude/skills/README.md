@@ -157,6 +157,79 @@ Claude activates schema-research skill and provides:
 
 ---
 
+### 📝 documentation-writer
+
+**Purpose:** Expert technical writer for generating project documentation
+
+**Capabilities:**
+- Generate module READMEs from source code analysis
+- Create user guides and step-by-step tutorials
+- Write API documentation for scripts and functions
+- Document commands, skills, and agent workflows
+- Follow project style guides automatically
+- Include tested code examples
+- Add proper cross-references
+
+**When to use:**
+- "Document the person module"
+- "Write a README for this feature"
+- "Create a user guide for presets"
+- "Document the build.clj script"
+- "Write installation instructions"
+
+**Example:**
+```
+You: "Document the person module"
+
+Claude activates documentation-writer skill and:
+- Reads source/person/classes.edn and properties.edn
+- Analyzes structure (2 classes, 36 properties)
+- Generates comprehensive README with:
+  • Module overview
+  • Class descriptions
+  • Property listings with metadata
+  • 3 practical usage examples
+  • Schema.org references
+- Saves to source/person/README.md
+```
+
+---
+
+### ✅ docs-validator
+
+**Purpose:** Documentation quality validator and completeness checker
+
+**Capabilities:**
+- Check documentation coverage (modules, features, guides)
+- Validate all internal and external links
+- Test code examples for accuracy
+- Ensure formatting consistency
+- Check for outdated information
+- Generate quality reports with scores
+- Provide prioritized recommendations
+
+**When to use:**
+- "Validate the documentation"
+- "Check for broken links"
+- "Audit documentation quality"
+- "Find missing documentation"
+- "Check module coverage"
+
+**Example:**
+```
+You: "Validate all documentation"
+
+Claude activates docs-validator skill and provides:
+- Overall quality score (87/100)
+- Coverage metrics (91% modules, 100% features)
+- Issues found (2 critical, 6 warnings)
+- Specific file locations and fixes
+- Prioritized recommendations
+- Next action suggestions
+```
+
+---
+
 ## How Skills Work
 
 ### Activation
