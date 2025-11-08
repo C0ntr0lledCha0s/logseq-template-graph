@@ -48,9 +48,11 @@ jobs:
               continue
             fi
 
-            # Skip GitHub web interface commits (legacy)
-            if echo "$MESSAGE" | grep -qE '^(Update|Create|Delete|Rename) '; then
-              echo "  ⏭️  Skipping GitHub web interface commit (legacy)"
+            # Skip specific legacy commits (before conventional commits were adopted)
+            # Only add commits here that predate the conventional commits requirement
+            LEGACY_COMMITS="8283234"  # "Update organization..." from Nov 6, before CC adoption
+            if echo "$LEGACY_COMMITS" | grep -q "${commit:0:7}"; then
+              echo "  ⏭️  Skipping legacy commit (before conventional commits)"
               continue
             fi
 
