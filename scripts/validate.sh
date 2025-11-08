@@ -41,20 +41,36 @@ for file in "${FILES[@]}"; do
         continue
     fi
 
-    # Check starts with {:properties
-    if ! head -1 "$file" | grep -q "^{:properties"; then
-        echo -e "${RED}  ❌ File doesn't start with {:properties${NC}"
-        ERRORS=$((ERRORS + 1))
-    else
-        echo -e "${GREEN}  ✅ Valid EDN structure${NC}"
+    # Determine if this is a modular source file or complete template
+    IS_MODULAR=false
+    if [[ "$file" == source/* ]]; then
+        IS_MODULAR=true
     fi
 
-    # Check ends with export type marker
-    if ! tail -1 "$file" | grep -q "logseq.db.sqlite.export/export-type"; then
-        echo -e "${RED}  ❌ File doesn't end with export-type marker${NC}"
-        ERRORS=$((ERRORS + 1))
+    if [ "$IS_MODULAR" = false ]; then
+        # Check starts with {:properties (only for complete templates)
+        if ! head -1 "$file" | grep -q "^{:properties"; then
+            echo -e "${RED}  ❌ File doesn't start with {:properties${NC}"
+            ERRORS=$((ERRORS + 1))
+        else
+            echo -e "${GREEN}  ✅ Valid EDN structure${NC}"
+        fi
+
+        # Check ends with export type marker (only for complete templates)
+        if ! tail -1 "$file" | grep -q "logseq.db.sqlite.export/export-type"; then
+            echo -e "${RED}  ❌ File doesn't end with export-type marker${NC}"
+            ERRORS=$((ERRORS + 1))
+        else
+            echo -e "${GREEN}  ✅ Valid export marker${NC}"
+        fi
     else
-        echo -e "${GREEN}  ✅ Valid export marker${NC}"
+        # For modular files, just check valid EDN structure
+        if head -1 "$file" | grep -q "^{"; then
+            echo -e "${GREEN}  ✅ Valid modular EDN structure${NC}"
+        else
+            echo -e "${RED}  ❌ Invalid EDN structure${NC}"
+            ERRORS=$((ERRORS + 1))
+        fi
     fi
 
     # Check for timestamp in filename (common mistake)

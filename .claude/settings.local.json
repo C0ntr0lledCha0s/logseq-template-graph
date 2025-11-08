@@ -32,7 +32,8 @@
       "Bash(powershell.exe -NoProfile -Command \"Get-Content .git-hooks/pre-push.ps1 -Raw | Select-String -Pattern ''\"\"'' -AllMatches | ForEach-Object { $_Matches.Count }\")",
       "Bash(npm run build:*)",
       "Bash(powershell.exe -NoProfile -File .git-hooks/pre-push.ps1)",
-      "Bash(gh label:*)"
+      "Bash(gh label:*)",
+      "Bash(gh pr checks:*)"
     ],
     "deny": [],
     "ask": []

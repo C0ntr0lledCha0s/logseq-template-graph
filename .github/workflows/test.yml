@@ -122,7 +122,7 @@ jobs:
           bb -e '
           (let [data (clojure.edn/read-string (slurp "build/logseq_db_Templates_full.edn"))
                 props (get data :properties)
-                valid-types #{:default :node :date :url :number :checkbox}]
+                valid-types #{:default :node :date :datetime :url :number :checkbox}]
             (doseq [[prop-key prop-data] props]
               (let [prop-type (get prop-data :logseq.property/type)]
                 (when-not (contains? valid-types prop-type)
