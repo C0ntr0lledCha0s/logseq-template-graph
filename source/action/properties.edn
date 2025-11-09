@@ -1,23 +1,17 @@
 {:properties
- #:user.property{:includesAttraction-ThQoIDXb
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :block/title "includesAttraction",
-                  :build/property-classes
-                  [:user.class/TouristAttraction-L0-lm1Ta],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "camera",
-                                     :name "Camera",
-                                     :keywords
-                                     ["gadgets" "photography"],
-                                     :skins
-                                     [{:unified "1f4f7",
-                                       :native "📷",
-                                       :shortcodes ":camera:"}],
-                                     :version 1,
-                                     :search
-                                     ",camera,camera,gadgets,photography,📷",
-                                     :type :emoji},
-                                    :description
-                                    "Attraction located at destination."}}}}
+ {:user.property/includesAttraction-ThQoIDXb
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "includesAttraction",
+   :build/property-classes [:user.class/TouristAttraction-L0-lm1Ta],
+   :build/properties
+   {:logseq.property/icon
+    {:id "camera",
+     :name "Camera",
+     :keywords ["gadgets" "photography"],
+     :skins [{:unified "1f4f7", :native "📷", :shortcodes ":camera:"}],
+     :version 1,
+     :search ",camera,camera,gadgets,photography,📷",
+     :type :emoji},
+    :logseq.property/description "Attraction located at destination.",
+    :exclude-from-graph-view true}}}}

@@ -51,7 +51,9 @@
       "Bash(npx git-conventional-commits:*)",
       "Bash(powershell.exe -ExecutionPolicy Bypass -File scripts/setup-hooks.ps1)",
       "Bash(powershell.exe -NoProfile -Command \"Get-Content .git-hooks/pre-push.ps1 -Raw | Select-String -Pattern ''\"\"'' -AllMatches | ForEach-Object { $_Matches.Count }\")",
-      "Bash(powershell.exe -NoProfile -File .git-hooks/pre-push.ps1)"
+      "Bash(powershell.exe -NoProfile -File .git-hooks/pre-push.ps1)",
+      "Bash(find:*)",
+      "Bash(npm run build:full:*)"
     ],
     "deny": [
       "Bash(rm -rf:*)",

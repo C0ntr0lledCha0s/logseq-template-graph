@@ -1,329 +1,263 @@
 {:properties
- #:user.property{:productionCompany-gj-DihDM
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "productionCompany",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "The production company or studio responsible for the item, e.g. series, video game, episode etc."}},
-                 :issuedBy-bKx7IVz5
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "issuedBy",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "The organization issuing the item, for example a [Permit](https://schema.org/Permit), [Ticket](https://schema.org/Ticket), or [Certification](https://schema.org/Certification)."}},
-                 :recordLabel-rW9jy_mt
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "recordLabel",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "dvd",
-                                     :name "Dvd",
-                                     :keywords ["cd" "disk" "disc"],
-                                     :skins
-                                     [{:unified "1f4c0",
-                                       :native "📀",
-                                       :shortcodes ":dvd:"}],
-                                     :version 1,
-                                     :search
-                                     ",dvd,dvd,cd,disk,disc,📀",
-                                     :type :emoji},
-                                    :description
-                                    "The label that issued the release."}},
-                 :occupationalCredentialAwarded-GwMjpAQg
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "occupationalCredentialAwarded",
-                  :build/property-classes
-                  [:user.class/EducationalOccupationalCredential-YiXkugqH],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program."}},
-                 :memberOf-vE2BpOu4
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "memberOf",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "ticket",
-                                     :name "Ticket",
-                                     :keywords
-                                     ["event" "concert" "pass"],
-                                     :skins
-                                     [{:unified "1f3ab",
-                                       :native "🎫",
-                                       :shortcodes ":ticket:"}],
-                                     :version 1,
-                                     :search
-                                     ",ticket,ticket,event,concert,pass,🎫",
-                                     :type :emoji},
-                                    :description
-                                    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] (or ProgramMembership) to which this [[67ceb474-6efe-4438-8005-63a4dd7eb054]] or [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] belongs.\nInverse property: [[00000002-1192-4192-1100-000000000000]]"}},
-                 :parentOrganization-kjRHwqXD
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :logseq.property/ui-position :block-left,
-                  :block/title "parentOrganization",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
-                                     :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
-                                     :type :emoji},
-                                    :description
-                                    "The larger [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that this organization is a [[00000002-1132-4545-4800-000000000000]] of, if any. Inverse property: [[00000002-1132-4545-4800-000000000000]]"}},
-                 :worksFor-yZ0vsbqH
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "worksFor",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "[[67cff158-77f1-4e38-954e-db0d8bf2c2e7]] that the person works for."}},
-                 :recognizedBy-W-hbsX-K
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :block/title "recognizedBy",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "An organization that acknowledges the validity, value or utility of a credential. Note: recognition may include a process of quality assurance or accreditation."}},
-                 :hostingOrganization-ISlgTiyb
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "hostingOrganization",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "The Organization (airline, travelers' club, retailer, etc.) the membership is made with or which offers the MemberProgram."}},
-                 :brand-vVFv2KZZ
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "brand",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8
-                   :user.class/Brand-g2OrKuVq],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person."}},
-                 :subOrganization-sJuCh8sl
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "subOrganization",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
-                                     :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
-                                     :type :emoji},
-                                    :description
-                                    "A relationship between two [[67cff158-77f1-4e38-954e-db0d8bf2c2e7]] where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.\nInverse property: [[00000002-1007-3074-3800-000000000000]]"}},
-                 :alumniOf-FESzI1jT
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :block/title "alumniOf",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that the person is an alumni of. Inverse property: [[00000002-9863-1838-9000-000000000000]]"}},
-                 :hasOccupation-akPVvWXJ
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "hasOccupation",
-                  :build/property-classes
-                  [:user.class/Occupation-oFkgoG3w],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "briefcase",
-                                     :name "Briefcase",
-                                     :keywords
-                                     ["business"
-                                      "documents"
-                                      "work"
-                                      "law"
-                                      "legal"
-                                      "job"
-                                      "career"],
-                                     :skins
-                                     [{:unified "1f4bc",
-                                       :native "💼",
-                                       :shortcodes ":briefcase:"}],
-                                     :version 1,
-                                     :search
-                                     ",briefcase,briefcase,business,documents,work,law,legal,job,career,💼",
-                                     :type :emoji},
-                                    :description
-                                    "The Person's [[67cfefab-7d3c-44b7-981b-a84a5fb07b37]] . For past professions, use Role for expressing dates"}},
-                 :educationalCredentialAwarded-z_pdTnql
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :block/title "educationalCredentialAwarded",
-                  :build/property-classes
-                  [:user.class/EducationalOccupationalCredential-YiXkugqH],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "school",
-                                     :name "School",
-                                     :keywords
-                                     ["building"
-                                      "student"
-                                      "education"
-                                      "learn"
-                                      "teach"],
-                                     :skins
-                                     [{:unified "1f3eb",
-                                       :native "🏫",
-                                       :shortcodes ":school:"}],
-                                     :version 1,
-                                     :search
-                                     ",school,school,building,student,education,learn,teach,🏫",
-                                     :type :emoji},
-                                    :description
-                                    "A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course or program."}},
-                 :affiliation-jA_dztvu
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :block/title "affiliation",
-                  :build/property-classes
-                  [:user.class/Organization-zHGqsbg8],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "office",
-                                     :name "Office Building",
-                                     :keywords ["bureau" "work"],
-                                     :skins
-                                     [{:unified "1f3e2",
-                                       :native "🏢",
-                                       :shortcodes ":office:"}],
-                                     :version 1,
-                                     :search
-                                     ",office,office,building,bureau,work,🏢",
-                                     :type :emoji},
-                                    :description
-                                    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that this [[67ceb474-6efe-4438-8005-63a4dd7eb054]] is affiliated with. For example, a school/university, a club, or a team."}}}}
+ {:user.property/productionCompany-gj-DihDM
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "productionCompany",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "The production company or studio responsible for the item, e.g. series, video game, episode etc.",
+    :exclude-from-graph-view true}},
+  :user.property/issuedBy-bKx7IVz5
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "issuedBy",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "The organization issuing the item, for example a [Permit](https://schema.org/Permit), [Ticket](https://schema.org/Ticket), or [Certification](https://schema.org/Certification).",
+    :exclude-from-graph-view true}},
+  :user.property/recordLabel-rW9jy_mt
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "recordLabel",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "dvd",
+     :name "Dvd",
+     :keywords ["cd" "disk" "disc"],
+     :skins [{:unified "1f4c0", :native "📀", :shortcodes ":dvd:"}],
+     :version 1,
+     :search ",dvd,dvd,cd,disk,disc,📀",
+     :type :emoji},
+    :logseq.property/description "The label that issued the release.",
+    :exclude-from-graph-view true}},
+  :user.property/occupationalCredentialAwarded-GwMjpAQg
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "occupationalCredentialAwarded",
+   :build/property-classes
+   [:user.class/EducationalOccupationalCredential-YiXkugqH],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program.",
+    :exclude-from-graph-view true}},
+  :user.property/memberOf-vE2BpOu4
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "memberOf",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "ticket",
+     :name "Ticket",
+     :keywords ["event" "concert" "pass"],
+     :skins [{:unified "1f3ab", :native "🎫", :shortcodes ":ticket:"}],
+     :version 1,
+     :search ",ticket,ticket,event,concert,pass,🎫",
+     :type :emoji},
+    :logseq.property/description
+    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] (or ProgramMembership) to which this [[67ceb474-6efe-4438-8005-63a4dd7eb054]] or [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] belongs.\nInverse property: [[00000002-1192-4192-1100-000000000000]]",
+    :exclude-from-graph-view true}},
+  :user.property/parentOrganization-kjRHwqXD
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :logseq.property/ui-position :block-left,
+   :block/title "parentOrganization",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "link",
+     :name "Link",
+     :keywords ["rings" "url"],
+     :skins [{:unified "1f517", :native "🔗", :shortcodes ":link:"}],
+     :version 1,
+     :search ",link,link,rings,url,🔗",
+     :type :emoji},
+    :logseq.property/description
+    "The larger [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that this organization is a [[00000002-1132-4545-4800-000000000000]] of, if any. Inverse property: [[00000002-1132-4545-4800-000000000000]]",
+    :exclude-from-graph-view true}},
+  :user.property/worksFor-yZ0vsbqH
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "worksFor",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "[[67cff158-77f1-4e38-954e-db0d8bf2c2e7]] that the person works for.",
+    :exclude-from-graph-view true}},
+  :user.property/recognizedBy-W-hbsX-K
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "recognizedBy",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "An organization that acknowledges the validity, value or utility of a credential. Note: recognition may include a process of quality assurance or accreditation.",
+    :exclude-from-graph-view true}},
+  :user.property/hostingOrganization-ISlgTiyb
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "hostingOrganization",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "The Organization (airline, travelers' club, retailer, etc.) the membership is made with or which offers the MemberProgram.",
+    :exclude-from-graph-view true}},
+  :user.property/brand-vVFv2KZZ
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "brand",
+   :build/property-classes
+   [:user.class/Organization-zHGqsbg8 :user.class/Brand-g2OrKuVq],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
+    :exclude-from-graph-view true}},
+  :user.property/subOrganization-sJuCh8sl
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "subOrganization",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "link",
+     :name "Link",
+     :keywords ["rings" "url"],
+     :skins [{:unified "1f517", :native "🔗", :shortcodes ":link:"}],
+     :version 1,
+     :search ",link,link,rings,url,🔗",
+     :type :emoji},
+    :logseq.property/description
+    "A relationship between two [[67cff158-77f1-4e38-954e-db0d8bf2c2e7]] where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.\nInverse property: [[00000002-1007-3074-3800-000000000000]]",
+    :exclude-from-graph-view true}},
+  :user.property/alumniOf-FESzI1jT
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "alumniOf",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that the person is an alumni of. Inverse property: [[00000002-9863-1838-9000-000000000000]]",
+    :exclude-from-graph-view true}},
+  :user.property/hasOccupation-akPVvWXJ
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "hasOccupation",
+   :build/property-classes [:user.class/Occupation-oFkgoG3w],
+   :build/properties
+   {:logseq.property/icon
+    {:id "briefcase",
+     :name "Briefcase",
+     :keywords
+     ["business" "documents" "work" "law" "legal" "job" "career"],
+     :skins
+     [{:unified "1f4bc", :native "💼", :shortcodes ":briefcase:"}],
+     :version 1,
+     :search
+     ",briefcase,briefcase,business,documents,work,law,legal,job,career,💼",
+     :type :emoji},
+    :logseq.property/description
+    "The Person's [[67cfefab-7d3c-44b7-981b-a84a5fb07b37]] . For past professions, use Role for expressing dates",
+    :exclude-from-graph-view true}},
+  :user.property/educationalCredentialAwarded-z_pdTnql
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "educationalCredentialAwarded",
+   :build/property-classes
+   [:user.class/EducationalOccupationalCredential-YiXkugqH],
+   :build/properties
+   {:logseq.property/icon
+    {:id "school",
+     :name "School",
+     :keywords ["building" "student" "education" "learn" "teach"],
+     :skins [{:unified "1f3eb", :native "🏫", :shortcodes ":school:"}],
+     :version 1,
+     :search
+     ",school,school,building,student,education,learn,teach,🏫",
+     :type :emoji},
+    :logseq.property/description
+    "A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course or program.",
+    :exclude-from-graph-view true}},
+  :user.property/affiliation-jA_dztvu
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "affiliation",
+   :build/property-classes [:user.class/Organization-zHGqsbg8],
+   :build/properties
+   {:logseq.property/icon
+    {:id "office",
+     :name "Office Building",
+     :keywords ["bureau" "work"],
+     :skins [{:unified "1f3e2", :native "🏢", :shortcodes ":office:"}],
+     :version 1,
+     :search ",office,office,building,bureau,work,🏢",
+     :type :emoji},
+    :logseq.property/description
+    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that this [[67ceb474-6efe-4438-8005-63a4dd7eb054]] is affiliated with. For example, a school/university, a club, or a team.",
+    :exclude-from-graph-view true}}}}

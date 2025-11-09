@@ -1,292 +1,243 @@
 {:properties
- #:user.property{:reservationFor-n-hM7DO1
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "reservationFor",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "green_book",
-                                     :name "Green Book",
-                                     :keywords
-                                     ["read"
-                                      "library"
-                                      "knowledge"
-                                      "study"],
-                                     :skins
-                                     [{:unified "1f4d7",
-                                       :native "📗",
-                                       :shortcodes ":green_book:"}],
-                                     :version 1,
-                                     :search
-                                     ",green_book,green,book,read,library,knowledge,study,📗",
-                                     :type :emoji},
-                                    :description
-                                    "The thing -- flight, event, restaurant, etc. being reserved."}},
-                 :parentFamilyGroup-QduiTy2X
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "parentFamilyGroup",
-                  :build/property-classes
-                  [:user.class/FamilyGroup-CmI2Ne2A],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
-                                     :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
-                                     :type :emoji},
-                                    :description
-                                    "A larger group, clan or dynasty that this family group is a subFamilyGroup of, if any. Inverse property: subFamilyGroup"}},
-                 :inLanguage-hmAiIzlE
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :logseq.property/hide? true,
-                  :block/title "inLanguage",
-                  :build/property-classes
-                  [:user.class/Language-SMD4JFAN],
-                  :build/properties
-                  #:logseq.property{:hide-empty-value true,
-                                    :icon
-                                    {:id "speaking_head_in_silhouette",
-                                     :name "Speaking Head",
-                                     :keywords
-                                     ["in"
-                                      "silhouette"
-                                      "user"
-                                      "person"
-                                      "human"
-                                      "sing"
-                                      "say"
-                                      "talk"],
-                                     :skins
-                                     [{:unified "1f5e3-fe0f",
-                                       :native "🗣️",
-                                       :shortcodes
-                                       ":speaking_head_in_silhouette:"}],
-                                     :version 1,
-                                     :search
-                                     ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
-                                     :type :emoji},
-                                    :description
-                                    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage)."}},
-                 :itemReviewed-I5jEm4tv
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "itemReviewed",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:hide-empty-value true,
-                                    :icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
-                                     :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
-                                     :type :emoji},
-                                    :description
-                                    "The item that is being reviewed/rated."}},
-                 :aggregateElement-qGiYUW3i
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "aggregateElement",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:type :tabler-icon,
-                                     :id "Group",
-                                     :name "Group",
-                                     :color "inherit"},
-                                    :description
-                                    "Indicates a prototype of the elements in the list that is used to hold aggregate information (ratings, offers, etc.)."}},
-                 :subFamilyGroup-FDjn_0z4
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "subFamilyGroup",
-                  :build/property-classes
-                  [:user.class/FamilyGroup-CmI2Ne2A],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
-                                     :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
-                                     :type :emoji},
-                                    :description
-                                    "A relationship between two FamilyGroup's where the first includes the second, e.g., as progeny. Inverse property: parentFamilyGroup"}},
-                 :owns-hbJat1oZ
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "owns",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:type :tabler-icon,
-                                     :id "Hierarchy",
-                                     :name "Hierarchy",
-                                     :color "inherit"},
-                                    :description
-                                    "Products owned by the [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] or [[67ceb474-6efe-4438-8005-63a4dd7eb054]] ."}},
-                 :characterAttribute-Pwu1TSqS
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "characterAttribute",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "magic_wand",
-                                     :name "Magic Wand",
-                                     :keywords ["supernature" "power"],
-                                     :skins
-                                     [{:unified "1fa84",
-                                       :native "🪄",
-                                       :shortcodes ":magic_wand:"}],
-                                     :version 13,
-                                     :search
-                                     ",magic_wand,magic,wand,supernature,power,🪄",
-                                     :type :emoji},
-                                    :description
-                                    "A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage)."}},
-                 :quest-DCLjpQXr
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "quest",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "mage",
-                                     :name "Mage",
-                                     :keywords ["magic"],
-                                     :skins
-                                     [{:unified "1f9d9",
-                                       :native "🧙",
-                                       :shortcodes ":mage:"}
-                                      {:unified "1f9d9-1f3fb",
-                                       :native "🧙🏻",
-                                       :shortcodes
-                                       ":mage::skin-tone-2:"}
-                                      {:unified "1f9d9-1f3fc",
-                                       :native "🧙🏼",
-                                       :shortcodes
-                                       ":mage::skin-tone-3:"}
-                                      {:unified "1f9d9-1f3fd",
-                                       :native "🧙🏽",
-                                       :shortcodes
-                                       ":mage::skin-tone-4:"}
-                                      {:unified "1f9d9-1f3fe",
-                                       :native "🧙🏾",
-                                       :shortcodes
-                                       ":mage::skin-tone-5:"}
-                                      {:unified "1f9d9-1f3ff",
-                                       :native "🧙🏿",
-                                       :shortcodes
-                                       ":mage::skin-tone-6:"}],
-                                     :version 5,
-                                     :search
-                                     ",mage,mage,magic,🧙,🧙🏻,🧙🏼,🧙🏽,🧙🏾,🧙🏿",
-                                     :type :emoji},
-                                    :description
-                                    "The task that a player-controlled character, or group of characters may complete in order to gain a reward."}},
-                 :gameItem-mHVgMpnS
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "gameItem",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "magic_wand",
-                                     :name "Magic Wand",
-                                     :keywords ["supernature" "power"],
-                                     :skins
-                                     [{:unified "1fa84",
-                                       :native "🪄",
-                                       :shortcodes ":magic_wand:"}],
-                                     :version 13,
-                                     :search
-                                     ",magic_wand,magic,wand,supernature,power,🪄",
-                                     :type :emoji},
-                                    :description
-                                    "An item is an object within the game world that can be collected by a player or, occasionally, a non-player character."}},
-                 :serviceOutput-DsLYFQA0
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "serviceOutput",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "scroll",
-                                     :name "Scroll",
-                                     :keywords
-                                     ["documents"
-                                      "ancient"
-                                      "history"
-                                      "paper"],
-                                     :skins
-                                     [{:unified "1f4dc",
-                                       :native "📜",
-                                       :shortcodes ":scroll:"}],
-                                     :version 1,
-                                     :search
-                                     ",scroll,scroll,documents,ancient,history,paper,📜",
-                                     :type :emoji},
-                                    :description
-                                    "The tangible thing generated by the service, e.g. a passport, permit, etc."}},
-                 :about-nsPvSRUP
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :logseq.property/hide? false,
-                  :logseq.property/ui-position :block-below,
-                  :block/title "about",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:hide-empty-value false,
-                                    :icon
-                                    {:id "apple",
-                                     :name "Red Apple",
-                                     :keywords
-                                     ["fruit" "mac" "school"],
-                                     :skins
-                                     [{:unified "1f34e",
-                                       :native "🍎",
-                                       :shortcodes ":apple:"}],
-                                     :version 1,
-                                     :search
-                                     ",apple,red,apple,fruit,mac,school,🍎",
-                                     :type :emoji},
-                                    :description
-                                    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)"}},
-                 :item-DhwT3bCJ
-                 {:db/cardinality :db.cardinality/one,
-                  :logseq.property/type :node,
-                  :block/title "item",
-                  :build/property-classes [:user.class/Thing-K1x5zUhw],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "apple",
-                                     :name "Red Apple",
-                                     :keywords
-                                     ["fruit" "mac" "school"],
-                                     :skins
-                                     [{:unified "1f34e",
-                                       :native "🍎",
-                                       :shortcodes ":apple:"}],
-                                     :version 1,
-                                     :search
-                                     ",apple,red,apple,fruit,mac,school,🍎",
-                                     :type :emoji},
-                                    :description
-                                    "An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')."}}}}
+ {:user.property/reservationFor-n-hM7DO1
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "reservationFor",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:id "green_book",
+     :name "Green Book",
+     :keywords ["read" "library" "knowledge" "study"],
+     :skins
+     [{:unified "1f4d7", :native "📗", :shortcodes ":green_book:"}],
+     :version 1,
+     :search ",green_book,green,book,read,library,knowledge,study,📗",
+     :type :emoji},
+    :logseq.property/description
+    "The thing -- flight, event, restaurant, etc. being reserved.",
+    :exclude-from-graph-view true}},
+  :user.property/parentFamilyGroup-QduiTy2X
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "parentFamilyGroup",
+   :build/property-classes [:user.class/FamilyGroup-CmI2Ne2A],
+   :build/properties
+   {:logseq.property/icon
+    {:id "link",
+     :name "Link",
+     :keywords ["rings" "url"],
+     :skins [{:unified "1f517", :native "🔗", :shortcodes ":link:"}],
+     :version 1,
+     :search ",link,link,rings,url,🔗",
+     :type :emoji},
+    :logseq.property/description
+    "A larger group, clan or dynasty that this family group is a subFamilyGroup of, if any. Inverse property: subFamilyGroup",
+    :exclude-from-graph-view true}},
+  :user.property/inLanguage-hmAiIzlE
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :logseq.property/hide? true,
+   :block/title "inLanguage",
+   :build/property-classes [:user.class/Language-SMD4JFAN],
+   :build/properties
+   {:logseq.property/hide-empty-value true,
+    :logseq.property/icon
+    {:id "speaking_head_in_silhouette",
+     :name "Speaking Head",
+     :keywords
+     ["in" "silhouette" "user" "person" "human" "sing" "say" "talk"],
+     :skins
+     [{:unified "1f5e3-fe0f",
+       :native "🗣️",
+       :shortcodes ":speaking_head_in_silhouette:"}],
+     :version 1,
+     :search
+     ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
+     :type :emoji},
+    :logseq.property/description
+    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage).",
+    :exclude-from-graph-view true}},
+  :user.property/itemReviewed-I5jEm4tv
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "itemReviewed",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/hide-empty-value true,
+    :logseq.property/icon
+    {:id "link",
+     :name "Link",
+     :keywords ["rings" "url"],
+     :skins [{:unified "1f517", :native "🔗", :shortcodes ":link:"}],
+     :version 1,
+     :search ",link,link,rings,url,🔗",
+     :type :emoji},
+    :logseq.property/description
+    "The item that is being reviewed/rated.",
+    :exclude-from-graph-view true}},
+  :user.property/aggregateElement-qGiYUW3i
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "aggregateElement",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:type :tabler-icon, :id "Group", :name "Group", :color "inherit"},
+    :logseq.property/description
+    "Indicates a prototype of the elements in the list that is used to hold aggregate information (ratings, offers, etc.).",
+    :exclude-from-graph-view true}},
+  :user.property/subFamilyGroup-FDjn_0z4
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "subFamilyGroup",
+   :build/property-classes [:user.class/FamilyGroup-CmI2Ne2A],
+   :build/properties
+   {:logseq.property/icon
+    {:id "link",
+     :name "Link",
+     :keywords ["rings" "url"],
+     :skins [{:unified "1f517", :native "🔗", :shortcodes ":link:"}],
+     :version 1,
+     :search ",link,link,rings,url,🔗",
+     :type :emoji},
+    :logseq.property/description
+    "A relationship between two FamilyGroup's where the first includes the second, e.g., as progeny. Inverse property: parentFamilyGroup",
+    :exclude-from-graph-view true}},
+  :user.property/owns-hbJat1oZ
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "owns",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:type :tabler-icon,
+     :id "Hierarchy",
+     :name "Hierarchy",
+     :color "inherit"},
+    :logseq.property/description
+    "Products owned by the [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] or [[67ceb474-6efe-4438-8005-63a4dd7eb054]] .",
+    :exclude-from-graph-view true}},
+  :user.property/characterAttribute-Pwu1TSqS
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "characterAttribute",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:id "magic_wand",
+     :name "Magic Wand",
+     :keywords ["supernature" "power"],
+     :skins
+     [{:unified "1fa84", :native "🪄", :shortcodes ":magic_wand:"}],
+     :version 13,
+     :search ",magic_wand,magic,wand,supernature,power,🪄",
+     :type :emoji},
+    :logseq.property/description
+    "A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage).",
+    :exclude-from-graph-view true}},
+  :user.property/quest-DCLjpQXr
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "quest",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:id "mage",
+     :name "Mage",
+     :keywords ["magic"],
+     :skins
+     [{:unified "1f9d9", :native "🧙", :shortcodes ":mage:"}
+      {:unified "1f9d9-1f3fb",
+       :native "🧙🏻",
+       :shortcodes ":mage::skin-tone-2:"}
+      {:unified "1f9d9-1f3fc",
+       :native "🧙🏼",
+       :shortcodes ":mage::skin-tone-3:"}
+      {:unified "1f9d9-1f3fd",
+       :native "🧙🏽",
+       :shortcodes ":mage::skin-tone-4:"}
+      {:unified "1f9d9-1f3fe",
+       :native "🧙🏾",
+       :shortcodes ":mage::skin-tone-5:"}
+      {:unified "1f9d9-1f3ff",
+       :native "🧙🏿",
+       :shortcodes ":mage::skin-tone-6:"}],
+     :version 5,
+     :search ",mage,mage,magic,🧙,🧙🏻,🧙🏼,🧙🏽,🧙🏾,🧙🏿",
+     :type :emoji},
+    :logseq.property/description
+    "The task that a player-controlled character, or group of characters may complete in order to gain a reward.",
+    :exclude-from-graph-view true}},
+  :user.property/gameItem-mHVgMpnS
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "gameItem",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:id "magic_wand",
+     :name "Magic Wand",
+     :keywords ["supernature" "power"],
+     :skins
+     [{:unified "1fa84", :native "🪄", :shortcodes ":magic_wand:"}],
+     :version 13,
+     :search ",magic_wand,magic,wand,supernature,power,🪄",
+     :type :emoji},
+    :logseq.property/description
+    "An item is an object within the game world that can be collected by a player or, occasionally, a non-player character.",
+    :exclude-from-graph-view true}},
+  :user.property/serviceOutput-DsLYFQA0
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "serviceOutput",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:id "scroll",
+     :name "Scroll",
+     :keywords ["documents" "ancient" "history" "paper"],
+     :skins [{:unified "1f4dc", :native "📜", :shortcodes ":scroll:"}],
+     :version 1,
+     :search ",scroll,scroll,documents,ancient,history,paper,📜",
+     :type :emoji},
+    :logseq.property/description
+    "The tangible thing generated by the service, e.g. a passport, permit, etc.",
+    :exclude-from-graph-view true}},
+  :user.property/about-nsPvSRUP
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :logseq.property/hide? false,
+   :logseq.property/ui-position :block-below,
+   :block/title "about",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/hide-empty-value false,
+    :logseq.property/icon
+    {:id "apple",
+     :name "Red Apple",
+     :keywords ["fruit" "mac" "school"],
+     :skins [{:unified "1f34e", :native "🍎", :shortcodes ":apple:"}],
+     :version 1,
+     :search ",apple,red,apple,fruit,mac,school,🍎",
+     :type :emoji},
+    :logseq.property/description
+    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)",
+    :exclude-from-graph-view true}},
+  :user.property/item-DhwT3bCJ
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "item",
+   :build/property-classes [:user.class/Thing-K1x5zUhw],
+   :build/properties
+   {:logseq.property/icon
+    {:id "apple",
+     :name "Red Apple",
+     :keywords ["fruit" "mac" "school"],
+     :skins [{:unified "1f34e", :native "🍎", :shortcodes ":apple:"}],
+     :version 1,
+     :search ",apple,red,apple,fruit,mac,school,🍎",
+     :type :emoji},
+    :logseq.property/description
+    "An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists').",
+    :exclude-from-graph-view true}}}}
