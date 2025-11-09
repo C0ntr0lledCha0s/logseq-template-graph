@@ -157,6 +157,61 @@ Claude activates schema-research skill and provides:
 
 ---
 
+### 📊 logseq-db-knowledge
+
+**Purpose:** Comprehensive knowledge about Logseq DB (database) graphs syntax and concepts
+
+**Capabilities:**
+- Teach correct Logseq DB syntax (nodes, properties, tags, tasks, queries)
+- Correct common misconceptions from file-based Logseq
+- Provide accurate Datalog query patterns
+- Explain DB-specific attributes and data model
+- Guide on tag-based features (Tasks, Journals, Cards, etc.)
+- Demonstrate proper query syntax ({:query ...} not {{query}})
+- Clarify built-in vs custom tag matching (:db/ident vs :block/title)
+
+**When to use:**
+- "How do I query tasks in Logseq DB?"
+- "Write a Datalog query to find all nodes tagged with #Person"
+- "Why doesn't my TODO query work?"
+- "What's the difference between file-based and DB Logseq?"
+- "How do properties work in Logseq DB?"
+- "Find all journal entries from last week"
+- Working with Logseq queries and results don't match expectations
+
+**Example:**
+```
+You: "Write a query to find all tasks with Doing status"
+
+Claude activates logseq-db-knowledge skill and provides:
+
+CORRECT (Logseq DB):
+{:query [:find (pull ?b [*])
+         :where
+         [?b :block/tags ?t]
+         [?t :block/title "Task"]
+         [?b :logseq.property/status ?s]
+         [?s :block/title "Doing"]]}
+
+EXPLANATION:
+- Tasks in DB use #Task tag (not TODO markers)
+- Status is a property (not a block marker)
+- Always use {:query ...} format (not {{query}})
+- Use :block/title for tag matching (works universally)
+```
+
+**Critical Corrections:**
+- ❌ File-based: `TODO`, `DOING`, `DONE` markers → ✅ DB: `#Task` + Status property
+- ❌ Old syntax: `{{query}}` → ✅ New syntax: `{:query ...}`
+- ❌ Custom tags: `:db/ident` → ✅ All tags: `:block/title`
+
+**Reference Documentation:**
+- [references/data-model.md](.claude/skills/logseq-db-knowledge/references/data-model.md) - DB schema and data model
+- [references/query-examples.md](.claude/skills/logseq-db-knowledge/references/query-examples.md) - 50+ query examples
+- [references/db-vs-file.md](.claude/skills/logseq-db-knowledge/references/db-vs-file.md) - Feature comparison guide
+
+---
+
 ### 🐛 github-issues
 
 **Purpose:** Intelligent GitHub issues management with validation and relationship tracking

@@ -22,6 +22,7 @@
       "Bash(gh pr merge:*)",
       "Bash(bb:*)",
       "Bash(cat:*)",
+      "Bash(curl:*)",
       "Bash(test:*)",
       "Bash(logseq export-edn:*)",
       "Bash(logseq:*)",
