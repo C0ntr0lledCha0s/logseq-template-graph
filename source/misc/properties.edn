@@ -15,8 +15,7 @@
      :search ",green_book,green,book,read,library,knowledge,study,📗",
      :type :emoji},
     :logseq.property/description
-    "The thing -- flight, event, restaurant, etc. being reserved.",
-    :exclude-from-graph-view true}},
+    "The thing -- flight, event, restaurant, etc. being reserved."}},
   :user.property/parentFamilyGroup-QduiTy2X
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -32,8 +31,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A larger group, clan or dynasty that this family group is a subFamilyGroup of, if any. Inverse property: subFamilyGroup",
-    :exclude-from-graph-view true}},
+    "A larger group, clan or dynasty that this family group is a subFamilyGroup of, if any. Inverse property: subFamilyGroup"}},
   :user.property/inLanguage-hmAiIzlE
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -56,8 +54,7 @@
      ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
      :type :emoji},
     :logseq.property/description
-    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage).",
-    :exclude-from-graph-view true}},
+    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage)."}},
   :user.property/itemReviewed-I5jEm4tv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -74,8 +71,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "The item that is being reviewed/rated.",
-    :exclude-from-graph-view true}},
+    "The item that is being reviewed/rated."}},
   :user.property/aggregateElement-qGiYUW3i
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -85,8 +81,7 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Group", :name "Group", :color "inherit"},
     :logseq.property/description
-    "Indicates a prototype of the elements in the list that is used to hold aggregate information (ratings, offers, etc.).",
-    :exclude-from-graph-view true}},
+    "Indicates a prototype of the elements in the list that is used to hold aggregate information (ratings, offers, etc.)."}},
   :user.property/subFamilyGroup-FDjn_0z4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -102,8 +97,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A relationship between two FamilyGroup's where the first includes the second, e.g., as progeny. Inverse property: parentFamilyGroup",
-    :exclude-from-graph-view true}},
+    "A relationship between two FamilyGroup's where the first includes the second, e.g., as progeny. Inverse property: parentFamilyGroup"}},
   :user.property/owns-hbJat1oZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -116,8 +110,7 @@
      :name "Hierarchy",
      :color "inherit"},
     :logseq.property/description
-    "Products owned by the [[Organization]] or [[Person]] .",
-    :exclude-from-graph-view true}},
+    "Products owned by the [[Organization]] or [[Person]] ."}},
   :user.property/characterAttribute-Pwu1TSqS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -134,8 +127,7 @@
      :search ",magic_wand,magic,wand,supernature,power,🪄",
      :type :emoji},
     :logseq.property/description
-    "A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage).",
-    :exclude-from-graph-view true}},
+    "A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage)."}},
   :user.property/quest-DCLjpQXr
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -167,8 +159,7 @@
      :search ",mage,mage,magic,🧙,🧙🏻,🧙🏼,🧙🏽,🧙🏾,🧙🏿",
      :type :emoji},
     :logseq.property/description
-    "The task that a player-controlled character, or group of characters may complete in order to gain a reward.",
-    :exclude-from-graph-view true}},
+    "The task that a player-controlled character, or group of characters may complete in order to gain a reward."}},
   :user.property/gameItem-mHVgMpnS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -185,8 +176,7 @@
      :search ",magic_wand,magic,wand,supernature,power,🪄",
      :type :emoji},
     :logseq.property/description
-    "An item is an object within the game world that can be collected by a player or, occasionally, a non-player character.",
-    :exclude-from-graph-view true}},
+    "An item is an object within the game world that can be collected by a player or, occasionally, a non-player character."}},
   :user.property/serviceOutput-DsLYFQA0
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -202,8 +192,7 @@
      :search ",scroll,scroll,documents,ancient,history,paper,📜",
      :type :emoji},
     :logseq.property/description
-    "The tangible thing generated by the service, e.g. a passport, permit, etc.",
-    :exclude-from-graph-view true}},
+    "The tangible thing generated by the service, e.g. a passport, permit, etc."}},
   :user.property/about-nsPvSRUP
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -222,8 +211,7 @@
      :search ",apple,red,apple,fruit,mac,school,🍎",
      :type :emoji},
     :logseq.property/description
-    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)",
-    :exclude-from-graph-view true}},
+    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)"}},
   :user.property/item-DhwT3bCJ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,

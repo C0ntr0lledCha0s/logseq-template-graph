@@ -9,8 +9,7 @@
    :build/properties
    {:logseq.property/icon {:id "writing_hand", :type :emoji},
     :logseq.property/description
-    "The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.",
-    :exclude-from-graph-view true}},
+    "The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably."}},
   :user.property/spouse-lsSSFZqv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -28,8 +27,7 @@
      :version 13,
      :search ",people_hugging,people,hugging,care,🫂",
      :type :emoji},
-    :logseq.property/description "The person's spouse.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "The person's spouse."}},
   :user.property/relatedTo-E2UsHj53
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -48,8 +46,7 @@
      :search
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
-    :logseq.property/description "The most generic familial relation.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "The most generic familial relation."}},
   :user.property/broker-wZW7zuN5
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -66,8 +63,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "An entity that arranges for an exchange between a buyer and a seller. In most cases a broker never acquires or releases ownership of a product or service involved in an exchange. If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.",
-    :exclude-from-graph-view true}},
+    "An entity that arranges for an exchange between a buyer and a seller. In most cases a broker never acquires or releases ownership of a product or service involved in an exchange. If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred."}},
   :user.property/children-XxOZD4XD
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -99,8 +95,7 @@
      :search
      ",baby,baby,child,boy,girl,toddler,👶,👶🏻,👶🏼,👶🏽,👶🏾,👶🏿",
      :type :emoji},
-    :logseq.property/description "A child of the person.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "A child of the person."}},
   :user.property/actor-OdNUErVt
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -120,8 +115,7 @@
      ",performing_arts,performing,arts,acting,theater,drama,🎭",
      :type :emoji},
     :logseq.property/description
-    "An actor (individual or a group), e.g. in TV, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip.",
-    :exclude-from-graph-view true}},
+    "An actor (individual or a group), e.g. in TV, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip."}},
   :user.property/composer-DqXekXpv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -138,8 +132,7 @@
      :search ",violin,violin,music,instrument,orchestra,symphony,🎻",
      :type :emoji},
     :logseq.property/description
-    "The [[Person]] or [[Organization]] who wrote a composition, or who is the composer of a work performed at some event.",
-    :exclude-from-graph-view true}},
+    "The [[Person]] or [[Organization]] who wrote a composition, or who is the composer of a work performed at some event."}},
   :user.property/provider-M4XBuYkt
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -157,8 +150,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.",
-    :exclude-from-graph-view true}},
+    "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller."}},
   :user.property/sponsor-B3edgyM3
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -180,8 +172,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A person or organization that supports a thing through a pledge, promise, or financial contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
-    :exclude-from-graph-view true}},
+    "A person or organization that supports a thing through a pledge, promise, or financial contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event."}},
   :user.property/byArtist-w5s-7l1v
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -198,8 +189,7 @@
      :search ",art,artist,palette,art,design,paint,draw,colors,🎨",
      :type :emoji},
     :logseq.property/description
-    "The artist that performed this album or recording.",
-    :exclude-from-graph-view true}},
+    "The artist that performed this album or recording."}},
   :user.property/lyricist-z_QwYyda
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -214,8 +204,7 @@
      :version 1,
      :search ",violin,violin,music,instrument,orchestra,symphony,🎻",
      :type :emoji},
-    :logseq.property/description "The person who wrote the words.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "The person who wrote the words."}},
   :user.property/alumni-Wxc6iYeE
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -235,8 +224,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "Alumni of an [[Organization]].\nInverse property: [[alumniOf]]",
-    :exclude-from-graph-view true}},
+    "Alumni of an [[Organization]].\nInverse property: [[alumniOf]]"}},
   :user.property/member-KLhlfdeR
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -253,8 +241,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "A member of an [[Organization]] or a ProgramMembership. Organizations can be members of Organizations; ProgramMembership is typically for individuals. Inverse property:  [[memberOf]]",
-    :exclude-from-graph-view true}},
+    "A member of an [[Organization]] or a ProgramMembership. Organizations can be members of Organizations; ProgramMembership is typically for individuals. Inverse property:  [[memberOf]]"}},
   :user.property/colleague-dgX2eJjr
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -273,8 +260,7 @@
      :search
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
-    :logseq.property/description "A colleague of the person.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "A colleague of the person."}},
   :user.property/creditedTo-AxWjd9hw
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -291,8 +277,7 @@
      :search ",mega,megaphone,mega,sound,speaker,volume,📣",
      :type :emoji},
     :logseq.property/description
-    "The group the release is credited to if different than the byArtist. For example, Red and Blue is credited to \"Stefani Germanotta Band\", but by Lady Gaga.",
-    :exclude-from-graph-view true}},
+    "The group the release is credited to if different than the byArtist. For example, Red and Blue is credited to \"Stefani Germanotta Band\", but by Lady Gaga."}},
   :user.property/director-SR7t7H8b
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -308,8 +293,7 @@
      :search ",mega,megaphone,mega,sound,speaker,volume,📣",
      :type :emoji},
     :logseq.property/description
-    "A director of e.g. TV, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip.",
-    :exclude-from-graph-view true}},
+    "A director of e.g. TV, radio, movie, video gaming etc. content, or of an event. Directors can be associated with individual items or with a series, episode, clip."}},
   :user.property/producer-tDHINIQi
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -331,8 +315,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.).",
-    :exclude-from-graph-view true}},
+    "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.)."}},
   :user.property/publisher-FX1fL5XC
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -354,8 +337,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "The publisher of the article in question.",
-    :exclude-from-graph-view true}},
+    "The publisher of the article in question."}},
   :user.property/maintainer-q7oS2Alh
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -377,8 +359,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A maintainer of a [Dataset](https://schema.org/Dataset), software package ([SoftwareApplication](https://schema.org/SoftwareApplication)), or other [Project](https://schema.org/Project). A maintainer is a [Person](https://schema.org/Person) or [Organization](https://schema.org/Organization) that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When [maintainer](https://schema.org/maintainer) is applied to a specific version of something e.g. a particular version or packaging of a [Dataset](https://schema.org/Dataset), it is always possible that the upstream source has a different maintainer. The [isBasedOn](https://schema.org/isBasedOn) property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.",
-    :exclude-from-graph-view true}},
+    "A maintainer of a [Dataset](https://schema.org/Dataset), software package ([SoftwareApplication](https://schema.org/SoftwareApplication)), or other [Project](https://schema.org/Project). A maintainer is a [Person](https://schema.org/Person) or [Organization](https://schema.org/Organization) that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When [maintainer](https://schema.org/maintainer) is applied to a specific version of something e.g. a particular version or packaging of a [Dataset](https://schema.org/Dataset), it is always possible that the upstream source has a different maintainer. The [isBasedOn](https://schema.org/isBasedOn) property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work."}},
   :user.property/Parents-TJpz00YQ
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -407,8 +388,7 @@
      ",man-woman-girl,family:,man,,woman,,girl,man,woman-girl,family,woman,home,parents,people,human,child,👨‍👩‍👧",
      :type :emoji},
     :logseq.property/description
-    "A parent of this person. We use \"parents\" instead of \"parent\" as this property is already used.",
-    :exclude-from-graph-view true}},
+    "A parent of this person. We use \"parents\" instead of \"parent\" as this property is already used."}},
   :user.property/attendee-ltKyBpcg
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -430,8 +410,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A person or organization attending the event.",
-    :exclude-from-graph-view true}},
+    "A person or organization attending the event."}},
   :user.property/contactPoint-NixCcjXJ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -451,8 +430,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A contact point for a [[Person]] or [[Organization]]",
-    :exclude-from-graph-view true}},
+    "A contact point for a [[Person]] or [[Organization]]"}},
   :user.property/creator-DoXW8XMs
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -475,8 +453,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "The creator/ [[author]] of this [[CreativeWork]] . This is the same as the [[author]] property for [[CreativeWork]] .",
-    :exclude-from-graph-view true}},
+    "The creator/ [[author]] of this [[CreativeWork]] . This is the same as the [[author]] property for [[CreativeWork]] ."}},
   :user.property/seller-TYIlntxq
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -497,8 +474,7 @@
      ",classical_building,classical,building,art,culture,history,🏛️",
      :type :emoji},
     :logseq.property/description
-    "An entity which offers (sells / leases / lends / loans) the services / goods. A seller may also be a provider.",
-    :exclude-from-graph-view true}},
+    "An entity which offers (sells / leases / lends / loans) the services / goods. A seller may also be a provider."}},
   :user.property/contributor-oxEX00r_
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -521,8 +497,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A secondary contributor to the [[CreativeWork]] or [[Event]] .",
-    :exclude-from-graph-view true}},
+    "A secondary contributor to the [[CreativeWork]] or [[Event]] ."}},
   :user.property/sibling-i6Kk0Lvr
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -550,8 +525,7 @@
      :search
      ",man-woman-girl-girl,family:,man,,woman,,girl,,girl,man,woman-girl-girl,family,woman,home,parents,people,human,children,👨‍👩‍👧‍👧",
      :type :emoji},
-    :logseq.property/description "A sibling of the person.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "A sibling of the person."}},
   :user.property/endorsers-OaAOkjBA
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -572,8 +546,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "People or organizations that endorse the plan.",
-    :exclude-from-graph-view true}},
+    "People or organizations that endorse the plan."}},
   :user.property/underName-Q5lbkSQp
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -594,8 +567,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "The person or organization the reservation or ticket is for.",
-    :exclude-from-graph-view true}},
+    "The person or organization the reservation or ticket is for."}},
   :user.property/readBy-Swh1B994
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -616,8 +588,7 @@
      ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
      :type :emoji},
     :logseq.property/description
-    "A person who reads (performs) the audiobook.",
-    :exclude-from-graph-view true}},
+    "A person who reads (performs) the audiobook."}},
   :user.property/knows-tKhsJ816
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -637,8 +608,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "The most generic bi-directional social/work relation.",
-    :exclude-from-graph-view true}},
+    "The most generic bi-directional social/work relation."}},
   :user.property/editor-M9WJEe3r
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -660,8 +630,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "Specifies the [[Person]] who edited the [[CreativeWork]] .",
-    :exclude-from-graph-view true}},
+    "Specifies the [[Person]] who edited the [[CreativeWork]] ."}},
   :user.property/character-CpH6W1eR
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -694,8 +663,7 @@
      :search ",mage,mage,magic,🧙,🧙🏻,🧙🏼,🧙🏽,🧙🏾,🧙🏿",
      :type :emoji},
     :logseq.property/description
-    "Fictional [[Person]] connected with a creative work.",
-    :exclude-from-graph-view true}},
+    "Fictional [[Person]] connected with a creative work."}},
   :user.property/instructor-WAvJotJ-
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -715,8 +683,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A person assigned to instruct or provide instructional assistance for the [CourseInstance](https://schema.org/CourseInstance).",
-    :exclude-from-graph-view true}},
+    "A person assigned to instruct or provide instructional assistance for the [CourseInstance](https://schema.org/CourseInstance)."}},
   :user.property/illustrator-gBU5450B
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -736,8 +703,7 @@
      :search
      ",lower_left_paintbrush,paintbrush,lower,left,drawing,creativity,art,🖌️",
      :type :emoji},
-    :logseq.property/description "The illustrator of the book.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "The illustrator of the book."}},
   :user.property/musicBy-f4bfH8ib
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -754,8 +720,7 @@
      :version 1,
      :search ",musical_note,musical,note,score,tone,sound,🎵",
      :type :emoji},
-    :logseq.property/description "The composer of the soundtrack.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "The composer of the soundtrack."}},
   :user.property/employee-OvTfg04j
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,

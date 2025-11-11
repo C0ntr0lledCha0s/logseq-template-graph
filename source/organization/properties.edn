@@ -14,8 +14,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "The production company or studio responsible for the item, e.g. series, video game, episode etc.",
-    :exclude-from-graph-view true}},
+    "The production company or studio responsible for the item, e.g. series, video game, episode etc."}},
   :user.property/issuedBy-bKx7IVz5
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -31,8 +30,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "The organization issuing the item, for example a [Permit](https://schema.org/Permit), [Ticket](https://schema.org/Ticket), or [Certification](https://schema.org/Certification).",
-    :exclude-from-graph-view true}},
+    "The organization issuing the item, for example a [Permit](https://schema.org/Permit), [Ticket](https://schema.org/Ticket), or [Certification](https://schema.org/Certification)."}},
   :user.property/recordLabel-rW9jy_mt
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -47,8 +45,7 @@
      :version 1,
      :search ",dvd,dvd,cd,disk,disc,📀",
      :type :emoji},
-    :logseq.property/description "The label that issued the release.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "The label that issued the release."}},
   :user.property/occupationalCredentialAwarded-GwMjpAQg
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -65,8 +62,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program.",
-    :exclude-from-graph-view true}},
+    "A description of the qualification, award, certificate, diploma or other occupational credential awarded as a consequence of successful completion of this course or program."}},
   :user.property/memberOf-vE2BpOu4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -82,8 +78,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "An [[Organization]] (or ProgramMembership) to which this [[Person]] or [[Organization]] belongs.\nInverse property: [[member]]",
-    :exclude-from-graph-view true}},
+    "An [[Organization]] (or ProgramMembership) to which this [[Person]] or [[Organization]] belongs.\nInverse property: [[member]]"}},
   :user.property/parentOrganization-kjRHwqXD
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -100,8 +95,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "The larger [[Organization]] that this organization is a [[subOrganization]] of, if any. Inverse property: [[subOrganization]]",
-    :exclude-from-graph-view true}},
+    "The larger [[Organization]] that this organization is a [[subOrganization]] of, if any. Inverse property: [[subOrganization]]"}},
   :user.property/worksFor-yZ0vsbqH
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -117,8 +111,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "[[Organization]] that the person works for.",
-    :exclude-from-graph-view true}},
+    "[[Organization]] that the person works for."}},
   :user.property/recognizedBy-W-hbsX-K
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -134,8 +127,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "An organization that acknowledges the validity, value or utility of a credential. Note: recognition may include a process of quality assurance or accreditation.",
-    :exclude-from-graph-view true}},
+    "An organization that acknowledges the validity, value or utility of a credential. Note: recognition may include a process of quality assurance or accreditation."}},
   :user.property/hostingOrganization-ISlgTiyb
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -151,8 +143,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "The Organization (airline, travelers' club, retailer, etc.) the membership is made with or which offers the MemberProgram.",
-    :exclude-from-graph-view true}},
+    "The Organization (airline, travelers' club, retailer, etc.) the membership is made with or which offers the MemberProgram."}},
   :user.property/brand-vVFv2KZZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -169,8 +160,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
-    :exclude-from-graph-view true}},
+    "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person."}},
   :user.property/subOrganization-sJuCh8sl
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -186,8 +176,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A relationship between two [[Organization]] where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.\nInverse property: [[parentOrganization]]",
-    :exclude-from-graph-view true}},
+    "A relationship between two [[Organization]] where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.\nInverse property: [[parentOrganization]]"}},
   :user.property/alumniOf-FESzI1jT
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -203,8 +192,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "An [[Organization]] that the person is an alumni of. Inverse property: [[alumni]]",
-    :exclude-from-graph-view true}},
+    "An [[Organization]] that the person is an alumni of. Inverse property: [[alumni]]"}},
   :user.property/hasOccupation-akPVvWXJ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -223,8 +211,7 @@
      ",briefcase,briefcase,business,documents,work,law,legal,job,career,💼",
      :type :emoji},
     :logseq.property/description
-    "The Person's [[Occupation]] . For past professions, use Role for expressing dates",
-    :exclude-from-graph-view true}},
+    "The Person's [[Occupation]] . For past professions, use Role for expressing dates"}},
   :user.property/educationalCredentialAwarded-z_pdTnql
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -242,8 +229,7 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course or program.",
-    :exclude-from-graph-view true}},
+    "A description of the qualification, award, certificate, diploma or other educational credential awarded as a consequence of successful completion of this course or program."}},
   :user.property/affiliation-jA_dztvu
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,

@@ -11,8 +11,7 @@
      :name "Pyramid",
      :color "inherit"},
     :logseq.property/description
-    "The tiers of a member program.\nInverse property: [isTierOf](https://schema.org/isTierOf)",
-    :exclude-from-graph-view true}},
+    "The tiers of a member program.\nInverse property: [isTierOf](https://schema.org/isTierOf)"}},
   :user.property/subReservation-P3URlTQD
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -29,8 +28,7 @@
      :search ",green_book,green,book,read,library,knowledge,study,📗",
      :type :emoji},
     :logseq.property/description
-    "The individual reservations included in the package. Typically a repeated property.",
-    :exclude-from-graph-view true}},
+    "The individual reservations included in the package. Typically a repeated property."}},
   :user.property/nextItem-pJEtk0Ht
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -46,8 +44,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A link to the ListItem that follows the current one.",
-    :exclude-from-graph-view true}},
+    "A link to the ListItem that follows the current one."}},
   :user.property/program-YPw2pQES
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -63,8 +60,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "The [MemberProgram](https://schema.org/MemberProgram) associated with a [ProgramMembership](https://schema.org/ProgramMembership).",
-    :exclude-from-graph-view true}},
+    "The [MemberProgram](https://schema.org/MemberProgram) associated with a [ProgramMembership](https://schema.org/ProgramMembership)."}},
   :user.property/repeatFrequency-Q0bQ9SOb
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -80,8 +76,7 @@
      :search ",repeat,repeat,button,loop,record,🔁",
      :type :emoji},
     :logseq.property/description
-    "Defines the frequency at which [Event](https://schema.org/Event)s will occur according to a schedule [Schedule](https://schema.org/Schedule). The intervals between events should be defined as a [Duration](https://schema.org/Duration) of time.",
-    :exclude-from-graph-view true}},
+    "Defines the frequency at which [Event](https://schema.org/Event)s will occur according to a schedule [Schedule](https://schema.org/Schedule). The intervals between events should be defined as a [Duration](https://schema.org/Duration) of time."}},
   :user.property/reviewRating-QBDiKkwj
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -98,8 +93,7 @@
      :search ",star,star,night,yellow,⭐",
      :type :emoji},
     :logseq.property/description
-    "The rating given in this review. Note that reviews can themselves be rated. The `reviewRating` applies to rating given by the review. The [aggregateRating](https://schema.org/aggregateRating) property applies to the review itself, as a creative work.",
-    :exclude-from-graph-view true}},
+    "The rating given in this review. Note that reviews can themselves be rated. The `reviewRating` applies to rating given by the review. The [aggregateRating](https://schema.org/aggregateRating) property applies to the review itself, as a creative work."}},
   :user.property/partOfTrip-UXTLyMra
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -116,8 +110,7 @@
      :search ",luggage,luggage,packing,travel,🧳",
      :type :emoji},
     :logseq.property/description
-    "Identifies that this [Trip](https://schema.org/Trip) is a subTrip of another Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [subTrip](https://schema.org/subTrip)",
-    :exclude-from-graph-view true}},
+    "Identifies that this [Trip](https://schema.org/Trip) is a subTrip of another Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [subTrip](https://schema.org/subTrip)"}},
   :user.property/subTrip-E5bHCsjT
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -134,8 +127,7 @@
      :search ",luggage,luggage,packing,travel,🧳",
      :type :emoji},
     :logseq.property/description
-    "Identifies a [Trip](https://schema.org/Trip) that is a subTrip of this Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [partOfTrip](https://schema.org/partOfTrip)",
-    :exclude-from-graph-view true}},
+    "Identifies a [Trip](https://schema.org/Trip) that is a subTrip of this Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [partOfTrip](https://schema.org/partOfTrip)"}},
   :user.property/numberOfPlayers-RAmSTkGI
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -163,8 +155,7 @@
      ",straight_ruler,straight,ruler,stationery,calculate,length,math,school,drawing,architect,sketch,📏",
      :type :emoji},
     :logseq.property/description
-    "Indicate how many people can play this game (minimum, maximum, or range).",
-    :exclude-from-graph-view true}},
+    "Indicate how many people can play this game (minimum, maximum, or range)."}},
   :user.property/restPeriods-EsG6Js4g
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -180,8 +171,7 @@
      :search ",sleepy,sleepy,face,tired,rest,nap,😪",
      :type :emoji},
     :logseq.property/description
-    "How often one should break from the activity.",
-    :exclude-from-graph-view true}},
+    "How often one should break from the activity."}},
   :user.property/programMembershipUsed-Bxfs7uuH
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -200,8 +190,7 @@
      :search ",identification_card,identification,card,document,🪪",
      :type :emoji},
     :logseq.property/description
-    "Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.",
-    :exclude-from-graph-view true}},
+    "Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation."}},
   :user.property/coursePrerequisites-BVkZhygE
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -219,8 +208,7 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "Requirements for taking the Course. May be completion of another [Course](https://schema.org/Course) or a textual description like \"permission of instructor\". Requirements may be a pre-requisite competency, referenced using [AlignmentObject](https://schema.org/AlignmentObject).",
-    :exclude-from-graph-view true}},
+    "Requirements for taking the Course. May be completion of another [Course](https://schema.org/Course) or a textual description like \"permission of instructor\". Requirements may be a pre-requisite competency, referenced using [AlignmentObject](https://schema.org/AlignmentObject)."}},
   :user.property/previousItem-COK0wTnJ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -236,8 +224,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A link to the ListItem that precedes the current one.",
-    :exclude-from-graph-view true}},
+    "A link to the ListItem that precedes the current one."}},
   :user.property/programmingLanguage-rXiRDkVx
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -253,8 +240,7 @@
      :version 1,
      :search ",robot_face,robot,face,computer,machine,bot,🤖",
      :type :emoji},
-    :logseq.property/description "The computer programming language.",
-    :exclude-from-graph-view true}},
+    :logseq.property/description "The computer programming language."}},
   :user.property/reservedTicket-UcavUkmL
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -271,8 +257,7 @@
      :search ",green_book,green,book,read,library,knowledge,study,📗",
      :type :emoji},
     :logseq.property/description
-    "A ticket associated with the reservation.",
-    :exclude-from-graph-view true}},
+    "A ticket associated with the reservation."}},
   :user.property/activityDuration-ffVdaMZK
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -291,8 +276,7 @@
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
     :logseq.property/description
-    "Length of time to engage in the activity.",
-    :exclude-from-graph-view true}},
+    "Length of time to engage in the activity."}},
   :user.property/certificationRating-D7xMAVtS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -308,8 +292,7 @@
      :search ",star,star,night,yellow,⭐",
      :type :emoji},
     :logseq.property/description
-    "Rating of a certification instance (as defined by an independent certification body). Typically this rating can be used to rate the level to which the requirements of the certification instance are fulfilled. See also [gs1:certificationValue](https://www.gs1.org/voc/certificationValue).",
-    :exclude-from-graph-view true}},
+    "Rating of a certification instance (as defined by an independent certification body). Typically this rating can be used to rate the level to which the requirements of the certification instance are fulfilled. See also [gs1:certificationValue](https://www.gs1.org/voc/certificationValue)."}},
   :user.property/audience-hpnGPafX
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -319,8 +302,7 @@
    {:logseq.property/hide-empty-value true,
     :logseq.property/icon {:id "busts_in_silhouette", :type :emoji},
     :logseq.property/description
-    "An intended audience, i.e. a group for whom something was created.",
-    :exclude-from-graph-view true}},
+    "An intended audience, i.e. a group for whom something was created."}},
   :user.property/touristType-wqyyjviY
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -336,8 +318,7 @@
      :search ",camera,camera,gadgets,photography,📷",
      :type :emoji},
     :logseq.property/description
-    "Attraction suitable for type(s) of tourist. E.g. children, visitors from a particular country, etc.",
-    :exclude-from-graph-view true}},
+    "Attraction suitable for type(s) of tourist. E.g. children, visitors from a particular country, etc."}},
   :user.property/Rating-ZemDKbJS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -360,8 +341,7 @@
      :search ",woozy_face,woozy,face,dizzy,intoxicated,tipsy,wavy,🥴",
      :type :emoji},
     :logseq.property/description
-    "Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.",
-    :exclude-from-graph-view true}},
+    "Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement."}},
   :user.property/validFor-zMYMRxMA
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -378,8 +358,7 @@
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
     :logseq.property/description
-    "The duration of validity of a permit or similar thing.",
-    :exclude-from-graph-view true}},
+    "The duration of validity of a permit or similar thing."}},
   :user.property/isTierOf-Jp7onTLo
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -392,8 +371,7 @@
      :name "Pyramid",
      :color "inherit"},
     :logseq.property/description
-    "The member program this tier is a part of.\nInverse property: [hasTiers](https://schema.org/hasTiers)",
-    :exclude-from-graph-view true}},
+    "The member program this tier is a part of.\nInverse property: [hasTiers](https://schema.org/hasTiers)"}},
   :user.property/estimatedFlightDuration-i9LYDf5-
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -421,8 +399,7 @@
      ",straight_ruler,straight,ruler,stationery,calculate,length,math,school,drawing,architect,sketch,📏",
      :type :emoji},
     :logseq.property/description
-    "The estimated time the flight will take.",
-    :exclude-from-graph-view true}},
+    "The estimated time the flight will take."}},
   :user.property/repetitions-vRP2YaE4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -435,8 +412,7 @@
      :name "Repeat",
      :color "inherit"},
     :logseq.property/description
-    "Number of times one should repeat the activity.",
-    :exclude-from-graph-view true}},
+    "Number of times one should repeat the activity."}},
   :user.property/educationalAlignment-U0xgyOCF
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
