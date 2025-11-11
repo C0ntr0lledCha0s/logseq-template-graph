@@ -56,7 +56,7 @@
      ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
      :type :emoji},
     :logseq.property/description
-    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage).",
+    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage).",
     :exclude-from-graph-view true}},
   :user.property/itemReviewed-I5jEm4tv
   {:db/cardinality :db.cardinality/one,
@@ -116,7 +116,7 @@
      :name "Hierarchy",
      :color "inherit"},
     :logseq.property/description
-    "Products owned by the [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] or [[67ceb474-6efe-4438-8005-63a4dd7eb054]] .",
+    "Products owned by the [[Organization]] or [[Person]] .",
     :exclude-from-graph-view true}},
   :user.property/characterAttribute-Pwu1TSqS
   {:db/cardinality :db.cardinality/one,
@@ -222,7 +222,7 @@
      :search ",apple,red,apple,fruit,mac,school,🍎",
      :type :emoji},
     :logseq.property/description
-    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)",
+    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)",
     :exclude-from-graph-view true}},
   :user.property/item-DhwT3bCJ
   {:db/cardinality :db.cardinality/one,

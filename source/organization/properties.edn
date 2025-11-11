@@ -31,7 +31,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "The organization issuing the item, for example a [Permit](https://schema.org/Permit), [Ticket](https://schema.org/Ticket), or [Certification](https://schema.org/Certification).",
+    "The organization issuing the item, for example a [Permit](https://schema.org/Permit), [Ticket](https://schema.org/Ticket), or [Certification](https://schema.org/Certification).",
     :exclude-from-graph-view true}},
   :user.property/recordLabel-rW9jy_mt
   {:db/cardinality :db.cardinality/one,
@@ -82,7 +82,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] (or ProgramMembership) to which this [[67ceb474-6efe-4438-8005-63a4dd7eb054]] or [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] belongs.\nInverse property: [[00000002-1192-4192-1100-000000000000]]",
+    "An [[Organization]] (or ProgramMembership) to which this [[Person]] or [[Organization]] belongs.\nInverse property: [[member]]",
     :exclude-from-graph-view true}},
   :user.property/parentOrganization-kjRHwqXD
   {:db/cardinality :db.cardinality/one,
@@ -100,7 +100,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "The larger [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that this organization is a [[00000002-1132-4545-4800-000000000000]] of, if any. Inverse property: [[00000002-1132-4545-4800-000000000000]]",
+    "The larger [[Organization]] that this organization is a [[subOrganization]] of, if any. Inverse property: [[subOrganization]]",
     :exclude-from-graph-view true}},
   :user.property/worksFor-yZ0vsbqH
   {:db/cardinality :db.cardinality/one,
@@ -117,7 +117,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "[[67cff158-77f1-4e38-954e-db0d8bf2c2e7]] that the person works for.",
+    "[[Organization]] that the person works for.",
     :exclude-from-graph-view true}},
   :user.property/recognizedBy-W-hbsX-K
   {:db/cardinality :db.cardinality/many,
@@ -186,7 +186,7 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A relationship between two [[67cff158-77f1-4e38-954e-db0d8bf2c2e7]] where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.\nInverse property: [[00000002-1007-3074-3800-000000000000]]",
+    "A relationship between two [[Organization]] where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.\nInverse property: [[parentOrganization]]",
     :exclude-from-graph-view true}},
   :user.property/alumniOf-FESzI1jT
   {:db/cardinality :db.cardinality/many,
@@ -203,7 +203,7 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that the person is an alumni of. Inverse property: [[00000002-9863-1838-9000-000000000000]]",
+    "An [[Organization]] that the person is an alumni of. Inverse property: [[alumni]]",
     :exclude-from-graph-view true}},
   :user.property/hasOccupation-akPVvWXJ
   {:db/cardinality :db.cardinality/one,
@@ -223,7 +223,7 @@
      ",briefcase,briefcase,business,documents,work,law,legal,job,career,💼",
      :type :emoji},
     :logseq.property/description
-    "The Person's [[67cfefab-7d3c-44b7-981b-a84a5fb07b37]] . For past professions, use Role for expressing dates",
+    "The Person's [[Occupation]] . For past professions, use Role for expressing dates",
     :exclude-from-graph-view true}},
   :user.property/educationalCredentialAwarded-z_pdTnql
   {:db/cardinality :db.cardinality/many,
@@ -259,5 +259,5 @@
      :search ",office,office,building,bureau,work,🏢",
      :type :emoji},
     :logseq.property/description
-    "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] that this [[67ceb474-6efe-4438-8005-63a4dd7eb054]] is affiliated with. For example, a school/university, a club, or a team.",
+    "An [[Organization]] that this [[Person]] is affiliated with. For example, a school/university, a club, or a team.",
     :exclude-from-graph-view true}}}}

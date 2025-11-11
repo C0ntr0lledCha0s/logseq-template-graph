@@ -80,7 +80,7 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The geographic area where the item is valid. Applies for example to a [Permit](https://schema.org/Permit), a [Certification](https://schema.org/Certification), or an [EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential).",
+    "The geographic area where the item is valid. Applies for example to a [Permit](https://schema.org/Permit), a [Certification](https://schema.org/Certification), or an [EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential).",
     :exclude-from-graph-view true}},
   :user.property/pickupLocation-OWhJl-L0
   {:db/cardinality :db.cardinality/one,
@@ -234,7 +234,7 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The location of, for example, where an [[00000002-1301-0956-0100-000000000000]] is happening, where an [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] is located, or where an action takes place.",
+    "The location of, for example, where an [[Event]] is happening, where an [[Organization]] is located, or where an action takes place.",
     :exclude-from-graph-view true}},
   :user.property/itinerary-saka-wPe
   {:db/cardinality :db.cardinality/many,
@@ -254,7 +254,7 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "Destination(s) ( [Place](https://schema.org/Place) ) that make up a trip. For a trip where destination order is important use [ItemList](https://schema.org/ItemList) to specify that order (see examples).",
+    "Destination(s) ( [Place](https://schema.org/Place) ) that make up a trip. For a trip where destination order is important use [ItemList](https://schema.org/ItemList) to specify that order (see examples).",
     :exclude-from-graph-view true}},
   :user.property/departureBoatTerminal-XnZ_OZY6
   {:db/cardinality :db.cardinality/one,

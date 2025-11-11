@@ -11,7 +11,7 @@
      :name "Pyramid",
      :color "inherit"},
     :logseq.property/description
-    "The tiers of a member program.\nInverse property: [isTierOf](https://schema.org/isTierOf)",
+    "The tiers of a member program.\nInverse property: [isTierOf](https://schema.org/isTierOf)",
     :exclude-from-graph-view true}},
   :user.property/subReservation-P3URlTQD
   {:db/cardinality :db.cardinality/one,
@@ -63,7 +63,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "The [MemberProgram](https://schema.org/MemberProgram) associated with a [ProgramMembership](https://schema.org/ProgramMembership).",
+    "The [MemberProgram](https://schema.org/MemberProgram) associated with a [ProgramMembership](https://schema.org/ProgramMembership).",
     :exclude-from-graph-view true}},
   :user.property/repeatFrequency-Q0bQ9SOb
   {:db/cardinality :db.cardinality/one,
@@ -80,7 +80,7 @@
      :search ",repeat,repeat,button,loop,record,🔁",
      :type :emoji},
     :logseq.property/description
-    "Defines the frequency at which [Event](https://schema.org/Event)s will occur according to a schedule [Schedule](https://schema.org/Schedule). The intervals between events should be defined as a [Duration](https://schema.org/Duration) of time.",
+    "Defines the frequency at which [Event](https://schema.org/Event)s will occur according to a schedule [Schedule](https://schema.org/Schedule). The intervals between events should be defined as a [Duration](https://schema.org/Duration) of time.",
     :exclude-from-graph-view true}},
   :user.property/reviewRating-QBDiKkwj
   {:db/cardinality :db.cardinality/one,
@@ -98,7 +98,7 @@
      :search ",star,star,night,yellow,⭐",
      :type :emoji},
     :logseq.property/description
-    "The rating given in this review. Note that reviews can themselves be rated. The `reviewRating` applies to rating given by the review. The [aggregateRating](https://schema.org/aggregateRating) property applies to the review itself, as a creative work.",
+    "The rating given in this review. Note that reviews can themselves be rated. The `reviewRating` applies to rating given by the review. The [aggregateRating](https://schema.org/aggregateRating) property applies to the review itself, as a creative work.",
     :exclude-from-graph-view true}},
   :user.property/partOfTrip-UXTLyMra
   {:db/cardinality :db.cardinality/one,
@@ -116,7 +116,7 @@
      :search ",luggage,luggage,packing,travel,🧳",
      :type :emoji},
     :logseq.property/description
-    "Identifies that this [Trip](https://schema.org/Trip) is a subTrip of another Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [subTrip](https://schema.org/subTrip)",
+    "Identifies that this [Trip](https://schema.org/Trip) is a subTrip of another Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [subTrip](https://schema.org/subTrip)",
     :exclude-from-graph-view true}},
   :user.property/subTrip-E5bHCsjT
   {:db/cardinality :db.cardinality/many,
@@ -134,7 +134,7 @@
      :search ",luggage,luggage,packing,travel,🧳",
      :type :emoji},
     :logseq.property/description
-    "Identifies a [Trip](https://schema.org/Trip) that is a subTrip of this Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [partOfTrip](https://schema.org/partOfTrip)",
+    "Identifies a [Trip](https://schema.org/Trip) that is a subTrip of this Trip. For example Day 1, Day 2, etc. of a multi-day trip.\nInverse property: [partOfTrip](https://schema.org/partOfTrip)",
     :exclude-from-graph-view true}},
   :user.property/numberOfPlayers-RAmSTkGI
   {:db/cardinality :db.cardinality/one,
@@ -219,7 +219,7 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "Requirements for taking the Course. May be completion of another [Course](https://schema.org/Course) or a textual description like \"permission of instructor\". Requirements may be a pre-requisite competency, referenced using [AlignmentObject](https://schema.org/AlignmentObject).",
+    "Requirements for taking the Course. May be completion of another [Course](https://schema.org/Course) or a textual description like \"permission of instructor\". Requirements may be a pre-requisite competency, referenced using [AlignmentObject](https://schema.org/AlignmentObject).",
     :exclude-from-graph-view true}},
   :user.property/previousItem-COK0wTnJ
   {:db/cardinality :db.cardinality/one,
@@ -308,7 +308,7 @@
      :search ",star,star,night,yellow,⭐",
      :type :emoji},
     :logseq.property/description
-    "Rating of a certification instance (as defined by an independent certification body). Typically this rating can be used to rate the level to which the requirements of the certification instance are fulfilled. See also [gs1:certificationValue](https://www.gs1.org/voc/certificationValue).",
+    "Rating of a certification instance (as defined by an independent certification body). Typically this rating can be used to rate the level to which the requirements of the certification instance are fulfilled. See also [gs1:certificationValue](https://www.gs1.org/voc/certificationValue).",
     :exclude-from-graph-view true}},
   :user.property/audience-hpnGPafX
   {:db/cardinality :db.cardinality/many,
@@ -392,7 +392,7 @@
      :name "Pyramid",
      :color "inherit"},
     :logseq.property/description
-    "The member program this tier is a part of.\nInverse property: [hasTiers](https://schema.org/hasTiers)",
+    "The member program this tier is a part of.\nInverse property: [hasTiers](https://schema.org/hasTiers)",
     :exclude-from-graph-view true}},
   :user.property/estimatedFlightDuration-i9LYDf5-
   {:db/cardinality :db.cardinality/one,

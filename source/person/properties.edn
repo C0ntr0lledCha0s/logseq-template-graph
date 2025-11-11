@@ -138,7 +138,7 @@
      :search ",violin,violin,music,instrument,orchestra,symphony,🎻",
      :type :emoji},
     :logseq.property/description
-    "The [[67ceb474-6efe-4438-8005-63a4dd7eb054]] or [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] who wrote a composition, or who is the composer of a work performed at some event.",
+    "The [[Person]] or [[Organization]] who wrote a composition, or who is the composer of a work performed at some event.",
     :exclude-from-graph-view true}},
   :user.property/provider-M4XBuYkt
   {:db/cardinality :db.cardinality/many,
@@ -235,7 +235,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "Alumni of an [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]].\nInverse property: [[00000002-7815-5106-6000-000000000000]]",
+    "Alumni of an [[Organization]].\nInverse property: [[alumniOf]]",
     :exclude-from-graph-view true}},
   :user.property/member-KLhlfdeR
   {:db/cardinality :db.cardinality/many,
@@ -253,7 +253,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "A member of an [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] or a ProgramMembership. Organizations can be members of Organizations; ProgramMembership is typically for individuals. Inverse property:  [[00000002-2693-9859-0000-000000000000]]",
+    "A member of an [[Organization]] or a ProgramMembership. Organizations can be members of Organizations; ProgramMembership is typically for individuals. Inverse property:  [[memberOf]]",
     :exclude-from-graph-view true}},
   :user.property/colleague-dgX2eJjr
   {:db/cardinality :db.cardinality/many,
@@ -377,7 +377,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A maintainer of a [Dataset](https://schema.org/Dataset), software package ([SoftwareApplication](https://schema.org/SoftwareApplication)), or other [Project](https://schema.org/Project). A maintainer is a [Person](https://schema.org/Person) or [Organization](https://schema.org/Organization) that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When [maintainer](https://schema.org/maintainer) is applied to a specific version of something e.g. a particular version or packaging of a [Dataset](https://schema.org/Dataset), it is always possible that the upstream source has a different maintainer. The [isBasedOn](https://schema.org/isBasedOn) property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.",
+    "A maintainer of a [Dataset](https://schema.org/Dataset), software package ([SoftwareApplication](https://schema.org/SoftwareApplication)), or other [Project](https://schema.org/Project). A maintainer is a [Person](https://schema.org/Person) or [Organization](https://schema.org/Organization) that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When [maintainer](https://schema.org/maintainer) is applied to a specific version of something e.g. a particular version or packaging of a [Dataset](https://schema.org/Dataset), it is always possible that the upstream source has a different maintainer. The [isBasedOn](https://schema.org/isBasedOn) property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.",
     :exclude-from-graph-view true}},
   :user.property/Parents-TJpz00YQ
   {:db/cardinality :db.cardinality/many,
@@ -451,7 +451,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A contact point for a [[67ceb474-6efe-4438-8005-63a4dd7eb054]] or [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]]",
+    "A contact point for a [[Person]] or [[Organization]]",
     :exclude-from-graph-view true}},
   :user.property/creator-DoXW8XMs
   {:db/cardinality :db.cardinality/one,
@@ -475,7 +475,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "The creator/ [[00000002-1170-4968-9600-000000000000]] of this [[67ea5b18-d228-4483-8871-9df683c1af7b]] . This is the same as the [[00000002-1170-4968-9600-000000000000]] property for [[67ea5b18-d228-4483-8871-9df683c1af7b]] .",
+    "The creator/ [[author]] of this [[CreativeWork]] . This is the same as the [[author]] property for [[CreativeWork]] .",
     :exclude-from-graph-view true}},
   :user.property/seller-TYIlntxq
   {:db/cardinality :db.cardinality/one,
@@ -521,7 +521,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A secondary contributor to the [[67ea5b18-d228-4483-8871-9df683c1af7b]] or [[00000002-1301-0956-0100-000000000000]] .",
+    "A secondary contributor to the [[CreativeWork]] or [[Event]] .",
     :exclude-from-graph-view true}},
   :user.property/sibling-i6Kk0Lvr
   {:db/cardinality :db.cardinality/many,
@@ -660,7 +660,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "Specifies the [[67ceb474-6efe-4438-8005-63a4dd7eb054]] who edited the [[67ea5b18-d228-4483-8871-9df683c1af7b]] .",
+    "Specifies the [[Person]] who edited the [[CreativeWork]] .",
     :exclude-from-graph-view true}},
   :user.property/character-CpH6W1eR
   {:db/cardinality :db.cardinality/many,
@@ -694,7 +694,7 @@
      :search ",mage,mage,magic,🧙,🧙🏻,🧙🏼,🧙🏽,🧙🏾,🧙🏿",
      :type :emoji},
     :logseq.property/description
-    "Fictional [[67ceb474-6efe-4438-8005-63a4dd7eb054]] connected with a creative work.",
+    "Fictional [[Person]] connected with a creative work.",
     :exclude-from-graph-view true}},
   :user.property/instructor-WAvJotJ-
   {:db/cardinality :db.cardinality/one,
@@ -715,7 +715,7 @@
      ",bust_in_silhouette,bust,in,silhouette,user,person,human,👤",
      :type :emoji},
     :logseq.property/description
-    "A person assigned to instruct or provide instructional assistance for the [CourseInstance](https://schema.org/CourseInstance).",
+    "A person assigned to instruct or provide instructional assistance for the [CourseInstance](https://schema.org/CourseInstance).",
     :exclude-from-graph-view true}},
   :user.property/illustrator-gBU5450B
   {:db/cardinality :db.cardinality/many,
@@ -790,5 +790,5 @@
      ",mechanic,mechanic,worker,technician,🧑‍🔧,🧑🏻‍🔧,🧑🏼‍🔧,🧑🏽‍🔧,🧑🏾‍🔧,🧑🏿‍🔧",
      :type :emoji},
     :logseq.property/description
-    "Someone working for this [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]].",
+    "Someone working for this [[Organization]].",
     :exclude-from-graph-view true}}}}

@@ -15,7 +15,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.\nInverse property: [subEvent](https://schema.org/subEvent)",
+    "An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.\nInverse property: [subEvent](https://schema.org/subEvent)",
     :exclude-from-graph-view true}},
   :user.property/Event-BmyR34Zg
   {:db/cardinality :db.cardinality/one,
@@ -42,7 +42,7 @@
      ",spiral_calendar_pad,spiral,calendar,pad,date,schedule,planning,🗓️",
      :type :emoji},
     :logseq.property/description
-    "Represents the length and pace of a course, expressed as a [Schedule](https://schema.org/Schedule).",
+    "Represents the length and pace of a course, expressed as a [Schedule](https://schema.org/Schedule).",
     :exclude-from-graph-view true}},
   :user.property/event-TnZsBTQU
   {:db/cardinality :db.cardinality/many,
@@ -59,7 +59,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [offers](https://schema.org/offers) property. Repeated events may be structured as separate Event objects.",
+    "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [offers](https://schema.org/offers) property. Repeated events may be structured as separate Event objects.",
     :exclude-from-graph-view true}},
   :user.property/hasCourseInstance-tE_A5mgp
   {:db/cardinality :db.cardinality/many,
@@ -96,7 +96,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.\nInverse property: [superEvent](https://schema.org/superEvent)",
+    "An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.\nInverse property: [superEvent](https://schema.org/superEvent)",
     :exclude-from-graph-view true}},
   :user.property/subjectOf-TT46bi31
   {:db/cardinality :db.cardinality/many,
@@ -108,5 +108,5 @@
    {:logseq.property/hide-empty-value true,
     :logseq.property/icon {:id "link", :type :emoji},
     :logseq.property/description
-    "A CreativeWork or Event about this Thing.\nInverse property: [about](https://schema.org/about)",
+    "A CreativeWork or Event about this Thing.\nInverse property: [about](https://schema.org/about)",
     :exclude-from-graph-view true}}}}

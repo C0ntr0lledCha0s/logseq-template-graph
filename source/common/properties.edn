@@ -80,7 +80,7 @@
      :search ",clipboard,clipboard,stationery,documents,📋",
      :type :emoji},
     :logseq.property/description
-    "Provides negative considerations regarding something, most typically in pro/con lists for reviews (alongside [positiveNotes](https://schema.org/positiveNotes)). For symmetry",
+    "Provides negative considerations regarding something, most typically in pro/con lists for reviews (alongside [positiveNotes](https://schema.org/positiveNotes)). For symmetry",
     :exclude-from-graph-view true}},
   :user.property/isbn-t79SXlCN
   {:db/cardinality :db.cardinality/one,
@@ -350,7 +350,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Date of first publication or broadcast. For example the date a [CreativeWork](https://schema.org/CreativeWork) was broadcast or a [Certification](https://schema.org/Certification) was issued.",
+    "Date of first publication or broadcast. For example the date a [CreativeWork](https://schema.org/CreativeWork) was broadcast or a [Certification](https://schema.org/Certification) was issued.",
     :exclude-from-graph-view true}},
   :user.property/email-UL_S9FXV
   {:db/cardinality :db.cardinality/one,
@@ -390,7 +390,7 @@
      :search ",package,package,mail,gift,cardboard,box,moving,📦",
      :type :emoji},
     :logseq.property/description
-    "A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for [unitCode](https://schema.org/unitCode).",
+    "A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for [unitCode](https://schema.org/unitCode).",
     :exclude-from-graph-view true}},
   :user.property/suggestedAge-w62YXGBw
   {:db/cardinality :db.cardinality/one,
@@ -440,7 +440,7 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "Associates an [Event](https://schema.org/Event) with a [Schedule](https://schema.org/Schedule). There are circumstances where it is preferable to share a schedule for a series of repeating events rather than data on the individual events themselves. For example, a website or application might prefer to publish a schedule for a weekly gym class rather than provide data on every event. A schedule could be processed by applications to add forthcoming events to a calendar.",
+    "Associates an [Event](https://schema.org/Event) with a [Schedule](https://schema.org/Schedule). There are circumstances where it is preferable to share a schedule for a series of repeating events rather than data on the individual events themselves. For example, a website or application might prefer to publish a schedule for a weekly gym class rather than provide data on every event. A schedule could be processed by applications to add forthcoming events to a calendar.",
     :exclude-from-graph-view true}},
   :user.property/numAdults-bSIbpwRi
   {:db/cardinality :db.cardinality/one,
@@ -576,7 +576,7 @@
      :search ",timer_clock,timer,clock,alarm,⏲️",
      :type :emoji},
     :logseq.property/description
-    "The duration of the item (movie, audio recording, event, etc.) in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
+    "The duration of the item (movie, audio recording, event, etc.) in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
     :exclude-from-graph-view true}},
   :user.property/departurePlatform-JfrFRXrj
   {:db/cardinality :db.cardinality/one,
@@ -613,7 +613,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
+    "The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
     :exclude-from-graph-view true}},
   :user.property/image-mzkRLYi1
   {:db/cardinality :db.cardinality/one,
@@ -634,7 +634,7 @@
      ",frame_with_picture,framed,picture,frame,with,photography,🖼️",
      :type :emoji},
     :logseq.property/description
-    "An image of the item. This can be a [URL](https://schema.org/URL) or a fully described [ImageObject](https://schema.org/ImageObject).",
+    "An image of the item. This can be a [URL](https://schema.org/URL) or a fully described [ImageObject](https://schema.org/ImageObject).",
     :exclude-from-graph-view true}},
   :user.property/startDate-pTZGr2us
   {:db/cardinality :db.cardinality/one,
@@ -651,7 +651,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
+    "The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
     :exclude-from-graph-view true}},
   :user.property/bookingTime-ib2dcl4y
   {:db/cardinality :db.cardinality/one,
@@ -747,7 +747,7 @@
      ",heavy_dollar_sign,heavy,dollar,sign,money,sales,payment,currency,buck,💲",
      :type :emoji},
     :logseq.property/description
-    "The price range of the business, for example `$$$`.",
+    "The price range of the business, for example `$$$`.",
     :exclude-from-graph-view true}},
   :user.property/openingHours-bnyE7wOV
   {:db/cardinality :db.cardinality/one,
@@ -857,7 +857,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines the month(s) of the year on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-12. January is 1.",
+    "Defines the month(s) of the year on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-12. January is 1.",
     :exclude-from-graph-view true}},
   :user.property/reviewDate-eTWaorSr
   {:db/cardinality :db.cardinality/one,
@@ -908,7 +908,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Identifier of a certification instance (as registered with an independent certification body). Typically this identifier can be used to consult and verify the certification instance. See also [gs1:certificationIdentification](https://www.gs1.org/voc/certificationIdentification).",
+    "Identifier of a certification instance (as registered with an independent certification body). Typically this identifier can be used to consult and verify the certification instance. See also [gs1:certificationIdentification](https://www.gs1.org/voc/certificationIdentification).",
     :exclude-from-graph-view true}},
   :user.property/givenName-BH3hBESZ
   {:db/cardinality :db.cardinality/one,
@@ -1047,7 +1047,7 @@
      :search ",repeat,repeat,button,loop,record,🔁",
      :type :emoji},
     :logseq.property/description
-    "Defines the number of times a recurring [Event](https://schema.org/Event) will take place.",
+    "Defines the number of times a recurring [Event](https://schema.org/Event) will take place.",
     :exclude-from-graph-view true}},
   :user.property/associatedAnatomy-v2fic-1N
   {:db/cardinality :db.cardinality/one,
@@ -1123,7 +1123,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Indicates the current status of a certification: active or inactive. See also [gs1:certificationStatus](https://www.gs1.org/voc/certificationStatus).",
+    "Indicates the current status of a certification: active or inactive. See also [gs1:certificationStatus](https://www.gs1.org/voc/certificationStatus).",
     :exclude-from-graph-view true}},
   :user.property/catalogNumber-Dz2SUuXx
   {:db/cardinality :db.cardinality/one,
@@ -1252,7 +1252,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines the day(s) of the week on which a recurring [Event](https://schema.org/Event) takes place. May be specified using either [DayOfWeek](https://schema.org/DayOfWeek), or alternatively [Text](https://schema.org/Text) conforming to iCal's syntax for byDay recurrence rules.",
+    "Defines the day(s) of the week on which a recurring [Event](https://schema.org/Event) takes place. May be specified using either [DayOfWeek](https://schema.org/DayOfWeek), or alternatively [Text](https://schema.org/Text) conforming to iCal's syntax for byDay recurrence rules.",
     :exclude-from-graph-view true}},
   :user.property/qualifications-vpPYlEVx
   {:db/cardinality :db.cardinality/one,
@@ -1448,7 +1448,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The official name of the [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] , e.g. the registered company name.",
+    "The official name of the [[Organization]] , e.g. the registered company name.",
     :exclude-from-graph-view true}},
   :user.property/partySize-LOGA0uTB
   {:db/cardinality :db.cardinality/one,
@@ -1478,7 +1478,7 @@
      ",heavy_dollar_sign,heavy,dollar,sign,money,sales,payment,currency,buck,💲",
      :type :emoji},
     :logseq.property/description
-    "The currency of the price, or a price component when attached to [PriceSpecification](https://schema.org/PriceSpecification) and its subtypes.",
+    "The currency of the price, or a price component when attached to [PriceSpecification](https://schema.org/PriceSpecification) and its subtypes.",
     :exclude-from-graph-view true}},
   :user.property/learningResourceType-K_-tkOTS
   {:db/cardinality :db.cardinality/one,
@@ -1787,7 +1787,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The electronic systems used to play [video games](http://en.wikipedia.org/wiki/Category:Video_game_platforms).",
+    "The electronic systems used to play [video games](http://en.wikipedia.org/wiki/Category:Video_game_platforms).",
     :exclude-from-graph-view true}},
   :user.property/expires-buw30WDd
   {:db/cardinality :db.cardinality/one,
@@ -1803,7 +1803,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Date the content expires and is no longer useful or available. For example a [VideoObject](https://schema.org/VideoObject) or [NewsArticle](https://schema.org/NewsArticle) whose availability or relevance is time-limited, a [ClaimReview](https://schema.org/ClaimReview) fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date, or a [Certification](https://schema.org/Certification) the validity has expired.",
+    "Date the content expires and is no longer useful or available. For example a [VideoObject](https://schema.org/VideoObject) or [NewsArticle](https://schema.org/NewsArticle) whose availability or relevance is time-limited, a [ClaimReview](https://schema.org/ClaimReview) fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date, or a [Certification](https://schema.org/Certification) the validity has expired.",
     :exclude-from-graph-view true}},
   :user.property/requiredGender-edrb5AZ7
   {:db/cardinality :db.cardinality/one,
@@ -1843,7 +1843,7 @@
      :search ",trophy,trophy,win,award,contest,place,ftw,ceremony,🏆",
      :type :emoji},
     :logseq.property/description
-    "An award won by or for this item. Supersedes [awards](https://schema.org/awards).",
+    "An award won by or for this item. Supersedes [awards](https://schema.org/awards).",
     :exclude-from-graph-view true}},
   :user.property/modifiedTime-CvkPGMM7
   {:db/cardinality :db.cardinality/one,
@@ -2068,7 +2068,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "A secondary title of the [[67ea5b18-d228-4483-8871-9df683c1af7b]] .",
+    "A secondary title of the [[CreativeWork]] .",
     :exclude-from-graph-view true}},
   :user.property/applicationCategory-WZNoKEnr
   {:db/cardinality :db.cardinality/one,
@@ -2105,7 +2105,7 @@
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
     :logseq.property/description
-    "Indicates the timezone for which the time(s) indicated in the [Schedule](https://schema.org/Schedule) are given. The value provided should be among those listed in the IANA Time Zone Database.",
+    "Indicates the timezone for which the time(s) indicated in the [Schedule](https://schema.org/Schedule) are given. The value provided should be among those listed in the IANA Time Zone Database.",
     :exclude-from-graph-view true}},
   :user.property/timeRequired-DIShrfI7
   {:db/cardinality :db.cardinality/one,
@@ -2155,7 +2155,7 @@
      :search ",clipboard,clipboard,stationery,documents,📋",
      :type :emoji},
     :logseq.property/description
-    "Provides positive considerations regarding something, for example product highlights or (alongside [negativeNotes](https://schema.org/negativeNotes)) pro/con lists for reviews.",
+    "Provides positive considerations regarding something, for example product highlights or (alongside [negativeNotes](https://schema.org/negativeNotes)) pro/con lists for reviews.",
     :exclude-from-graph-view true}},
   :user.property/numberOfCredits-WIlf3zow
   {:db/cardinality :db.cardinality/one,
@@ -2183,7 +2183,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The date on which the [[67ea5b18-d228-4483-8871-9df683c1af7b]] was most recently modified or when the item's entry was modified within a DataFeed.",
+    "The date on which the [[CreativeWork]] was most recently modified or when the item's entry was modified within a DataFeed.",
     :exclude-from-graph-view true}},
   :user.property/codeSampleType-kgSynuQb
   {:db/cardinality :db.cardinality/one,
@@ -2426,7 +2426,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "An [EIDR](https://eidr.org/) (Entertainment Identifier Registry) [identifier](https://schema.org/identifier) representing at the most general/abstract level, a work of film or television.",
+    "An [EIDR](https://eidr.org/) (Entertainment Identifier Registry) [identifier](https://schema.org/identifier) representing at the most general/abstract level, a work of film or television.",
     :exclude-from-graph-view true}},
   :user.property/commentCount-FviA_HOv
   {:db/cardinality :db.cardinality/one,
@@ -2532,7 +2532,7 @@
      :search ",brain,brain,smart,intelligent,🧠",
      :type :emoji},
     :logseq.property/description
-    "Of a [[67ceb474-6efe-4438-8005-63a4dd7eb054]], and less typically of an [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]], to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or JobPosting descriptions.",
+    "Of a [[Person]], and less typically of an [[Organization]], to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or JobPosting descriptions.",
     :exclude-from-graph-view true}},
   :user.property/auditDate-IIUQNOsg
   {:db/cardinality :db.cardinality/one,
@@ -2548,7 +2548,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Date when a certification was last audited. See also [gs1:certificationAuditDate](https://www.gs1.org/voc/certificationAuditDate).",
+    "Date when a certification was last audited. See also [gs1:certificationAuditDate](https://www.gs1.org/voc/certificationAuditDate).",
     :exclude-from-graph-view true}},
   :user.property/byMonthDay-WoK8yoLn
   {:db/cardinality :db.cardinality/one,
@@ -2564,7 +2564,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines the day(s) of the month on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-31.",
+    "Defines the day(s) of the month on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-31.",
     :exclude-from-graph-view true}},
   :user.property/endTime-I4vdeV9O
   {:db/cardinality :db.cardinality/one,
@@ -2600,7 +2600,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "For an [Article](https://schema.org/Article), typically a [NewsArticle](https://schema.org/NewsArticle), the backstory property provides a textual summary giving a brief explanation of why and how an article was created. In a journalistic setting this could include information about reporting process, methods, interviews, data sources, etc.",
+    "For an [Article](https://schema.org/Article), typically a [NewsArticle](https://schema.org/NewsArticle), the backstory property provides a textual summary giving a brief explanation of why and how an article was created. In a journalistic setting this could include information about reporting process, methods, interviews, data sources, etc.",
     :exclude-from-graph-view true}},
   :user.property/numberOfEpisodes-zdrIalSK
   {:db/cardinality :db.cardinality/one,
@@ -3100,7 +3100,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The identifier for the [Course](https://schema.org/Course) used by the course [provider](https://schema.org/provider) (e.g. CS101 or 6.001).",
+    "The identifier for the [Course](https://schema.org/Course) used by the course [provider](https://schema.org/provider) (e.g. CS101 or 6.001).",
     :exclude-from-graph-view true}},
   :user.property/musicReleaseFormat-XEW4zCsl
   {:db/cardinality :db.cardinality/many,
@@ -3178,7 +3178,7 @@
      :name "Variable",
      :color "inherit"},
     :logseq.property/description
-    "The value of a [QuantitativeValue](https://schema.org/QuantitativeValue) (including [Observation](https://schema.org/Observation)) or property value node.",
+    "The value of a [QuantitativeValue](https://schema.org/QuantitativeValue) (including [Observation](https://schema.org/Observation)) or property value node.",
     :exclude-from-graph-view true}},
   :user.property/ratingExplanation-Cgyv6g38
   {:db/cardinality :db.cardinality/one,
@@ -3198,7 +3198,7 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with \"fact check\" markup using [ClaimReview](https://schema.org/ClaimReview).",
+    "A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with \"fact check\" markup using [ClaimReview](https://schema.org/ClaimReview).",
     :exclude-from-graph-view true}},
   :user.property/alignmentType-yxeXcPmB
   {:db/cardinality :db.cardinality/one,
@@ -3361,7 +3361,7 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines a [Date](https://schema.org/Date) or [DateTime](https://schema.org/DateTime) during which a scheduled [Event](https://schema.org/Event) will not take place. The property allows exceptions to a [Schedule](https://schema.org/Schedule) to be specified.",
+    "Defines a [Date](https://schema.org/Date) or [DateTime](https://schema.org/DateTime) during which a scheduled [Event](https://schema.org/Event) will not take place. The property allows exceptions to a [Schedule](https://schema.org/Schedule) to be specified.",
     :exclude-from-graph-view true}},
   :user.property/codeRepository-OmAGGRv5
   {:db/cardinality :db.cardinality/one,
