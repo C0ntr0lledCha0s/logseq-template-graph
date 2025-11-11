@@ -14,4 +14,4 @@
      :search ",camera,camera,gadgets,photography,📷",
      :type :emoji},
     :logseq.property/description "Attraction located at destination.",
-    :exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true}}}}

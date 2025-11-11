@@ -15,7 +15,8 @@
      :search ",green_book,green,book,read,library,knowledge,study,📗",
      :type :emoji},
     :logseq.property/description
-    "The thing -- flight, event, restaurant, etc. being reserved."}},
+    "The thing -- flight, event, restaurant, etc. being reserved.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/parentFamilyGroup-QduiTy2X
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -31,7 +32,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A larger group, clan or dynasty that this family group is a subFamilyGroup of, if any. Inverse property: subFamilyGroup"}},
+    "A larger group, clan or dynasty that this family group is a subFamilyGroup of, if any. Inverse property: subFamilyGroup",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/inLanguage-hmAiIzlE
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -54,7 +56,8 @@
      ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
      :type :emoji},
     :logseq.property/description
-    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage)."}},
+    "The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [availableLanguage](https://schema.org/availableLanguage).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/itemReviewed-I5jEm4tv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -71,7 +74,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "The item that is being reviewed/rated."}},
+    "The item that is being reviewed/rated.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/aggregateElement-qGiYUW3i
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -81,7 +85,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Group", :name "Group", :color "inherit"},
     :logseq.property/description
-    "Indicates a prototype of the elements in the list that is used to hold aggregate information (ratings, offers, etc.)."}},
+    "Indicates a prototype of the elements in the list that is used to hold aggregate information (ratings, offers, etc.).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/subFamilyGroup-FDjn_0z4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -97,7 +102,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A relationship between two FamilyGroup's where the first includes the second, e.g., as progeny. Inverse property: parentFamilyGroup"}},
+    "A relationship between two FamilyGroup's where the first includes the second, e.g., as progeny. Inverse property: parentFamilyGroup",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/owns-hbJat1oZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -110,7 +116,8 @@
      :name "Hierarchy",
      :color "inherit"},
     :logseq.property/description
-    "Products owned by the [[Organization]] or [[Person]] ."}},
+    "Products owned by the [[Organization]] or [[Person]] .",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/characterAttribute-Pwu1TSqS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -127,7 +134,8 @@
      :search ",magic_wand,magic,wand,supernature,power,🪄",
      :type :emoji},
     :logseq.property/description
-    "A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage)."}},
+    "A piece of data that represents a particular aspect of a fictional character (skill, power, character points, advantage, disadvantage).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/quest-DCLjpQXr
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -159,7 +167,8 @@
      :search ",mage,mage,magic,🧙,🧙🏻,🧙🏼,🧙🏽,🧙🏾,🧙🏿",
      :type :emoji},
     :logseq.property/description
-    "The task that a player-controlled character, or group of characters may complete in order to gain a reward."}},
+    "The task that a player-controlled character, or group of characters may complete in order to gain a reward.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/gameItem-mHVgMpnS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -176,7 +185,8 @@
      :search ",magic_wand,magic,wand,supernature,power,🪄",
      :type :emoji},
     :logseq.property/description
-    "An item is an object within the game world that can be collected by a player or, occasionally, a non-player character."}},
+    "An item is an object within the game world that can be collected by a player or, occasionally, a non-player character.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/serviceOutput-DsLYFQA0
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -192,7 +202,8 @@
      :search ",scroll,scroll,documents,ancient,history,paper,📜",
      :type :emoji},
     :logseq.property/description
-    "The tangible thing generated by the service, e.g. a passport, permit, etc."}},
+    "The tangible thing generated by the service, e.g. a passport, permit, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/about-nsPvSRUP
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -211,7 +222,8 @@
      :search ",apple,red,apple,fruit,mac,school,🍎",
      :type :emoji},
     :logseq.property/description
-    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)"}},
+    "The subject matter of the content.\nInverse property: [subjectOf](https://schema.org/subjectOf)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/item-DhwT3bCJ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -228,4 +240,4 @@
      :type :emoji},
     :logseq.property/description
     "An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists').",
-    :exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true}}}}

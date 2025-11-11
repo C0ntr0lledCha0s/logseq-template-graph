@@ -7,30 +7,30 @@
          '[clojure.pprint :as pp])
 
 (defn add-exclude-to-property
-  "Add :exclude-from-graph-view true to a property's :build/properties"
+  "Add :logseq.property/exclude-from-graph-view true to a property's :build/properties"
   [property-map]
   (if (contains? property-map :build/properties)
     ;; If :build/properties exists, add exclude-from-graph-view to it
     (update property-map :build/properties
             (fn [props]
               (if (map? props)
-                (assoc props :exclude-from-graph-view true)
+                (assoc props :logseq.property/exclude-from-graph-view true)
                 props)))
     ;; If :build/properties doesn't exist, create it with exclude-from-graph-view
-    (assoc property-map :build/properties {:exclude-from-graph-view true})))
+    (assoc property-map :build/properties {:logseq.property/exclude-from-graph-view true})))
 
 (defn remove-exclude-from-property
-  "Remove :exclude-from-graph-view from a property's :build/properties"
+  "Remove :logseq.property/exclude-from-graph-view from a property's :build/properties"
   [property-map]
   (if (contains? property-map :build/properties)
     ;; Remove exclude-from-graph-view from :build/properties
-    (update property-map :build/properties dissoc :exclude-from-graph-view)
+    (update property-map :build/properties dissoc :logseq.property/exclude-from-graph-view)
     property-map))
 
 (defn has-exclude?
-  "Check if a property has :exclude-from-graph-view set"
+  "Check if a property has :logseq.property/exclude-from-graph-view set"
   [property-map]
-  (get-in property-map [:build/properties :exclude-from-graph-view]))
+  (get-in property-map [:build/properties :logseq.property/exclude-from-graph-view]))
 
 (defn process-properties-file
   "Process a properties EDN file and toggle exclude-from-graph-view"
@@ -91,7 +91,7 @@
       (System/exit 1))
 
     (println (str "\n=== " (if (= action :add) "Adding" "Removing")
-                  " :exclude-from-graph-view ===\n"))
+                  " :logseq.property/exclude-from-graph-view ===\n"))
 
     (doseq [file property-files]
       (when (.exists (io/file file))

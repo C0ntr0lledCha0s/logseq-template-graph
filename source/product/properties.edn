@@ -15,7 +15,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A pointer to another, somehow related product (or multiple products)."}},
+    "A pointer to another, somehow related product (or multiple products).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/isSimilarTo-GiQz4GGK
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -33,4 +34,4 @@
      :type :emoji},
     :logseq.property/description
     "A pointer to another, functionally similar product (or multiple products).",
-    :exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true}}}}

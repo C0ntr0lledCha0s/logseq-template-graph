@@ -17,7 +17,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The location of origin of the trip, prior to any destination(s)."}},
+    "The location of origin of the trip, prior to any destination(s).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departureStation-h5ZwMFlX
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -37,7 +38,8 @@
      ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
      :type :emoji},
     :logseq.property/description
-    "The station from which the train departs."}},
+    "The station from which the train departs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/contentLocation-QNbnwDey
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -58,7 +60,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The location depicted or described in the content. For example, the location in a photograph or painting."}},
+    "The location depicted or described in the content. For example, the location in a photograph or painting.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/validIn-VDYGrCTd
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -77,7 +80,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The geographic area where the item is valid. Applies for example to a [Permit](https://schema.org/Permit), a [Certification](https://schema.org/Certification), or an [EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential)."}},
+    "The geographic area where the item is valid. Applies for example to a [Permit](https://schema.org/Permit), a [Certification](https://schema.org/Certification), or an [EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/pickupLocation-OWhJl-L0
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -85,7 +89,8 @@
    :build/property-classes [:user.class/Place-sWTwEwWP],
    :build/properties
    {:logseq.property/description
-    "Where a taxi will pick up a passenger or a rental car can be picked up."}},
+    "Where a taxi will pick up a passenger or a rental car can be picked up.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/gameLocation-wfV16uwE
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -104,7 +109,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "Real or fictional location of the game (or part of game)."}},
+    "Real or fictional location of the game (or part of game).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/geographicArea-b09-fK-r
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -124,7 +130,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The geographic area associated with the audience."}},
+    "The geographic area associated with the audience.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departureAirport-X9-pSdP6
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -133,7 +140,8 @@
    :build/properties
    {:logseq.property/icon {:id "airplane_departure", :type :emoji},
     :logseq.property/description
-    "The airport where the flight originates."}},
+    "The airport where the flight originates.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalAirport-Gjt-NPXQ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -142,7 +150,8 @@
    :build/properties
    {:logseq.property/icon {:id "airplane_arriving", :type :emoji},
     :logseq.property/description
-    "The airport where the flight terminates."}},
+    "The airport where the flight terminates.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/birthPlace-lkalc5Dz
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -161,7 +170,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The place where the person was born."}},
+    "The place where the person was born.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/serviceArea-VJ8w0kxi
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -182,7 +192,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The geographic area where a service or offered item is provided."}},
+    "The geographic area where a service or offered item is provided.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalStation-P09qfPlc
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -202,7 +213,8 @@
      ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
      :type :emoji},
     :logseq.property/description
-    "The station where the train trip ends."}},
+    "The station where the train trip ends.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/location-rtPRwp3c
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -222,7 +234,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The location of, for example, where an [[Event]] is happening, where an [[Organization]] is located, or where an action takes place."}},
+    "The location of, for example, where an [[Event]] is happening, where an [[Organization]] is located, or where an action takes place.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/itinerary-saka-wPe
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -241,7 +254,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "Destination(s) ( [Place](https://schema.org/Place) ) that make up a trip. For a trip where destination order is important use [ItemList](https://schema.org/ItemList) to specify that order (see examples)."}},
+    "Destination(s) ( [Place](https://schema.org/Place) ) that make up a trip. For a trip where destination order is important use [ItemList](https://schema.org/ItemList) to specify that order (see examples).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departureBoatTerminal-XnZ_OZY6
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -260,7 +274,8 @@
      ",boat,sailboat,boat,ship,summer,transportation,water,sailing,⛵",
      :type :emoji},
     :logseq.property/description
-    "The terminal or port from which the boat departs."}},
+    "The terminal or port from which the boat departs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departureBusStop-JfoGAPWC
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -277,7 +292,8 @@
      :search ",bus,bus,car,vehicle,transportation,🚌",
      :type :emoji},
     :logseq.property/description
-    "The stop or station from which the bus departs."}},
+    "The stop or station from which the bus departs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalBusStop-h4get2QO
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -294,7 +310,8 @@
      :search ",bus,bus,car,vehicle,transportation,🚌",
      :type :emoji},
     :logseq.property/description
-    "The stop or station from which the bus arrives."}},
+    "The stop or station from which the bus arrives.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/homeLocation-weuUMB3U
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -313,7 +330,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "A contact location for a person's residence."}},
+    "A contact location for a person's residence.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalBoatTerminal-S3ZmcXzN
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -333,4 +351,4 @@
      :type :emoji},
     :logseq.property/description
     "The terminal or port from which the boat arrives.",
-    :exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true}}}}

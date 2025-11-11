@@ -63,7 +63,8 @@
      :search ",green_book,green,book,read,library,knowledge,study,📗",
      :type :emoji},
     :logseq.property/description
-    "The current status of the reservation."}},
+    "The current status of the reservation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/negativeNotes-zG5gvid3
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -79,7 +80,8 @@
      :search ",clipboard,clipboard,stationery,documents,📋",
      :type :emoji},
     :logseq.property/description
-    "Provides negative considerations regarding something, most typically in pro/con lists for reviews (alongside [positiveNotes](https://schema.org/positiveNotes)). For symmetry"}},
+    "Provides negative considerations regarding something, most typically in pro/con lists for reviews (alongside [positiveNotes](https://schema.org/positiveNotes)). For symmetry",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/isbn-t79SXlCN
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -98,21 +100,24 @@
      :search
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
-    :logseq.property/description "The ISBN of the book."}},
+    :logseq.property/description "The ISBN of the book.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/suggestedMaxAge-W8zRKbo_
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "suggestedMaxAge",
    :build/properties
    {:logseq.property/description
-    "Maximum recommended age in years for the audience or user."}},
+    "Maximum recommended age in years for the audience or user.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/requiredMaxAge-cQfgFC2e
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "requiredMaxAge",
    :build/properties
    {:logseq.property/description
-    "Audiences defined by a person's maximum age."}},
+    "Audiences defined by a person's maximum age.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/topic-IKHrOrfb
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -120,7 +125,7 @@
    :build/properties
    {:user.property/sourceSchema-mW7IZAwI
     [:block/uuid #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"],
-    :exclude-from-graph-view true}},
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/busNumber-qfQq5rs3
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -138,7 +143,8 @@
      :search
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
-    :logseq.property/description "The unique identifier for the bus."}},
+    :logseq.property/description "The unique identifier for the bus.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/reportNumber-ppuVqO8M
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -157,7 +163,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The number or other unique designator assigned to a Report by the publishing organization."}},
+    "The number or other unique designator assigned to a Report by the publishing organization.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/featureList-OHaRyDei
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -176,7 +183,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Features or modules provided by this application (and possibly required by other applications)."}},
+    "Features or modules provided by this application (and possibly required by other applications).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/objective-z5ii3204
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -184,7 +192,7 @@
    :build/properties
    {:user.property/sourceSchema-mW7IZAwI
     [:block/uuid #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"],
-    :exclude-from-graph-view true}},
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/educationalLevel-VdDtKf3f
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -200,7 +208,8 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "The level in terms of progression through an educational or training context. Examples of educational levels include 'beginner', 'intermediate' or 'advanced', and formal sets of level indicators."}},
+    "The level in terms of progression through an educational or training context. Examples of educational levels include 'beginner', 'intermediate' or 'advanced', and formal sets of level indicators.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/position-CpQTj3Hx
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -215,7 +224,8 @@
      :search ",1234,input,numbers,1234,blue,square,🔢",
      :type :emoji},
     :logseq.property/description
-    "The position of an item in a series or sequence of items."}},
+    "The position of an item in a series or sequence of items.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/flightNumber-S98UtDgy
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -234,14 +244,16 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'."}},
+    "The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/targetDescription-xxfg2jZY
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "targetDescription",
    :build/properties
    {:logseq.property/description
-    "The description of a node in an established educational framework."}},
+    "The description of a node in an established educational framework.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/issn-NVWcUYs-
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -260,7 +272,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication."}},
+    "The International Standard Serial Number (ISSN) that identifies this serial publication. You can repeat this property to identify different formats of, or the linking ISSN (ISSN-L) for, this serial publication.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/hasTierBenefit-JXoGm4l6
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -272,7 +285,8 @@
      :name "Pyramid",
      :color "inherit"},
     :logseq.property/description
-    "A member benefit for a particular tier of a loyalty program."}},
+    "A member benefit for a particular tier of a loyalty program.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/termsOfService-tOjPWsb8
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -291,7 +305,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Human-readable terms of service documentation."}},
+    "Human-readable terms of service documentation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/jobTitle-UxYujkgK
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -309,14 +324,16 @@
      ",briefcase,briefcase,business,documents,work,law,legal,job,career,💼",
      :type :emoji},
     :logseq.property/description
-    "The job title of the person (for example, Financial Manager)."}},
+    "The job title of the person (for example, Financial Manager).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/suggestedMinAge-fzsSL4D9
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "suggestedMinAge",
    :build/properties
    {:logseq.property/description
-    "Minimum recommended age in years for the audience or user."}},
+    "Minimum recommended age in years for the audience or user.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/datePublished-sLI9lZvT
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -333,7 +350,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Date of first publication or broadcast. For example the date a [CreativeWork](https://schema.org/CreativeWork) was broadcast or a [Certification](https://schema.org/Certification) was issued."}},
+    "Date of first publication or broadcast. For example the date a [CreativeWork](https://schema.org/CreativeWork) was broadcast or a [Certification](https://schema.org/Certification) was issued.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/email-UL_S9FXV
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -347,14 +365,16 @@
      :version 1,
      :search ",e-mail,e,mail,e,mail,communication,inbox,📧",
      :type :emoji},
-    :logseq.property/description "Email address."}},
+    :logseq.property/description "Email address.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/targetUrl-uSW0bkbu
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :url,
    :block/title "targetUrl",
    :build/properties
    {:logseq.property/description
-    "The URL of a node in an established educational framework."}},
+    "The URL of a node in an established educational framework.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/unitText-URn4pirV
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -370,19 +390,21 @@
      :search ",package,package,mail,gift,cardboard,box,moving,📦",
      :type :emoji},
     :logseq.property/description
-    "A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for [unitCode](https://schema.org/unitCode)."}},
+    "A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for [unitCode](https://schema.org/unitCode).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/suggestedAge-w62YXGBw
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "suggestedAge",
    :build/properties
    {:logseq.property/description
-    "The age or age range for the intended audience or person, for example 3-12 months for infants, 1-5 years for toddlers."}},
+    "The age or age range for the intended audience or person, for example 3-12 months for infants, 1-5 years for toddlers.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/NewTest-p_JQOVIQ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
    :block/title "NewTest",
-   :build/properties {:exclude-from-graph-view true}},
+   :build/properties {:logseq.property/exclude-from-graph-view true}},
   :user.property/category-wiulLpkL
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -401,7 +423,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy."}},
+    "A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/eventSchedule-Ws3P6bR2
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -417,7 +440,8 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "Associates an [Event](https://schema.org/Event) with a [Schedule](https://schema.org/Schedule). There are circumstances where it is preferable to share a schedule for a series of repeating events rather than data on the individual events themselves. For example, a website or application might prefer to publish a schedule for a weekly gym class rather than provide data on every event. A schedule could be processed by applications to add forthcoming events to a calendar."}},
+    "Associates an [Event](https://schema.org/Event) with a [Schedule](https://schema.org/Schedule). There are circumstances where it is preferable to share a schedule for a series of repeating events rather than data on the individual events themselves. For example, a website or application might prefer to publish a schedule for a weekly gym class rather than provide data on every event. A schedule could be processed by applications to add forthcoming events to a calendar.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numAdults-bSIbpwRi
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -426,7 +450,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of adults staying in the unit."}},
+    "The number of adults staying in the unit.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/bookFormat-xoZSEDrb
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -456,15 +481,16 @@
      :search
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
-    :logseq.property/exclude-from-graph-view true,
-    :logseq.property/description "The publication format of the book."}},
+    :logseq.property/description "The publication format of the book.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/worstRating-Z71o-EwL
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "worstRating",
    :build/properties
    {:logseq.property/description
-    "The lowest value allowed in this rating system."}},
+    "The lowest value allowed in this rating system.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/lodgingUnitDescription-EZOef7dO
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -483,7 +509,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "A full description of the lodging unit."}},
+    "A full description of the lodging unit.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/experienceRequirements-k6e_h1tv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -491,7 +518,8 @@
    :build/properties
    {:logseq.property/icon {:id "mortar_board", :type :emoji},
     :logseq.property/description
-    "Description of skills and experience needed for the position or Occupation."}},
+    "Description of skills and experience needed for the position or Occupation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/iswcCode-Yt6dq2KL
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -510,7 +538,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The International Standard Musical Work Code for the composition."}},
+    "The International Standard Musical Work Code for the composition.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/responsibilities-nZnn4ia1
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -526,7 +555,8 @@
      :search ",clipboard,clipboard,stationery,documents,📋",
      :type :emoji},
     :logseq.property/description
-    "Responsibilities associated with this role or Occupation."}},
+    "Responsibilities associated with this role or Occupation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/duration-vlF3wNCy
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -545,7 +575,8 @@
      :search ",timer_clock,timer,clock,alarm,⏲️",
      :type :emoji},
     :logseq.property/description
-    "The duration of the item (movie, audio recording, event, etc.) in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601)."}},
+    "The duration of the item (movie, audio recording, event, etc.) in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departurePlatform-JfrFRXrj
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -564,7 +595,8 @@
      ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
      :type :emoji},
     :logseq.property/description
-    "The platform from which the train departs."}},
+    "The platform from which the train departs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/endDate-S6oT3xL4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -580,7 +612,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601))."}},
+    "The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/image-mzkRLYi1
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :url,
@@ -600,7 +633,8 @@
      ",frame_with_picture,framed,picture,frame,with,photography,🖼️",
      :type :emoji},
     :logseq.property/description
-    "An image of the item. This can be a [URL](https://schema.org/URL) or a fully described [ImageObject](https://schema.org/ImageObject)."}},
+    "An image of the item. This can be a [URL](https://schema.org/URL) or a fully described [ImageObject](https://schema.org/ImageObject).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/startDate-pTZGr2us
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -616,7 +650,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601))."}},
+    "The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/bookingTime-ib2dcl4y
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -631,7 +666,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The date and time the reservation was booked."}},
+    "The date and time the reservation was booked.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/serviceType-yAzEQ0lN
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -650,7 +686,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The type of service being offered, e.g. veterans' benefits, emergency relief, etc."}},
+    "The type of service being offered, e.g. veterans' benefits, emergency relief, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/ticketNumber-flGt3rUe
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -669,7 +706,8 @@
      ",admission_tickets,admission,tickets,sports,concert,entrance,🎟️",
      :type :emoji},
     :logseq.property/description
-    "The unique identifier for the ticket."}},
+    "The unique identifier for the ticket.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/bookEdition-rNhd8OND
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -688,7 +726,8 @@
      :search
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
-    :logseq.property/description "The edition of the book."}},
+    :logseq.property/description "The edition of the book.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/priceRange-KoQ0yZOa
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -707,7 +746,8 @@
      ",heavy_dollar_sign,heavy,dollar,sign,money,sales,payment,currency,buck,💲",
      :type :emoji},
     :logseq.property/description
-    "The price range of the business, for example `$$$`."}},
+    "The price range of the business, for example `$$$`.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/openingHours-bnyE7wOV
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -723,7 +763,8 @@
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
     :logseq.property/description
-    "The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'."}},
+    "The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/aircraft-v-3nuYlS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -742,7 +783,8 @@
      ",airplane_departure,airplane,departure,airport,flight,landing,🛫",
      :type :emoji},
     :logseq.property/description
-    "The kind of aircraft (e.g., \"Boeing 747\")."}},
+    "The kind of aircraft (e.g., \"Boeing 747\").",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/itemListOrder-JJqXHS2N
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -798,7 +840,8 @@
    {:logseq.property/icon
     {:id "ListNumbers", :type :tabler-icon, :color "inherit"},
     :logseq.property/description
-    "Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized."}},
+    "Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/byMonth-BFjfMsoj
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -813,7 +856,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines the month(s) of the year on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-12. January is 1."}},
+    "Defines the month(s) of the year on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-12. January is 1.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/reviewDate-eTWaorSr
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -828,7 +872,7 @@
      :version 1,
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
-    :exclude-from-graph-view true}},
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departureTime-Kbp9h8BI
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -843,7 +887,8 @@
      :version 1,
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
-    :logseq.property/description "The expected departure time."}},
+    :logseq.property/description "The expected departure time.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/certificationIdentification-y9GPkyy_
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -862,7 +907,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Identifier of a certification instance (as registered with an independent certification body). Typically this identifier can be used to consult and verify the certification instance. See also [gs1:certificationIdentification](https://www.gs1.org/voc/certificationIdentification)."}},
+    "Identifier of a certification instance (as registered with an independent certification body). Typically this identifier can be used to consult and verify the certification instance. See also [gs1:certificationIdentification](https://www.gs1.org/voc/certificationIdentification).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/givenName-BH3hBESZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -879,7 +925,8 @@
      :search ",id,id,button,purple,square,words,🆔",
      :type :emoji},
     :logseq.property/description
-    "Given name. In the U.S., the first name of a Person."}},
+    "Given name. In the U.S., the first name of a Person.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/startTime-PHj9fR0A
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -894,7 +941,8 @@
      :version 1,
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
-    :logseq.property/description "The startTime of something."}},
+    :logseq.property/description "The startTime of something.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/validFrom-YK1SD77t
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -909,7 +957,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The date when the item becomes valid."}},
+    "The date when the item becomes valid.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/competencyRequired-Cs6MsGxD
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -925,7 +974,8 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "Knowledge, skill, ability or personal attribute that must be demonstrated by a person or other entity in order to do something such as earn an Educational Occupational Credential or understand a LearningResource."}},
+    "Knowledge, skill, ability or personal attribute that must be demonstrated by a person or other entity in order to do something such as earn an Educational Occupational Credential or understand a LearningResource.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/membershipPointsEarned-kpcqd2Vp
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -934,21 +984,24 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of membership points earned by the member. If necessary, the unitText can be used to express the units the points are issued in. (E.g. stars, miles, etc.)"}},
+    "The number of membership points earned by the member. If necessary, the unitText can be used to express the units the points are issued in. (E.g. stars, miles, etc.)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/epidemiology-A9i-vXl6
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "epidemiology",
    :build/properties
    {:logseq.property/description
-    "The characteristics of associated patients, such as age, gender, race etc."}},
+    "The characteristics of associated patients, such as age, gender, race etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/claimReviewed-O7g5QHqG
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "claimReviewed",
    :build/properties
    {:logseq.property/description
-    "A short summary of the specific claims reviewed in a ClaimReview."}},
+    "A short summary of the specific claims reviewed in a ClaimReview.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numberOfSeasons-VS_hMs2_
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -957,7 +1010,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of seasons in this series."}},
+    "The number of seasons in this series.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/trainName-Pm4GSmHe
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -976,7 +1030,8 @@
      ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
      :type :emoji},
     :logseq.property/description
-    "The name of the train (e.g. The Orient Express)."}},
+    "The name of the train (e.g. The Orient Express).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/repeatCount-dGv-E9Rt
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -991,14 +1046,16 @@
      :search ",repeat,repeat,button,loop,record,🔁",
      :type :emoji},
     :logseq.property/description
-    "Defines the number of times a recurring [Event](https://schema.org/Event) will take place."}},
+    "Defines the number of times a recurring [Event](https://schema.org/Event) will take place.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/associatedAnatomy-v2fic-1N
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "associatedAnatomy",
    :build/properties
    {:logseq.property/description
-    "The anatomy of the underlying organ system or structures associated with this entity."}},
+    "The anatomy of the underlying organ system or structures associated with this entity.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/additionalVariable-Vslk_AUZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1017,7 +1074,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc."}},
+    "Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/additionalName-z4bHQglc
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1032,7 +1090,8 @@
      :search ",id,id,button,purple,square,words,🆔",
      :type :emoji},
     :logseq.property/description
-    "An additional name for a Person, can be used for a middle name."}},
+    "An additional name for a Person, can be used for a middle name.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/certificationStatus-KtfX6leC
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1063,7 +1122,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Indicates the current status of a certification: active or inactive. See also [gs1:certificationStatus](https://www.gs1.org/voc/certificationStatus)."}},
+    "Indicates the current status of a certification: active or inactive. See also [gs1:certificationStatus](https://www.gs1.org/voc/certificationStatus).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/catalogNumber-Dz2SUuXx
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1081,7 +1141,8 @@
      :search
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
-    :logseq.property/description "The catalog number for the release."}},
+    :logseq.property/description "The catalog number for the release.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/applicationSubCategory-lPAdUgRE
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1100,7 +1161,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Subcategory of the application, e.g. 'Arcade Game'."}},
+    "Subcategory of the application, e.g. 'Arcade Game'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/ratingValue-Xu8kZopa
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -1108,7 +1170,8 @@
    :build/properties
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
-    :logseq.property/description "The rating for the content."}},
+    :logseq.property/description "The rating for the content.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/risks-XWR9b24n
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1125,7 +1188,8 @@
      ",construction,construction,wip,progress,caution,warning,🚧",
      :type :emoji},
     :logseq.property/description
-    "Specific physiologic risks associated to the diet plan."}},
+    "Specific physiologic risks associated to the diet plan.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/proficiencyLevel-Yw4Qm7Tn
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1154,7 +1218,8 @@
      ",chart_with_upwards_trend,chart,increasing,with,upwards,trend,graph,presentation,stats,recovery,business,economics,money,sales,good,success,📈",
      :type :emoji},
     :logseq.property/description
-    "Proficiency needed for this content; expected values are 'Beginner', 'Intermediate', or 'Expert'."}},
+    "Proficiency needed for this content; expected values are 'Beginner', 'Intermediate', or 'Expert'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/byDay-TWKD36wS
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -1186,7 +1251,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines the day(s) of the week on which a recurring [Event](https://schema.org/Event) takes place. May be specified using either [DayOfWeek](https://schema.org/DayOfWeek), or alternatively [Text](https://schema.org/Text) conforming to iCal's syntax for byDay recurrence rules."}},
+    "Defines the day(s) of the week on which a recurring [Event](https://schema.org/Event) takes place. May be specified using either [DayOfWeek](https://schema.org/DayOfWeek), or alternatively [Text](https://schema.org/Text) conforming to iCal's syntax for byDay recurrence rules.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/qualifications-vpPYlEVx
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1213,7 +1279,8 @@
      ",mortar_board,graduation,cap,mortar,board,school,college,degree,university,hat,legal,learn,education,🎓",
      :type :emoji},
     :logseq.property/description
-    "Specific qualifications required for this role or Occupation."}},
+    "Specific qualifications required for this role or Occupation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/telephone-MNlPt6MU
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1229,7 +1296,8 @@
      :aliases ["telephone"],
      :search ",phone,telephone,phone,technology,communication,dial,☎️",
      :type :emoji},
-    :logseq.property/description "The telephone number."}},
+    :logseq.property/description "The telephone number.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/address-Dw4sxM8a
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1247,7 +1315,8 @@
      :version 1,
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
-    :logseq.property/description "Physical address of the item."}},
+    :logseq.property/description "Physical address of the item.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numTracks-tU9asfzE
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -1256,7 +1325,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of tracks in this album or playlist."}},
+    "The number of tracks in this album or playlist.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/assesses-IP45ixk-
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1281,7 +1351,8 @@
      ",100,hundred,points,100,score,perfect,numbers,century,exam,quiz,test,pass,💯",
      :type :emoji},
     :logseq.property/description
-    "The item being described is intended to assess the competency or learning outcome defined by the referenced term."}},
+    "The item being described is intended to assess the competency or learning outcome defined by the referenced term.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalTime-YEa7dFKt
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -1296,7 +1367,8 @@
      :version 1,
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
-    :logseq.property/description "The expected arrival time."}},
+    :logseq.property/description "The expected arrival time.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalPlatform-sxOgei4W
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1315,7 +1387,8 @@
      ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
      :type :emoji},
     :logseq.property/description
-    "The platform where the train arrives."}},
+    "The platform where the train arrives.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/areas-RjYz4kBx
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1323,7 +1396,7 @@
    :build/properties
    {:user.property/sourceSchema-mW7IZAwI
     [:block/uuid #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"],
-    :exclude-from-graph-view true}},
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/dependencies-Kp8Nx2Vm
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -1338,7 +1411,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "Prerequisites needed to fulfill steps in article."}},
+    "Prerequisites needed to fulfill steps in article.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/downloadUrl-SetggybQ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :url,
@@ -1353,7 +1427,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "If the file can be downloaded, URL to download the binary."}},
+    "If the file can be downloaded, URL to download the binary.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/legalName-NTd1D8n3
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1372,7 +1447,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The official name of the [[Organization]] , e.g. the registered company name."}},
+    "The official name of the [[Organization]] , e.g. the registered company name.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/partySize-LOGA0uTB
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -1381,7 +1457,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "Number of people the reservation should accommodate."}},
+    "Number of people the reservation should accommodate.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/priceCurrency-Z5vcfXRF
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1400,7 +1477,8 @@
      ",heavy_dollar_sign,heavy,dollar,sign,money,sales,payment,currency,buck,💲",
      :type :emoji},
     :logseq.property/description
-    "The currency of the price, or a price component when attached to [PriceSpecification](https://schema.org/PriceSpecification) and its subtypes."}},
+    "The currency of the price, or a price component when attached to [PriceSpecification](https://schema.org/PriceSpecification) and its subtypes.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/learningResourceType-K_-tkOTS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1419,14 +1497,16 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'."}},
+    "The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/suggestedGender-RnIy1hU9
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "suggestedGender",
    :build/properties
    {:logseq.property/description
-    "The suggested gender of the intended person or audience, for example \"male\", \"female\", or \"unisex\"."}},
+    "The suggested gender of the intended person or audience, for example \"male\", \"female\", or \"unisex\".",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/flightDistance-dZPBgsdI
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1452,7 +1532,8 @@
      :search
      ",straight_ruler,straight,ruler,stationery,calculate,length,math,school,drawing,architect,sketch,📏",
      :type :emoji},
-    :logseq.property/description "The distance of the flight."}},
+    :logseq.property/description "The distance of the flight.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/trainNumber-Snsq4fWc
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1471,7 +1552,8 @@
      ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
      :type :emoji},
     :logseq.property/description
-    "The unique identifier for the train."}},
+    "The unique identifier for the train.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/exerciseType-cryv0fp5
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1524,7 +1606,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc."}},
+    "Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/byMonthWeek-bx-sZkN6
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -1539,7 +1622,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines the week(s) of the month on which a recurring Event takes place. Specified as an Integer between 1-5. For clarity, byMonthWeek is best used in conjunction with byDay to indicate concepts like the first and third Mondays of a month."}},
+    "Defines the week(s) of the month on which a recurring Event takes place. Specified as an Integer between 1-5. For clarity, byMonthWeek is best used in conjunction with byDay to indicate concepts like the first and third Mondays of a month.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/ticketedSeat-cCqOztxq
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1558,14 +1642,16 @@
      ",admission_tickets,admission,tickets,sports,concert,entrance,🎟️",
      :type :emoji},
     :logseq.property/description
-    "The seat associated with the ticket."}},
+    "The seat associated with the ticket.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numberOfEmployees-KzEbRfar
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "numberOfEmployees",
    :build/properties
    {:logseq.property/description
-    "The number of employees in an organization, e.g. business."}},
+    "The number of employees in an organization, e.g. business.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/url-vl6uOHvr
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :url,
@@ -1580,7 +1666,8 @@
      :version 1,
      :search ",link,link,rings,url,🔗",
      :type :emoji},
-    :logseq.property/description "URL of the item."}},
+    :logseq.property/description "URL of the item.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/dietFeatures-v1gjALq0
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1599,7 +1686,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Nutritional information specific to the dietary plan. May include dietary recommendations on what foods to avoid, what foods to consume, and specific alterations/deviations from the USDA or other regulatory body's approved dietary guidelines."}},
+    "Nutritional information specific to the dietary plan. May include dietary recommendations on what foods to avoid, what foods to consume, and specific alterations/deviations from the USDA or other regulatory body's approved dietary guidelines.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numChildren-gmr_QxI7
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -1608,7 +1696,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of children staying in the unit."}},
+    "The number of children staying in the unit.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/sameAs-d-nt_wFF
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :url,
@@ -1624,7 +1713,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website."}},
+    "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/courseMode-PrUwU06T
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1640,7 +1730,8 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "The medium or means of delivery of the course instance or the mode of study, either as a text label (e.g. \"online\", \"onsite\" or \"blended\"; \"synchronous\" or \"asynchronous\"; \"full-time\" or \"part-time\") or as a URL reference to a term from a controlled vocabulary (e.g. https://ceds.ed.gov/element/001311#Asynchronous)."}},
+    "The medium or means of delivery of the course instance or the mode of study, either as a text label (e.g. \"online\", \"onsite\" or \"blended\"; \"synchronous\" or \"asynchronous\"; \"full-time\" or \"part-time\") or as a URL reference to a term from a controlled vocabulary (e.g. https://ceds.ed.gov/element/001311#Asynchronous).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/ticketToken-UpeX5QBm
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1659,7 +1750,8 @@
      ",admission_tickets,admission,tickets,sports,concert,entrance,🎟️",
      :type :emoji},
     :logseq.property/description
-    "Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance."}},
+    "Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/skills-AxlhRSPo
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -1674,7 +1766,8 @@
      :search ",brain,brain,smart,intelligent,🧠",
      :type :emoji},
     :logseq.property/description
-    "A statement of knowledge, skill, ability, task or any other assertion expressing a competency that is either claimed by a person, an organization or desired or required to fulfill a role or to work in an occupation."}},
+    "A statement of knowledge, skill, ability, task or any other assertion expressing a competency that is either claimed by a person, an organization or desired or required to fulfill a role or to work in an occupation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/gamePlatform-FyB01r7I
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1693,7 +1786,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The electronic systems used to play [video games](http://en.wikipedia.org/wiki/Category:Video_game_platforms)."}},
+    "The electronic systems used to play [video games](http://en.wikipedia.org/wiki/Category:Video_game_platforms).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/expires-buw30WDd
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -1708,14 +1802,16 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Date the content expires and is no longer useful or available. For example a [VideoObject](https://schema.org/VideoObject) or [NewsArticle](https://schema.org/NewsArticle) whose availability or relevance is time-limited, a [ClaimReview](https://schema.org/ClaimReview) fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date, or a [Certification](https://schema.org/Certification) the validity has expired."}},
+    "Date the content expires and is no longer useful or available. For example a [VideoObject](https://schema.org/VideoObject) or [NewsArticle](https://schema.org/NewsArticle) whose availability or relevance is time-limited, a [ClaimReview](https://schema.org/ClaimReview) fact check whose publisher wants to indicate that it may no longer be relevant (or helpful to highlight) after some date, or a [Certification](https://schema.org/Certification) the validity has expired.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/requiredGender-edrb5AZ7
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "requiredGender",
    :build/properties
    {:logseq.property/description
-    "Audiences defined by a person's gender."}},
+    "Audiences defined by a person's gender.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/documentation-myvj5vw6
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :url,
@@ -1730,7 +1826,8 @@
      :search ",scroll,scroll,documents,ancient,history,paper,📜",
      :type :emoji},
     :logseq.property/description
-    "Further documentation describing the Web API in more detail."}},
+    "Further documentation describing the Web API in more detail.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/award-My4UlCOU
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1745,7 +1842,8 @@
      :search ",trophy,trophy,win,award,contest,place,ftw,ceremony,🏆",
      :type :emoji},
     :logseq.property/description
-    "An award won by or for this item. Supersedes [awards](https://schema.org/awards)."}},
+    "An award won by or for this item. Supersedes [awards](https://schema.org/awards).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/modifiedTime-CvkPGMM7
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -1760,14 +1858,16 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The date and time the reservation was modified."}},
+    "The date and time the reservation was modified.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/educationalFramework-sO-tGOVl
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "educationalFramework",
    :build/properties
    {:logseq.property/description
-    "The framework to which the resource being described is aligned."}},
+    "The framework to which the resource being described is aligned.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/webCheckinTime-JKr4Kz6T
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -1783,7 +1883,8 @@
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
     :logseq.property/description
-    "The time when a passenger can check into the flight online."}},
+    "The time when a passenger can check into the flight online.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/albumProductionType-TxGU69q7
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1811,7 +1912,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Album", :name "Album", :color "inherit"},
     :logseq.property/description
-    "Classification of the album by its type of content: soundtrack, live album, studio album, etc."}},
+    "Classification of the album by its type of content: soundtrack, live album, studio album, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/dateCreated-T1y0l7V0
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -1828,7 +1930,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The date on which the CreativeWork was created or the item was added to a DataFeed."}},
+    "The date on which the CreativeWork was created or the item was added to a DataFeed.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalTerminal-Kp81uh81
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1847,7 +1950,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Identifier of the flight's arrival terminal."}},
+    "Identifier of the flight's arrival terminal.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/sourceSchema-mW7IZAwI
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1877,7 +1981,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The source origin of how the schema type came to be"}},
+    "The source origin of how the schema type came to be",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/expertConsiderations-WXzlugI6
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1892,7 +1997,8 @@
      :search ",brain,brain,smart,intelligent,🧠",
      :type :emoji},
     :logseq.property/description
-    "Medical expert advice related to the plan."}},
+    "Medical expert advice related to the plan.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/arrivalGate-u7wZFKbZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1911,14 +2017,16 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Identifier of the flight's arrival gate."}},
+    "Identifier of the flight's arrival gate.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/educationRole-WfwQqL47
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "educationRole",
    :build/properties
    {:logseq.property/description
-    "An educationalRole of an EducationalAudience."}},
+    "An educationalRole of an EducationalAudience.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departureTerminal-PqlMbRVV
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1937,7 +2045,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Identifier of the flight's departure terminal."}},
+    "Identifier of the flight's departure terminal.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/alternativeHeadline-DdoUESHZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1958,7 +2067,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "A secondary title of the [[CreativeWork]] ."}},
+    "A secondary title of the [[CreativeWork]] .",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/applicationCategory-WZNoKEnr
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1977,7 +2087,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Type of software application, e.g. 'Game, Multimedia'."}},
+    "Type of software application, e.g. 'Game, Multimedia'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/scheduleTimezone-q9Mw6rV4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -1993,7 +2104,8 @@
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
     :logseq.property/description
-    "Indicates the timezone for which the time(s) indicated in the [Schedule](https://schema.org/Schedule) are given. The value provided should be among those listed in the IANA Time Zone Database."}},
+    "Indicates the timezone for which the time(s) indicated in the [Schedule](https://schema.org/Schedule) are given. The value provided should be among those listed in the IANA Time Zone Database.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/timeRequired-DIShrfI7
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2025,7 +2137,7 @@
      :block/title "Revisit for Duration type later",
      :build/tags [:logseq.class/Task],
      :build/properties {}},
-    :exclude-from-graph-view true}},
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/positiveNotes-zqB_ZYj3
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -2042,7 +2154,8 @@
      :search ",clipboard,clipboard,stationery,documents,📋",
      :type :emoji},
     :logseq.property/description
-    "Provides positive considerations regarding something, for example product highlights or (alongside [negativeNotes](https://schema.org/negativeNotes)) pro/con lists for reviews."}},
+    "Provides positive considerations regarding something, for example product highlights or (alongside [negativeNotes](https://schema.org/negativeNotes)) pro/con lists for reviews.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numberOfCredits-WIlf3zow
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2051,7 +2164,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of credits or units awarded by a Course or required to complete an EducationalOccupationalProgram."}},
+    "The number of credits or units awarded by a Course or required to complete an EducationalOccupationalProgram.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/dateModified-Ou9z6VDL
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -2068,7 +2182,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The date on which the [[CreativeWork]] was most recently modified or when the item's entry was modified within a DataFeed."}},
+    "The date on which the [[CreativeWork]] was most recently modified or when the item's entry was modified within a DataFeed.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/codeSampleType-kgSynuQb
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2087,7 +2202,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "What type of code sample: full (compile ready) solution, code snippet, inline code, scripts, template."}},
+    "What type of code sample: full (compile ready) solution, code snippet, inline code, scripts, template.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/activityFrequency-vpC_bzQl
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2106,7 +2222,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "How often one should engage in the activity."}},
+    "How often one should engage in the activity.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numberOfItems-XoQx6jS2
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2115,7 +2232,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list."}},
+    "The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/checkinTime-yG1s87l_
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -2130,7 +2248,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The earliest someone may check into a lodging establishment."}},
+    "The earliest someone may check into a lodging establishment.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/lodgingUnitType-R-8D18oF
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2149,7 +2268,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Textual description of the unit type (including suite vs. room, size of bed, etc.)."}},
+    "Textual description of the unit type (including suite vs. room, size of bed, etc.).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/reviewAspect-CUiKDJLe
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2164,7 +2284,8 @@
      :search ",cake,shortcake,cake,food,dessert,🍰",
      :type :emoji},
     :logseq.property/description
-    "This Review or Rating is relevant to this part or facet of the itemReviewed."}},
+    "This Review or Rating is relevant to this part or facet of the itemReviewed.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/applicationSuite-jFY1fq7w
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2183,21 +2304,24 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The name of the application suite to which the application belongs (e.g. Excel belongs to Office)."}},
+    "The name of the application suite to which the application belongs (e.g. Excel belongs to Office).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/pathophysiology-x65zQlVL
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "pathophysiology",
    :build/properties
    {:logseq.property/description
-    "Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition."}},
+    "Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/targetName-WA5ohoo7
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "targetName",
    :build/properties
    {:logseq.property/description
-    "The name of a node in an established educational framework."}},
+    "The name of a node in an established educational framework.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/eventStatus-WPAU8yOp
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2274,13 +2398,15 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled."}},
+    "An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/yearsInOperation-WbOXIiVy
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "yearsInOperation",
    :build/properties
-   {:logseq.property/description "The age of the business."}},
+   {:logseq.property/description "The age of the business.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/titleEIDR-on2y7Xb2
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2299,7 +2425,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "An [EIDR](https://eidr.org/) (Entertainment Identifier Registry) [identifier](https://schema.org/identifier) representing at the most general/abstract level, a work of film or television."}},
+    "An [EIDR](https://eidr.org/) (Entertainment Identifier Registry) [identifier](https://schema.org/identifier) representing at the most general/abstract level, a work of film or television.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/commentCount-FviA_HOv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2310,7 +2437,8 @@
     :logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere."}},
+    "The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/workLocation-lmGSYhty
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2328,7 +2456,8 @@
      :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "A contact location for a person's place of work."}},
+    "A contact location for a person's place of work.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/nextMeetingDate-GUnc-7cv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -2346,7 +2475,7 @@
      :version 1,
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
-    :exclude-from-graph-view true}},
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/physiologicalBenefits-FJV7UKgQ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2378,14 +2507,16 @@
      ",muscle,flexed,biceps,muscle,arm,flex,hand,summer,strong,💪,💪🏻,💪🏼,💪🏽,💪🏾,💪🏿",
      :type :emoji},
     :logseq.property/description
-    "Specific physiologic benefits associated to the plan."}},
+    "Specific physiologic benefits associated to the plan.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/pickupTime-ayDqSpNv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
    :block/title "pickupTime",
    :build/properties
    {:logseq.property/description
-    "When a taxi will pick up a passenger or a rental car can be picked up."}},
+    "When a taxi will pick up a passenger or a rental car can be picked up.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/knowsAbout-zgLDOg28
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -2400,7 +2531,8 @@
      :search ",brain,brain,smart,intelligent,🧠",
      :type :emoji},
     :logseq.property/description
-    "Of a [[Person]], and less typically of an [[Organization]], to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or JobPosting descriptions."}},
+    "Of a [[Person]], and less typically of an [[Organization]], to indicate a topic that is known about - suggesting possible expertise but not implying it. We do not distinguish skill levels here, or relate this to educational content, events, objectives or JobPosting descriptions.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/auditDate-IIUQNOsg
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -2415,7 +2547,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Date when a certification was last audited. See also [gs1:certificationAuditDate](https://www.gs1.org/voc/certificationAuditDate)."}},
+    "Date when a certification was last audited. See also [gs1:certificationAuditDate](https://www.gs1.org/voc/certificationAuditDate).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/byMonthDay-WoK8yoLn
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2430,7 +2563,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines the day(s) of the month on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-31."}},
+    "Defines the day(s) of the month on which a recurring [Event](https://schema.org/Event) takes place. Specified as an [Integer](https://schema.org/Integer) between 1-31.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/endTime-I4vdeV9O
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -2445,7 +2579,8 @@
      :version 1,
      :search ",stopwatch,stopwatch,time,deadline,⏱️",
      :type :emoji},
-    :logseq.property/description "The endTime of something."}},
+    :logseq.property/description "The endTime of something.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/backStory-C8a5xvyE
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2464,7 +2599,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "For an [Article](https://schema.org/Article), typically a [NewsArticle](https://schema.org/NewsArticle), the backstory property provides a textual summary giving a brief explanation of why and how an article was created. In a journalistic setting this could include information about reporting process, methods, interviews, data sources, etc."}},
+    "For an [Article](https://schema.org/Article), typically a [NewsArticle](https://schema.org/NewsArticle), the backstory property provides a textual summary giving a brief explanation of why and how an article was created. In a journalistic setting this could include information about reporting process, methods, interviews, data sources, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numberOfEpisodes-zdrIalSK
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2474,7 +2610,8 @@
    {:logseq.property/icon
     {:id "Sum", :type :tabler-icon, :color "inherit"},
     :logseq.property/description
-    "The number of episodes in this season or series."}},
+    "The number of episodes in this season or series.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/numberOfPages-uA4zuqoz
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2483,7 +2620,8 @@
    {:logseq.property/hide-empty-value true,
     :logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
-    :logseq.property/description "The number of pages in the book."}},
+    :logseq.property/description "The number of pages in the book.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/stars-tWA5bx7X
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2550,7 +2688,8 @@
      :version 1,
      :search ",star,star,night,yellow,⭐",
      :type :emoji},
-    :logseq.property/description "A simple rating scale"}},
+    :logseq.property/description "A simple rating scale",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/totalPrice-k4eAGPGr
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2559,7 +2698,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Sum", :name "Sum", :color "inherit"},
     :logseq.property/description
-    "The total price for the reservation or ticket, including applicable taxes, shipping, etc."}},
+    "The total price for the reservation or ticket, including applicable taxes, shipping, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/logo-G3qEV2JH
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :url,
@@ -2577,14 +2717,16 @@
      :search
      ",frame_with_picture,framed,picture,frame,with,photography,🖼️",
      :type :emoji},
-    :logseq.property/description "An associated logo."}},
+    :logseq.property/description "An associated logo.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/iataCode-LWJS7zmV
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "iataCode",
    :build/properties
    {:logseq.property/description
-    "IATA identifier for an airline or airport."}},
+    "IATA identifier for an airline or airport.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/busName-JCI9133e
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2603,7 +2745,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The name of the bus (e.g. Bolt Express)."}},
+    "The name of the bus (e.g. Bolt Express).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/articleSection-DNFDM1UG
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2622,7 +2765,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Articles may belong to one or more 'sections' in a magazine or newspaper, such as Sports, Lifestyle, etc."}},
+    "Articles may belong to one or more 'sections' in a magazine or newspaper, such as Sports, Lifestyle, etc.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/reservationId-nfD67GOp
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2641,7 +2785,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "A unique identifier for the reservation."}},
+    "A unique identifier for the reservation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/teaches-vy8FF52w
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2675,7 +2820,8 @@
      ",teacher,teacher,professor,🧑‍🏫,🧑🏻‍🏫,🧑🏼‍🏫,🧑🏽‍🏫,🧑🏾‍🏫,🧑🏿‍🏫",
      :type :emoji},
     :logseq.property/description
-    "The item being described is intended to help a person learn the competency or learning outcome defined by the referenced term."}},
+    "The item being described is intended to help a person learn the competency or learning outcome defined by the referenced term.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/credentialCategory-uq00Gg17
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2691,7 +2837,8 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "The category or type of credential being described, for example \"degree”, “certificate”, “badge”, or more specific term."}},
+    "The category or type of credential being described, for example \"degree”, “certificate”, “badge”, or more specific term.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/headline-Ic1Lhkuq
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2711,7 +2858,8 @@
      :search
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
-    :logseq.property/description "Headline of the article."}},
+    :logseq.property/description "Headline of the article.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/comment-TluJyr6W
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -2732,7 +2880,8 @@
      :search
      ",speech_balloon,speech,balloon,bubble,words,message,talk,chatting,💬",
      :type :emoji},
-    :logseq.property/description "Comments, typically from users."}},
+    :logseq.property/description "Comments, typically from users.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/membershipNumber-QHxoc0nG
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2747,7 +2896,8 @@
      :search ",ticket,ticket,event,concert,pass,🎫",
      :type :emoji},
     :logseq.property/description
-    "A unique identifier for the membership."}},
+    "A unique identifier for the membership.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/checkoutTime-aIwB61Od
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -2762,7 +2912,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "The latest someone may check out of a lodging establishment."}},
+    "The latest someone may check out of a lodging establishment.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/keywords-SmmwpeIY
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -2783,7 +2934,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Keywords or tags used to describe some item. Multiple textual entries in a keywords list are typically delimited by commas, or by repeating the property."}},
+    "Keywords or tags used to describe some item. Multiple textual entries in a keywords list are typically delimited by commas, or by repeating the property.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/familyName-oYsgEthj
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2798,7 +2950,8 @@
      :search ",id,id,button,purple,square,words,🆔",
      :type :emoji},
     :logseq.property/description
-    "Family name. In the U.S., the last name of a Person."}},
+    "Family name. In the U.S., the last name of a Person.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/seasonNumber-tNhJ6d_I
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -2806,7 +2959,8 @@
    :build/properties
    {:logseq.property/icon {:id "1234", :type :emoji},
     :logseq.property/description
-    "Position of the season within an ordered group of seasons."}},
+    "Position of the season within an ordered group of seasons.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/project-urDQmpUz
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2814,13 +2968,14 @@
    :build/properties
    {:user.property/sourceSchema-mW7IZAwI
     [:block/uuid #uuid "67cfe915-4829-4bc5-a16c-83ed838ec668"],
-    :exclude-from-graph-view true}},
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/icaoCode-fi0_lvU4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "icaoCode",
    :build/properties
-   {:logseq.property/description "ICAO identifier for an airport."}},
+   {:logseq.property/description "ICAO identifier for an airport.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/reviewBody-ATjmxq0J
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -2835,7 +2990,8 @@
      :version 1,
      :search ",clipboard,clipboard,stationery,documents,📋",
      :type :emoji},
-    :logseq.property/description "The actual body of the review."}},
+    :logseq.property/description "The actual body of the review.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/genre-XAO6sAh5
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -2859,7 +3015,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "Genre of the creative work, broadcast channel or group."}},
+    "Genre of the creative work, broadcast channel or group.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/gameEdition-xDnH4o1U
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2877,7 +3034,8 @@
      :search
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
-    :logseq.property/description "The edition of a video game."}},
+    :logseq.property/description "The edition of a video game.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/isrcCode-MT8UcoMv
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2896,14 +3054,16 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The International Standard Recording Code for the recording."}},
+    "The International Standard Recording Code for the recording.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/bestRating-VU7IjcYH
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "bestRating",
    :build/properties
    {:logseq.property/description
-    "The highest value allowed in this rating system."}},
+    "The highest value allowed in this rating system.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/educationalUse-REEoXbDH
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2919,7 +3079,8 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "The purpose of a work in the context of education; for example, 'assignment', 'group work'."}},
+    "The purpose of a work in the context of education; for example, 'assignment', 'group work'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/courseCode-LmNG6oGT
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2938,7 +3099,8 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "The identifier for the [Course](https://schema.org/Course) used by the course [provider](https://schema.org/provider) (e.g. CS101 or 6.001)."}},
+    "The identifier for the [Course](https://schema.org/Course) used by the course [provider](https://schema.org/provider) (e.g. CS101 or 6.001).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/musicReleaseFormat-XEW4zCsl
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -2968,7 +3130,8 @@
      :search ",cd,optical,disc,cd,disk,technology,dvd,90s,💿",
      :type :emoji},
     :logseq.property/description
-    "Format of this release (the type of recording media used, i.e. compact disc, digital media, LP, etc.)."}},
+    "Format of this release (the type of recording media used, i.e. compact disc, digital media, LP, etc.).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/courseWorkload-D2r1XolO
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2984,7 +3147,8 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "The amount of work expected of students taking the course, often provided as a figure per week or per month, and may be broken down by type. For example, \"2 hours of lectures, 1 hour of lab work and 3 hours of independent study per week\"."}},
+    "The amount of work expected of students taking the course, often provided as a figure per week or per month, and may be broken down by type. For example, \"2 hours of lectures, 1 hour of lab work and 3 hours of independent study per week\".",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/minValue-sZuXYnu5
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -3000,7 +3164,8 @@
      :search ",package,package,mail,gift,cardboard,box,moving,📦",
      :type :emoji},
     :logseq.property/description
-    "The lower value of some characteristic or property."}},
+    "The lower value of some characteristic or property.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/value-X4gwRXjI
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -3012,7 +3177,8 @@
      :name "Variable",
      :color "inherit"},
     :logseq.property/description
-    "The value of a [QuantitativeValue](https://schema.org/QuantitativeValue) (including [Observation](https://schema.org/Observation)) or property value node."}},
+    "The value of a [QuantitativeValue](https://schema.org/QuantitativeValue) (including [Observation](https://schema.org/Observation)) or property value node.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/ratingExplanation-Cgyv6g38
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3031,14 +3197,16 @@
      ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
      :type :emoji},
     :logseq.property/description
-    "A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with \"fact check\" markup using [ClaimReview](https://schema.org/ClaimReview)."}},
+    "A short explanation (e.g. one to two sentences) providing background context and other information that led to the conclusion expressed in the rating. This is particularly applicable to ratings associated with \"fact check\" markup using [ClaimReview](https://schema.org/ClaimReview).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/alignmentType-yxeXcPmB
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
    :block/title "alignmentType",
    :build/properties
    {:logseq.property/description
-    "A category of alignment between the learning resource and the framework node. Recommended values include: 'requires', 'textComplexity', 'readingLevel', and 'educationalSubject'."}},
+    "A category of alignment between the learning resource and the framework node. Recommended values include: 'requires', 'textComplexity', 'readingLevel', and 'educationalSubject'.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/license-YrKpjYhb
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -3048,7 +3216,8 @@
    {:logseq.property/hide-empty-value true,
     :logseq.property/icon {:id "information_source", :type :emoji},
     :logseq.property/description
-    "A license document that applies to this content, typically indicated by URL."}},
+    "A license document that applies to this content, typically indicated by URL.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/maxValue-bfkd1aMe
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -3064,7 +3233,8 @@
      :search ",package,package,mail,gift,cardboard,box,moving,📦",
      :type :emoji},
     :logseq.property/description
-    "The upper value of some characteristic or property."}},
+    "The upper value of some characteristic or property.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/episodeNumber-FVyvDhd8
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -3080,14 +3250,16 @@
      :search ",clapper,clapper,board,movie,film,record,🎬",
      :type :emoji},
     :logseq.property/description
-    "Position of the episode within an ordered group of episodes."}},
+    "Position of the episode within an ordered group of episodes.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/requiredAge-lm_Dq1id
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "requiredMinAge",
    :build/properties
    {:logseq.property/description
-    "Audiences defined by a person's minimum age."}},
+    "Audiences defined by a person's minimum age.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/birthDate-YbUCqWiL
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -3101,13 +3273,15 @@
      :version 1,
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
-    :logseq.property/description "Date of birth."}},
+    :logseq.property/description "Date of birth.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/dateIssued-P3N7MeTZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
    :block/title "dateIssued",
    :build/properties
-   {:logseq.property/description "The date the ticket was issued."}},
+   {:logseq.property/description "The date the ticket was issued.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/mealService-Gswx1Lyn
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3123,14 +3297,16 @@
      :search ",pretzel,pretzel,food,bread,twisted,🥨",
      :type :emoji},
     :logseq.property/description
-    "Description of the meals that will be provided or available for purchase."}},
+    "Description of the meals that will be provided or available for purchase.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/yearlyRevenue-BgP9WWpO
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
    :block/title "yearlyRevenue",
    :build/properties
    {:logseq.property/description
-    "The size of the business in annual revenue."}},
+    "The size of the business in annual revenue.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/albumReleaseType-tDrQxk36
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3148,7 +3324,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Album", :name "Album", :color "inherit"},
     :logseq.property/description
-    "The kind of release which this album is: single, EP or album."}},
+    "The kind of release which this album is: single, EP or album.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/audienceType-NVljUvde
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -3167,7 +3344,8 @@
      ",busts_in_silhouette,busts,in,silhouette,user,person,human,group,team,👥",
      :type :emoji},
     :logseq.property/description
-    "The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.)."}},
+    "The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/exceptDate-N1aeS-A_
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -3182,7 +3360,8 @@
      :search ",date,calendar,date,schedule,📅",
      :type :emoji},
     :logseq.property/description
-    "Defines a [Date](https://schema.org/Date) or [DateTime](https://schema.org/DateTime) during which a scheduled [Event](https://schema.org/Event) will not take place. The property allows exceptions to a [Schedule](https://schema.org/Schedule) to be specified."}},
+    "Defines a [Date](https://schema.org/Date) or [DateTime](https://schema.org/DateTime) during which a scheduled [Event](https://schema.org/Event) will not take place. The property allows exceptions to a [Schedule](https://schema.org/Schedule) to be specified.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/codeRepository-OmAGGRv5
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :url,
@@ -3197,7 +3376,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "Link to the repository where the un-compiled, human readable code and related code is located (SVN, GitHub, CodePlex)."}},
+    "Link to the repository where the un-compiled, human readable code and related code is located (SVN, GitHub, CodePlex).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/hasTierRequirement-E4K69mu0
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3209,7 +3389,8 @@
      :name "Pyramid",
      :color "inherit"},
     :logseq.property/description
-    "A requirement for a user to join a membership tier, for example: a CreditCard if the tier requires sign up for a credit card, A UnitPriceSpecification if the user is required to pay a (periodic) fee, or a MonetaryAmount if the user needs to spend a minimum amount to join the tier. If a tier is free to join then this property does not need to be specified."}},
+    "A requirement for a user to join a membership tier, for example: a CreditCard if the tier requires sign up for a credit card, A UnitPriceSpecification if the user is required to pay a (periodic) fee, or a MonetaryAmount if the user needs to spend a minimum amount to join the tier. If a tier is free to join then this property does not need to be specified.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/departureGate-S2dH7mtw
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3229,4 +3410,4 @@
      :type :emoji},
     :logseq.property/description
     "Identifier of the flight's departure gate.",
-    :exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true}}}}

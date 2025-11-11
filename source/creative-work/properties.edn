@@ -14,7 +14,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "The series to which this episode or season belongs."}},
+    "The series to which this episode or season belongs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/recordingOf-HG76I4BO
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -30,7 +31,8 @@
      :search ",dvd,dvd,cd,disk,disc,📀",
      :type :emoji},
     :logseq.property/description
-    "The composition this track is a recording of.\nInverse property: [recordedAs](https://schema.org/recordedAs)"}},
+    "The composition this track is a recording of.\nInverse property: [recordedAs](https://schema.org/recordedAs)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/hasPart-MU18tG77
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -47,7 +49,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).\nInverse property: [isPartOf](https://schema.org/isPartOf)"}},
+    "Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).\nInverse property: [isPartOf](https://schema.org/isPartOf)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/containsSeason-lPZoUCIK
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -63,7 +66,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A season that is part of the media series."}},
+    "A season that is part of the media series.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/releaseOf-b9vCUFY_
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -79,7 +83,8 @@
      :search ",cd,optical,disc,cd,disk,technology,dvd,90s,💿",
      :type :emoji},
     :logseq.property/description
-    "The album this is a release of.\nInverse property: [albumRelease](https://schema.org/albumRelease)"}},
+    "The album this is a release of.\nInverse property: [albumRelease](https://schema.org/albumRelease)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/softwareHelp-IGa29x9T
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -88,7 +93,8 @@
    :build/properties
    {:logseq.property/icon
     {:type :tabler-icon, :id "Help", :name "Help", :color "inherit"},
-    :logseq.property/description "Software application help."}},
+    :logseq.property/description "Software application help.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/associatedReview-Gg9tUlWS
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -105,7 +111,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "An associated [Review](https://schema.org/Review)."}},
+    "An associated [Review](https://schema.org/Review).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/isPartOf-nCfhGBzX
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -122,7 +129,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "Indicates an item or CreativeWork that this item, or CreativeWork (in some sense), is part of.\nInverse property: [hasPart](https://schema.org/hasPart)"}},
+    "Indicates an item or CreativeWork that this item, or CreativeWork (in some sense), is part of.\nInverse property: [hasPart](https://schema.org/hasPart)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/associatedMediaReview-kQDY_aNa
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -139,7 +147,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "An associated [MediaReview](https://schema.org/MediaReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
+    "An associated [MediaReview](https://schema.org/MediaReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/album-TO8vpaYs
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -148,7 +157,8 @@
    :build/properties
    {:logseq.property/icon
     {:type :tabler-icon, :id "Album", :name "Album", :color "inherit"},
-    :logseq.property/description "A music album."}},
+    :logseq.property/description "A music album.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/isBasedOn-LoJm5WMC
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -166,7 +176,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "A resource from which this work is derived or from which it is a modification or adaptation."}},
+    "A resource from which this work is derived or from which it is a modification or adaptation.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/syllabusSections-RfyrTa6L
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -183,7 +194,8 @@
      ",school,school,building,student,education,learn,teach,🏫",
      :type :emoji},
     :logseq.property/description
-    "Indicates (typically several) Syllabus entities that lay out what each section of the overall course will cover."}},
+    "Indicates (typically several) Syllabus entities that lay out what each section of the overall course will cover.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/recordedAs-WuH0Xf_E
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -199,7 +211,8 @@
      :search ",violin,violin,music,instrument,orchestra,symphony,🎻",
      :type :emoji},
     :logseq.property/description
-    "An audio recording of the work.\nInverse property: [recordingOf](https://schema.org/recordingOf)"}},
+    "An audio recording of the work.\nInverse property: [recordingOf](https://schema.org/recordingOf)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/partOfSeason-RuKvwZB3
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -215,7 +228,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "The season to which this episode belongs."}},
+    "The season to which this episode belongs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/inPlaylist-Jwz10SOO
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -225,7 +239,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "List", :name "List", :color "inherit"},
     :logseq.property/description
-    "The playlist to which this recording belongs."}},
+    "The playlist to which this recording belongs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/workPresented-F87jbUtZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -242,7 +257,8 @@
      :search ",popcorn,popcorn,food,movie,theater,films,snack,🍿",
      :type :emoji},
     :logseq.property/description
-    "The movie presented during this event."}},
+    "The movie presented during this event.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/track-GQbs8YMa
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -258,7 +274,8 @@
      :search ",dvd,dvd,cd,disk,disc,📀",
      :type :emoji},
     :logseq.property/description
-    "A music recording (track)—usually a single song. If an ItemList is given, the list should contain items of type MusicRecording."}},
+    "A music recording (track)—usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/hasCertification-AV3D5I0Y
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -302,7 +319,8 @@
      ",+1,thumbs,up,+1,thumbsup,yes,awesome,good,agree,accept,cool,hand,like,👍,👍🏻,👍🏼,👍🏽,👍🏾,👍🏿",
      :type :emoji},
     :logseq.property/description
-    "Certification information about a product, organization, service, place, or person."}},
+    "Certification information about a product, organization, service, place, or person.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/episode-vIvdyDrO
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -319,7 +337,8 @@
      :search ",1234,input,numbers,1234,blue,square,🔢",
      :type :emoji},
     :logseq.property/description
-    "An episode of a TV, radio or game media within a series or season."}},
+    "An episode of a TV, radio or game media within a series or season.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/associatedClaimReview-sI_cmxtZ
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -336,7 +355,8 @@
      :search ",link,link,rings,url,🔗",
      :type :emoji},
     :logseq.property/description
-    "An associated [ClaimReview](https://schema.org/ClaimReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview)."}},
+    "An associated [ClaimReview](https://schema.org/ClaimReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview).",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/review-DCP-Kpw4
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -358,7 +378,8 @@
      :search
      ",thought_balloon,thought,balloon,bubble,cloud,speech,thinking,dream,💭",
      :type :emoji},
-    :logseq.property/description "A review of the item."}},
+    :logseq.property/description "A review of the item.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/softwareAddOn-IqkhZtNk
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -371,7 +392,8 @@
      :name "AppsFilled",
      :color "inherit"},
     :logseq.property/description
-    "Additional content for a software application."}},
+    "Additional content for a software application.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/albumRelease-gvGdSEW9
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -381,7 +403,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Album", :name "Album", :color "inherit"},
     :logseq.property/description
-    "A release of this album.\nInverse property: [releaseOf](https://schema.org/releaseOf)"}},
+    "A release of this album.\nInverse property: [releaseOf](https://schema.org/releaseOf)",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/inAlbum-unC1TYO9
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -391,7 +414,8 @@
    {:logseq.property/icon
     {:type :tabler-icon, :id "Album", :name "Album", :color "inherit"},
     :logseq.property/description
-    "The album to which this recording belongs."}},
+    "The album to which this recording belongs.",
+    :logseq.property/exclude-from-graph-view true}},
   :user.property/targetProduct-RnSz4FxE
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -405,4 +429,4 @@
      :color "inherit"},
     :logseq.property/description
     "Target Operating System / Product to which the code applies. If applies to several versions, just the product name can be used.",
-    :exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true}}}}
