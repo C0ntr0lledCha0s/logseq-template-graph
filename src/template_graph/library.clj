@@ -2,23 +2,26 @@
   (:require [template-graph.edn-io :as edn-io]))
 
 (defn- merge-section
-  [section acc module]
+  [section acc module where]
   (reduce-kv
    (fn [m ident definition]
      (when (and (contains? m ident) (not= (get m ident) definition))
-       (throw (ex-info "conflicting definitions"
-                       {:section section :ident ident})))
+       (throw (ex-info (str "conflicting definitions for " ident " in " (name section)
+                            (when where (str " (module " where ")")))
+                       {:section section :ident ident :module where})))
      (assoc m ident definition))
    acc
    (get module section)))
 
 (defn merge-modules
-  [modules]
-  (reduce (fn [acc module]
-            {:classes (merge-section :classes (:classes acc) module)
-             :properties (merge-section :properties (:properties acc) module)})
-          {:classes {} :properties {}}
-          modules))
+  "Merge modules. Optional paths (parallel to modules) name the module in conflict errors."
+  ([modules] (merge-modules modules (repeat (count modules) nil)))
+  ([modules paths]
+   (reduce (fn [acc [module where]]
+             {:classes (merge-section :classes (:classes acc) module where)
+              :properties (merge-section :properties (:properties acc) module where)})
+           {:classes {} :properties {}}
+           (map vector modules paths))))
 
 (defn- class-depth
   "Depth from the root via :build/class-extends (minimum over parents present in classes)."

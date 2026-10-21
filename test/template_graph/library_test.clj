@@ -49,3 +49,11 @@
   (let [lib (library/normalize-property-order
              {:classes {:schema.class/A {:build/class-properties [:p/z :p/a :p/m]}}})]
     (is (= [:p/z :p/a :p/m] (get-in lib [:classes :schema.class/A :build/class-properties])))))
+
+(deftest merge-conflict-message-names-ident-and-module
+  (is (thrown-with-msg?
+       clojure.lang.ExceptionInfo #"schema.class/A.*source/b/classes.edn"
+       (library/merge-modules
+        [{:classes {:schema.class/A {:title "A"}}}
+         {:classes {:schema.class/A {:title "Other"}}}]
+        ["source/a/classes.edn" "source/b/classes.edn"]))))
