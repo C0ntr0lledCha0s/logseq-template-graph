@@ -5,6 +5,8 @@
 (def overrides
   "Literal exceptions to the Schema.org rule, keyed by [kind base-name]."
   {[:class "LivestyleModification"] [:schema "LifestyleModification"]
+   [:class "ChildernsEvent"] [:schema "ChildrensEvent"]
+   [:property "requiredAge"] [:schema "requiredMinAge"]
    [:property "Parents"] [:schema "parent"]
    [:property "Rating"] [:custom "rating"]
    [:property "areas"] [:custom "areas"]
@@ -25,14 +27,21 @@
 (defn- user-ident? [x]
   (and (keyword? x) (contains? kinds (namespace x))))
 
+(defn- vocab-term
+  "Exact Schema.org term for nm, or its case-insensitive match, else nil."
+  [terms nm]
+  (if (contains? terms nm)
+    nm
+    (first (filter #(.equalsIgnoreCase ^String % nm) terms))))
+
 (defn- target
   [kind nm vocab]
   (let [override (get overrides [kind nm])]
     (if (= ::drop override)
       ::drop
       (let [[scope new-name] (or override
-                                 (if (contains? (get vocab (if (= kind :class) :classes :properties)) nm)
-                                   [:schema nm]
+                                 (if-let [term (vocab-term (get vocab (if (= kind :class) :classes :properties)) nm)]
+                                   [:schema term]
                                    [:custom nm]))]
         (keyword (str (clojure.core/name scope) "." (clojure.core/name kind)) new-name)))))
 

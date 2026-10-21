@@ -3,8 +3,8 @@
             [template-graph.convert :as convert]))
 
 (def vocab
-  {:classes #{"Thing" "Person" "Event" "LifestyleModification"}
-   :properties #{"email" "event" "parent" "url"}})
+  {:classes #{"Thing" "Person" "Event" "LifestyleModification" "WebSite" "ChildrensEvent"}
+   :properties #{"email" "event" "parent" "url" "backstory" "requiredMinAge"}})
 
 (defn- idents
   [& kws]
@@ -108,3 +108,13 @@
         entry (get-in out [:properties :custom.property/Foo])]
     (is (some? entry))
     (is (not (contains? entry :build/properties)))))
+
+(deftest case-variant-maps-to-schema-casing
+  (let [m (idents :user.class/Website-X :user.property/backStory-Y)]
+    (is (= :schema.class/WebSite (m :user.class/Website-X)))
+    (is (= :schema.property/backstory (m :user.property/backStory-Y)))))
+
+(deftest typo-renames
+  (let [m (idents :user.class/ChildernsEvent-X :user.property/requiredAge-Y)]
+    (is (= :schema.class/ChildrensEvent (m :user.class/ChildernsEvent-X)))
+    (is (= :schema.property/requiredMinAge (m :user.property/requiredAge-Y)))))
