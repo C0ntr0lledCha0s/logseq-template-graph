@@ -6,7 +6,9 @@ on:
     paths:
       - 'source/**'
       - 'scripts/**'
-      - 'build.clj'
+      - 'src/**'
+      - 'bb.edn'
+      - 'vendor/**'
       - '.github/workflows/auto-release.yml'
   workflow_dispatch:
     inputs:
