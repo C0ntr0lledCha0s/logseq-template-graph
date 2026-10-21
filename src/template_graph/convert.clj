@@ -81,7 +81,9 @@
 (defn- finish-entry
   [old new-ident entry]
   (let [renamed? (not= (base-name old) (name new-ident))
-        entry (cond-> entry renamed? (assoc :block/title (name new-ident)))]
+        entry (cond-> entry renamed? (assoc :block/title (name new-ident)))
+        entry (cond-> entry
+                (= {} (:build/properties entry)) (dissoc :build/properties))]
     (if (.startsWith ^String (namespace new-ident) "schema.")
       (update-in entry [:build/properties :schema.property/url]
                  #(or % (str "https://schema.org/" (name new-ident))))

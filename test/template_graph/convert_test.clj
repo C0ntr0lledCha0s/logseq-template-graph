@@ -97,3 +97,14 @@
   (is (thrown-with-msg? clojure.lang.ExceptionInfo #"unmapped"
                         (convert/convert-module {:classes {:user.class/Person-X {:build/class-extends [:user.class/Nope-Y]}}}
                                                 (idents :user.class/Person-X)))))
+
+(deftest empty-build-properties-removed
+  (let [module {:properties {:user.property/NewTest-X {:block/title "NewTest"}
+                             :user.property/Foo-X
+                             {:block/title "Foo"
+                              :build/properties {:user.property/NewTest-X "x"}}}}
+        m (convert/ident-map [module] vocab)
+        out (convert/convert-module module m)
+        entry (get-in out [:properties :custom.property/Foo])]
+    (is (some? entry))
+    (is (not (contains? entry :build/properties)))))

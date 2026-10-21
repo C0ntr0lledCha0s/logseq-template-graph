@@ -1,6 +1,10 @@
 {:paths ["src" "test"]
  :tasks
- {test
+ {convert
+  {:doc "Convert source/ idents to schema.* and custom.* idents in place"
+   :requires ([template-graph.edn-io])
+   :task (load-file "scripts/convert.clj")}
+  test
   {:doc "Run template-graph unit tests"
    :requires ([template-graph.run-tests :as run-tests])
    :task (run-tests/-main)}}}
