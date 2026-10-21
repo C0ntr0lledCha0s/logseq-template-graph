@@ -6,8 +6,10 @@ on:
       - 'v*'
     paths:
       - 'source/**'
-      - 'scripts/build.clj'
-      - 'scripts/split.clj'
+      - 'scripts/**'
+      - 'src/**'
+      - 'bb.edn'
+      - 'vendor/**'
       - '.github/workflows/release.yml'
   workflow_dispatch:
     inputs:
@@ -28,33 +30,42 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for changelog generation
 
+      - name: Checkout logseq/logseq
+        uses: actions/checkout@v4
+        with:
+          repository: logseq/logseq
+          ref: 69da7e2215b336cc5123dafb2a1686996e39596c
+          path: logseq
+          fetch-depth: 1
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
+
+      - name: Install logseq scripts dependencies
+        working-directory: logseq/scripts
+        run: npx pnpm@10.33.0 install --ignore-workspace
 
       - name: Install Babashka
         run: |
           curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
           chmod +x install && ./install && rm install
 
-      - name: Build all template variants
-        run: |
-          if [ -d "source" ]; then
-            echo "Building from modular source..."
-            bb scripts/build.clj full
-            bb scripts/build.clj crm
-            bb scripts/build.clj research
-            bb scripts/build.clj content
-            bb scripts/build.clj events
-            FILES="build/*.edn"
-          else
-            echo "Using monolithic templates..."
-            FILES="logseq_db_Templates*.edn"
-          fi
+      - name: Run unit tests
+        run: bb test
+
+      - name: Build schema library
+        run: bb build
+
+      - name: Validate build output
+        run: bb validate
+
+      - name: Check import into Logseq
+        run: LOGSEQ_DIR=$GITHUB_WORKSPACE/logseq bb check-import
 
       - name: Generate release notes
         id: release_notes
@@ -81,26 +92,17 @@ jobs:
           echo "" >> release_notes.txt
           echo "## 📥 Download Instructions" >> release_notes.txt
           echo "" >> release_notes.txt
-          echo "**Download the template files below (`.edn` files only):**" >> release_notes.txt
+          echo "Download \`schema-library.edn\` below and import it via Logseq **Import → EDN to DB Graph**. Alternatively, build a role with the Ontology Sync plugin, which reads both \`schema-library.edn\` and \`schema-presets.edn\`." >> release_notes.txt
           echo "" >> release_notes.txt
-          echo "> ⚠️ **Important:** Do NOT download the \"Source code\" archives if you only need edn templates. They contain development files for version control and devops, not the ready-to-use templates." >> release_notes.txt
+          echo "> ⚠️ **Important:** Do NOT download the \"Source code\" archives if you only need the schema library. They contain development files for version control and devops, not the ready-to-use files." >> release_notes.txt
           echo "" >> release_notes.txt
-          echo "## Template Variants" >> release_notes.txt
+          echo "## Files" >> release_notes.txt
           echo "" >> release_notes.txt
 
-          # Only include files from build/ directory
-          for file in build/*.edn; do
-            if [ -f "$file" ]; then
-              name=$(basename "$file")
-              lines=$(wc -l < "$file")
-              props=$(grep -c "user.property/" "$file" || echo "0")
-              classes=$(grep -c "user.class/" "$file" || echo "0")
-              echo "### $name" >> release_notes.txt
-              echo "- **Lines:** $lines" >> release_notes.txt
-              echo "- **Properties:** $props" >> release_notes.txt
-              echo "- **Classes:** $classes" >> release_notes.txt
-              echo "" >> release_notes.txt
-            fi
+          for file in build/schema-library.edn build/schema-presets.edn; do
+            echo "### $(basename "$file")" >> release_notes.txt
+            echo "- **Lines:** $(wc -l < "$file")" >> release_notes.txt
+            echo "" >> release_notes.txt
           done
 
       - name: Create GitHub Release
@@ -108,7 +110,9 @@ jobs:
         with:
           name: Release ${{ steps.release_notes.outputs.TAG }}
           body_path: release_notes.txt
-          files: build/*.edn
+          files: |
+            build/schema-library.edn
+            build/schema-presets.edn
           draft: false
           prerelease: false
           generate_release_notes: false

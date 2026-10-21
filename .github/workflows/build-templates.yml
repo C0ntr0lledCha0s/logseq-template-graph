@@ -1,24 +1,30 @@
-name: Build Template Variants
+name: Build Schema Library
 
 on:
   push:
     branches: [main, develop]
     paths:
       - 'source/**'
-      - 'scripts/build.clj'
-      - 'scripts/split.clj'
+      - 'scripts/**'
+      - 'src/**'
+      - 'bb.edn'
+      - 'vendor/**'
+      - '.github/workflows/build-templates.yml'
   pull_request:
     paths:
       - 'source/**'
-      - 'scripts/build.clj'
-      - 'scripts/split.clj'
+      - 'scripts/**'
+      - 'src/**'
+      - 'bb.edn'
+      - 'vendor/**'
+      - '.github/workflows/build-templates.yml'
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - name: Checkout repository
@@ -27,74 +33,31 @@ jobs:
       - name: Install Babashka
         run: |
           curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
-          chmod +x install
-          ./install
-          rm install
+          chmod +x install && ./install && rm install
 
       - name: Verify Babashka installation
         run: bb --version
 
-      - name: Discover and build all preset variants
-        run: |
-          echo "Discovering presets in source/presets/..."
-
-          # Find all preset files and extract preset names
-          presets=$(find source/presets -name "*.edn" -type f -exec basename {} .edn \; | sort)
-
-          if [ -z "$presets" ]; then
-            echo "No presets found in source/presets/"
-            exit 1
-          fi
-
-          echo "Found presets:"
-          echo "$presets"
-          echo ""
-
-          # Build each preset
-          for preset in $presets; do
-            echo "Building $preset variant..."
-            bb scripts/build.clj "$preset"
-            echo ""
-          done
-
-          echo "All presets built successfully!"
-
-      - name: Validate built templates
-        run: |
-          if [ -f "scripts/validate.sh" ]; then
-            chmod +x scripts/validate.sh
-            for file in build/*.edn; do
-              ./scripts/validate.sh "$file"
-            done
-          fi
+      - name: Build schema library
+        run: bb build
 
       - name: Show build statistics
         run: |
           echo "## Build Statistics" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          for file in build/*.edn; do
-            name=$(basename "$file")
-            lines=$(wc -l < "$file")
-            props=$(grep -c "user.property/" "$file" || echo "0")
-            classes=$(grep -c "user.class/" "$file" || echo "0")
-            echo "### $name" >> $GITHUB_STEP_SUMMARY
-            echo "- Lines: $lines" >> $GITHUB_STEP_SUMMARY
-            echo "- Properties: $props" >> $GITHUB_STEP_SUMMARY
-            echo "- Classes: $classes" >> $GITHUB_STEP_SUMMARY
+          for file in build/schema-library.edn build/schema-presets.edn; do
+            echo "### $(basename "$file")" >> $GITHUB_STEP_SUMMARY
+            echo "- Lines: $(wc -l < "$file")" >> $GITHUB_STEP_SUMMARY
+            echo "- Size: $(du -h "$file" | cut -f1)" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
           done
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: template-variants
-          path: build/*.edn
+          name: schema-library
+          path: |
+            build/schema-library.edn
+            build/schema-presets.edn
+          if-no-files-found: error
           retention-days: 30
-
-      - name: Upload to release (if tagged)
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v1
-        with:
-          files: build/*.edn
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
