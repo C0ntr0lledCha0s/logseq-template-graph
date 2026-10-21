@@ -7,11 +7,14 @@
   [path]
   (edn/read-string (slurp path)))
 
+(defn edn-string
+  [data]
+  (binding [*print-namespace-maps* false]
+    (with-out-str (pprint/pprint data))))
+
 (defn write-edn!
   [path data]
-  (spit path
-        (binding [*print-namespace-maps* false]
-          (with-out-str (pprint/pprint data)))))
+  (spit path (edn-string data)))
 
 (defn module-files
   "Sorted classes.edn / properties.edn paths under source/, excluding source/presets."

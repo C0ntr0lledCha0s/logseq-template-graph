@@ -4,6 +4,10 @@
   {:doc "Convert source/ idents to schema.* and custom.* idents in place"
    :requires ([template-graph.edn-io])
    :task (load-file "scripts/convert.clj")}
+  build
+  {:doc "Build build/schema-library.edn"
+   :requires ([template-graph.edn-io])
+   :task (load-file "scripts/build.clj")}
   test
   {:doc "Run template-graph unit tests"
    :requires ([template-graph.run-tests :as run-tests])
