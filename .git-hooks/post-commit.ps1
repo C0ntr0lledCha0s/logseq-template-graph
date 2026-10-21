@@ -12,35 +12,27 @@ if ($changedFiles -match "^source/") {
     Write-Host "Source files modified - validating build..." -ForegroundColor Cyan
     Write-Host ""
 
-    # Run build
-    try {
-        $buildOutput = npm run build:full 2>&1 | Select-Object -Last 10
-        Write-Host $buildOutput
-
-        # Count lines in built file
-        $buildFile = "build/logseq_db_Templates_full.edn"
-        if (Test-Path $buildFile) {
-            $lineCount = (Get-Content $buildFile).Count
-            Write-Host ""
-            Write-Host "Build validated successfully! ($lineCount lines)" -ForegroundColor Green
-            Write-Host ""
-        }
-        else {
-            Write-Host ""
-            Write-Host "Build completed" -ForegroundColor Green
-            Write-Host ""
-        }
+    # Run build and validation
+    bb build 2>&1 | Select-Object -Last 5 | Write-Host
+    $buildExit = $LASTEXITCODE
+    if ($buildExit -eq 0) {
+        bb validate 2>&1 | Select-Object -Last 5 | Write-Host
+        $buildExit = $LASTEXITCODE
     }
-    catch {
+    if ($buildExit -eq 0) {
         Write-Host ""
-        Write-Host "Build failed after commit!" -ForegroundColor Red
+        Write-Host "Build and validation passed" -ForegroundColor Green
+        Write-Host ""
+    }
+    else {
+        Write-Host ""
+        Write-Host "Build or validation failed after commit!" -ForegroundColor Red
         Write-Host ""
         Write-Host "Options:" -ForegroundColor Yellow
-        Write-Host "  1. Run /diagnose full in Claude Code for analysis"
+        Write-Host "  1. Run bb test && bb build && bb validate and fix the reported errors"
         Write-Host "  2. git reset HEAD~ to undo the commit"
         Write-Host "  3. git commit --amend to fix and retry"
         Write-Host ""
-        Write-Host "Review the error above or run /diagnose for help."
         exit 1
     }
 }

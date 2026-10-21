@@ -1,7 +1,7 @@
 {
   "name": "logseq-template-graph",
-  "version": "1.2.0",
-  "description": "Logseq DB template graph with Schema.org ontology (632 classes, 1,033 properties)",
+  "version": "2.0.0",
+  "description": "Logseq DB schema library: Schema.org classes and properties as a fixed-ident EDN library plus role presets",
   "repository": {
     "type": "git",
     "url": "https://github.com/C0ntr0lledCha0s/logseq-template-graph.git"
@@ -12,16 +12,9 @@
   "scripts": {
     "setup": "node -e \"require('child_process').execSync(process.platform === 'win32' ? 'powershell -ExecutionPolicy Bypass -File .\\\\scripts\\\\setup-hooks.ps1' : 'bash scripts/setup-hooks.sh', {stdio: 'inherit'})\"",
     "postinstall": "node scripts/check-deps.js",
-    "export": "node -e \"require('child_process').execSync(process.platform === 'win32' ? 'powershell -ExecutionPolicy Bypass -File .\\\\scripts\\\\export.ps1' : 'bash scripts/export.sh', {stdio: 'inherit'})\"",
-    "export:full": "node -e \"require('child_process').execSync(process.platform === 'win32' ? 'powershell -ExecutionPolicy Bypass -File .\\\\scripts\\\\export-full.ps1' : 'bash scripts/export-full.sh', {stdio: 'inherit'})\"",
-    "validate": "node -e \"require('child_process').execSync(process.platform === 'win32' ? 'powershell -ExecutionPolicy Bypass -File .\\\\scripts\\\\validate.ps1' : 'bash scripts/validate.sh', {stdio: 'inherit'})\"",
-    "split": "bb scripts/split.clj",
-    "build": "bb scripts/build.clj",
-    "build:full": "bb scripts/build.clj full",
-    "build:crm": "bb scripts/build.clj crm",
-    "build:research": "bb scripts/build.clj research",
-    "build:student-life": "bb scripts/build.clj student-life",
-    "toggle:exclude": "bb scripts/toggle-exclude-from-graph.clj",
+    "build": "bb build",
+    "test": "bb test",
+    "validate": "bb validate",
     "version": "npx git-conventional-commits version",
     "changelog": "npx git-conventional-commits changelog",
     "changelog:release": "npx git-conventional-commits changelog --release $(npx git-conventional-commits version)",
@@ -30,7 +23,6 @@
     "prepare": "npm run setup"
   },
   "devDependencies": {
-    "@logseq/cli": "^0.3.0",
     "git-conventional-commits": "^2.8.0"
   },
   "keywords": [

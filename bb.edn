@@ -1,17 +1,9 @@
 {:paths ["src" "test"]
  :tasks
- {convert
-  {:doc "Convert source/ idents to schema.* and custom.* idents in place"
-   :requires ([template-graph.edn-io])
-   :task (load-file "scripts/convert.clj")}
-  build
+ {build
   {:doc "Build build/schema-library.edn and build/schema-presets.edn"
    :requires ([template-graph.edn-io])
    :task (load-file "scripts/build.clj")}
-  convert-presets
-  {:doc "Convert source/presets to class-level presets in place (one-time)"
-   :requires ([template-graph.edn-io])
-   :task (load-file "scripts/convert_presets.clj")}
   validate
   {:doc "Validate build/ output against Schema.org"
    :requires ([template-graph.edn-io])

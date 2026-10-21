@@ -13,6 +13,9 @@ NC='\033[0m' # No Color
 
 # Configuration
 SOURCE_DIR="source"
+# Top-level class/property keys (schema.* and custom.*) at 1-2 spaces of indent
+CLASS_KEY='^ {1,2}\{?:(schema|custom)\.class/'
+PROP_KEY='^ {1,2}\{?:(schema|custom)\.property/'
 IDEAL_MIN_CLASSES=5
 IDEAL_MAX_CLASSES=30
 WARNING_MAX_CLASSES=50
@@ -32,7 +35,7 @@ count_items() {
     local file=$1
     local pattern=$2
     if [ -f "$file" ]; then
-        grep -c "$pattern" "$file" 2>/dev/null || echo "0"
+        grep -cE "$pattern" "$file" 2>/dev/null || echo "0"
     else
         echo "0"
     fi
@@ -127,8 +130,8 @@ for module_dir in "$SOURCE_DIR"/*/ ; do
     total_modules=$((total_modules + 1))
 
     # Count classes and properties
-    classes=$(count_items "${module_dir}classes.edn" ":user.class/")
-    properties=$(count_items "${module_dir}properties.edn" ":user.property/")
+    classes=$(count_items "${module_dir}classes.edn" "$CLASS_KEY")
+    properties=$(count_items "${module_dir}properties.edn" "$PROP_KEY")
 
     # Check for README
     has_readme="false"
@@ -198,7 +201,7 @@ for module_dir in "$SOURCE_DIR"/*/ ; do
     fi
 
     module_name=$(basename "$module_dir")
-    classes=$(count_items "${module_dir}classes.edn" ":user.class/")
+    classes=$(count_items "${module_dir}classes.edn" "$CLASS_KEY")
 
     if [ $classes -ge $WARNING_MAX_CLASSES ]; then
         pct=$((classes * 100 / total_classes))
@@ -216,8 +219,8 @@ for module_dir in "$SOURCE_DIR"/*/ ; do
     fi
 
     module_name=$(basename "$module_dir")
-    classes=$(count_items "${module_dir}classes.edn" ":user.class/")
-    properties=$(count_items "${module_dir}properties.edn" ":user.property/")
+    classes=$(count_items "${module_dir}classes.edn" "$CLASS_KEY")
+    properties=$(count_items "${module_dir}properties.edn" "$PROP_KEY")
 
     # Skip common and base modules
     if [ "$module_name" = "common" ] || [ "$module_name" = "base" ]; then

@@ -1,9 +1,9 @@
 #!/bin/bash
+# Quick structure analysis for a source/ module file or a built library.
+# Usage: scripts/analyze.sh [file] [search-term]
+#   file defaults to build/schema-library.edn (run `bb build` first)
 
-# Logseq Template Analysis Script
-# Shows structure and finds specific classes/properties
-
-FILE="${1:-logseq_db_Templates.edn}"
+FILE="${1:-build/schema-library.edn}"
 SEARCH="${2}"
 
 if [ ! -f "$FILE" ]; then
@@ -11,53 +11,28 @@ if [ ! -f "$FILE" ]; then
     exit 1
 fi
 
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  Logseq Template Structure Analysis"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+# Top-level class/property keys sit at one or two spaces of indent;
+# class-properties vectors are indented further, so they are not counted.
+CLASS_KEY='^ {1,2}\{?:(schema|custom)\.class/'
+PROP_KEY='^ {1,2}\{?:(schema|custom)\.property/'
+
+echo "Structure analysis: $FILE"
+echo "  Total lines: $(wc -l < "$FILE")"
+echo "  Classes:     $(grep -cE "$CLASS_KEY" "$FILE")"
+echo "  Properties:  $(grep -cE "$PROP_KEY" "$FILE")"
+echo "  Custom:      $(grep -cE '^ {1,2}\{?:custom\.(class|property)/' "$FILE")"
 echo ""
 
-# Overall stats
-TOTAL_LINES=$(wc -l < "$FILE")
-
-# Count unique class and property definitions
-# Check if this is a modular source file or complete template
-if [[ "$FILE" == source/* ]]; then
-    # Modular file - use simple count
-    PROP_COUNT=$(grep -c "user.property/" "$FILE")
-    CLASS_COUNT=$(grep -c "user.class/" "$FILE")
-else
-    # Complete template - count unique definitions
-    PROP_COUNT=$(sed -n '/:properties/,/:classes/p' "$FILE" | grep -E '^\s+:[a-z][a-zA-Z0-9]*-[a-zA-Z0-9_]+' | wc -l)
-    CLASS_COUNT=$(sed -n '/:classes/,/:logseq.db.sqlite.export/p' "$FILE" | grep -E '^\s+:[A-Z][a-zA-Z0-9]*-[a-zA-Z0-9_]+' | wc -l)
-fi
-
-echo "📊 Overall Statistics"
-echo "  Total lines: $TOTAL_LINES"
-echo "  Properties:  $PROP_COUNT"
-echo "  Classes:     $CLASS_COUNT"
+echo "Classes (first 20, with line numbers)"
+grep -nE "$CLASS_KEY" "$FILE" | head -20 | sed 's/:/ -> /'
 echo ""
 
-# List all classes with line numbers
-echo "📦 Classes (with line numbers)"
-grep -n "user.class/" "$FILE" | cut -d: -f1,2 | sed 's/:/ → /' | head -20
-
-echo ""
-
-# If search term provided
 if [ -n "$SEARCH" ]; then
-    echo "🔍 Searching for: $SEARCH"
+    echo "Searching for: $SEARCH"
     grep -n -i "$SEARCH" "$FILE" | head -20
     echo ""
 fi
 
-# Section boundaries
-echo "📍 Main Sections"
-grep -n "^ :properties" "$FILE" | sed 's/:/ → Properties start at line /'
-grep -n "^ :classes" "$FILE" | sed 's/:/ → Classes start at line /'
-grep -n "logseq.db.sqlite.export" "$FILE" | sed 's/:/ → Export marker at line /'
-echo ""
-
-echo "💡 Usage:"
-echo "  View specific class:    $0 $FILE Person"
-echo "  View specific property: $0 $FILE email"
-echo "  Jump to line:           vim +1130 $FILE"
+echo "Usage:"
+echo "  $0 build/schema-library.edn Person"
+echo "  $0 source/person/classes.edn"
