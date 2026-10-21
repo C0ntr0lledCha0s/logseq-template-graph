@@ -1,51 +1,29 @@
 {:properties
- {:user.property/tripOrigin-zaHltvJm
+ {:schema.property/arrivalBusStop
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
-   :block/title "tripOrigin",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
+   :block/title "arrivalBusStop",
+   :build/property-classes
+   [:schema.class/BusStation :schema.class/BusStop],
    :build/properties
    {:logseq.property/icon
-    {:id "world_map",
-     :name "World Map",
-     :keywords ["location" "direction"],
-     :skins
-     [{:unified "1f5fa-fe0f",
-       :native "🗺️",
-       :shortcodes ":world_map:"}],
+    {:id "bus",
+     :name "Bus",
+     :keywords ["car" "vehicle" "transportation"],
+     :skins [{:unified "1f68c", :native "🚌", :shortcodes ":bus:"}],
      :version 1,
-     :search ",world_map,world,map,location,direction,🗺️",
+     :search ",bus,bus,car,vehicle,transportation,🚌",
      :type :emoji},
     :logseq.property/description
-    "The location of origin of the trip, prior to any destination(s).",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/departureStation-h5ZwMFlX
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "departureStation",
-   :build/property-classes [:user.class/TrainStation-GGs5Id8U],
-   :build/properties
-   {:logseq.property/icon
-    {:id "steam_locomotive",
-     :name "Locomotive",
-     :keywords ["steam" "transportation" "vehicle" "train"],
-     :skins
-     [{:unified "1f682",
-       :native "🚂",
-       :shortcodes ":steam_locomotive:"}],
-     :version 1,
-     :search
-     ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
-     :type :emoji},
-    :logseq.property/description
-    "The station from which the train departs.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/contentLocation-QNbnwDey
+    "The stop or station from which the bus arrives.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/arrivalBusStop"}},
+  :schema.property/contentLocation
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
    :logseq.property/hide? true,
    :block/title "contentLocation",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
+   :build/property-classes [:schema.class/Place],
    :build/properties
    {:logseq.property/hide-empty-value true,
     :logseq.property/icon
@@ -61,124 +39,14 @@
      :type :emoji},
     :logseq.property/description
     "The location depicted or described in the content. For example, the location in a photograph or painting.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/validIn-VDYGrCTd
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "validIn",
-   :build/property-classes [:user.class/AdministrativeArea-mVunGx8W],
-   :build/properties
-   {:logseq.property/icon
-    {:id "world_map",
-     :name "World Map",
-     :keywords ["location" "direction"],
-     :skins
-     [{:unified "1f5fa-fe0f",
-       :native "🗺️",
-       :shortcodes ":world_map:"}],
-     :version 1,
-     :search ",world_map,world,map,location,direction,🗺️",
-     :type :emoji},
-    :logseq.property/description
-    "The geographic area where the item is valid. Applies for example to a [Permit](https://schema.org/Permit), a [Certification](https://schema.org/Certification), or an [EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential).",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/pickupLocation-OWhJl-L0
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "pickupLocation",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
-   :build/properties
-   {:logseq.property/description
-    "Where a taxi will pick up a passenger or a rental car can be picked up.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/gameLocation-wfV16uwE
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "gameLocation",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
-   :build/properties
-   {:logseq.property/icon
-    {:id "world_map",
-     :name "World Map",
-     :keywords ["location" "direction"],
-     :skins
-     [{:unified "1f5fa-fe0f",
-       :native "🗺️",
-       :shortcodes ":world_map:"}],
-     :version 1,
-     :search ",world_map,world,map,location,direction,🗺️",
-     :type :emoji},
-    :logseq.property/description
-    "Real or fictional location of the game (or part of game).",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/geographicArea-b09-fK-r
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "geographicArea",
-   :block/collapsed? false,
-   :build/property-classes [:user.class/AdministrativeArea-mVunGx8W],
-   :build/properties
-   {:logseq.property/icon
-    {:id "world_map",
-     :name "World Map",
-     :keywords ["location" "direction"],
-     :skins
-     [{:unified "1f5fa-fe0f",
-       :native "🗺️",
-       :shortcodes ":world_map:"}],
-     :version 1,
-     :search ",world_map,world,map,location,direction,🗺️",
-     :type :emoji},
-    :logseq.property/description
-    "The geographic area associated with the audience.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/departureAirport-X9-pSdP6
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "departureAirport",
-   :build/property-classes [:user.class/Airport-QAVQIBiI],
-   :build/properties
-   {:logseq.property/icon {:id "airplane_departure", :type :emoji},
-    :logseq.property/description
-    "The airport where the flight originates.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/arrivalAirport-Gjt-NPXQ
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "arrivalAirport",
-   :build/property-classes [:user.class/Airport-QAVQIBiI],
-   :build/properties
-   {:logseq.property/icon {:id "airplane_arriving", :type :emoji},
-    :logseq.property/description
-    "The airport where the flight terminates.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/birthPlace-lkalc5Dz
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "birthPlace",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
-   :build/properties
-   {:logseq.property/icon
-    {:id "world_map",
-     :name "World Map",
-     :keywords ["location" "direction"],
-     :skins
-     [{:unified "1f5fa-fe0f",
-       :native "🗺️",
-       :shortcodes ":world_map:"}],
-     :version 1,
-     :search ",world_map,world,map,location,direction,🗺️",
-     :type :emoji},
-    :logseq.property/description
-    "The place where the person was born.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/serviceArea-VJ8w0kxi
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/contentLocation"}},
+  :schema.property/serviceArea
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
    :block/title "areaServed",
    :build/property-classes
-   [:user.class/Place-sWTwEwWP
-    :user.class/AdministrativeArea-mVunGx8W],
+   [:schema.class/Place :schema.class/AdministrativeArea],
    :build/properties
    {:logseq.property/icon
     {:id "world_map",
@@ -193,12 +61,117 @@
      :type :emoji},
     :logseq.property/description
     "The geographic area where a service or offered item is provided.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/arrivalStation-P09qfPlc
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/serviceArea"}},
+  :schema.property/pickupLocation
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "pickupLocation",
+   :build/property-classes [:schema.class/Place],
+   :build/properties
+   {:logseq.property/description
+    "Where a taxi will pick up a passenger or a rental car can be picked up.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/pickupLocation"}},
+  :schema.property/departureBusStop
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "departureBusStop",
+   :build/property-classes
+   [:schema.class/BusStation :schema.class/BusStop],
+   :build/properties
+   {:logseq.property/icon
+    {:id "bus",
+     :name "Bus",
+     :keywords ["car" "vehicle" "transportation"],
+     :skins [{:unified "1f68c", :native "🚌", :shortcodes ":bus:"}],
+     :version 1,
+     :search ",bus,bus,car,vehicle,transportation,🚌",
+     :type :emoji},
+    :logseq.property/description
+    "The stop or station from which the bus departs.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/departureBusStop"}},
+  :schema.property/geographicArea
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "geographicArea",
+   :block/collapsed? false,
+   :build/property-classes [:schema.class/AdministrativeArea],
+   :build/properties
+   {:logseq.property/icon
+    {:id "world_map",
+     :name "World Map",
+     :keywords ["location" "direction"],
+     :skins
+     [{:unified "1f5fa-fe0f",
+       :native "🗺️",
+       :shortcodes ":world_map:"}],
+     :version 1,
+     :search ",world_map,world,map,location,direction,🗺️",
+     :type :emoji},
+    :logseq.property/description
+    "The geographic area associated with the audience.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/geographicArea"}},
+  :schema.property/arrivalBoatTerminal
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "arrivalBoatTerminal",
+   :build/property-classes [:schema.class/BoatTerminal],
+   :build/properties
+   {:logseq.property/icon
+    {:id "boat",
+     :name "Sailboat",
+     :keywords
+     ["boat" "ship" "summer" "transportation" "water" "sailing"],
+     :skins [{:unified "26f5", :native "⛵", :shortcodes ":boat:"}],
+     :version 1,
+     :aliases ["sailboat"],
+     :search
+     ",boat,sailboat,boat,ship,summer,transportation,water,sailing,⛵",
+     :type :emoji},
+    :logseq.property/description
+    "The terminal or port from which the boat arrives.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/arrivalBoatTerminal"}},
+  :schema.property/gameLocation
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "gameLocation",
+   :build/property-classes [:schema.class/Place],
+   :build/properties
+   {:logseq.property/icon
+    {:id "world_map",
+     :name "World Map",
+     :keywords ["location" "direction"],
+     :skins
+     [{:unified "1f5fa-fe0f",
+       :native "🗺️",
+       :shortcodes ":world_map:"}],
+     :version 1,
+     :search ",world_map,world,map,location,direction,🗺️",
+     :type :emoji},
+    :logseq.property/description
+    "Real or fictional location of the game (or part of game).",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/gameLocation"}},
+  :schema.property/arrivalAirport
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "arrivalAirport",
+   :build/property-classes [:schema.class/Airport],
+   :build/properties
+   {:logseq.property/icon {:id "airplane_arriving", :type :emoji},
+    :logseq.property/description
+    "The airport where the flight terminates.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/arrivalAirport"}},
+  :schema.property/arrivalStation
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
    :block/title "arrivalStation",
-   :build/property-classes [:user.class/TrainStation-GGs5Id8U],
+   :build/property-classes [:schema.class/TrainStation],
    :build/properties
    {:logseq.property/icon
     {:id "steam_locomotive",
@@ -214,53 +187,13 @@
      :type :emoji},
     :logseq.property/description
     "The station where the train trip ends.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/location-rtPRwp3c
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :logseq.property/ui-position :block-right,
-   :block/title "location",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
-   :build/properties
-   {:logseq.property/icon
-    {:id "world_map",
-     :name "World Map",
-     :keywords ["location" "direction"],
-     :skins
-     [{:unified "1f5fa-fe0f",
-       :native "🗺️",
-       :shortcodes ":world_map:"}],
-     :version 1,
-     :search ",world_map,world,map,location,direction,🗺️",
-     :type :emoji},
-    :logseq.property/description
-    "The location of, for example, where an [[Event]] is happening, where an [[Organization]] is located, or where an action takes place.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/itinerary-saka-wPe
-  {:db/cardinality :db.cardinality/many,
-   :logseq.property/type :node,
-   :block/title "itinerary",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
-   :build/properties
-   {:logseq.property/icon
-    {:id "world_map",
-     :name "World Map",
-     :keywords ["location" "direction"],
-     :skins
-     [{:unified "1f5fa-fe0f",
-       :native "🗺️",
-       :shortcodes ":world_map:"}],
-     :version 1,
-     :search ",world_map,world,map,location,direction,🗺️",
-     :type :emoji},
-    :logseq.property/description
-    "Destination(s) ( [Place](https://schema.org/Place) ) that make up a trip. For a trip where destination order is important use [ItemList](https://schema.org/ItemList) to specify that order (see examples).",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/departureBoatTerminal-XnZ_OZY6
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/arrivalStation"}},
+  :schema.property/departureBoatTerminal
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
    :block/title "departureBoatTerminal",
-   :build/property-classes [:user.class/BoatTerminal-KHUtlc7o],
+   :build/property-classes [:schema.class/BoatTerminal],
    :build/properties
    {:logseq.property/icon
     {:id "boat",
@@ -275,48 +208,110 @@
      :type :emoji},
     :logseq.property/description
     "The terminal or port from which the boat departs.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/departureBusStop-JfoGAPWC
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/departureBoatTerminal"}},
+  :schema.property/departureStation
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
-   :block/title "departureBusStop",
-   :build/property-classes
-   [:user.class/BusStation-gi4OqHfp :user.class/BusStop-ucqGdOV8],
+   :block/title "departureStation",
+   :build/property-classes [:schema.class/TrainStation],
    :build/properties
    {:logseq.property/icon
-    {:id "bus",
-     :name "Bus",
-     :keywords ["car" "vehicle" "transportation"],
-     :skins [{:unified "1f68c", :native "🚌", :shortcodes ":bus:"}],
+    {:id "steam_locomotive",
+     :name "Locomotive",
+     :keywords ["steam" "transportation" "vehicle" "train"],
+     :skins
+     [{:unified "1f682",
+       :native "🚂",
+       :shortcodes ":steam_locomotive:"}],
      :version 1,
-     :search ",bus,bus,car,vehicle,transportation,🚌",
+     :search
+     ",steam_locomotive,locomotive,steam,transportation,vehicle,train,🚂",
      :type :emoji},
     :logseq.property/description
-    "The stop or station from which the bus departs.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/arrivalBusStop-h4get2QO
+    "The station from which the train departs.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/departureStation"}},
+  :schema.property/birthPlace
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
-   :block/title "arrivalBusStop",
-   :build/property-classes
-   [:user.class/BusStation-gi4OqHfp :user.class/BusStop-ucqGdOV8],
+   :block/title "birthPlace",
+   :build/property-classes [:schema.class/Place],
    :build/properties
    {:logseq.property/icon
-    {:id "bus",
-     :name "Bus",
-     :keywords ["car" "vehicle" "transportation"],
-     :skins [{:unified "1f68c", :native "🚌", :shortcodes ":bus:"}],
+    {:id "world_map",
+     :name "World Map",
+     :keywords ["location" "direction"],
+     :skins
+     [{:unified "1f5fa-fe0f",
+       :native "🗺️",
+       :shortcodes ":world_map:"}],
      :version 1,
-     :search ",bus,bus,car,vehicle,transportation,🚌",
+     :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The stop or station from which the bus arrives.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/homeLocation-weuUMB3U
+    "The place where the person was born.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/birthPlace"}},
+  :schema.property/departureAirport
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "departureAirport",
+   :build/property-classes [:schema.class/Airport],
+   :build/properties
+   {:logseq.property/icon {:id "airplane_departure", :type :emoji},
+    :logseq.property/description
+    "The airport where the flight originates.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/departureAirport"}},
+  :schema.property/location
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :logseq.property/ui-position :block-right,
+   :block/title "location",
+   :build/property-classes [:schema.class/Place],
+   :build/properties
+   {:logseq.property/icon
+    {:id "world_map",
+     :name "World Map",
+     :keywords ["location" "direction"],
+     :skins
+     [{:unified "1f5fa-fe0f",
+       :native "🗺️",
+       :shortcodes ":world_map:"}],
+     :version 1,
+     :search ",world_map,world,map,location,direction,🗺️",
+     :type :emoji},
+    :logseq.property/description
+    "The location of, for example, where an [[Event]] is happening, where an [[Organization]] is located, or where an action takes place.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/location"}},
+  :schema.property/tripOrigin
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "tripOrigin",
+   :build/property-classes [:schema.class/Place],
+   :build/properties
+   {:logseq.property/icon
+    {:id "world_map",
+     :name "World Map",
+     :keywords ["location" "direction"],
+     :skins
+     [{:unified "1f5fa-fe0f",
+       :native "🗺️",
+       :shortcodes ":world_map:"}],
+     :version 1,
+     :search ",world_map,world,map,location,direction,🗺️",
+     :type :emoji},
+    :logseq.property/description
+    "The location of origin of the trip, prior to any destination(s).",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/tripOrigin"}},
+  :schema.property/homeLocation
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
    :block/title "homeLocation",
-   :build/property-classes [:user.class/Place-sWTwEwWP],
+   :build/property-classes [:schema.class/Place],
    :build/properties
    {:logseq.property/icon
     {:id "world_map",
@@ -331,24 +326,47 @@
      :type :emoji},
     :logseq.property/description
     "A contact location for a person's residence.",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/arrivalBoatTerminal-S3ZmcXzN
-  {:db/cardinality :db.cardinality/one,
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/homeLocation"}},
+  :schema.property/itinerary
+  {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
-   :block/title "arrivalBoatTerminal",
-   :build/property-classes [:user.class/BoatTerminal-KHUtlc7o],
+   :block/title "itinerary",
+   :build/property-classes [:schema.class/Place],
    :build/properties
    {:logseq.property/icon
-    {:id "boat",
-     :name "Sailboat",
-     :keywords
-     ["boat" "ship" "summer" "transportation" "water" "sailing"],
-     :skins [{:unified "26f5", :native "⛵", :shortcodes ":boat:"}],
+    {:id "world_map",
+     :name "World Map",
+     :keywords ["location" "direction"],
+     :skins
+     [{:unified "1f5fa-fe0f",
+       :native "🗺️",
+       :shortcodes ":world_map:"}],
      :version 1,
-     :aliases ["sailboat"],
-     :search
-     ",boat,sailboat,boat,ship,summer,transportation,water,sailing,⛵",
+     :search ",world_map,world,map,location,direction,🗺️",
      :type :emoji},
     :logseq.property/description
-    "The terminal or port from which the boat arrives.",
-    :logseq.property/exclude-from-graph-view true}}}}
+    "Destination(s) ( [Place](https://schema.org/Place) ) that make up a trip. For a trip where destination order is important use [ItemList](https://schema.org/ItemList) to specify that order (see examples).",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/itinerary"}},
+  :schema.property/validIn
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "validIn",
+   :build/property-classes [:schema.class/AdministrativeArea],
+   :build/properties
+   {:logseq.property/icon
+    {:id "world_map",
+     :name "World Map",
+     :keywords ["location" "direction"],
+     :skins
+     [{:unified "1f5fa-fe0f",
+       :native "🗺️",
+       :shortcodes ":world_map:"}],
+     :version 1,
+     :search ",world_map,world,map,location,direction,🗺️",
+     :type :emoji},
+    :logseq.property/description
+    "The geographic area where the item is valid. Applies for example to a [Permit](https://schema.org/Permit), a [Certification](https://schema.org/Certification), or an [EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential).",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/validIn"}}}}

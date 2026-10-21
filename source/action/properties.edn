@@ -1,9 +1,9 @@
 {:properties
- {:user.property/includesAttraction-ThQoIDXb
+ {:schema.property/includesAttraction
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
    :block/title "includesAttraction",
-   :build/property-classes [:user.class/TouristAttraction-L0-lm1Ta],
+   :build/property-classes [:schema.class/TouristAttraction],
    :build/properties
    {:logseq.property/icon
     {:id "camera",
@@ -14,4 +14,5 @@
      :search ",camera,camera,gadgets,photography,📷",
      :type :emoji},
     :logseq.property/description "Attraction located at destination.",
-    :logseq.property/exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/includesAttraction"}}}}
