@@ -16,6 +16,25 @@
   {:doc "Validate build/ output against Schema.org"
    :requires ([template-graph.edn-io])
    :task (load-file "scripts/validate.clj")}
+  check-import
+  {:doc "Import build/schema-library.edn into a fresh Logseq graph (needs LOGSEQ_DIR)"
+   :requires ([clojure.string :as str] [babashka.fs :as fs] [babashka.process :as p])
+   :task (let [logseq-dir (System/getenv "LOGSEQ_DIR")
+               _ (when (str/blank? logseq-dir)
+                   (println "LOGSEQ_DIR must point at a logseq/logseq checkout") (System/exit 1))
+               nbb (str logseq-dir "/scripts/node_modules/.bin/nbb-logseq")
+               _ (when-not (fs/exists? nbb)
+                   (println "Missing" nbb "- run `pnpm install --ignore-workspace` in" (str logseq-dir "/scripts")) (System/exit 1))
+               out (fs/create-dirs ".check-import")]
+           (spit (str out "/nbb.edn")
+                 (str/replace (slurp "scripts/ci/nbb.edn.template") "${LOGSEQ_DIR}" (str (fs/canonicalize logseq-dir))))
+           (fs/copy "scripts/ci/check-import.cljs" (str out "/check_import.cljs") {:replace-existing true})
+           (fs/delete-if-exists (str out "/node_modules"))
+           (fs/create-sym-link (str out "/node_modules") (str (fs/canonicalize (str logseq-dir "/scripts/node_modules"))))
+           (let [{:keys [exit]} (p/shell {:continue true}
+                                         (str (fs/canonicalize nbb)) (str out "/check_import.cljs")
+                                         (str (fs/canonicalize "build/schema-library.edn")))]
+             (System/exit exit)))}
   test
   {:doc "Run template-graph unit tests"
    :requires ([template-graph.run-tests :as run-tests])

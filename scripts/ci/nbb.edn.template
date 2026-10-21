@@ -1,0 +1,4 @@
+{:paths ["."]
+ :deps {logseq/graph-parser {:local/root "${LOGSEQ_DIR}/deps/graph-parser"}
+        logseq/outliner {:local/root "${LOGSEQ_DIR}/deps/outliner"}
+        logseq/common {:local/root "${LOGSEQ_DIR}/deps/common"}}}

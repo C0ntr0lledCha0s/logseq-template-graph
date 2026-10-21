@@ -54,3 +54,6 @@ yarn-error.log*
 # Conventional commits temporary files
 conventional_notes.txt
 release_notes.txt
+
+# nbb-logseq import check scratch dir
+.check-import/
