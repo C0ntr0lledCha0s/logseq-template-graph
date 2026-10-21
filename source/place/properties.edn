@@ -41,7 +41,7 @@
     "The location depicted or described in the content. For example, the location in a photograph or painting.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/contentLocation"}},
-  :schema.property/serviceArea
+  :schema.property/areaServed
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
    :block/title "areaServed",
@@ -62,7 +62,7 @@
     :logseq.property/description
     "The geographic area where a service or offered item is provided.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/serviceArea"}},
+    :schema.property/url "https://schema.org/areaServed"}},
   :schema.property/pickupLocation
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
