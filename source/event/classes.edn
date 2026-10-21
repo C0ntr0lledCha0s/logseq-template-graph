@@ -67,12 +67,13 @@
    {:logseq.property/icon {:id "performing_arts", :type :emoji},
     :logseq.property/description "Event type: Theater performance.",
     :schema.property/url "https://schema.org/TheaterEvent"}},
-  :custom.class/ChildernsEvent
-  {:block/title "ChildernsEvent",
+  :schema.class/ChildrensEvent
+  {:block/title "ChildrensEvent",
    :build/class-extends [:schema.class/Event],
    :build/properties
    {:logseq.property/icon {:id "children_crossing", :type :emoji},
-    :logseq.property/description "Event type: Children's event."}},
+    :logseq.property/description "Event type: Children's event.",
+    :schema.property/url "https://schema.org/ChildrensEvent"}},
   :schema.class/Festival
   {:block/title "Festival",
    :build/class-extends [:schema.class/Event],

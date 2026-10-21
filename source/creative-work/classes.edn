@@ -388,6 +388,16 @@
     :logseq.property/description
     "A CreativeWorkSeries in schema.org is a group of related items, typically but not necessarily of the same kind.",
     :schema.property/url "https://schema.org/CreativeWorkSeries"}},
+  :schema.class/WebSite
+  {:block/title "WebSite",
+   :build/class-properties [:schema.property/issn],
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon
+    {:id "WorldWww", :type :tabler-icon, :color "inherit"},
+    :logseq.property/description
+    "A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.",
+    :schema.property/url "https://schema.org/WebSite"}},
   :schema.class/Report
   {:block/title "Report",
    :build/class-properties [:schema.property/reportNumber],
@@ -439,20 +449,11 @@
     {:id "FileDigit", :type :tabler-icon, :color "inherit"},
     :logseq.property/description "An electronic file or document.",
     :schema.property/url "https://schema.org/DigitalDocument"}},
-  :custom.class/Website
-  {:block/title "Website",
-   :build/class-properties [:schema.property/issn],
-   :build/class-extends [:schema.class/CreativeWork],
-   :build/properties
-   {:logseq.property/icon
-    {:id "WorldWww", :type :tabler-icon, :color "inherit"},
-    :logseq.property/description
-    "A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs."}},
   :schema.class/Article
   {:block/title "Article",
    :block/collapsed? false,
    :build/class-properties
-   [:schema.property/articleSection :custom.property/backStory],
+   [:schema.property/articleSection :schema.property/backstory],
    :build/class-extends [:schema.class/CreativeWork],
    :build/properties
    {:logseq.property/icon {:id "scroll", :type :emoji},

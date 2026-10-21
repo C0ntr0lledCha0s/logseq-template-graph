@@ -254,26 +254,6 @@
     "The date on which the [[CreativeWork]] was most recently modified or when the item's entry was modified within a DataFeed.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/dateModified"}},
-  :custom.property/backStory
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :default,
-   :block/title "backStory",
-   :build/properties
-   {:logseq.property/icon
-    {:id "information_source",
-     :name "Information",
-     :keywords ["source" "blue" "square" "alphabet" "letter"],
-     :skins
-     [{:unified "2139-fe0f",
-       :native "ℹ️",
-       :shortcodes ":information_source:"}],
-     :version 1,
-     :search
-     ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
-     :type :emoji},
-    :logseq.property/description
-    "For an [Article](https://schema.org/Article), typically a [NewsArticle](https://schema.org/NewsArticle), the backstory property provides a textual summary giving a brief explanation of why and how an article was created. In a journalistic setting this could include information about reporting process, methods, interviews, data sources, etc.",
-    :logseq.property/exclude-from-graph-view true}},
   :schema.property/dateIssued
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :date,
@@ -511,6 +491,27 @@
    :logseq.property/type :default,
    :block/title "project",
    :build/properties {:logseq.property/exclude-from-graph-view true}},
+  :schema.property/backstory
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "backstory",
+   :build/properties
+   {:logseq.property/icon
+    {:id "information_source",
+     :name "Information",
+     :keywords ["source" "blue" "square" "alphabet" "letter"],
+     :skins
+     [{:unified "2139-fe0f",
+       :native "ℹ️",
+       :shortcodes ":information_source:"}],
+     :version 1,
+     :search
+     ",information_source,information,source,blue,square,alphabet,letter,ℹ️",
+     :type :emoji},
+    :logseq.property/description
+    "For an [Article](https://schema.org/Article), typically a [NewsArticle](https://schema.org/NewsArticle), the backstory property provides a textual summary giving a brief explanation of why and how an article was created. In a journalistic setting this could include information about reporting process, methods, interviews, data sources, etc.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/backstory"}},
   :schema.property/proficiencyLevel
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2446,6 +2447,15 @@
     "The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/audienceType"}},
+  :schema.property/requiredMinAge
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :number,
+   :block/title "requiredMinAge",
+   :build/properties
+   {:logseq.property/description
+    "Audiences defined by a person's minimum age.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/requiredMinAge"}},
   :schema.property/teaches
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3210,14 +3220,6 @@
     "A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for [unitCode](https://schema.org/unitCode).",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/unitText"}},
-  :custom.property/requiredAge
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :number,
-   :block/title "requiredMinAge",
-   :build/properties
-   {:logseq.property/description
-    "Audiences defined by a person's minimum age.",
-    :logseq.property/exclude-from-graph-view true}},
   :schema.property/credentialCategory
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,

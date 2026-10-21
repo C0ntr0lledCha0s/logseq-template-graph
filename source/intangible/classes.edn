@@ -114,7 +114,7 @@
   {:block/title "PeopleAudience",
    :build/class-properties
    [:schema.property/requiredGender
-    :custom.property/requiredAge
+    :schema.property/requiredMinAge
     :schema.property/requiredMaxAge
     :schema.property/suggestedAge
     :schema.property/suggestedGender
