@@ -29,20 +29,22 @@
 (defn- ref-errors
   [lib where refs]
   (for [ref refs
-        :when (and (keyword? ref)
-                   (not= "logseq.property" (namespace ref))
-                   (not (known-ident? lib ref)))]
-    (str where " references unknown ident " ref)))
+        :when (or (not (keyword? ref))
+                  (and (not= "logseq.property" (namespace ref))
+                       (not (known-ident? lib ref))))]
+    (if (keyword? ref)
+      (str where " references unknown ident " ref)
+      (str where " has non-keyword entry " (pr-str ref)))))
 
 (defn- vocab-errors
   [vocab idents]
   (for [ident idents
-        :let [kind (kind-of ident)
-              nm (name ident)
-              terms (get vocab (case kind :class :classes :property :properties))
-              scope (namespace ident)]
+        :let [kind (kind-of ident)]
         :when kind
-        :let [exact? (contains? terms nm)
+        :let [nm (name ident)
+              terms (get vocab (case kind :class :classes :property :properties))
+              scope (namespace ident)
+              exact? (contains? terms nm)
               any-case? (some #(.equalsIgnoreCase ^String % nm) terms)]
         :when (if (str/starts-with? scope "schema.") (not exact?) any-case?)]
     (if (str/starts-with? scope "schema.")
@@ -51,9 +53,32 @@
 
 (defn- collision-errors
   [idents]
-  (for [[[kind lower] group] (group-by (fn [i] [(kind-of i) (str/lower-case (name i))]) idents)
+  (for [[[kind _lower] group] (group-by (fn [i] [(kind-of i) (str/lower-case (name i))]) idents)
         :when (and kind (> (count group) 1))]
     (str "case collision among " (name kind) " idents: " (str/join ", " (sort group)))))
+
+(defn- invariant-errors
+  "schema.* entries need url + title matching the ident name; custom.* entries must have no url."
+  [lib]
+  (for [section [:classes :properties]
+        [ident d] (get lib section)
+        :let [scope (namespace ident)
+              url (get-in d [:build/properties :schema.property/url])]
+        :when (some? scope)
+        e (cond
+            (str/starts-with? scope "schema.")
+            (cond-> []
+              (not= url (str "https://schema.org/" (name ident)))
+              (conj (str ident " must have :schema.property/url https://schema.org/" (name ident)
+                         " but has " (pr-str url)))
+              (not= (get d :block/title) (name ident))
+              (conj (str ident " must have :block/title " (pr-str (name ident))
+                         " but has " (pr-str (get d :block/title)))))
+            (str/starts-with? scope "custom.")
+            (when (some? url)
+              [(str ident " is custom but has :schema.property/url " (pr-str url))])
+            :else nil)]
+    e))
 
 (defn- property-order-errors
   "Flag property pairs ordered x-before-y in one class and y-before-x in another."
@@ -88,6 +113,7 @@
                    (ref-errors lib (str ident " build/properties") (keys (:build/properties d))))]
      e)
    (property-order-errors lib)
+   (invariant-errors lib)
    (vocab-errors vocab (concat (keys (:classes lib)) (keys (:properties lib))))
    (collision-errors (concat (keys (:classes lib)) (keys (:properties lib))))))
 
@@ -105,4 +131,7 @@
   "Validate library and presets against the Schema.org vocab. Empty means valid."
   [lib presets vocab]
   (vec (concat (library-errors lib vocab)
+               (for [[id n] (frequencies (map :id presets))
+                     :when (> n 1)]
+                 (str "duplicate preset id " (pr-str id)))
                (mapcat #(preset-errors lib %) presets))))
