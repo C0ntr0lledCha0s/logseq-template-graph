@@ -58,6 +58,12 @@ jobs:
       - name: Run unit tests
         run: bb test
 
+      - name: Verify tag matches package.json version
+        if: github.ref_type == 'tag'
+        run: |
+          test "${GITHUB_REF#refs/tags/}" = "v$(node -p "require('./package.json').version")" || {
+            echo "Tag ${GITHUB_REF#refs/tags/} does not match package.json version"; exit 1; }
+
       - name: Build schema library
         run: bb build
 

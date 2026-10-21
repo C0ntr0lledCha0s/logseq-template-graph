@@ -61,7 +61,7 @@ if (-not $unpushedCommits) {
 }
 
 if ($unpushedCommits) {
-    $conventionalPattern = '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?: .+'
+    $conventionalPattern = '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?!?: .+'
 
     foreach ($commit in $unpushedCommits) {
         $commitMsg = $commit -replace '^\w+\s+', ''
