@@ -36,3 +36,16 @@
     (testing "no #:ns{} literals"
       (is (nil? (re-find #"#:" s))))
     (is (= lib (edn/read-string s)))))
+
+(deftest property-order-made-consistent
+  (let [lib (library/normalize-property-order
+             {:classes {:schema.class/A {:build/class-properties [:p/x :p/y]}
+                        :schema.class/B {:build/class-extends [:schema.class/A]
+                                         :build/class-properties [:p/y :p/x :p/z]}}})]
+    (is (= [:p/x :p/y] (get-in lib [:classes :schema.class/A :build/class-properties])))
+    (is (= [:p/x :p/y :p/z] (get-in lib [:classes :schema.class/B :build/class-properties])))))
+
+(deftest property-order-keeps-first-class-order
+  (let [lib (library/normalize-property-order
+             {:classes {:schema.class/A {:build/class-properties [:p/z :p/a :p/m]}}})]
+    (is (= [:p/z :p/a :p/m] (get-in lib [:classes :schema.class/A :build/class-properties])))))

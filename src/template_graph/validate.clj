@@ -55,6 +55,21 @@
         :when (and kind (> (count group) 1))]
     (str "case collision among " (name kind) " idents: " (str/join ", " (sort group)))))
 
+(defn- property-order-errors
+  "Flag property pairs ordered x-before-y in one class and y-before-x in another."
+  [lib]
+  (let [pairs (fn [props] (for [[i x] (map-indexed vector props)
+                                y (drop (inc i) props)]
+                            [x y]))
+        seen (reduce (fn [m [class d]]
+                       (reduce (fn [m pair] (update m pair (fnil conj #{}) class))
+                               m (pairs (:build/class-properties d))))
+                     {} (:classes lib))]
+    (for [[[x y] classes] seen
+          :when (and (neg? (compare (str x) (str y))) (contains? seen [y x]))]
+      (str "inconsistent property order: " x " and " y " are ordered differently in "
+           (str/join ", " (sort (into classes (get seen [y x]))))))))
+
 (defn- library-errors
   [lib vocab]
   (concat
@@ -72,6 +87,7 @@
          e (concat (ref-errors lib (str ident " property-classes") (:build/property-classes d))
                    (ref-errors lib (str ident " build/properties") (keys (:build/properties d))))]
      e)
+   (property-order-errors lib)
    (vocab-errors vocab (concat (keys (:classes lib)) (keys (:properties lib))))
    (collision-errors (concat (keys (:classes lib)) (keys (:properties lib))))))
 

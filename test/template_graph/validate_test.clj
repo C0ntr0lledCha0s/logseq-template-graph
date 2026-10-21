@@ -74,3 +74,11 @@
               (assoc-in [:classes :schema.class/Event] {})
               (assoc-in [:properties :schema.property/event] {}))]
     (is (empty? (validate/errors l [] vocab)))))
+
+(deftest inconsistent-property-order-flagged
+  (let [l (-> (lib)
+              (assoc-in [:classes :schema.class/Thing :build/class-properties]
+                        [:schema.property/url :schema.property/email])
+              (assoc-in [:classes :schema.class/Person :build/class-properties]
+                        [:schema.property/email :schema.property/url]))]
+    (is (mentions? (validate/errors l [] vocab) "inconsistent property order"))))

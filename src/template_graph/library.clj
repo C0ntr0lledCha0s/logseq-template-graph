@@ -20,9 +20,36 @@
           {:classes {} :properties {}}
           modules))
 
+(defn- class-depth
+  "Depth from the root via :build/class-extends (minimum over parents present in classes)."
+  [classes ident]
+  (letfn [(depth [i seen]
+            (let [parents (->> (:build/class-extends (get classes i))
+                               (filter #(and (contains? classes %) (not (contains? seen %)))))]
+              (if (empty? parents)
+                0
+                (inc (apply min (map #(depth % (conj seen i)) parents))))))]
+    (depth ident #{ident})))
+
+(defn normalize-property-order
+  "Sort every class's :build/class-properties by one global rank so class orders
+  never conflict. Rank is first appearance walking classes by depth, then ident."
+  [lib]
+  (let [classes (:classes lib)
+        walk-order (sort-by (juxt #(class-depth classes %) str) (keys classes))
+        rank (reduce (fn [m p] (if (contains? m p) m (assoc m p (count m))))
+                     {}
+                     (mapcat #(:build/class-properties (get classes %)) walk-order))]
+    (update lib :classes
+            update-vals
+            (fn [d]
+              (cond-> d
+                (:build/class-properties d)
+                (update :build/class-properties #(vec (sort-by rank %))))))))
+
 (defn library-map
   [merged version]
-  (assoc merged
+  (assoc (normalize-property-order merged)
          :logseq.db.sqlite.export/export-type :graph-ontology
          :schema-library/version version))
 
