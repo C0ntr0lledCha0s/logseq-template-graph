@@ -1,0 +1,1765 @@
+{:schema-library/version "2.0.0",
+ :presets
+ [{:id "content",
+   :name "Content Creation",
+   :description "Content creators - Videos, Articles, Images, Media",
+   :classes
+   {:schema.class/TVSeries
+    [:schema.property/containsSeason
+     :schema.property/director
+     :schema.property/numberOfSeasons
+     :schema.property/titleEIDR
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/musicBy
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes],
+    :schema.class/Syllabus
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/BackgroundNewsArticle [],
+    :schema.class/NewsArticle [],
+    :schema.class/Conversation [],
+    :schema.class/Game
+    [:schema.property/characterAttribute
+     :schema.property/gameItem
+     :schema.property/gameLocation
+     :schema.property/numberOfPlayers
+     :schema.property/quest],
+    :schema.class/SoftwareApplication
+    [:schema.property/applicationCategory
+     :schema.property/applicationSubCategory
+     :schema.property/applicationSuite
+     :schema.property/downloadUrl
+     :schema.property/featureList
+     :schema.property/softwareAddOn
+     :schema.property/softwareHelp],
+    :schema.class/BookSeries
+    [:schema.property/startDate
+     :schema.property/endDate
+     :schema.property/issn],
+    :schema.class/MusicAlbum
+    [:schema.property/byArtist
+     :schema.property/albumProductionType
+     :schema.property/albumRelease
+     :schema.property/albumReleaseType],
+    :schema.class/Guide [:schema.property/reviewAspect],
+    :schema.class/SpreadsheetDigitalDocument [],
+    :schema.class/Audiobook
+    [:schema.property/duration :schema.property/readBy],
+    :schema.class/MovieSeries
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy],
+    :schema.class/TechArticle
+    [:schema.property/dependencies :schema.property/proficiencyLevel],
+    :schema.class/OpinionNewsArticle [],
+    :schema.class/TextDigitalDocument [],
+    :schema.class/UserReview [],
+    :schema.class/ReportageNewsArticle [],
+    :schema.class/PresentationDigitalDocument [],
+    :schema.class/MusicPlaylist
+    [:schema.property/track :schema.property/numTracks],
+    :schema.class/ReviewNewsArticle [],
+    :schema.class/Movie
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy
+     :schema.property/titleEIDR],
+    :schema.class/Certification
+    [:schema.property/expires
+     :schema.property/certificationStatus
+     :schema.property/auditDate
+     :schema.property/certificationIdentification
+     :schema.property/certificationRating
+     :schema.property/issuedBy
+     :schema.property/datePublished
+     :schema.property/about
+     :schema.property/validIn
+     :schema.property/validFrom
+     :schema.property/logo],
+    :schema.class/MusicComposition
+    [:schema.property/composer
+     :schema.property/iswcCode
+     :schema.property/lyricist
+     :schema.property/recordedAs],
+    :schema.class/VideoGame
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/gameEdition
+     :schema.property/gamePlatform],
+    :schema.class/Recommendation [:schema.property/category],
+    :schema.class/CriticReview [],
+    :schema.class/AnalysisNewsArticle [],
+    :schema.class/TVSeason [:schema.property/titleEIDR],
+    :schema.class/CreativeWork
+    [:schema.property/sponsor
+     :schema.property/review
+     :schema.property/commentCount
+     :schema.property/publisher
+     :schema.property/contentLocation
+     :schema.property/author
+     :schema.property/contributor
+     :schema.property/alternativeHeadline
+     :schema.property/character
+     :schema.property/isBasedOn
+     :schema.property/timeRequired
+     :schema.property/hasPart
+     :schema.property/comment
+     :schema.property/inLanguage
+     :schema.property/headline
+     :schema.property/editor
+     :schema.property/isPartOf
+     :schema.property/genre
+     :schema.property/datePublished
+     :schema.property/dateModified
+     :schema.property/about
+     :schema.property/dateCreated
+     :schema.property/license
+     :schema.property/audience
+     :schema.property/creator
+     :schema.property/maintainer
+     :schema.property/provider
+     :schema.property/keywords
+     :schema.property/producer],
+    :schema.class/ClaimReview [:schema.property/claimReviewed],
+    :custom.class/Resource [],
+    :schema.class/Book
+    [:schema.property/bookEdition
+     :schema.property/bookFormat
+     :schema.property/illustrator
+     :schema.property/isbn
+     :schema.property/numberOfPages],
+    :custom.class/BusinessPerson [],
+    :schema.class/CreativeWorkSeries
+    [:schema.property/startDate :schema.property/endDate],
+    :schema.class/WebSite [:schema.property/issn],
+    :schema.class/Report [:schema.property/reportNumber],
+    :schema.class/Thing
+    [:schema.property/url
+     :schema.property/sameAs
+     :schema.property/image
+     :schema.property/subjectOf],
+    :schema.class/CreativeWorkSeason
+    [:schema.property/director
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/startDate
+     :schema.property/endDate
+     :schema.property/seasonNumber
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes
+     :schema.property/partOfSeries],
+    :schema.class/Person
+    [:schema.property/familyName
+     :schema.property/givenName
+     :schema.property/children
+     :schema.property/parent
+     :schema.property/homeLocation
+     :schema.property/birthPlace
+     :schema.property/hasOccupation
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/spouse
+     :schema.property/telephone
+     :schema.property/address
+     :schema.property/skills
+     :schema.property/relatedTo
+     :schema.property/worksFor
+     :schema.property/sibling
+     :schema.property/knows
+     :schema.property/knowsAbout
+     :schema.property/birthDate
+     :schema.property/jobTitle
+     :schema.property/email
+     :schema.property/alumniOf
+     :schema.property/affiliation
+     :schema.property/additionalName],
+    :schema.class/Episode
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/partOfSeries
+     :schema.property/productionCompany
+     :schema.property/episodeNumber
+     :schema.property/partOfSeason],
+    :schema.class/DigitalDocument [],
+    :schema.class/Article
+    [:schema.property/articleSection :schema.property/backstory],
+    :schema.class/MusicRelease
+    [:schema.property/duration
+     :schema.property/catalogNumber
+     :schema.property/creditedTo
+     :schema.property/musicReleaseFormat
+     :schema.property/recordLabel
+     :schema.property/releaseOf],
+    :schema.class/LearningResource
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/NoteDigitalDocument [],
+    :schema.class/TVEpisode [:schema.property/titleEIDR],
+    :schema.class/SoftwareSourceCode
+    [:schema.property/codeRepository
+     :schema.property/codeSampleType
+     :schema.property/programmingLanguage
+     :schema.property/targetProduct],
+    :schema.class/MusicRecording
+    [:schema.property/duration
+     :schema.property/byArtist
+     :schema.property/inAlbum
+     :schema.property/inPlaylist
+     :schema.property/isrcCode
+     :schema.property/recordingOf],
+    :schema.class/Course
+    [:schema.property/courseCode
+     :schema.property/coursePrerequisites
+     :schema.property/educationalCredentialAwarded
+     :schema.property/numberOfCredits
+     :schema.property/occupationalCredentialAwarded
+     :schema.property/hasCourseInstance
+     :schema.property/syllabusSections],
+    :schema.class/Review
+    [:schema.property/itemReviewed
+     :schema.property/reviewAspect
+     :schema.property/reviewRating
+     :schema.property/associatedClaimReview
+     :schema.property/associatedMediaReview
+     :schema.property/associatedReview]}}
+  {:id "crm",
+   :name "CRM",
+   :description
+   "Customer relationship management - Person, Organization, and Contact",
+   :classes
+   {:schema.class/BusinessAudience
+    [:schema.property/numberOfEmployees
+     :schema.property/yearlyRevenue
+     :schema.property/yearsInOperation],
+    :schema.class/LocalBusiness
+    [:schema.property/openingHours :schema.property/priceRange],
+    :schema.class/EducationalOccupationalCredential
+    [:schema.property/competencyRequired
+     :schema.property/educationalLevel
+     :schema.property/credentialCategory
+     :schema.property/recognizedBy
+     :schema.property/validIn
+     :schema.property/validFor],
+    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :custom.class/Department [],
+    :schema.class/MusicGroup
+    [:schema.property/genre
+     :schema.property/album
+     :schema.property/track],
+    :custom.class/Business [],
+    :custom.class/Resource [],
+    :custom.class/BusinessPerson [],
+    :schema.class/Thing
+    [:schema.property/url
+     :schema.property/sameAs
+     :schema.property/image
+     :schema.property/subjectOf],
+    :schema.class/Person
+    [:schema.property/familyName
+     :schema.property/givenName
+     :schema.property/children
+     :schema.property/parent
+     :schema.property/homeLocation
+     :schema.property/birthPlace
+     :schema.property/hasOccupation
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/spouse
+     :schema.property/telephone
+     :schema.property/address
+     :schema.property/skills
+     :schema.property/relatedTo
+     :schema.property/worksFor
+     :schema.property/sibling
+     :schema.property/knows
+     :schema.property/knowsAbout
+     :schema.property/birthDate
+     :schema.property/jobTitle
+     :schema.property/email
+     :schema.property/alumniOf
+     :schema.property/affiliation
+     :schema.property/additionalName],
+    :schema.class/Organization
+    [:schema.property/event
+     :schema.property/owns
+     :schema.property/alumni
+     :schema.property/areaServed
+     :schema.property/contactPoint
+     :schema.property/legalName
+     :schema.property/parentOrganization
+     :schema.property/employee
+     :schema.property/subOrganization
+     :schema.property/telephone
+     :schema.property/location
+     :schema.property/memberOf
+     :schema.property/member
+     :schema.property/email
+     :schema.property/keywords
+     :schema.property/logo],
+    :custom.class/BusinessMeeting
+    [:custom.property/project
+     :custom.property/topic
+     :custom.property/areas
+     :custom.property/objective
+     :custom.property/nextMeetingDate],
+    :schema.class/PerformingGroup [],
+    :schema.class/Occupation
+    [:schema.property/skills
+     :schema.property/experienceRequirements
+     :schema.property/qualifications
+     :schema.property/responsibilities],
+    :schema.class/Brand [],
+    :schema.class/BusinessEvent []}}
+  {:id "events",
+   :name "Events",
+   :description "Event management - Meetings, Conferences, Schedules",
+   :classes
+   {:schema.class/Event
+    [:schema.property/superEvent
+     :schema.property/subEvent
+     :schema.property/eventStatus
+     :schema.property/eventSchedule
+     :schema.property/location
+     :schema.property/duration
+     :schema.property/startDate
+     :schema.property/endDate
+     :schema.property/attendee
+     :schema.property/about
+     :schema.property/audience
+     :schema.property/keywords],
+    :schema.class/MusicEvent [],
+    :schema.class/BusinessAudience
+    [:schema.property/numberOfEmployees
+     :schema.property/yearlyRevenue
+     :schema.property/yearsInOperation],
+    :schema.class/VirtualLocation [],
+    :schema.class/ScreeningEvent [:schema.property/workPresented],
+    :schema.class/Country [],
+    :schema.class/LocalBusiness
+    [:schema.property/openingHours :schema.property/priceRange],
+    :schema.class/ComedyEvent [],
+    :schema.class/FoodEvent [],
+    :schema.class/SocialEvent [],
+    :schema.class/TrainStation [],
+    :schema.class/TheaterEvent [],
+    :schema.class/EducationalOccupationalCredential
+    [:schema.property/competencyRequired
+     :schema.property/educationalLevel
+     :schema.property/credentialCategory
+     :schema.property/recognizedBy
+     :schema.property/validIn
+     :schema.property/validFor],
+    :schema.class/ChildrensEvent [],
+    :schema.class/Festival [],
+    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :schema.class/EventReservation [],
+    :custom.class/Department [],
+    :schema.class/MusicGroup
+    [:schema.property/genre
+     :schema.property/album
+     :schema.property/track],
+    :custom.class/Business [],
+    :schema.class/AdministrativeArea [],
+    :schema.class/BoatTerminal [],
+    :schema.class/EducationEvent
+    [:schema.property/assesses
+     :schema.property/educationalLevel
+     :schema.property/teaches],
+    :schema.class/BusStation [],
+    :custom.class/Resource [],
+    :custom.class/BusinessPerson [],
+    :schema.class/Schedule
+    [:schema.property/byMonthDay
+     :schema.property/byMonth
+     :schema.property/byDay
+     :schema.property/duration
+     :schema.property/startDate
+     :schema.property/byMonthWeek
+     :schema.property/exceptDate
+     :schema.property/repeatCount
+     :schema.property/repeatFrequency
+     :schema.property/endDate
+     :schema.property/startTime
+     :schema.property/endTime
+     :schema.property/scheduleTimezone],
+    :schema.class/CivicStructure [:schema.property/openingHours],
+    :schema.class/Thing
+    [:schema.property/url
+     :schema.property/sameAs
+     :schema.property/image
+     :schema.property/subjectOf],
+    :schema.class/Person
+    [:schema.property/familyName
+     :schema.property/givenName
+     :schema.property/children
+     :schema.property/parent
+     :schema.property/homeLocation
+     :schema.property/birthPlace
+     :schema.property/hasOccupation
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/spouse
+     :schema.property/telephone
+     :schema.property/address
+     :schema.property/skills
+     :schema.property/relatedTo
+     :schema.property/worksFor
+     :schema.property/sibling
+     :schema.property/knows
+     :schema.property/knowsAbout
+     :schema.property/birthDate
+     :schema.property/jobTitle
+     :schema.property/email
+     :schema.property/alumniOf
+     :schema.property/affiliation
+     :schema.property/additionalName],
+    :schema.class/Place
+    [:schema.property/address
+     :schema.property/event
+     :schema.property/keywords],
+    :custom.class/CountryState [],
+    :schema.class/SportsEvent [],
+    :schema.class/Organization
+    [:schema.property/event
+     :schema.property/owns
+     :schema.property/alumni
+     :schema.property/areaServed
+     :schema.property/contactPoint
+     :schema.property/legalName
+     :schema.property/parentOrganization
+     :schema.property/employee
+     :schema.property/subOrganization
+     :schema.property/telephone
+     :schema.property/location
+     :schema.property/memberOf
+     :schema.property/member
+     :schema.property/email
+     :schema.property/keywords
+     :schema.property/logo],
+    :schema.class/BusStop [],
+    :schema.class/DanceEvent [],
+    :schema.class/TouristDestination
+    [:schema.property/touristType :schema.property/includesAttraction],
+    :schema.class/EventSeries [],
+    :custom.class/BusinessMeeting
+    [:custom.property/project
+     :custom.property/topic
+     :custom.property/areas
+     :custom.property/objective
+     :custom.property/nextMeetingDate],
+    :schema.class/PerformingGroup [],
+    :schema.class/Airport
+    [:schema.property/iataCode :schema.property/icaoCode],
+    :schema.class/Occupation
+    [:schema.property/skills
+     :schema.property/experienceRequirements
+     :schema.property/qualifications
+     :schema.property/responsibilities],
+    :schema.class/LiteraryEvent [],
+    :schema.class/City [],
+    :schema.class/Brand [],
+    :schema.class/CourseInstance
+    [:schema.property/courseMode
+     :schema.property/courseSchedule
+     :schema.property/courseWorkload
+     :schema.property/instructor],
+    :schema.class/BusinessEvent []}}
+  {:id "full",
+   :name "Full",
+   :description
+   "Complete Schema.org-based template with all classes and properties",
+   :classes
+   {:schema.class/Rating
+    [:schema.property/author
+     :schema.property/ratingValue
+     :schema.property/ratingExplanation
+     :schema.property/bestRating
+     :schema.property/worstRating],
+    :schema.class/TVSeries
+    [:schema.property/containsSeason
+     :schema.property/director
+     :schema.property/numberOfSeasons
+     :schema.property/titleEIDR
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/musicBy
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes],
+    :schema.class/Syllabus
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/Event
+    [:schema.property/superEvent
+     :schema.property/subEvent
+     :schema.property/eventStatus
+     :schema.property/eventSchedule
+     :schema.property/location
+     :schema.property/duration
+     :schema.property/startDate
+     :schema.property/endDate
+     :schema.property/attendee
+     :schema.property/about
+     :schema.property/audience
+     :schema.property/keywords],
+    :schema.class/BackgroundNewsArticle [],
+    :schema.class/MusicEvent [],
+    :schema.class/NewsArticle [],
+    :schema.class/Diet
+    [:schema.property/dietFeatures
+     :schema.property/endorsers
+     :schema.property/expertConsiderations
+     :schema.property/physiologicalBenefits
+     :schema.property/risks],
+    :schema.class/Service
+    [:schema.property/category
+     :schema.property/award
+     :schema.property/review
+     :schema.property/brand
+     :schema.property/broker
+     :schema.property/isSimilarTo
+     :schema.property/areaServed
+     :schema.property/isRelatedTo
+     :schema.property/hasCertification
+     :schema.property/serviceType
+     :schema.property/serviceOutput
+     :schema.property/audience
+     :schema.property/provider
+     :schema.property/termsOfService
+     :schema.property/logo],
+    :schema.class/Audience
+    [:schema.property/audienceType :schema.property/geographicArea],
+    :schema.class/BusinessAudience
+    [:schema.property/numberOfEmployees
+     :schema.property/yearlyRevenue
+     :schema.property/yearsInOperation],
+    :schema.class/ItemList
+    [:schema.property/numberOfItems
+     :schema.property/aggregateElement
+     :schema.property/itemListOrder],
+    :schema.class/ProgramMembership
+    [:schema.property/member
+     :schema.property/hostingOrganization
+     :schema.property/membershipNumber
+     :schema.property/membershipPointsEarned
+     :schema.property/program],
+    :schema.class/ComputerLanguage [],
+    :schema.class/TrainTrip
+    [:schema.property/arrivalPlatform
+     :schema.property/arrivalStation
+     :schema.property/departurePlatform
+     :schema.property/departureStation
+     :schema.property/trainName
+     :schema.property/trainNumber],
+    :schema.class/Conversation [],
+    :schema.class/Duration [],
+    :schema.class/FlightReservation [],
+    :schema.class/Game
+    [:schema.property/characterAttribute
+     :schema.property/gameItem
+     :schema.property/gameLocation
+     :schema.property/numberOfPlayers
+     :schema.property/quest],
+    :schema.class/SoftwareApplication
+    [:schema.property/applicationCategory
+     :schema.property/applicationSubCategory
+     :schema.property/applicationSuite
+     :schema.property/downloadUrl
+     :schema.property/featureList
+     :schema.property/softwareAddOn
+     :schema.property/softwareHelp],
+    :schema.class/VirtualLocation [],
+    :schema.class/ScreeningEvent [:schema.property/workPresented],
+    :schema.class/PhysicalActivity
+    [:schema.property/associatedAnatomy
+     :schema.property/category
+     :schema.property/epidemiology
+     :schema.property/pathophysiology],
+    :schema.class/Country [],
+    :schema.class/BookSeries
+    [:schema.property/startDate
+     :schema.property/endDate
+     :schema.property/issn],
+    :schema.class/LocalBusiness
+    [:schema.property/openingHours :schema.property/priceRange],
+    :schema.class/MusicAlbum
+    [:schema.property/byArtist
+     :schema.property/albumProductionType
+     :schema.property/albumRelease
+     :schema.property/albumReleaseType],
+    :schema.class/Guide [:schema.property/reviewAspect],
+    :schema.class/ComedyEvent [],
+    :schema.class/FoodEvent [],
+    :schema.class/PeopleAudience
+    [:schema.property/requiredGender
+     :schema.property/requiredMinAge
+     :schema.property/requiredMaxAge
+     :schema.property/suggestedAge
+     :schema.property/suggestedGender
+     :schema.property/suggestedMaxAge
+     :schema.property/suggestedMinAge],
+    :schema.class/SocialEvent [],
+    :schema.class/SpreadsheetDigitalDocument [],
+    :schema.class/TrainStation [],
+    :schema.class/TheaterEvent [],
+    :schema.class/MemberProgramTier
+    [:schema.property/membershipPointsEarned
+     :schema.property/isTierOf
+     :schema.property/hasTierRequirement
+     :schema.property/hasTierBenefit],
+    :schema.class/TouristTrip [:schema.property/touristType],
+    :schema.class/EducationalOccupationalCredential
+    [:schema.property/competencyRequired
+     :schema.property/educationalLevel
+     :schema.property/credentialCategory
+     :schema.property/recognizedBy
+     :schema.property/validIn
+     :schema.property/validFor],
+    :schema.class/TrainReservation [],
+    :schema.class/ChildrensEvent [],
+    :schema.class/Festival [],
+    :schema.class/Audiobook
+    [:schema.property/duration :schema.property/readBy],
+    :schema.class/AlignmentObject
+    [:schema.property/alignmentType
+     :schema.property/educationalFramework
+     :schema.property/targetDescription
+     :schema.property/targetName
+     :schema.property/targetUrl],
+    :schema.class/MovieSeries
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy],
+    :schema.class/ExercisePlan
+    [:schema.property/activityDuration
+     :schema.property/activityFrequency
+     :schema.property/additionalVariable
+     :schema.property/exerciseType
+     :schema.property/intensity
+     :schema.property/repetitions
+     :schema.property/restPeriods],
+    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :schema.class/TechArticle
+    [:schema.property/dependencies :schema.property/proficiencyLevel],
+    :schema.class/OpinionNewsArticle [],
+    :schema.class/TextDigitalDocument [],
+    :schema.class/UserReview [],
+    :schema.class/ReportageNewsArticle [],
+    :schema.class/BusReservation [],
+    :schema.class/ReservationPackage [:schema.property/subReservation],
+    :schema.class/PresentationDigitalDocument [],
+    :schema.class/MusicPlaylist
+    [:schema.property/track :schema.property/numTracks],
+    :schema.class/ReviewNewsArticle [],
+    :schema.class/Flight
+    [:schema.property/arrivalGate
+     :schema.property/departureAirport
+     :schema.property/arrivalTerminal
+     :schema.property/estimatedFlightDuration
+     :schema.property/flightDistance
+     :schema.property/departureGate
+     :schema.property/departureTerminal
+     :schema.property/aircraft
+     :schema.property/arrivalAirport
+     :schema.property/webCheckinTime
+     :schema.property/seller
+     :schema.property/mealService
+     :schema.property/flightNumber],
+    :schema.class/EventReservation [],
+    :schema.class/Movie
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy
+     :schema.property/titleEIDR],
+    :custom.class/Department [],
+    :schema.class/MusicGroup
+    [:schema.property/genre
+     :schema.property/album
+     :schema.property/track],
+    :schema.class/StructuredValue [],
+    :schema.class/Certification
+    [:schema.property/expires
+     :schema.property/certificationStatus
+     :schema.property/auditDate
+     :schema.property/certificationIdentification
+     :schema.property/certificationRating
+     :schema.property/issuedBy
+     :schema.property/datePublished
+     :schema.property/about
+     :schema.property/validIn
+     :schema.property/validFrom
+     :schema.property/logo],
+    :schema.class/Reservation
+    [:schema.property/underName
+     :schema.property/broker
+     :schema.property/bookingTime
+     :schema.property/reservationStatus
+     :schema.property/reservationFor
+     :schema.property/reservationId
+     :schema.property/priceCurrency
+     :schema.property/reservedTicket
+     :schema.property/modifiedTime
+     :schema.property/programMembershipUsed
+     :schema.property/provider
+     :schema.property/totalPrice],
+    :schema.class/MusicComposition
+    [:schema.property/composer
+     :schema.property/iswcCode
+     :schema.property/lyricist
+     :schema.property/recordedAs],
+    :schema.class/Ticket
+    [:schema.property/priceCurrency
+     :schema.property/totalPrice
+     :schema.property/underName
+     :schema.property/dateIssued
+     :schema.property/issuedBy
+     :schema.property/ticketNumber
+     :schema.property/ticketToken
+     :schema.property/ticketedSeat],
+    :schema.class/MemberProgram
+    [:schema.property/hostingOrganization :schema.property/hasTiers],
+    :custom.class/Business [],
+    :schema.class/LodgingReservation
+    [:schema.property/checkinTime
+     :schema.property/checkoutTime
+     :schema.property/lodgingUnitDescription
+     :schema.property/lodgingUnitType
+     :schema.property/numAdults
+     :schema.property/numChildren],
+    :schema.class/VideoGame
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/gameEdition
+     :schema.property/gamePlatform],
+    :schema.class/Recommendation [:schema.property/category],
+    :schema.class/AdministrativeArea [],
+    :schema.class/TouristAttraction [:schema.property/touristType],
+    :schema.class/TaxiReservation
+    [:schema.property/partySize
+     :schema.property/pickupTime
+     :schema.property/pickupLocation],
+    :schema.class/FoodEstablishmentReservation
+    [:schema.property/endTime
+     :schema.property/startTime
+     :schema.property/partySize],
+    :schema.class/Product [],
+    :schema.class/CriticReview [],
+    :schema.class/BoatTerminal [],
+    :schema.class/Intangible [],
+    :schema.class/AnalysisNewsArticle [],
+    :schema.class/TVSeason [:schema.property/titleEIDR],
+    :schema.class/WebAPI [:schema.property/documentation],
+    :schema.class/CreativeWork
+    [:schema.property/sponsor
+     :schema.property/review
+     :schema.property/commentCount
+     :schema.property/publisher
+     :schema.property/contentLocation
+     :schema.property/author
+     :schema.property/contributor
+     :schema.property/alternativeHeadline
+     :schema.property/character
+     :schema.property/isBasedOn
+     :schema.property/timeRequired
+     :schema.property/hasPart
+     :schema.property/comment
+     :schema.property/inLanguage
+     :schema.property/headline
+     :schema.property/editor
+     :schema.property/isPartOf
+     :schema.property/genre
+     :schema.property/datePublished
+     :schema.property/dateModified
+     :schema.property/about
+     :schema.property/dateCreated
+     :schema.property/license
+     :schema.property/audience
+     :schema.property/creator
+     :schema.property/maintainer
+     :schema.property/provider
+     :schema.property/keywords
+     :schema.property/producer],
+    :schema.class/ClaimReview [:schema.property/claimReviewed],
+    :schema.class/EducationEvent
+    [:schema.property/assesses
+     :schema.property/educationalLevel
+     :schema.property/teaches],
+    :schema.class/BusStation [],
+    :custom.class/Resource [],
+    :schema.class/Book
+    [:schema.property/bookEdition
+     :schema.property/bookFormat
+     :schema.property/illustrator
+     :schema.property/isbn
+     :schema.property/numberOfPages],
+    :custom.class/BusinessPerson [],
+    :schema.class/BusTrip
+    [:schema.property/arrivalBusStop
+     :schema.property/busName
+     :schema.property/busNumber
+     :schema.property/departureBusStop],
+    :schema.class/CreativeWorkSeries
+    [:schema.property/startDate :schema.property/endDate],
+    :schema.class/WebSite [:schema.property/issn],
+    :schema.class/Schedule
+    [:schema.property/byMonthDay
+     :schema.property/byMonth
+     :schema.property/byDay
+     :schema.property/duration
+     :schema.property/startDate
+     :schema.property/byMonthWeek
+     :schema.property/exceptDate
+     :schema.property/repeatCount
+     :schema.property/repeatFrequency
+     :schema.property/endDate
+     :schema.property/startTime
+     :schema.property/endTime
+     :schema.property/scheduleTimezone],
+    :schema.class/Report [:schema.property/reportNumber],
+    :schema.class/CivicStructure [:schema.property/openingHours],
+    :schema.class/Thing
+    [:schema.property/url
+     :schema.property/sameAs
+     :schema.property/image
+     :schema.property/subjectOf],
+    :schema.class/CreativeWorkSeason
+    [:schema.property/director
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/startDate
+     :schema.property/endDate
+     :schema.property/seasonNumber
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes
+     :schema.property/partOfSeries],
+    :schema.class/Trip
+    [:schema.property/provider
+     :schema.property/arrivalTime
+     :schema.property/departureTime
+     :schema.property/itinerary
+     :schema.property/partOfTrip
+     :schema.property/subTrip
+     :schema.property/tripOrigin],
+    :schema.class/Person
+    [:schema.property/familyName
+     :schema.property/givenName
+     :schema.property/children
+     :schema.property/parent
+     :schema.property/homeLocation
+     :schema.property/birthPlace
+     :schema.property/hasOccupation
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/spouse
+     :schema.property/telephone
+     :schema.property/address
+     :schema.property/skills
+     :schema.property/relatedTo
+     :schema.property/worksFor
+     :schema.property/sibling
+     :schema.property/knows
+     :schema.property/knowsAbout
+     :schema.property/birthDate
+     :schema.property/jobTitle
+     :schema.property/email
+     :schema.property/alumniOf
+     :schema.property/affiliation
+     :schema.property/additionalName],
+    :schema.class/Episode
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/partOfSeries
+     :schema.property/productionCompany
+     :schema.property/episodeNumber
+     :schema.property/partOfSeason],
+    :schema.class/Place
+    [:schema.property/address
+     :schema.property/event
+     :schema.property/keywords],
+    :schema.class/EducationalAudience [:custom.property/educationRole],
+    :custom.class/CountryState [],
+    :schema.class/SportsEvent [],
+    :custom.class/FamilyGroup
+    [:schema.property/event
+     :schema.property/keywords
+     :schema.property/contactPoint
+     :custom.property/parentFamilyGroup
+     :custom.property/subFamilyGroup],
+    :schema.class/Organization
+    [:schema.property/event
+     :schema.property/owns
+     :schema.property/alumni
+     :schema.property/areaServed
+     :schema.property/contactPoint
+     :schema.property/legalName
+     :schema.property/parentOrganization
+     :schema.property/employee
+     :schema.property/subOrganization
+     :schema.property/telephone
+     :schema.property/location
+     :schema.property/memberOf
+     :schema.property/member
+     :schema.property/email
+     :schema.property/keywords
+     :schema.property/logo],
+    :schema.class/BusStop [],
+    :schema.class/LifestyleModification [],
+    :schema.class/Language [],
+    :schema.class/DigitalDocument [],
+    :schema.class/DanceEvent [],
+    :schema.class/ListItem
+    [:schema.property/item
+     :schema.property/nextItem
+     :schema.property/position
+     :schema.property/previousItem],
+    :schema.class/Article
+    [:schema.property/articleSection :schema.property/backstory],
+    :schema.class/BoatReservation [],
+    :schema.class/TouristDestination
+    [:schema.property/touristType :schema.property/includesAttraction],
+    :schema.class/MusicRelease
+    [:schema.property/duration
+     :schema.property/catalogNumber
+     :schema.property/creditedTo
+     :schema.property/musicReleaseFormat
+     :schema.property/recordLabel
+     :schema.property/releaseOf],
+    :schema.class/EventSeries [],
+    :custom.class/BusinessMeeting
+    [:custom.property/project
+     :custom.property/topic
+     :custom.property/areas
+     :custom.property/objective
+     :custom.property/nextMeetingDate],
+    :schema.class/PerformingGroup [],
+    :schema.class/Airport
+    [:schema.property/iataCode :schema.property/icaoCode],
+    :schema.class/QuantitativeValue
+    [:schema.property/maxValue
+     :schema.property/minValue
+     :schema.property/unitText
+     :schema.property/value],
+    :schema.class/Occupation
+    [:schema.property/skills
+     :schema.property/experienceRequirements
+     :schema.property/qualifications
+     :schema.property/responsibilities],
+    :schema.class/LearningResource
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/NoteDigitalDocument [],
+    :schema.class/TVEpisode [:schema.property/titleEIDR],
+    :schema.class/SoftwareSourceCode
+    [:schema.property/codeRepository
+     :schema.property/codeSampleType
+     :schema.property/programmingLanguage
+     :schema.property/targetProduct],
+    :schema.class/LiteraryEvent [],
+    :schema.class/City [],
+    :schema.class/Brand [],
+    :schema.class/MusicRecording
+    [:schema.property/duration
+     :schema.property/byArtist
+     :schema.property/inAlbum
+     :schema.property/inPlaylist
+     :schema.property/isrcCode
+     :schema.property/recordingOf],
+    :schema.class/BoatTrip
+    [:schema.property/arrivalBoatTerminal
+     :schema.property/departureBoatTerminal],
+    :schema.class/Course
+    [:schema.property/courseCode
+     :schema.property/coursePrerequisites
+     :schema.property/educationalCredentialAwarded
+     :schema.property/numberOfCredits
+     :schema.property/occupationalCredentialAwarded
+     :schema.property/hasCourseInstance
+     :schema.property/syllabusSections],
+    :schema.class/CourseInstance
+    [:schema.property/courseMode
+     :schema.property/courseSchedule
+     :schema.property/courseWorkload
+     :schema.property/instructor],
+    :schema.class/BusinessEvent [],
+    :schema.class/Review
+    [:schema.property/itemReviewed
+     :schema.property/reviewAspect
+     :schema.property/reviewRating
+     :schema.property/associatedClaimReview
+     :schema.property/associatedMediaReview
+     :schema.property/associatedReview]}}
+  {:id "research",
+   :name "Research",
+   :description
+   "Academic and research notes - Books, Articles, Authors, Publications",
+   :classes
+   {:schema.class/TVSeries
+    [:schema.property/containsSeason
+     :schema.property/director
+     :schema.property/numberOfSeasons
+     :schema.property/titleEIDR
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/musicBy
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes],
+    :schema.class/Syllabus
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/BackgroundNewsArticle [],
+    :schema.class/NewsArticle [],
+    :schema.class/BusinessAudience
+    [:schema.property/numberOfEmployees
+     :schema.property/yearlyRevenue
+     :schema.property/yearsInOperation],
+    :schema.class/Conversation [],
+    :schema.class/Game
+    [:schema.property/characterAttribute
+     :schema.property/gameItem
+     :schema.property/gameLocation
+     :schema.property/numberOfPlayers
+     :schema.property/quest],
+    :schema.class/SoftwareApplication
+    [:schema.property/applicationCategory
+     :schema.property/applicationSubCategory
+     :schema.property/applicationSuite
+     :schema.property/downloadUrl
+     :schema.property/featureList
+     :schema.property/softwareAddOn
+     :schema.property/softwareHelp],
+    :schema.class/BookSeries
+    [:schema.property/startDate
+     :schema.property/endDate
+     :schema.property/issn],
+    :schema.class/LocalBusiness
+    [:schema.property/openingHours :schema.property/priceRange],
+    :schema.class/MusicAlbum
+    [:schema.property/byArtist
+     :schema.property/albumProductionType
+     :schema.property/albumRelease
+     :schema.property/albumReleaseType],
+    :schema.class/Guide [:schema.property/reviewAspect],
+    :schema.class/SpreadsheetDigitalDocument [],
+    :schema.class/EducationalOccupationalCredential
+    [:schema.property/competencyRequired
+     :schema.property/educationalLevel
+     :schema.property/credentialCategory
+     :schema.property/recognizedBy
+     :schema.property/validIn
+     :schema.property/validFor],
+    :schema.class/Audiobook
+    [:schema.property/duration :schema.property/readBy],
+    :schema.class/MovieSeries
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy],
+    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :schema.class/TechArticle
+    [:schema.property/dependencies :schema.property/proficiencyLevel],
+    :schema.class/OpinionNewsArticle [],
+    :schema.class/TextDigitalDocument [],
+    :schema.class/UserReview [],
+    :schema.class/ReportageNewsArticle [],
+    :schema.class/PresentationDigitalDocument [],
+    :schema.class/MusicPlaylist
+    [:schema.property/track :schema.property/numTracks],
+    :schema.class/ReviewNewsArticle [],
+    :schema.class/Movie
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy
+     :schema.property/titleEIDR],
+    :custom.class/Department [],
+    :schema.class/MusicGroup
+    [:schema.property/genre
+     :schema.property/album
+     :schema.property/track],
+    :schema.class/Certification
+    [:schema.property/expires
+     :schema.property/certificationStatus
+     :schema.property/auditDate
+     :schema.property/certificationIdentification
+     :schema.property/certificationRating
+     :schema.property/issuedBy
+     :schema.property/datePublished
+     :schema.property/about
+     :schema.property/validIn
+     :schema.property/validFrom
+     :schema.property/logo],
+    :schema.class/MusicComposition
+    [:schema.property/composer
+     :schema.property/iswcCode
+     :schema.property/lyricist
+     :schema.property/recordedAs],
+    :custom.class/Business [],
+    :schema.class/VideoGame
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/gameEdition
+     :schema.property/gamePlatform],
+    :schema.class/Recommendation [:schema.property/category],
+    :schema.class/CriticReview [],
+    :schema.class/AnalysisNewsArticle [],
+    :schema.class/TVSeason [:schema.property/titleEIDR],
+    :schema.class/CreativeWork
+    [:schema.property/sponsor
+     :schema.property/review
+     :schema.property/commentCount
+     :schema.property/publisher
+     :schema.property/contentLocation
+     :schema.property/author
+     :schema.property/contributor
+     :schema.property/alternativeHeadline
+     :schema.property/character
+     :schema.property/isBasedOn
+     :schema.property/timeRequired
+     :schema.property/hasPart
+     :schema.property/comment
+     :schema.property/inLanguage
+     :schema.property/headline
+     :schema.property/editor
+     :schema.property/isPartOf
+     :schema.property/genre
+     :schema.property/datePublished
+     :schema.property/dateModified
+     :schema.property/about
+     :schema.property/dateCreated
+     :schema.property/license
+     :schema.property/audience
+     :schema.property/creator
+     :schema.property/maintainer
+     :schema.property/provider
+     :schema.property/keywords
+     :schema.property/producer],
+    :schema.class/ClaimReview [:schema.property/claimReviewed],
+    :custom.class/Resource [],
+    :schema.class/Book
+    [:schema.property/bookEdition
+     :schema.property/bookFormat
+     :schema.property/illustrator
+     :schema.property/isbn
+     :schema.property/numberOfPages],
+    :custom.class/BusinessPerson [],
+    :schema.class/CreativeWorkSeries
+    [:schema.property/startDate :schema.property/endDate],
+    :schema.class/WebSite [:schema.property/issn],
+    :schema.class/Report [:schema.property/reportNumber],
+    :schema.class/Thing
+    [:schema.property/url
+     :schema.property/sameAs
+     :schema.property/image
+     :schema.property/subjectOf],
+    :schema.class/CreativeWorkSeason
+    [:schema.property/director
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/startDate
+     :schema.property/endDate
+     :schema.property/seasonNumber
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes
+     :schema.property/partOfSeries],
+    :schema.class/Person
+    [:schema.property/familyName
+     :schema.property/givenName
+     :schema.property/children
+     :schema.property/parent
+     :schema.property/homeLocation
+     :schema.property/birthPlace
+     :schema.property/hasOccupation
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/spouse
+     :schema.property/telephone
+     :schema.property/address
+     :schema.property/skills
+     :schema.property/relatedTo
+     :schema.property/worksFor
+     :schema.property/sibling
+     :schema.property/knows
+     :schema.property/knowsAbout
+     :schema.property/birthDate
+     :schema.property/jobTitle
+     :schema.property/email
+     :schema.property/alumniOf
+     :schema.property/affiliation
+     :schema.property/additionalName],
+    :schema.class/Episode
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/partOfSeries
+     :schema.property/productionCompany
+     :schema.property/episodeNumber
+     :schema.property/partOfSeason],
+    :schema.class/Organization
+    [:schema.property/event
+     :schema.property/owns
+     :schema.property/alumni
+     :schema.property/areaServed
+     :schema.property/contactPoint
+     :schema.property/legalName
+     :schema.property/parentOrganization
+     :schema.property/employee
+     :schema.property/subOrganization
+     :schema.property/telephone
+     :schema.property/location
+     :schema.property/memberOf
+     :schema.property/member
+     :schema.property/email
+     :schema.property/keywords
+     :schema.property/logo],
+    :schema.class/DigitalDocument [],
+    :schema.class/Article
+    [:schema.property/articleSection :schema.property/backstory],
+    :schema.class/MusicRelease
+    [:schema.property/duration
+     :schema.property/catalogNumber
+     :schema.property/creditedTo
+     :schema.property/musicReleaseFormat
+     :schema.property/recordLabel
+     :schema.property/releaseOf],
+    :custom.class/BusinessMeeting
+    [:custom.property/project
+     :custom.property/topic
+     :custom.property/areas
+     :custom.property/objective
+     :custom.property/nextMeetingDate],
+    :schema.class/PerformingGroup [],
+    :schema.class/Occupation
+    [:schema.property/skills
+     :schema.property/experienceRequirements
+     :schema.property/qualifications
+     :schema.property/responsibilities],
+    :schema.class/LearningResource
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/NoteDigitalDocument [],
+    :schema.class/TVEpisode [:schema.property/titleEIDR],
+    :schema.class/SoftwareSourceCode
+    [:schema.property/codeRepository
+     :schema.property/codeSampleType
+     :schema.property/programmingLanguage
+     :schema.property/targetProduct],
+    :schema.class/Brand [],
+    :schema.class/MusicRecording
+    [:schema.property/duration
+     :schema.property/byArtist
+     :schema.property/inAlbum
+     :schema.property/inPlaylist
+     :schema.property/isrcCode
+     :schema.property/recordingOf],
+    :schema.class/Course
+    [:schema.property/courseCode
+     :schema.property/coursePrerequisites
+     :schema.property/educationalCredentialAwarded
+     :schema.property/numberOfCredits
+     :schema.property/occupationalCredentialAwarded
+     :schema.property/hasCourseInstance
+     :schema.property/syllabusSections],
+    :schema.class/BusinessEvent [],
+    :schema.class/Review
+    [:schema.property/itemReviewed
+     :schema.property/reviewAspect
+     :schema.property/reviewRating
+     :schema.property/associatedClaimReview
+     :schema.property/associatedMediaReview
+     :schema.property/associatedReview]}}
+  {:id "student-life",
+   :name "Student Life",
+   :description "Student course and assignment tracking",
+   :classes
+   {:schema.class/Rating
+    [:schema.property/author
+     :schema.property/ratingValue
+     :schema.property/ratingExplanation
+     :schema.property/bestRating
+     :schema.property/worstRating],
+    :schema.class/TVSeries
+    [:schema.property/containsSeason
+     :schema.property/director
+     :schema.property/numberOfSeasons
+     :schema.property/titleEIDR
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/musicBy
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes],
+    :schema.class/Syllabus
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/Event
+    [:schema.property/superEvent
+     :schema.property/subEvent
+     :schema.property/eventStatus
+     :schema.property/eventSchedule
+     :schema.property/location
+     :schema.property/duration
+     :schema.property/startDate
+     :schema.property/endDate
+     :schema.property/attendee
+     :schema.property/about
+     :schema.property/audience
+     :schema.property/keywords],
+    :schema.class/BackgroundNewsArticle [],
+    :schema.class/MusicEvent [],
+    :schema.class/NewsArticle [],
+    :schema.class/Service
+    [:schema.property/category
+     :schema.property/award
+     :schema.property/review
+     :schema.property/brand
+     :schema.property/broker
+     :schema.property/isSimilarTo
+     :schema.property/areaServed
+     :schema.property/isRelatedTo
+     :schema.property/hasCertification
+     :schema.property/serviceType
+     :schema.property/serviceOutput
+     :schema.property/audience
+     :schema.property/provider
+     :schema.property/termsOfService
+     :schema.property/logo],
+    :schema.class/Audience
+    [:schema.property/audienceType :schema.property/geographicArea],
+    :schema.class/ItemList
+    [:schema.property/numberOfItems
+     :schema.property/aggregateElement
+     :schema.property/itemListOrder],
+    :schema.class/ProgramMembership
+    [:schema.property/member
+     :schema.property/hostingOrganization
+     :schema.property/membershipNumber
+     :schema.property/membershipPointsEarned
+     :schema.property/program],
+    :schema.class/ComputerLanguage [],
+    :schema.class/TrainTrip
+    [:schema.property/arrivalPlatform
+     :schema.property/arrivalStation
+     :schema.property/departurePlatform
+     :schema.property/departureStation
+     :schema.property/trainName
+     :schema.property/trainNumber],
+    :schema.class/Conversation [],
+    :schema.class/Duration [],
+    :schema.class/FlightReservation [],
+    :schema.class/Game
+    [:schema.property/characterAttribute
+     :schema.property/gameItem
+     :schema.property/gameLocation
+     :schema.property/numberOfPlayers
+     :schema.property/quest],
+    :schema.class/SoftwareApplication
+    [:schema.property/applicationCategory
+     :schema.property/applicationSubCategory
+     :schema.property/applicationSuite
+     :schema.property/downloadUrl
+     :schema.property/featureList
+     :schema.property/softwareAddOn
+     :schema.property/softwareHelp],
+    :schema.class/VirtualLocation [],
+    :schema.class/ScreeningEvent [:schema.property/workPresented],
+    :schema.class/Country [],
+    :schema.class/BookSeries
+    [:schema.property/startDate
+     :schema.property/endDate
+     :schema.property/issn],
+    :schema.class/MusicAlbum
+    [:schema.property/byArtist
+     :schema.property/albumProductionType
+     :schema.property/albumRelease
+     :schema.property/albumReleaseType],
+    :schema.class/Guide [:schema.property/reviewAspect],
+    :schema.class/ComedyEvent [],
+    :schema.class/FoodEvent [],
+    :schema.class/PeopleAudience
+    [:schema.property/requiredGender
+     :schema.property/requiredMinAge
+     :schema.property/requiredMaxAge
+     :schema.property/suggestedAge
+     :schema.property/suggestedGender
+     :schema.property/suggestedMaxAge
+     :schema.property/suggestedMinAge],
+    :schema.class/SocialEvent [],
+    :schema.class/SpreadsheetDigitalDocument [],
+    :schema.class/TrainStation [],
+    :schema.class/TheaterEvent [],
+    :schema.class/MemberProgramTier
+    [:schema.property/membershipPointsEarned
+     :schema.property/isTierOf
+     :schema.property/hasTierRequirement
+     :schema.property/hasTierBenefit],
+    :schema.class/TouristTrip [:schema.property/touristType],
+    :schema.class/TrainReservation [],
+    :schema.class/ChildrensEvent [],
+    :schema.class/Festival [],
+    :schema.class/Audiobook
+    [:schema.property/duration :schema.property/readBy],
+    :schema.class/AlignmentObject
+    [:schema.property/alignmentType
+     :schema.property/educationalFramework
+     :schema.property/targetDescription
+     :schema.property/targetName
+     :schema.property/targetUrl],
+    :schema.class/MovieSeries
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy],
+    :schema.class/TechArticle
+    [:schema.property/dependencies :schema.property/proficiencyLevel],
+    :schema.class/OpinionNewsArticle [],
+    :schema.class/TextDigitalDocument [],
+    :schema.class/UserReview [],
+    :schema.class/ReportageNewsArticle [],
+    :schema.class/BusReservation [],
+    :schema.class/ReservationPackage [:schema.property/subReservation],
+    :schema.class/PresentationDigitalDocument [],
+    :schema.class/MusicPlaylist
+    [:schema.property/track :schema.property/numTracks],
+    :schema.class/ReviewNewsArticle [],
+    :schema.class/Flight
+    [:schema.property/arrivalGate
+     :schema.property/departureAirport
+     :schema.property/arrivalTerminal
+     :schema.property/estimatedFlightDuration
+     :schema.property/flightDistance
+     :schema.property/departureGate
+     :schema.property/departureTerminal
+     :schema.property/aircraft
+     :schema.property/arrivalAirport
+     :schema.property/webCheckinTime
+     :schema.property/seller
+     :schema.property/mealService
+     :schema.property/flightNumber],
+    :schema.class/EventReservation [],
+    :schema.class/Movie
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/productionCompany
+     :schema.property/musicBy
+     :schema.property/titleEIDR],
+    :schema.class/StructuredValue [],
+    :schema.class/Certification
+    [:schema.property/expires
+     :schema.property/certificationStatus
+     :schema.property/auditDate
+     :schema.property/certificationIdentification
+     :schema.property/certificationRating
+     :schema.property/issuedBy
+     :schema.property/datePublished
+     :schema.property/about
+     :schema.property/validIn
+     :schema.property/validFrom
+     :schema.property/logo],
+    :schema.class/Reservation
+    [:schema.property/underName
+     :schema.property/broker
+     :schema.property/bookingTime
+     :schema.property/reservationStatus
+     :schema.property/reservationFor
+     :schema.property/reservationId
+     :schema.property/priceCurrency
+     :schema.property/reservedTicket
+     :schema.property/modifiedTime
+     :schema.property/programMembershipUsed
+     :schema.property/provider
+     :schema.property/totalPrice],
+    :schema.class/MusicComposition
+    [:schema.property/composer
+     :schema.property/iswcCode
+     :schema.property/lyricist
+     :schema.property/recordedAs],
+    :schema.class/Ticket
+    [:schema.property/priceCurrency
+     :schema.property/totalPrice
+     :schema.property/underName
+     :schema.property/dateIssued
+     :schema.property/issuedBy
+     :schema.property/ticketNumber
+     :schema.property/ticketToken
+     :schema.property/ticketedSeat],
+    :schema.class/MemberProgram
+    [:schema.property/hostingOrganization :schema.property/hasTiers],
+    :schema.class/LodgingReservation
+    [:schema.property/checkinTime
+     :schema.property/checkoutTime
+     :schema.property/lodgingUnitDescription
+     :schema.property/lodgingUnitType
+     :schema.property/numAdults
+     :schema.property/numChildren],
+    :schema.class/VideoGame
+    [:schema.property/actor
+     :schema.property/director
+     :schema.property/gameEdition
+     :schema.property/gamePlatform],
+    :schema.class/Recommendation [:schema.property/category],
+    :schema.class/AdministrativeArea [],
+    :schema.class/TaxiReservation
+    [:schema.property/partySize
+     :schema.property/pickupTime
+     :schema.property/pickupLocation],
+    :schema.class/FoodEstablishmentReservation
+    [:schema.property/endTime
+     :schema.property/startTime
+     :schema.property/partySize],
+    :schema.class/CriticReview [],
+    :schema.class/BoatTerminal [],
+    :schema.class/Intangible [],
+    :schema.class/AnalysisNewsArticle [],
+    :schema.class/TVSeason [:schema.property/titleEIDR],
+    :schema.class/WebAPI [:schema.property/documentation],
+    :schema.class/CreativeWork
+    [:schema.property/sponsor
+     :schema.property/review
+     :schema.property/commentCount
+     :schema.property/publisher
+     :schema.property/contentLocation
+     :schema.property/author
+     :schema.property/contributor
+     :schema.property/alternativeHeadline
+     :schema.property/character
+     :schema.property/isBasedOn
+     :schema.property/timeRequired
+     :schema.property/hasPart
+     :schema.property/comment
+     :schema.property/inLanguage
+     :schema.property/headline
+     :schema.property/editor
+     :schema.property/isPartOf
+     :schema.property/genre
+     :schema.property/datePublished
+     :schema.property/dateModified
+     :schema.property/about
+     :schema.property/dateCreated
+     :schema.property/license
+     :schema.property/audience
+     :schema.property/creator
+     :schema.property/maintainer
+     :schema.property/provider
+     :schema.property/keywords
+     :schema.property/producer],
+    :schema.class/ClaimReview [:schema.property/claimReviewed],
+    :schema.class/EducationEvent
+    [:schema.property/assesses
+     :schema.property/educationalLevel
+     :schema.property/teaches],
+    :schema.class/BusStation [],
+    :custom.class/Resource [],
+    :schema.class/Book
+    [:schema.property/bookEdition
+     :schema.property/bookFormat
+     :schema.property/illustrator
+     :schema.property/isbn
+     :schema.property/numberOfPages],
+    :custom.class/BusinessPerson [],
+    :schema.class/BusTrip
+    [:schema.property/arrivalBusStop
+     :schema.property/busName
+     :schema.property/busNumber
+     :schema.property/departureBusStop],
+    :schema.class/CreativeWorkSeries
+    [:schema.property/startDate :schema.property/endDate],
+    :schema.class/WebSite [:schema.property/issn],
+    :schema.class/Schedule
+    [:schema.property/byMonthDay
+     :schema.property/byMonth
+     :schema.property/byDay
+     :schema.property/duration
+     :schema.property/startDate
+     :schema.property/byMonthWeek
+     :schema.property/exceptDate
+     :schema.property/repeatCount
+     :schema.property/repeatFrequency
+     :schema.property/endDate
+     :schema.property/startTime
+     :schema.property/endTime
+     :schema.property/scheduleTimezone],
+    :schema.class/Report [:schema.property/reportNumber],
+    :schema.class/CivicStructure [:schema.property/openingHours],
+    :schema.class/Thing
+    [:schema.property/url
+     :schema.property/sameAs
+     :schema.property/image
+     :schema.property/subjectOf],
+    :schema.class/CreativeWorkSeason
+    [:schema.property/director
+     :schema.property/episode
+     :schema.property/actor
+     :schema.property/startDate
+     :schema.property/endDate
+     :schema.property/seasonNumber
+     :schema.property/productionCompany
+     :schema.property/numberOfEpisodes
+     :schema.property/partOfSeries],
+    :schema.class/Trip
+    [:schema.property/provider
+     :schema.property/arrivalTime
+     :schema.property/departureTime
+     :schema.property/itinerary
+     :schema.property/partOfTrip
+     :schema.property/subTrip
+     :schema.property/tripOrigin],
+    :schema.class/Person
+    [:schema.property/familyName
+     :schema.property/givenName
+     :schema.property/children
+     :schema.property/parent
+     :schema.property/homeLocation
+     :schema.property/birthPlace
+     :schema.property/hasOccupation
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/spouse
+     :schema.property/telephone
+     :schema.property/address
+     :schema.property/skills
+     :schema.property/relatedTo
+     :schema.property/worksFor
+     :schema.property/sibling
+     :schema.property/knows
+     :schema.property/knowsAbout
+     :schema.property/birthDate
+     :schema.property/jobTitle
+     :schema.property/email
+     :schema.property/alumniOf
+     :schema.property/affiliation
+     :schema.property/additionalName],
+    :schema.class/Episode
+    [:schema.property/duration
+     :schema.property/actor
+     :schema.property/director
+     :schema.property/partOfSeries
+     :schema.property/productionCompany
+     :schema.property/episodeNumber
+     :schema.property/partOfSeason],
+    :schema.class/Place
+    [:schema.property/address
+     :schema.property/event
+     :schema.property/keywords],
+    :schema.class/EducationalAudience [:custom.property/educationRole],
+    :custom.class/CountryState [],
+    :schema.class/SportsEvent [],
+    :schema.class/BusStop [],
+    :schema.class/DigitalDocument [],
+    :schema.class/DanceEvent [],
+    :schema.class/ListItem
+    [:schema.property/item
+     :schema.property/nextItem
+     :schema.property/position
+     :schema.property/previousItem],
+    :schema.class/Article
+    [:schema.property/articleSection :schema.property/backstory],
+    :schema.class/BoatReservation [],
+    :schema.class/TouristDestination
+    [:schema.property/touristType :schema.property/includesAttraction],
+    :schema.class/MusicRelease
+    [:schema.property/duration
+     :schema.property/catalogNumber
+     :schema.property/creditedTo
+     :schema.property/musicReleaseFormat
+     :schema.property/recordLabel
+     :schema.property/releaseOf],
+    :schema.class/EventSeries [],
+    :schema.class/Airport
+    [:schema.property/iataCode :schema.property/icaoCode],
+    :schema.class/QuantitativeValue
+    [:schema.property/maxValue
+     :schema.property/minValue
+     :schema.property/unitText
+     :schema.property/value],
+    :schema.class/LearningResource
+    [:schema.property/assesses
+     :schema.property/competencyRequired
+     :schema.property/educationalAlignment
+     :schema.property/educationalLevel
+     :schema.property/educationalUse
+     :schema.property/learningResourceType
+     :schema.property/teaches],
+    :schema.class/NoteDigitalDocument [],
+    :schema.class/TVEpisode [:schema.property/titleEIDR],
+    :schema.class/SoftwareSourceCode
+    [:schema.property/codeRepository
+     :schema.property/codeSampleType
+     :schema.property/programmingLanguage
+     :schema.property/targetProduct],
+    :schema.class/LiteraryEvent [],
+    :schema.class/City [],
+    :schema.class/MusicRecording
+    [:schema.property/duration
+     :schema.property/byArtist
+     :schema.property/inAlbum
+     :schema.property/inPlaylist
+     :schema.property/isrcCode
+     :schema.property/recordingOf],
+    :schema.class/BoatTrip
+    [:schema.property/arrivalBoatTerminal
+     :schema.property/departureBoatTerminal],
+    :schema.class/Course
+    [:schema.property/courseCode
+     :schema.property/coursePrerequisites
+     :schema.property/educationalCredentialAwarded
+     :schema.property/numberOfCredits
+     :schema.property/occupationalCredentialAwarded
+     :schema.property/hasCourseInstance
+     :schema.property/syllabusSections],
+    :schema.class/CourseInstance
+    [:schema.property/courseMode
+     :schema.property/courseSchedule
+     :schema.property/courseWorkload
+     :schema.property/instructor],
+    :schema.class/Review
+    [:schema.property/itemReviewed
+     :schema.property/reviewAspect
+     :schema.property/reviewRating
+     :schema.property/associatedClaimReview
+     :schema.property/associatedMediaReview
+     :schema.property/associatedReview]}}]}

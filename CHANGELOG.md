@@ -11,6 +11,7 @@
 
 ### Features & Enhancements
 
+- The built library is also committed under `library/` (fetched by the Ontology Sync plugin).
 - Every Schema.org entry carries a `:schema.property/url` link to schema.org.
 - Presets list classes, and the properties each class brings, so the Ontology Sync role builder can merge and trim them.
 - `bb validate` checks:

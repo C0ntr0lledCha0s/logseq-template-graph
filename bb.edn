@@ -29,6 +29,22 @@
                                          (str (fs/canonicalize nbb)) (str out "/check_import.cljs")
                                          (str (fs/canonicalize "build/schema-library.edn")))]
              (System/exit exit)))}
+  publish-library
+  {:doc "Copy build/ output into the committed library/ directory"
+   :depends [build]
+   :requires ([babashka.fs :as fs])
+   :task (do (fs/create-dirs "library")
+             (doseq [f ["schema-library.edn" "schema-presets.edn"]]
+               (fs/copy (str "build/" f) (str "library/" f) {:replace-existing true})))}
+  check-library
+  {:doc "Fail if library/ differs from build/"
+   :depends [build]
+   :requires ([babashka.fs :as fs])
+   :task (when-not (every? (fn [f] (and (fs/exists? (str "library/" f))
+                                        (= (slurp (str "build/" f)) (slurp (str "library/" f)))))
+                           ["schema-library.edn" "schema-presets.edn"])
+           (println "library/ is out of date — run bb publish-library and commit")
+           (System/exit 1))}
   test
   {:doc "Run template-graph unit tests"
    :requires ([template-graph.run-tests :as run-tests])

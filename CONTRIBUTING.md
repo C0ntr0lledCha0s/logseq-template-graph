@@ -76,6 +76,9 @@ git pull origin dev
 # 3. Test, build and validate
 bb test && bb build && bb validate
 
+# 3b. Publish the generated library (do not hand-edit library/; the Ontology Sync plugin downloads it)
+bb publish-library
+
 # 4. Review changes (small, per-module diffs)
 git diff source/
 
@@ -254,7 +257,7 @@ git commit --no-verify -m "quick fix"
 
 1. **Ensure commits follow conventional commits** - Use `npm run validate:commits`
 2. **Update documentation** if adding features
-3. **Run** `bb test && bb build && bb validate`
+3. **Run** `bb test && bb build && bb validate && bb publish-library`, and commit `library/` (generated; do not hand-edit)
 4. **Check the import** in a fresh Logseq graph when you can: `LOGSEQ_DIR=/path/to/logseq bb check-import`
 5. **Update CHANGELOG.md** if necessary (or use `npm run changelog:write`)
 
