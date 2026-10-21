@@ -1,3 +1,46 @@
+## **1.2.0**&emsp;<sub><sup>2026-10-21 ([v1.1.0...v1.2.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v1.1.0...v1.2.0))</sup></sub>
+
+### Features & Enhancements
+
+##### &ensp;`build`
+
+- add UUID transformation for class/property references (d9d59b5)
+
+##### &ensp;`validation`
+
+- add UUID reference validation for source files (0e88580)
+
+##### &ensp;`properties`
+
+- exclude all properties from graph view by default (6ee83bb)
+
+##### &ensp;`scripts`
+
+- add toggle script for exclude-from-graph-view property (89a72ea)
+- add encoding validation and fixing tools (26e32f8)
+
+##### &ensp;`workflow`
+
+- add logseq-db-knowledge skill for correct DB graph syntax (293d5bf)
+- add self-improvement skill for meta-learning and feedback loops (70b4d46)
+
+### Bug Fixes
+
+##### &ensp;`templates`
+
+- use correct namespace for exclude-from-graph-view property (e8a1aaa)
+- clean up property descriptions and fix formatting (af9cc5a)
+
+##### &ensp;`hooks`
+
+- remove emojis and enhance validation (4b45348)
+
+### Documentation
+
+- add validation reference guide (8f80636)
+
+<br>
+
 ## **1.1.0**&emsp;<sub><sup>2025-11-09 ([c55b4b8...5419842](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/c55b4b85aa934461ba423b806acb44d46092fe57...541984276ebc3bfc74733e0db8046fe5431310d5))</sup></sub>
 
 ### Documentation
