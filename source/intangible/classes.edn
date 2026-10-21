@@ -23,7 +23,7 @@
     :schema.property/brand
     :schema.property/broker
     :schema.property/isSimilarTo
-    :schema.property/serviceArea
+    :schema.property/areaServed
     :schema.property/isRelatedTo
     :schema.property/hasCertification
     :schema.property/serviceType

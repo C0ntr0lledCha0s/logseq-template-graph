@@ -315,7 +315,7 @@
   [:schema.property/event
    :schema.property/owns
    :schema.property/alumni
-   :schema.property/serviceArea
+   :schema.property/areaServed
    :schema.property/contactPoint
    :schema.property/legalName
    :schema.property/parentOrganization
@@ -437,7 +437,7 @@
    :schema.property/brand
    :schema.property/broker
    :schema.property/isSimilarTo
-   :schema.property/serviceArea
+   :schema.property/areaServed
    :schema.property/isRelatedTo
    :schema.property/hasCertification
    :schema.property/serviceType
