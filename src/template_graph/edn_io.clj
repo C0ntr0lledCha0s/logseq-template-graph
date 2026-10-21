@@ -4,8 +4,23 @@
             [clojure.pprint :as pprint]))
 
 (defn read-edn
+  "Read exactly one EDN map from path. Throws ex-info naming the path for parse
+  errors, empty files, non-map top-level forms, and trailing content."
   [path]
-  (edn/read-string (slurp path)))
+  (let [fail (fn [what data] (throw (ex-info (str path ": " what) (assoc data :path (str path)))))
+        eof (Object.)
+        rdr (java.io.PushbackReader. (io/reader (io/file path)))
+        read1 (fn [] (try (edn/read {:eof eof} rdr)
+                          (catch Exception e
+                            (throw (ex-info (str path ": EDN parse error: " (ex-message e))
+                                            {:path (str path)} e)))))
+        form (read1)]
+    (when (identical? form eof) (fail "empty EDN file" {}))
+    (when-not (map? form) (fail "top-level form must be a map" {:type (type form)}))
+    (let [extra (read1)]
+      (when-not (identical? extra eof)
+        (fail "unexpected content after the top-level map" {:extra extra})))
+    form))
 
 (defn edn-string
   [data]
