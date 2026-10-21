@@ -4,7 +4,7 @@
 
 (def vocab
   {:classes #{"Thing" "Person" "Event" "LifestyleModification" "WebSite" "ChildrensEvent"}
-   :properties #{"email" "event" "parent" "url" "backstory" "requiredMinAge"}})
+   :properties #{"email" "event" "parent" "url" "backstory" "requiredMinAge" "readBy"}})
 
 (defn- idents
   [& kws]
@@ -118,3 +118,7 @@
   (let [m (idents :user.class/ChildernsEvent-X :user.property/requiredAge-Y)]
     (is (= :schema.class/ChildrensEvent (m :user.class/ChildernsEvent-X)))
     (is (= :schema.property/requiredMinAge (m :user.property/requiredAge-Y)))))
+
+(deftest read-by-is-schema-property
+  (let [m (idents :user.property/readBy-X)]
+    (is (= :schema.property/readBy (m :user.property/readBy-X)))))

@@ -133,7 +133,7 @@
   :schema.class/Audiobook
   {:block/title "Audiobook",
    :build/class-properties
-   [:schema.property/duration :custom.property/readBy],
+   [:schema.property/duration :schema.property/readBy],
    :build/class-extends [:schema.class/Book],
    :build/properties
    {:logseq.property/icon {:id "headphones", :type :emoji},

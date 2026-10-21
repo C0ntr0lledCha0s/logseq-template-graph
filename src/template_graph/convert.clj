@@ -11,7 +11,6 @@
    [:property "Rating"] [:custom "rating"]
    [:property "areas"] [:custom "areas"]
    [:property "project"] [:custom "project"]
-   [:property "readBy"] [:custom "readBy"]
    [:class "Resource"] [:custom "Resource"]
    [:property "NewTest"] ::drop
    [:property "Event"] ::drop

@@ -48,28 +48,6 @@
     "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.).",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/producer"}},
-  :custom.property/readBy
-  {:db/cardinality :db.cardinality/one,
-   :logseq.property/type :node,
-   :block/title "readBy",
-   :build/property-classes [:schema.class/Person],
-   :build/properties
-   {:logseq.property/icon
-    {:id "speaking_head_in_silhouette",
-     :name "Speaking Head",
-     :keywords
-     ["in" "silhouette" "user" "person" "human" "sing" "say" "talk"],
-     :skins
-     [{:unified "1f5e3-fe0f",
-       :native "🗣️",
-       :shortcodes ":speaking_head_in_silhouette:"}],
-     :version 1,
-     :search
-     ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
-     :type :emoji},
-    :logseq.property/description
-    "A person who reads (performs) the audiobook.",
-    :logseq.property/exclude-from-graph-view true}},
   :schema.property/underName
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -529,6 +507,29 @@
     "A person or organization that supports a thing through a pledge, promise, or financial contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/sponsor"}},
+  :schema.property/readBy
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :node,
+   :block/title "readBy",
+   :build/property-classes [:schema.class/Person],
+   :build/properties
+   {:logseq.property/icon
+    {:id "speaking_head_in_silhouette",
+     :name "Speaking Head",
+     :keywords
+     ["in" "silhouette" "user" "person" "human" "sing" "say" "talk"],
+     :skins
+     [{:unified "1f5e3-fe0f",
+       :native "🗣️",
+       :shortcodes ":speaking_head_in_silhouette:"}],
+     :version 1,
+     :search
+     ",speaking_head_in_silhouette,speaking,head,in,silhouette,user,person,human,sing,say,talk,🗣️",
+     :type :emoji},
+    :logseq.property/description
+    "A person who reads (performs) the audiobook.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/readBy"}},
   :schema.property/broker
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
