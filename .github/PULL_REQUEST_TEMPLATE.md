@@ -21,14 +21,14 @@ Brief description of what this PR does.
 
 Which area does this affect?
 
-- [ ] `templates` - .edn template files
+- [ ] `source` - source/ EDN files
 - [ ] `classes` - Schema.org class definitions
 - [ ] `properties` - Schema.org property definitions
 - [ ] `ci` - CI/CD pipeline
-- [ ] `scripts` - Build/export/validation scripts
+- [ ] `scripts` - Build/validation scripts
 - [ ] `docs` - Documentation
 - [ ] `release` - Release process
-- [ ] `modular` - Modular architecture
+- [ ] `presets` - Role presets
 - [ ] `workflow` - Development workflow
 - [ ] Other: _______________
 
@@ -45,11 +45,10 @@ Detailed list of changes:
 
 How was this tested?
 
-- [ ] Imported templates into fresh Logseq graph
+- [ ] Imported `schema-library.edn` into a fresh Logseq graph (or ran `bb check-import`)
 - [ ] Verified properties appear correctly in UI
 - [ ] Tested class inheritance
-- [ ] Ran validation scripts: `bash scripts/validate.sh`
-- [ ] Built template variants (if modular): `bb scripts/build.clj full`
+- [ ] Ran `bb test && bb build && bb validate`
 - [ ] Other: _______________
 
 ## Screenshots (if applicable)
@@ -99,8 +98,8 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md#commit-message-guidelines) for details.
 - [ ] I have read [CONTRIBUTING.md](../CONTRIBUTING.md)
 - [ ] My commits follow the conventional commits format
 - [ ] I have updated documentation (if applicable)
-- [ ] I have tested the templates in Logseq
-- [ ] I have run the validation scripts
+- [ ] I have tested the library in Logseq
+- [ ] I have run `bb test && bb build && bb validate`
 - [ ] I have added/updated tests (if applicable)
 - [ ] CHANGELOG.md updated (if applicable)
 
@@ -110,4 +109,4 @@ Any additional information, context, or explanations:
 
 ---
 
-**Thank you for contributing to Logseq Template Graph!** 🎉
+**Thank you for contributing!**

@@ -35,7 +35,7 @@ The `feature-complete` agent handles the entire workflow of adding a new class o
 - Validates syntax
 
 ### 3. Building & Validation
-- Builds all 5 template variants
+- Runs `bb test && bb build && bb validate`
 - Validates EDN structure
 - Checks for regressions
 - Compares before/after metrics
@@ -95,14 +95,12 @@ Agent Plans:
   ✓ Parent: CreativeWork
   ✓ Properties: 7 essential (recipeIngredient, cookTime, etc.)
   ✓ New properties needed: 6 (author already exists)
-  ✓ Affected variants: full, content
 
 Agent Confirms:
   "Plan:
    - Add Recipe to creative-work module
    - Create 6 new properties
    - Reuse 1 existing property (author)
-   - Will affect: full, content variants
 
    Continue? [Y/n]"
 ```
@@ -131,11 +129,9 @@ Agent Reports:
 
 ```
 Agent Builds:
-  1. npm run build:full ✓ (8,956 lines, +25)
-  2. npm run build:crm ✓ (no change)
-  3. npm run build:research ✓ (no change)
-  4. npm run build:content ✓ (3,927 lines, +25)
-  5. npm run build:events ✓ (no change)
+  1. bb test ✓
+  2. bb build ✓ (class/property counts printed)
+  3. bb validate ✓ (Valid)
 
 Agent Validates:
   - EDN structure: ✓
@@ -147,7 +143,6 @@ Agent Validates:
 Agent Reports:
   "All builds successful.
    Validation passed.
-   Variants affected: full (+25 lines), content (+25 lines)
 
    Proceed to commit? [Y/n]"
 ```
@@ -182,7 +177,6 @@ Agent Commits:
       prepTime, totalTime, recipeYield, author
     - Parent class: CreativeWork
     - Schema.org compliant
-    - Affects variants: full, content
 
   Files:
     source/creative-work/classes.edn
@@ -255,10 +249,10 @@ For each property in Schema.org:
 ```
 After implementation:
 
-  Build all variants in parallel (if supported):
+  Run bb test, bb build, bb validate in order:
     full, crm, research, content, events
 
-  For each build:
+  For each step (test, build, validate):
     If build succeeds:
       Run validation
       If validation fails:
@@ -333,7 +327,7 @@ Agent Workflow:
   2. Plan → creative-work module, CreativeWork parent ✓
   3. Confirm → User approves
   4. Implement → 3 files modified ✓
-  5. Build → All variants ✓
+  5. Build and validate ✓
   6. Validate → PASS ✓
   7. Commit → feat(classes): add Recipe class ✓
 
@@ -445,7 +439,6 @@ Processes multiple features in sequence
   :confirm-steps [:plan        ; Which steps require confirmation
                   :commit]
   :auto-document false         ; Auto-update docs without asking
-  :parallel-builds true        ; Build variants in parallel
   :rollback-on-error true      ; Auto-rollback on critical errors
   :research-timeout 30         ; Seconds to wait for Schema.org
   :build-timeout 120           ; Seconds to wait for builds

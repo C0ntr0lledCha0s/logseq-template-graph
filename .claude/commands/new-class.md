@@ -10,7 +10,7 @@ This is an **enhanced version** of `/add-class` with better research, validation
 2. **Interactive Planning** - Asks which module, parent class, properties
 3. **Generate Class Definition** - Creates EDN with proper structure
 4. **Update Module** - Adds to source module files
-5. **Build & Validate** - Tests all variants
+5. **Build & Validate** - `bb test && bb build && bb validate`
 6. **Generate Commit** - Creates conventional commit message
 7. **Documentation** - Suggests doc updates
 
@@ -116,24 +116,24 @@ Description: [A recipe for cooking or baking] ▌
 
 Will create:
   - Class: Recipe
-  - ID: user.class/Recipe-xyz789
-  - Parent: user.class/CreativeWork-abc123
+  - ID: schema.class/Recipe
+  - Parent: schema.class/CreativeWork
   - Properties: 7 (will be created if not exist)
   - Module: source/creative-work/
 
 Preview:
 ```clojure
-{:user.class/Recipe-xyz789
+{:schema.class/Recipe
  {:block/title "Recipe"
   :build/class-properties
-  [:user.property/recipeIngredient-id1
-   :user.property/recipeInstructions-id2
-   :user.property/cookTime-id3
-   :user.property/prepTime-id4
-   :user.property/totalTime-id5
-   :user.property/recipeYield-id6
-   :user.property/author-id7]
-  :build/class-parent :user.class/CreativeWork-abc123
+  [:schema.property/recipeIngredient
+   :schema.property/recipeInstructions
+   :schema.property/cookTime
+   :schema.property/prepTime
+   :schema.property/totalTime
+   :schema.property/recipeYield
+   :schema.property/author]
+  :build/class-extends [:schema.class/CreativeWork]
   :build/properties
   {:logseq.property/icon {:id "cooking" :type :emoji}
    :logseq.property/description "A recipe for cooking or baking"}}}
@@ -189,35 +189,28 @@ Editing source/creative-work/README.md:
 Module updated! ✅
 ```
 
-### Step 6: Build & Validate
+### Step 6: Test, Build & Validate
 
 ```
-🔨 Building all variants...
+🔨 Running bb test && bb build && bb validate ...
 
-Building variants:
-  [████████████] full      ✓ (8,956 lines, +25)
-  [████████████] crm       ✓ (5,389 lines, no change)
-  [████████████] research  ✓ (4,203 lines, no change)
-  [████████████] content   ✓ (3,927 lines, +25)
-  [████████████] events    ✓ (2,801 lines, no change)
-
-✅ All builds successful!
-
-🔍 Validating...
-  ✓ EDN structure valid
-  ✓ Property counts correct (full: 340, content: 157)
-  ✓ Class counts correct (full: 136, content: 41)
-  ✓ No duplicate IDs
-  ✓ All parent classes exist
+Ran N tests ... 0 failures, 0 errors.
+classes   : <count>
+properties: <count>
+version   : <version>
+wrote build/schema-library.edn
+wrote build/schema-presets.edn
+Valid
 
 ✅ Validation passed!
 
 Impact:
-  • Variants affected: full, content
   • New class: Recipe
   • New properties: 6
-  • Total additions: +25 lines to full variant
+  • Library counts: +1 class, +6 properties
 ```
+
+If `bb validate` reports errors (unknown reference, name not in Schema.org, ...), fix the source file and rerun.
 
 ### Step 7: Review Changes
 
@@ -255,7 +248,6 @@ feat(classes): add Recipe class to creative-work module
   prepTime, totalTime, recipeYield, author
 - Parent class: CreativeWork
 - Schema.org compliant
-- Affects variants: full, content
 
 Related: #42
 
@@ -349,7 +341,7 @@ Skips parent class selection prompt.
 /new-class CustomClass --no-research
 
 Creates class without Schema.org lookup.
-Use for project-specific classes not in Schema.org.
+Use for project-specific classes not in Schema.org: the ident becomes `:custom.class/<Name>` and no `:schema.property/url` is added.
 ```
 
 ### Dry Run (Preview Only)
@@ -370,7 +362,7 @@ Shows what would be created without making changes.
 ❌ Class "Recipe" already exists!
 
 Found in: source/creative-work/classes.edn
-ID: user.class/Recipe-abc123
+ID: schema.class/Recipe
 
 Options:
   1. Edit existing class: /edit-class Recipe
@@ -449,7 +441,7 @@ Rolling back changes...
 
 Changes rolled back. Fix the error and try again.
 
-Debug with: /diagnose full
+Debug with: bb validate
 ```
 
 ---
@@ -520,7 +512,7 @@ Manual configuration:
   Parent: [Thing] ▌
   Properties: [manually enter] ▌
 
-→ Creates custom class
+→ Creates :custom.class/MyCustomClass
 → Manual property definition
 → Validates structure
 → Done
@@ -555,12 +547,10 @@ This command works well with:
 1. Research Schema.org (5 min)
 2. Create class in Logseq (3 min)
 3. Add properties manually (7 min)
-4. Export and split (2 min)
-5. Build variants (2 min)
-6. Validate (2 min)
+4. Build and validate (2 min)
 7. Update docs (3 min)
 8. Commit (2 min)
-**Total: ~26 minutes**
+**Total: ~22 minutes**
 
 **With /new-class:**
 1. Run command
@@ -568,7 +558,7 @@ This command works well with:
 3. Review and confirm
 **Total: ~5 minutes**
 
-**Saves: 21 minutes (81% reduction)**
+**Saves: 17 minutes (77% reduction)**
 
 ---
 

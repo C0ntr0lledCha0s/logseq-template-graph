@@ -82,7 +82,7 @@ Project-specific scopes defined for clarity:
 - `classes` - Schema.org class definitions
 - `properties` - Schema.org property definitions
 - `ci` - CI/CD pipeline changes
-- `scripts` - Build/export/validation scripts
+- `scripts` - Build/validation scripts
 - `docs` - Documentation
 - `release` - Release process
 - `modular` - Modular architecture
@@ -235,7 +235,7 @@ WIP
 feat(classes): add Recipe class with cookTime property
 fix(templates): correct spouse cardinality from :many to :one
 docs: update installation instructions
-chore(templates): auto-export templates
+chore(deps): update dependencies
 ```
 
 ### 4. Better Collaboration

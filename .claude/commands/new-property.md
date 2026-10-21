@@ -12,7 +12,7 @@ This is an **enhanced version** of `/add-property` with better type mapping, val
 4. **Class Association** - Shows which classes should use this property
 5. **Generate Definition** - Creates EDN with proper structure
 6. **Update Module** - Adds to appropriate source module
-7. **Build & Validate** - Tests all variants
+7. **Build & Validate** - `bb test && bb build && bb validate`
 8. **Generate Commit** - Creates conventional commit message
 
 ## Usage
@@ -122,7 +122,7 @@ Description: [The job title of the person] ▌
 
 Will create:
   - Property: jobTitle
-  - ID: user.property/jobTitle-xyz789
+  - ID: schema.property/jobTitle
   - Type: :default
   - Cardinality: :one
   - Classes: Person, Patient
@@ -130,13 +130,13 @@ Will create:
 
 Preview:
 ```clojure
-{:user.property/jobTitle-xyz789
+{:schema.property/jobTitle
  {:db/cardinality :db.cardinality/one
   :logseq.property/type :default
   :block/title "jobTitle"
   :build/property-classes
-  [:user.class/Person-abc123
-   :user.class/Patient-def456]
+  [:schema.class/Person
+   :schema.class/Patient]
   :build/properties
   {:logseq.property/icon {:id "briefcase" :type :emoji}
    :logseq.property/description "The job title of the person"}}}
@@ -162,41 +162,30 @@ Editing source/person/README.md:
 
 Updating class definitions:
   source/person/classes.edn:
-    + Added :user.property/jobTitle-xyz789 to Person class
-    + Added :user.property/jobTitle-xyz789 to Patient class
+    + Added :schema.property/jobTitle to Person class
+    + Added :schema.property/jobTitle to Patient class
   ✓ Classes updated
 
 Module updated! ✅
 ```
 
-### Step 5: Build & Validate
+### Step 5: Test, Build & Validate
 
 ```
-🔨 Building all variants...
+🔨 Running bb test && bb build && bb validate ...
 
-Building variants:
-  [████████████] full      ✓ (8,939 lines, +5)
-  [████████████] crm       ✓ (5,394 lines, +5)
-  [████████████] research  ✓ (4,203 lines, no change)
-  [████████████] content   ✓ (3,902 lines, no change)
-  [████████████] events    ✓ (2,801 lines, no change)
-
-✅ All builds successful!
-
-🔍 Validating...
-  ✓ EDN structure valid
-  ✓ Property counts correct (full: 335, crm: 241)
-  ✓ Class counts correct
-  ✓ No duplicate IDs
-  ✓ All referenced classes exist
+Ran N tests ... 0 failures, 0 errors.
+classes   : <count>
+properties: <count>
+wrote build/schema-library.edn
+wrote build/schema-presets.edn
+Valid
 
 ✅ Validation passed!
 
 Impact:
-  • Variants affected: full, crm
   • New property: jobTitle
   • Classes updated: Person, Patient
-  • Total additions: +5 lines to affected variants
 ```
 
 ### Step 6: Review Changes
@@ -228,7 +217,6 @@ feat(properties): add jobTitle property to Person and Patient
 - Added jobTitle property (text, single value)
 - Associated with Person and Patient classes
 - Schema.org compliant
-- Affects variants: full, crm
 
 Use this message? [Y/n]: ▌
 ```
@@ -439,7 +427,7 @@ Shows what would be created without making changes.
 ❌ Property "jobTitle" already exists!
 
 Found in: source/person/properties.edn
-ID: user.property/jobTitle-abc123
+ID: schema.property/jobTitle
 Type: :default
 Cardinality: :one
 Classes: Person
@@ -573,7 +561,7 @@ Manual configuration:
   Cardinality: :one
   Classes: Thing (available to all)
 
-→ Creates custom property
+→ Creates :custom.property/internalNotes
 → Done
 ```
 
@@ -608,11 +596,9 @@ Works well with:
 2. Determine type mapping (2 min)
 3. Create property in Logseq (2 min)
 4. Associate with classes (3 min)
-5. Export and split (2 min)
-6. Build variants (2 min)
-7. Validate (2 min)
-8. Commit (2 min)
-**Total: ~18 minutes**
+5. Build and validate (2 min)
+6. Commit (2 min)
+**Total: ~14 minutes**
 
 **With /new-property:**
 1. Run command

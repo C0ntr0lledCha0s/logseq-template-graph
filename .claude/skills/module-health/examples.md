@@ -156,17 +156,11 @@ Education (8 classes):
 - Move Course, EducationalProgram, Quiz → education/classes.edn
 - Move related properties → education/properties.edn
 
-Step 3: Update Build Configuration
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Step 3: Build Configuration
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Edit scripts/build.clj:
-```clojure
-(def modules
-  [:base :common :person :organization :event :creative-work
-   :place :product :intangible :action
-   :communication :medical :financial :education  ; NEW
-   :misc])
-```
+No build configuration change is needed: `bb build` picks up every
+directory under `source/` that has a classes.edn or properties.edn.
 
 Step 4: Create Module READMEs
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -181,10 +175,9 @@ Step 5: Test Build
 ━━━━━━━━━━━━━━━━━
 
 ```bash
-npm run build:full
-# Verify all classes/properties intact
-# Check file sizes
-# Test import in Logseq
+bb test && bb build && bb validate
+# Verify the class/property counts printed by bb build are unchanged
+# Optional: LOGSEQ_DIR=... bb check-import
 ```
 
 Step 6: Validate & Commit
@@ -529,14 +522,12 @@ Step 5: Documentation
 
 Step 6: Build Configuration
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-☐ Add module to scripts/build.clj
-☐ Add to preset configurations (if applicable)
-☐ Update .gitignore if needed
+☐ Add classes to preset configurations (if applicable)
 
 Step 7: Testing
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-☐ Run npm run build:full
-☐ Check build/logseq_db_Templates_full.edn
+☐ Run bb test && bb build && bb validate
+☐ Check build/schema-library.edn
 ☐ Import into test Logseq graph
 ☐ Verify classes appear
 ☐ Test properties work
