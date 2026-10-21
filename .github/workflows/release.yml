@@ -70,6 +70,9 @@ jobs:
       - name: Validate build output
         run: bb validate
 
+      - name: Check committed library
+        run: bb check-library
+
       - name: Check import into Logseq
         run: LOGSEQ_DIR=$GITHUB_WORKSPACE/logseq bb check-import
 

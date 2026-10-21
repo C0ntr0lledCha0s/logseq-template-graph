@@ -42,12 +42,13 @@ npm install                  # git hooks and changelog tooling (optional)
 
 # edit source/<module>/classes.edn, properties.edn, source/presets/<id>.edn
 
-bb test && bb build && bb validate
+bb test && bb build && bb validate && bb publish-library   # then commit library/
 ```
 
 - `bb test` runs the unit tests.
 - `bb build` merges `source/` into `build/schema-library.edn` and `build/schema-presets.edn` and prints the counts.
 - `bb validate` checks the build against the vendored Schema.org vocabulary (`vendor/`).
+- `bb publish-library` copies the build into `library/`; commit it. `library/` is generated (do not hand-edit) and is what the Ontology Sync plugin downloads. CI runs `bb check-library` to catch a stale copy.
 - `LOGSEQ_DIR=/path/to/logseq bb check-import` imports the build into a fresh Logseq graph, as CI does.
 
 Requires [Babashka](https://babashka.org/). See [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions and the release flow, and [docs/architecture/technical-reference.md](docs/architecture/technical-reference.md) for the EDN format.

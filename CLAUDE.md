@@ -25,13 +25,14 @@ Curate by editing `source/` directly. There is no export from a Logseq graph and
 
 ```bash
 # edit source/<module>/classes.edn, properties.edn, source/presets/<id>.edn
-bb test && bb build && bb validate
+bb test && bb build && bb validate && bb publish-library   # then commit library/
 LOGSEQ_DIR=/path/to/logseq bb check-import   # optional: import into a fresh Logseq graph
 ```
 
 - `bb test` - unit tests in `test/template_graph/`
 - `bb build` - `scripts/build.clj`: merges modules, normalises each class's property order to one global order, writes `build/`
 - `bb validate` - `scripts/validate.clj`: checks `build/` against `vendor/schemaorg-current-https.json`
+- `bb publish-library` / `bb check-library` - copy / verify `build/` output in `library/`. `library/` is generated (never hand-edit), committed, and downloaded by the Ontology Sync plugin
 - `bb check-import` - `scripts/ci/check-import.cljs` via nbb-logseq (needs `LOGSEQ_DIR`)
 
 `build/` is git-ignored. Releases publish exactly `schema-library.edn` and `schema-presets.edn`.
@@ -108,14 +109,14 @@ Module files hold the `:classes` or `:properties` section; `bb build` merges the
 1. Check Schema.org for the standard name (`schema.*` if it exists, `custom.*` if not)
 2. Add the class to the fitting `source/<module>/classes.edn` with icon, description, `:schema.property/url`
 3. Define `:build/class-properties` and `:build/class-extends`
-4. Run `bb test && bb build && bb validate`
+4. Run `bb test && bb build && bb validate && bb publish-library` and commit `library/`
 5. Commit: `git commit -m "feat(classes): add Recipe class"`
 
 ### Adding New Properties
 1. Check Schema.org for the standard name
 2. Choose cardinality (`:one` or `:many`) and type (`:default`, `:node`, `:date`, `:url`, `:number`)
 3. Add it to the module's `properties.edn` and to `:build/class-properties` of the classes that use it
-4. Run `bb test && bb build && bb validate`
+4. Run `bb test && bb build && bb validate && bb publish-library` and commit `library/`
 5. Commit
 
 ### Documentation

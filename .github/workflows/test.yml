@@ -8,6 +8,7 @@ on:
       - 'src/**'
       - 'test/**'
       - 'bb.edn'
+      - 'library/**'
       - 'vendor/**'
       - '.github/workflows/test.yml'
   push:
@@ -44,6 +45,9 @@ jobs:
 
       - name: Validate build output
         run: bb validate
+
+      - name: Check committed library
+        run: bb check-library
 
   import-check:
     name: Import Check
