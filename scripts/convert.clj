@@ -16,7 +16,7 @@
                               section [:classes :properties]
                               k (keys (get module section))]
                           [k f]))
-      by-scope (group-by (fn [[_ v]] (if (= ::convert/drop v) :dropped (keyword (first (re-find #"^[a-z]+" (namespace v)))))) m)
+      by-scope (group-by (fn [[_ v]] (if (= ::convert/drop v) :dropped (keyword (re-find #"^[a-z]+" (namespace v))))) m)
       renamed (filter (fn [[k v]] (and (not= ::convert/drop v) (not= (convert/base-name k) (name v)))) m)]
   (doseq [[f module] (map vector files modules)]
     (io/write-edn! f (convert/convert-module module m)))
