@@ -21,6 +21,7 @@
     "build:crm": "bb scripts/build.clj crm",
     "build:research": "bb scripts/build.clj research",
     "build:student-life": "bb scripts/build.clj student-life",
+    "toggle:exclude": "bb scripts/toggle-exclude-from-graph.clj",
     "version": "npx git-conventional-commits version",
     "changelog": "npx git-conventional-commits changelog",
     "changelog:release": "npx git-conventional-commits changelog --release $(npx git-conventional-commits version)",
@@ -30,7 +31,7 @@
   },
   "devDependencies": {
     "@logseq/cli": "^0.3.0",
-    "git-conventional-commits": "^2.6.7"
+    "git-conventional-commits": "^2.8.0"
   },
   "keywords": [
     "logseq",

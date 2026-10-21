@@ -8,6 +8,8 @@
          '[clojure.string :as str]
          '[clojure.pprint :refer [pprint]])
 
+(import '[java.util UUID])
+
 (def COLORS
   {:green "\033[0;32m"
    :yellow "\033[1;33m"
@@ -60,6 +62,63 @@
     {}
     modules))
 
+(defn generate-uuid [id-keyword prefix]
+  "Generate deterministic UUID for class/property"
+  (let [id-str (str id-keyword)
+        uuid (UUID/nameUUIDFromBytes (.getBytes id-str "UTF-8"))
+        uuid-str (str uuid)]
+    (str prefix (subs uuid-str 8))))
+
+(defn build-name-to-uuid-map [template]
+  "Build mapping from class/property names to their UUIDs"
+  (let [class-map (into {}
+                        (map (fn [[id data]]
+                               [(:block/title data)
+                                (generate-uuid id "00000002-")])
+                             (:classes template)))
+        prop-map (into {}
+                       (map (fn [[id data]]
+                              [(:block/title data)
+                               (generate-uuid id "00000003-")])
+                            (:properties template)))]
+    (merge class-map prop-map)))
+
+(defn transform-description-refs [description name-to-uuid]
+  "Transform [[ClassName]] → [[uuid]] in description text"
+  (if (string? description)
+    (reduce
+      (fn [result [name uuid]]
+        (str/replace result
+                    (str "[[" name "]]")
+                    (str "[[" uuid "]]")))
+      description
+      name-to-uuid)
+    description))
+
+(defn transform-template-refs [template]
+  "Transform all class/property name references to UUIDs"
+  (println (colorize :cyan "\n🔗 Transforming references to UUIDs..."))
+  (let [name-to-uuid (build-name-to-uuid-map template)]
+    (-> template
+        ;; Transform property descriptions
+        (update :properties
+                (fn [props]
+                  (into {}
+                        (map (fn [[id data]]
+                               [id (update-in data
+                                             [:build/properties :logseq.property/description]
+                                             #(transform-description-refs % name-to-uuid))])
+                             props))))
+        ;; Transform class descriptions
+        (update :classes
+                (fn [classes]
+                  (into {}
+                        (map (fn [[id data]]
+                               [id (update-in data
+                                             [:build/properties :logseq.property/description]
+                                             #(transform-description-refs % name-to-uuid))])
+                             classes)))))))
+
 (defn build-template [preset-name output-file]
   "Build template from preset"
   (println (colorize :cyan "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"))
@@ -86,8 +145,11 @@
         ;; Merge all modules
         merged (merge-modules selected-modules)
 
+        ;; Transform [[ClassName]] references to UUIDs
+        transformed (transform-template-refs merged)
+
         ;; Add export marker
-        template (assoc merged
+        template (assoc transformed
                    :logseq.db.sqlite.export/export-type
                    :graph-ontology)
 

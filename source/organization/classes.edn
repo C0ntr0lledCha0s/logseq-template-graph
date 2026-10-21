@@ -64,7 +64,7 @@
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
                 :logseq.property/icon {:id "office", :type :emoji},
                 :logseq.property/description
-                "An [[67ceb6fc-66f6-48a9-b572-2a9b578c3dbf]] such as a school, NGO, corporation, club, etc."}},
+                "An [[Organization]] such as a school, NGO, corporation, club, etc."}},
               :BusinessEvent-ZhquVXi7
               {:block/title "BusinessEvent",
                :build/class-extends [:user.class/Event-eokdG-Nd],

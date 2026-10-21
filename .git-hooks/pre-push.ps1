@@ -66,7 +66,39 @@ if ($buildFailed) {
 Write-Host "✓ All template variants built successfully" -ForegroundColor Green
 Write-Host ""
 
-# Check 3: Validate conventional commit messages for unpushed commits
+# Check 3: Validate UUID references in source files
+Write-Host "[VALIDATE] Checking UUID references in source files..." -ForegroundColor Cyan
+Write-Host ""
+
+if (Test-Path "source") {
+    if (Get-Command bb -ErrorAction SilentlyContinue) {
+        try {
+            bb scripts/validate-refs.clj
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host ""
+                Write-Host "[ERROR] UUID reference validation failed" -ForegroundColor Red
+                Write-Host "Please fix broken UUID references before pushing" -ForegroundColor Yellow
+                Write-Host ""
+                exit 1
+            }
+            Write-Host "OK All UUID references valid" -ForegroundColor Green
+        }
+        catch {
+            Write-Host "[ERROR] UUID validation script failed to execute" -ForegroundColor Red
+            exit 1
+        }
+    }
+    else {
+        Write-Host "[WARNING] Babashka not installed - skipping UUID validation" -ForegroundColor Yellow
+    }
+}
+else {
+    Write-Host "[INFO] source/ directory not found - skipping UUID validation" -ForegroundColor Cyan
+}
+
+Write-Host ""
+
+# Check 4: Validate conventional commit messages for unpushed commits
 Write-Host "[CHECK] Validating commit messages..." -ForegroundColor Cyan
 
 # Get the remote branch we're pushing to

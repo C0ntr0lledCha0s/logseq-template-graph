@@ -1,43 +1,37 @@
 {:properties
- #:user.property{:isRelatedTo-VaZiAlSO
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :block/title "isRelatedTo",
-                  :build/property-classes
-                  [:user.class/Product-zfY4UZyk
-                   :user.class/Service-lkacLVaV],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
-                                     :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
-                                     :type :emoji},
-                                    :description
-                                    "A pointer to another, somehow related product (or multiple products)."}},
-                 :isSimilarTo-GiQz4GGK
-                 {:db/cardinality :db.cardinality/many,
-                  :logseq.property/type :node,
-                  :block/title "isSimilarTo",
-                  :build/property-classes
-                  [:user.class/Product-zfY4UZyk
-                   :user.class/Service-lkacLVaV],
-                  :build/properties
-                  #:logseq.property{:icon
-                                    {:id "link",
-                                     :name "Link",
-                                     :keywords ["rings" "url"],
-                                     :skins
-                                     [{:unified "1f517",
-                                       :native "🔗",
-                                       :shortcodes ":link:"}],
-                                     :version 1,
-                                     :search ",link,link,rings,url,🔗",
-                                     :type :emoji},
-                                    :description
-                                    "A pointer to another, functionally similar product (or multiple products)."}}}}
+ {:user.property/isRelatedTo-VaZiAlSO
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "isRelatedTo",
+   :build/property-classes
+   [:user.class/Product-zfY4UZyk :user.class/Service-lkacLVaV],
+   :build/properties
+   {:logseq.property/icon
+    {:id "link",
+     :name "Link",
+     :keywords ["rings" "url"],
+     :skins [{:unified "1f517", :native "🔗", :shortcodes ":link:"}],
+     :version 1,
+     :search ",link,link,rings,url,🔗",
+     :type :emoji},
+    :logseq.property/description
+    "A pointer to another, somehow related product (or multiple products).",
+    :logseq.property/exclude-from-graph-view true}},
+  :user.property/isSimilarTo-GiQz4GGK
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "isSimilarTo",
+   :build/property-classes
+   [:user.class/Product-zfY4UZyk :user.class/Service-lkacLVaV],
+   :build/properties
+   {:logseq.property/icon
+    {:id "link",
+     :name "Link",
+     :keywords ["rings" "url"],
+     :skins [{:unified "1f517", :native "🔗", :shortcodes ":link:"}],
+     :version 1,
+     :search ",link,link,rings,url,🔗",
+     :type :emoji},
+    :logseq.property/description
+    "A pointer to another, functionally similar product (or multiple products).",
+    :logseq.property/exclude-from-graph-view true}}}}

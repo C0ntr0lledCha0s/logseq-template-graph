@@ -40,7 +40,7 @@
                :build/properties
                #:logseq.property{:icon {:id "brain", :type :emoji},
                                  :description
-                                 "An AnalysisNewsArticle is a [NewsArticle](https://schema.org/NewsArticle) that, while based on factual reporting, incorporates the expertise of the author/producer, offering interpretations and conclusions."}},
+                                 "An AnalysisNewsArticle is a [NewsArticle](https://schema.org/NewsArticle) that, while based on factual reporting, incorporates the expertise of the author/producer, offering interpretations and conclusions."}},
               :VideoGame-wWWTJbYj
               {:block/title "VideoGame",
                :build/class-properties
@@ -64,7 +64,7 @@
                 :logseq.property/icon
                 {:id "thinking_face", :type :emoji},
                 :logseq.property/description
-                "A [CriticReview](https://schema.org/CriticReview) is a more specialized form of Review written or published by a source that is recognized for its reviewing activities. These can include online columns, travel and food guides, TV and radio shows, blogs and other independent Web sites. [CriticReview](https://schema.org/CriticReview)s are typically more in-depth and professionally written. For simpler, casually written user/visitor/viewer/customer reviews, it is more appropriate to use the [UserReview](https://schema.org/UserReview) type. Review aggregator sites such as Metacritic already separate out the site's user reviews from selected critic reviews that originate from third-party sources."}},
+                "A [CriticReview](https://schema.org/CriticReview) is a more specialized form of Review written or published by a source that is recognized for its reviewing activities. These can include online columns, travel and food guides, TV and radio shows, blogs and other independent Web sites. [CriticReview](https://schema.org/CriticReview)s are typically more in-depth and professionally written. For simpler, casually written user/visitor/viewer/customer reviews, it is more appropriate to use the [UserReview](https://schema.org/UserReview) type. Review aggregator sites such as Metacritic already separate out the site's user reviews from selected critic reviews that originate from third-party sources."}},
               :OpinionNewsArticle-g2sUdH3Y
               {:block/title "OpinionNewsArticle",
                :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
@@ -72,7 +72,7 @@
                #:logseq.property{:icon
                                  {:id "thought_balloon", :type :emoji},
                                  :description
-                                 "An [OpinionNewsArticle](https://schema.org/OpinionNewsArticle) is a [NewsArticle](https://schema.org/NewsArticle) that primarily expresses opinions rather than journalistic reporting of news and events. For example, a [NewsArticle](https://schema.org/NewsArticle) consisting of a column or [Blog](https://schema.org/Blog)/[BlogPosting](https://schema.org/BlogPosting) entry in the Opinions section of a news publication."}},
+                                 "An [OpinionNewsArticle](https://schema.org/OpinionNewsArticle) is a [NewsArticle](https://schema.org/NewsArticle) that primarily expresses opinions rather than journalistic reporting of news and events. For example, a [NewsArticle](https://schema.org/NewsArticle) consisting of a column or [Blog](https://schema.org/Blog)/[BlogPosting](https://schema.org/BlogPosting) entry in the Opinions section of a news publication."}},
               :Audiobook-VnMpBcb8
               {:block/title "Audiobook",
                :build/class-properties
@@ -191,7 +191,7 @@
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
                 :logseq.property/icon {:id "+1", :type :emoji},
                 :logseq.property/description
-                "A Certification is an official and authoritative statement about a subject, for example a product, service, person, or organization. A certification is typically issued by an indendent certification body, for example a professional organization or government. It formally attests certain characteristics about the subject, for example Organizations can be ISO certified, Food products can be certified Organic or Vegan, a Person can be a certified professional, a Place can be certified for food processing. There are certifications for many domains: regulatory, organizational, recycling, food, efficiency, educational, ecological, etc. A certification is a form of credential, as are accreditations and licenses. Mapped from the [gs1:CertificationDetails](https://www.gs1.org/voc/CertificationDetails) class in the GS1 Web Vocabulary."}},
+                "A Certification is an official and authoritative statement about a subject, for example a product, service, person, or organization. A certification is typically issued by an indendent certification body, for example a professional organization or government. It formally attests certain characteristics about the subject, for example Organizations can be ISO certified, Food products can be certified Organic or Vegan, a Person can be a certified professional, a Place can be certified for food processing. There are certifications for many domains: regulatory, organizational, recycling, food, efficiency, educational, ecological, etc. A certification is a form of credential, as are accreditations and licenses. Mapped from the [gs1:CertificationDetails](https://www.gs1.org/voc/CertificationDetails) class in the GS1 Web Vocabulary."}},
               :CreativeWorkSeries-KpLORY2e
               {:block/title "CreativeWorkSeries",
                :build/class-properties
@@ -226,7 +226,7 @@
                :build/properties
                #:logseq.property{:icon {:id "scroll", :type :emoji},
                                  :description
-                                 "A [NewsArticle](https://schema.org/NewsArticle) providing historical context, definition and detail on a specific topic (aka \"explainer\" or \"backgrounder\")."}},
+                                 "A [NewsArticle](https://schema.org/NewsArticle) providing historical context, definition and detail on a specific topic (aka \"explainer\" or \"backgrounder\")."}},
               :TextDigitalDocument-p9crar5l
               {:block/title "TextDigitalDocument",
                :build/class-extends
@@ -265,7 +265,7 @@
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
                 :logseq.property/icon {:id "school", :type :emoji},
                 :logseq.property/description
-                "A syllabus that describes the material covered in a course, often with several such sections per [Course](https://schema.org/Course) so that a distinct [timeRequired](https://schema.org/timeRequired) can be provided for that section of the [Course](https://schema.org/Course)."}},
+                "A syllabus that describes the material covered in a course, often with several such sections per [Course](https://schema.org/Course) so that a distinct [timeRequired](https://schema.org/timeRequired) can be provided for that section of the [Course](https://schema.org/Course)."}},
               :MusicPlaylist-Km-QRe6j
               {:block/title "MusicPlaylist",
                :build/class-properties
@@ -389,7 +389,7 @@
                                  {:id "first_place_medal",
                                   :type :emoji},
                                  :description
-                                 "[Recommendation](https://schema.org/Recommendation) is a type of [Review](https://schema.org/Review) that suggests or proposes something as the best option or best course of action. Recommendations may be for products or services, or other concrete things, as in the case of a ranked list or product guide. A [Guide](https://schema.org/Guide) may list multiple recommendations for different categories."}},
+                                 "[Recommendation](https://schema.org/Recommendation) is a type of [Review](https://schema.org/Review) that suggests or proposes something as the best option or best course of action. Recommendations may be for products or services, or other concrete things, as in the case of a ranked list or product guide. A [Guide](https://schema.org/Guide) may list multiple recommendations for different categories."}},
               :Website-crbLAW_E
               {:block/title "Website",
                :build/class-properties [:user.property/issn-NVWcUYs-],
@@ -527,7 +527,7 @@
                :build/properties
                #:logseq.property{:icon {:id "book", :type :emoji},
                                  :description
-                                 "The LearningResource type can be used to indicate [CreativeWork](https://schema.org/CreativeWork)s (whether physical or digital) that have a particular and explicit orientation towards learning, education, skill acquisition, and other educational purposes."}},
+                                 "The LearningResource type can be used to indicate [CreativeWork](https://schema.org/CreativeWork)s (whether physical or digital) that have a particular and explicit orientation towards learning, education, skill acquisition, and other educational purposes."}},
               :TVSeries-xwvH8URL
               {:block/title "TVSeries",
                :build/class-properties
@@ -615,7 +615,7 @@
                                   :type :tabler-icon,
                                   :color "inherit"},
                                  :description
-                                 "The [ReportageNewsArticle](https://schema.org/ReportageNewsArticle) type is a subtype of [NewsArticle](https://schema.org/NewsArticle) representing news articles which are the result of journalistic news reporting conventions."}},
+                                 "The [ReportageNewsArticle](https://schema.org/ReportageNewsArticle) type is a subtype of [NewsArticle](https://schema.org/NewsArticle) representing news articles which are the result of journalistic news reporting conventions."}},
               :ReviewNewsArticle-EUXadt4S
               {:block/title "ReviewNewsArticle",
                :build/class-extends [:user.class/NewsArticle-GdyxYLHe],
@@ -625,7 +625,7 @@
                                   :type :tabler-icon,
                                   :color "inherit"},
                                  :description
-                                 "A [NewsArticle](https://schema.org/NewsArticle) and [CriticReview](https://schema.org/CriticReview) providing a professional critic's assessment of a service, product, performance, or artistic or literary work."}},
+                                 "A [NewsArticle](https://schema.org/NewsArticle) and [CriticReview](https://schema.org/CriticReview) providing a professional critic's assessment of a service, product, performance, or artistic or literary work."}},
               :Guide-yABdLmqC
               {:block/title "Guide",
                :build/class-properties
@@ -638,7 +638,7 @@
                  #uuid "67cfe8f6-6242-4a22-b196-8f6b95e96d8a"],
                 :logseq.property/icon {:id "guide_dog", :type :emoji},
                 :logseq.property/description
-                "[Guide](https://schema.org/Guide) is a page or article that recommends specific products or services, or aspects of a thing for a user to consider. A [Guide](https://schema.org/Guide) may represent a Buying Guide and detail aspects of products or services for a user to consider. A [Guide](https://schema.org/Guide) may represent a Product Guide and recommend specific products or services. A [Guide](https://schema.org/Guide) may represent a Ranked List and recommend specific products or services with ranking."}},
+                "[Guide](https://schema.org/Guide) is a page or article that recommends specific products or services, or aspects of a thing for a user to consider. A [Guide](https://schema.org/Guide) may represent a Buying Guide and detail aspects of products or services for a user to consider. A [Guide](https://schema.org/Guide) may represent a Product Guide and recommend specific products or services. A [Guide](https://schema.org/Guide) may represent a Ranked List and recommend specific products or services with ranking."}},
               :UserReview-EsP1eHLo
               {:block/title "UserReview",
                :build/class-extends [:user.class/Review-lv8JXdKK],
@@ -649,4 +649,4 @@
                 :logseq.property/icon
                 {:id "speaking_head_in_silhouette", :type :emoji},
                 :logseq.property/description
-                "A review created by an end-user (e.g. consumer, purchaser, attendee etc.), in contrast with [CriticReview](https://schema.org/CriticReview)."}}}}
+                "A review created by an end-user (e.g. consumer, purchaser, attendee etc.), in contrast with [CriticReview](https://schema.org/CriticReview)."}}}}

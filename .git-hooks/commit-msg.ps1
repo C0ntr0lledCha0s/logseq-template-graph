@@ -4,6 +4,7 @@
 param($CommitMsgFile)
 
 # Run conventional commits validation
-npx --no -- git-conventional-commits commit-msg-hook $CommitMsgFile
+# Quote the path to handle spaces correctly
+npx --no -- git-conventional-commits commit-msg-hook "`"$CommitMsgFile`""
 
 exit $LASTEXITCODE

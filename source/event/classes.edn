@@ -39,7 +39,7 @@
                :build/properties
                #:logseq.property{:icon {:id "ticket", :type :emoji},
                                  :description
-                                 "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [offers](https://schema.org/offers) property. Repeated events may be structured as separate Event objects."}},
+                                 "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [offers](https://schema.org/offers) property. Repeated events may be structured as separate Event objects."}},
               :SportsEvent-ZjD5q-k0
               {:block/title "SportsEvent",
                :build/class-extends [:user.class/Event-eokdG-Nd],
@@ -148,7 +148,7 @@
                :build/properties
                #:logseq.property{:icon {:id "stopwatch", :type :emoji},
                                  :description
-                                 "A schedule defines a repeating time period used to describe a regularly occurring [Event](https://schema.org/Event). At a minimum a schedule will specify [repeatFrequency](https://schema.org/repeatFrequency) which describes the interval between occurrences of the event. Additional information can be provided to specify the schedule more precisely."}},
+                                 "A schedule defines a repeating time period used to describe a regularly occurring [Event](https://schema.org/Event). At a minimum a schedule will specify [repeatFrequency](https://schema.org/repeatFrequency) which describes the interval between occurrences of the event. Additional information can be provided to specify the schedule more precisely."}},
               :LiteraryEvent-uYNdlFXR
               {:block/title "LiteraryEvent",
                :build/class-extends [:user.class/Event-eokdG-Nd],
@@ -170,14 +170,14 @@
                :build/properties
                #:logseq.property{:icon {:id "school", :type :emoji},
                                  :description
-                                 "An instance of a [Course](https://schema.org/Course) which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students."}},
+                                 "An instance of a [Course](https://schema.org/Course) which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students."}},
               :EventSeries-RttAZrnB
               {:block/title "EventSeries",
                :build/class-extends [:user.class/Event-eokdG-Nd],
                :build/properties
                #:logseq.property{:icon {:id "ticket", :type :emoji},
                                  :description
-                                 "A series of [Event](https://schema.org/Event)s. Included events can relate with the series using the [superEvent](https://schema.org/superEvent) property."}},
+                                 "A series of [Event](https://schema.org/Event)s. Included events can relate with the series using the [superEvent](https://schema.org/superEvent) property."}},
               :DanceEvent-UGj78Ond
               {:block/title "DanceEvent",
                :build/class-extends [:user.class/Event-eokdG-Nd],

@@ -111,6 +111,26 @@ for file in "${FILES[@]}"; do
     echo ""
 done
 
+# Run UUID reference validation on source files
+echo -e "${CYAN}🔍 Validating UUID references in source files...${NC}"
+echo ""
+
+if [ -d "source" ]; then
+    if command -v bb >/dev/null 2>&1; then
+        bb scripts/validate-refs.clj
+        if [ $? -ne 0 ]; then
+            ERRORS=$((ERRORS + 1))
+        fi
+    else
+        echo -e "${YELLOW}  ⚠️  Babashka not installed - skipping UUID reference validation${NC}"
+        echo -e "${YELLOW}     Install Babashka from https://babashka.org/ to enable this check${NC}"
+    fi
+else
+    echo -e "${YELLOW}  ⚠️  source/ directory not found - skipping UUID validation${NC}"
+fi
+
+echo ""
+
 # Final result
 if [ $ERRORS -eq 0 ]; then
     echo -e "${GREEN}✅ All validations passed!${NC}"

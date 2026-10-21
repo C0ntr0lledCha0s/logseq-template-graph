@@ -55,3 +55,12 @@ jobs:
               fi
             fi
           done
+
+      - name: Validate UUID references
+        run: |
+          echo "Validating UUID references in source files..."
+          if [ -d "source" ]; then
+            bb scripts/validate-refs.clj
+          else
+            echo "⚠️ source/ directory not found - skipping UUID validation"
+          fi
