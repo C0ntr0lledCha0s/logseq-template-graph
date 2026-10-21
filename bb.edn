@@ -6,10 +6,12 @@
    :task (load-file "scripts/build.clj")}
   validate
   {:doc "Validate build/ output against Schema.org"
+   :depends [build]
    :requires ([template-graph.edn-io])
    :task (load-file "scripts/validate.clj")}
   check-import
   {:doc "Import build/schema-library.edn into a fresh Logseq graph (needs LOGSEQ_DIR)"
+   :depends [build]
    :requires ([clojure.string :as str] [babashka.fs :as fs] [babashka.process :as p])
    :task (let [logseq-dir (System/getenv "LOGSEQ_DIR")
                _ (when (str/blank? logseq-dir)

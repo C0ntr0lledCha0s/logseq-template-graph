@@ -30,6 +30,9 @@ convention:
     - modular     # Modular architecture changes
     - workflow    # Development workflow improvements
     - settings    # Configuration/settings changes
+    - build       # Library build pipeline (src/, scripts/build.clj)
+    - presets     # Preset definitions and tooling
+    - source      # source/ module files
 
   # Release tag pattern (semantic versioning)
   releaseTagGlobPattern: 'v[0-9]*.[0-9]*.[0-9]*'

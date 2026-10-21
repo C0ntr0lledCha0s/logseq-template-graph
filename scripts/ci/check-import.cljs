@@ -31,7 +31,12 @@
         conn (outliner-cli/init-conn dir "check" {:classpath (cp/get-classpath)})
         m (edn/read-string {:readers {'uuid uuid}} (str (fs/readFileSync edn-file)))]
     (import! conn m "pass 1 (fresh import)")
-    (import! conn m "pass 2 (re-import)")
+    (let [after-1 (count (d/datoms @conn :eavt))]
+      (import! conn m "pass 2 (re-import)")
+      (let [after-2 (count (d/datoms @conn :eavt))]
+        (when-not (= after-1 after-2)
+          (fail! "pass 2 (re-import) not idempotent"
+                 {:datoms-after-pass-1 after-1 :datoms-after-pass-2 after-2}))))
     (println "PASS" (count (:classes m)) "classes" (count (:properties m)) "properties")))
 
 (-main *command-line-args*)
