@@ -102,7 +102,7 @@ Indicates what area of the project is affected:
 - `classes` - Schema.org class definitions
 - `properties` - Schema.org property definitions
 - `ci` - CI/CD pipeline
-- `scripts` - Build/export/validation scripts
+- `scripts` - Build/validation scripts
 - `docs` - Documentation
 - `release` - Release process
 - `modular` - Modular architecture

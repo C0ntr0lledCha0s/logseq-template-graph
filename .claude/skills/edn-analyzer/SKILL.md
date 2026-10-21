@@ -68,9 +68,9 @@ When the user asks you to analyze a template:
 User: "Analyze the full template and show orphaned classes"
 
 Steps:
-1. Read build/logseq_db_Templates_full.edn
+1. Read build/schema-library.edn
 2. Extract all classes
-3. Check each class for :build/class-parent
+3. Check each class for :build/class-extends
 4. Identify classes without parent (except Thing and Agent)
 5. Report findings with suggestions
 ```
@@ -141,10 +141,10 @@ Use warnings:
 
 1. Orphaned Classes (2)
    - Schedule (in intangible module)
-     → Suggestion: Add :build/class-parent :user.class/Intangible
+     → Suggestion: Add :build/class-extends [:schema.class/Intangible]
 
    - ProductCategory (in product module)
-     → Suggestion: Add :build/class-parent :user.class/DefinedTerm
+     → Suggestion: Add :build/class-extends [:schema.class/DefinedTerm]
 
 2. Large Module (1)
    - misc/ module: 82 classes (61% of total)
@@ -190,7 +190,7 @@ Use side-by-side tables:
 
 ### Basic Analysis
 ```
-User: "Analyze build/logseq_db_Templates_full.edn"
+User: "Analyze build/schema-library.edn"
 
 You:
 1. Read the file

@@ -61,8 +61,8 @@ done
 
 ### 2. Count Items Per Module
 Read each:
-- `source/MODULE/classes.edn` - count `:user.class/` entries
-- `source/MODULE/properties.edn` - count `:user.property/` entries
+- `source/MODULE/classes.edn` - count `:schema.class/` entries
+- `source/MODULE/properties.edn` - count `:schema.property/` entries
 - `source/MODULE/README.md` - check documentation
 
 ### 3. Analyze Relationships

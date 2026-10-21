@@ -7,7 +7,7 @@ This folder contains custom slash commands for Claude Code in this project.
 Any markdown file you place in this folder becomes a slash command:
 - `fix-bug.md` → `/fix-bug` command
 - `add-class.md` → `/add-class` command
-- `export-templates.md` → `/export-templates` command
+- `build-library.md` → `/build-library` command
 
 ## Command File Format
 
@@ -33,30 +33,29 @@ Create a file: `add-class.md`
 ```markdown
 # Add Schema.org Class
 
-Add a new class to the Logseq template following these steps:
+Add a new class to the schema library following these steps:
 
 1. Ask the user for the class name (e.g., "Recipe", "Book", "Product")
 2. Research the Schema.org definition at https://schema.org/{ClassName}
 3. Identify relevant properties from Schema.org
-4. Add the class definition to the Logseq graph
-5. Export using ./scripts/export.sh
+4. Add the class definition to the fitting source/<module>/classes.edn (fixed `:schema.class/*` ident, or `:custom.class/*` if Schema.org has no such class)
+5. Run: bb test && bb build && bb validate
 6. Commit with message: "feat: add {ClassName} class"
 
 Follow the documentation at docs/architecture/technical-reference.md
 ```
 
-### `/export` - Quick export command
-Create a file: `export.md`
+### `/test-workflow` - Run the full check
+Create a file: `test-workflow.md`
 
 ```markdown
-# Export Templates
+# Test Workflow
 
-Run the export script and commit changes:
+Run the complete check and report the result:
 
-1. Run: ./scripts/export.sh (or .\scripts\export.ps1 on Windows)
-2. Review the git diff shown by the script
-3. If changes look good, commit with appropriate message
-4. For modular workflow, also run: bb scripts/split.clj
+1. Run: bb test && bb build && bb validate
+2. Report the class and property counts printed by bb build
+3. If anything fails, show the error and the source/ file it points at
 ```
 
 ## Adding Commands

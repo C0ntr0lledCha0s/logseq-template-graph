@@ -41,7 +41,7 @@ skill-name/
 
 **Example:**
 ```
-You: "Analyze build/logseq_db_Templates_full.edn and show orphaned classes"
+You: "Analyze build/schema-library.edn and show orphaned classes"
 
 Claude activates edn-analyzer skill and provides:
 - Complete template statistics
@@ -397,7 +397,7 @@ Skills are activated automatically when you ask relevant questions, or you can i
 "Analyze the template" → activates edn-analyzer
 
 # Explicit activation
-"Use the edn-analyzer skill to check build/logseq_db_Templates_full.edn"
+"Use the edn-analyzer skill to check build/schema-library.edn"
 ```
 
 ### Skill vs Command
@@ -407,7 +407,7 @@ Skills are activated automatically when you ask relevant questions, or you can i
 - Step-by-step guidance
 - Action-oriented
 - Modify files/run scripts
-- Example: `/new-class`, `/export`, `/release-prep`
+- Example: `/new-class`, `/test-workflow`, `/release-prep`
 
 **Skills** (activated by context):
 - Domain expertise

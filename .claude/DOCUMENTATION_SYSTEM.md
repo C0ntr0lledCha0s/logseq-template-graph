@@ -257,7 +257,7 @@ Result:
 - Includes examples and usage
 - Cross-references CLAUDE.md
 - Validates all content
-- Updates docs/modular/quickstart.md
+- Updates docs/developer-guide/ci-cd-pipeline.md
 ```
 
 **Interactive command:**
@@ -266,7 +266,7 @@ You: /update-docs
 
 Steps:
 1. User guide
-2. docs/modular/quickstart.md
+2. docs/developer-guide/ci-cd-pipeline.md
 3. Add new section
 4. "Git hooks integration"
 5. [Generated content]

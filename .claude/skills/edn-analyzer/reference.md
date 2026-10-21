@@ -15,11 +15,11 @@ This document provides technical details about EDN template structure and analys
 ### Property Definition
 
 ```clojure
-:user.property/propertyName-UniqueID
+:schema.property/propertyName
 {:db/cardinality :db.cardinality/one   ; or :many
  :logseq.property/type :default         ; :node, :date, :url, :number
  :block/title "propertyName"
- :build/property-classes [:user.class/ClassName-ID ...]
+ :build/property-classes [:schema.class/ClassName ...]
  :build/properties
  {:logseq.property/icon {:id "emoji" :type :emoji}
   :logseq.property/description "Description text"}}
@@ -53,10 +53,10 @@ This document provides technical details about EDN template structure and analys
 ### Class Definition
 
 ```clojure
-:user.class/ClassName-UniqueID
+:schema.class/ClassName
 {:block/title "ClassName"
- :build/class-properties [:user.property/prop1-ID :user.property/prop2-ID ...]
- :build/class-parent :user.class/ParentClass-ID
+ :build/class-properties [:schema.property/prop1 :schema.property/prop2 ...]
+ :build/class-extends [:schema.class/ParentClass]
  :build/properties
  {:logseq.property/icon {:id "emoji" :type :emoji}
   :logseq.property/description "Description text"}}
@@ -68,29 +68,26 @@ This document provides technical details about EDN template structure and analys
 |-------|----------|------|-------------|
 | `:block/title` | Yes | String | Human-readable class name |
 | `:build/class-properties` | Yes | Vector | Properties for this class |
-| `:build/class-parent` | No | Keyword | Parent class for inheritance |
+| `:build/class-extends` | No | Keyword | Parent class for inheritance |
 | `:build/properties` | No | Map | Metadata (icon, description) |
 
 #### Class Hierarchy Rules
 
-1. **Root Classes**: Thing and Agent don't need `:build/class-parent`
+1. **Root Classes**: Thing and Agent don't need `:build/class-extends`
 2. **Inheritance**: Child classes inherit parent's properties
 3. **Multiple Levels**: Support deep hierarchies (Thing → Person → PersonalRelationship)
 
-### Unique IDs
+### Idents
 
-All classes and properties use unique IDs:
+All classes and properties use fixed, human-readable idents:
 
-**Format:** `:user.class/ClassName-RandomID` or `:user.property/propertyName-RandomID`
+**Format:** `:schema.class/ClassName` or `:schema.property/propertyName` for Schema.org terms; `:custom.class/ClassName` or `:custom.property/propertyName` for terms Schema.org does not define
 
 **Examples:**
-- `:user.class/Person-xY9zK`
-- `:user.property/email-pQ2rS`
+- `:schema.class/Person`
+- `:schema.property/email`
 
-**Random ID:**
-- 8 characters
-- Mixed case alphanumeric
-- Ensures uniqueness across all entities
+**No random suffixes:** the name is the identity. Idents must be unique per kind (case-insensitively); `:user.*` idents are rejected by `bb validate`.
 
 ---
 
@@ -111,21 +108,21 @@ All classes and properties use unique IDs:
 #### Count by Module
 ```bash
 # Count classes in module
-grep -c ":user.class/" source/MODULE/classes.edn
+grep -c ":schema.class/" source/MODULE/classes.edn
 
 # Count properties in module
-grep -c ":user.property/" source/MODULE/properties.edn
+grep -c ":schema.property/" source/MODULE/properties.edn
 ```
 
 ### 2. Finding Orphans
 
 #### Orphaned Classes
-Classes without `:build/class-parent` (except Thing and Agent):
+Classes without `:build/class-extends` (except Thing and Agent):
 
 ```clojure
 (filter
   (fn [[id class]]
-    (and (not (contains? class :build/class-parent))
+    (and (not (contains? class :build/class-extends))
          (not= (:block/title class) "Thing")
          (not= (:block/title class) "Agent")))
   (:classes template))
@@ -162,7 +159,7 @@ Properties not in any class's `:build/class-properties`:
 ```clojure
 (defn find-children [parent-id template]
   (filter
-    #(= (:build/class-parent (val %)) parent-id)
+    #(= (:build/class-extends (val %)) parent-id)
     (:classes template)))
 ```
 
@@ -199,7 +196,7 @@ Properties not in any class's `:build/class-properties`:
 #### Check ID Format
 ```clojure
 (defn valid-id? [id]
-  (re-matches #":user\.(class|property)/[A-Za-z]+-[A-Za-z0-9]{8}" (str id)))
+  (re-matches #":(schema|custom)\.(class|property)/[A-Za-z0-9]+" (str id)))
 ```
 
 #### Check Required Fields
@@ -286,8 +283,8 @@ For templates > 10,000 lines:
 # For each module
 for dir in source/*/; do
   MODULE=$(basename "$dir")
-  CLASSES=$(grep -c ":user.class/" "$dir/classes.edn" 2>/dev/null || echo "0")
-  PROPS=$(grep -c ":user.property/" "$dir/properties.edn" 2>/dev/null || echo "0")
+  CLASSES=$(grep -c ":schema.class/" "$dir/classes.edn" 2>/dev/null || echo "0")
+  PROPS=$(grep -c ":schema.property/" "$dir/properties.edn" 2>/dev/null || echo "0")
   echo "$MODULE: $CLASSES classes, $PROPS properties"
 done
 ```
@@ -413,7 +410,7 @@ done
 
 ```bash
 # Find all classes
-grep -o ':user.class/[^[:space:]]*' template.edn
+grep -o ':schema.class/[^[:space:]]*' template.edn
 
 # Find all :many properties
 grep -B2 ':db.cardinality/many' template.edn

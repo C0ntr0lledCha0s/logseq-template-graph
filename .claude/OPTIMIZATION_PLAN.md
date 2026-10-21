@@ -1,3 +1,5 @@
+> **Historical:** written before v2.0.0 (schema library with fixed schema.* names); commands and file names here are out of date.
+
 # Claude Code Optimization Plan
 ## Logseq Template Graph - Enhancement Recommendations
 

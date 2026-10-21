@@ -148,7 +148,7 @@ Recommendation:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Add to: [module]/ module
-Parent: :user.class/[Parent]-[ID]
+Parent: :schema.class/[Parent]-[ID]
 
 Required Properties:
 ✅ name - Already in common/
@@ -210,8 +210,8 @@ Type: :[logseq-type]
 Cardinality: :db.cardinality/[one|many]
 
 Assign to Classes:
-- :user.class/[Class1]-[ID]
-- :user.class/[Class2]-[ID]
+- :schema.class/[Class1]-[ID]
+- :schema.class/[Class2]-[ID]
 
 Example Values:
 - [Example 1]
@@ -244,11 +244,11 @@ Prompt: "Show the complete inheritance hierarchy and all child classes"
 
 ```bash
 # Check if class exists
-Grep: :user.class/[ClassName]
+Grep: :schema.class/[ClassName]
 Files: source/**/*.edn
 
 # Check if property exists
-Grep: :user.property/[propertyName]
+Grep: :schema.property/[propertyName]
 Files: source/**/*.edn
 
 # Find module for class type

@@ -1,4 +1,4 @@
-# Contributing to Logseq Template Graph
+# Contributing to the Logseq Schema Library
 
 Thank you for your interest in contributing! This document provides guidelines for contributing to the Logseq Template Graph project.
 
@@ -24,10 +24,10 @@ This project is committed to providing a welcoming and inclusive environment. Pl
 
 ### Prerequisites
 
-- **Logseq** (desktop app with database format support)
+- **Logseq** DB version (optional, only to try the library in a graph)
 - **Node.js** (v16+)
 - **Git**
-- **Babashka** (for modular development) - [Install guide](https://github.com/babashka/babashka#installation)
+- **Babashka** (runs tests, build and validation) - [Install guide](https://github.com/babashka/babashka#installation)
 
 ### Setup Development Environment
 
@@ -42,8 +42,7 @@ npm install
 # 3. Setup git hooks for commit validation
 npm run setup
 
-# 4. (Optional) Install Babashka for modular workflow
-# See: https://babashka.org/
+# 4. Install Babashka (bb) - https://babashka.org/
 ```
 
 ---
@@ -63,32 +62,30 @@ This project uses a **dev/main branching model** with automated releases:
 - **Version determined automatically** from conventional commits
 - **Changelog and tags created automatically** by GitHub Actions
 
-### Regular Development (95% of work)
+### Regular Development
 
-Work on the `dev` branch for all normal development:
+You curate the library by editing the EDN under `source/`; there is no export from a Logseq graph.
 
 ```bash
 # 1. Switch to dev branch
 git checkout dev
 git pull origin dev
 
-# 2. Make changes in Logseq desktop app
-# ... edit classes, properties ...
+# 2. Edit source/<module>/classes.edn, properties.edn or source/presets/<id>.edn
 
-# 3. Export and build (modular workflow)
-npm run export                # Export + auto-split into source/ modules
-npm run build:full            # Build template variant
+# 3. Test, build and validate
+bb test && bb build && bb validate
 
-# 4. Review changes
-git diff source/              # Check modular source changes
+# 4. Review changes (small, per-module diffs)
+git diff source/
 
 # 5. Commit with conventional commit message
-git commit -m "feat(classes): add Recipe class with ingredients property"
+git add source/
+git commit -m "feat(classes): add Recipe class"
 
 # 6. Push to dev
 git push origin dev
-
-# GitHub Actions will run tests and validate builds
+# GitHub Actions will run tests, build and validate
 ```
 
 ### Creating a Release
@@ -119,7 +116,7 @@ gh pr create --base main --head dev --title "Release v1.2.0" --body "Release new
 # - Determine version from commits (v1.2.0)
 # - Generate CHANGELOG.md
 # - Create git tag (v1.2.0)
-# - Build all template variants
+# - Build schema-library.edn and schema-presets.edn
 # - Create GitHub release
 
 # 5. Sync is automatic
@@ -155,34 +152,6 @@ git push origin main
 # ⚠️ Use hotfixes sparingly - prefer dev → main workflow
 ```
 
-### Standard Workflow (Monolithic, Legacy)
-
-If not using modular architecture:
-
-```bash
-# 1. Create a feature branch from dev
-git checkout dev
-git checkout -b feat/add-recipe-class
-
-# 2. Make changes in Logseq desktop app
-
-# 3. Export templates using scripts
-./scripts/export.sh           # Mac/Linux
-.\scripts\export.ps1           # Windows
-
-# 4. Review changes
-git diff
-
-# 5. Commit with conventional commit message
-git commit -m "feat(classes): add Recipe class with ingredients property"
-
-# 6. Push and create pull request to dev
-git push origin feat/add-recipe-class
-gh pr create --base dev --head feat/add-recipe-class
-```
-
----
-
 ## Commit Message Guidelines
 
 **This project uses [Conventional Commits](https://www.conventionalcommits.org/) specification.**
@@ -216,10 +185,10 @@ gh pr create --base dev --head feat/add-recipe-class
 - **classes** - Schema.org class additions/modifications
 - **properties** - Schema.org property additions/modifications
 - **ci** - CI/CD pipeline changes
-- **scripts** - Build, export, validation scripts
+- **scripts** - Build and validation scripts
 - **docs** - Documentation files
 - **release** - Release-related changes
-- **modular** - Modular architecture changes
+- **source** - Changes to the source/ module layout
 - **workflow** - Development workflow improvements
 
 ### Examples
@@ -230,7 +199,7 @@ gh pr create --base dev --head feat/add-recipe-class
 feat(classes): add Recipe class with cookTime and ingredients
 fix(properties): correct cardinality for spouse property from :many to :one
 docs(contributing): add conventional commits guidelines
-refactor(modular): split CreativeWork into separate modules
+refactor(source): split CreativeWork into separate modules
 perf(scripts): optimize EDN parsing in validation script
 build(ci): add automated changelog generation to release workflow
 ```
@@ -285,8 +254,8 @@ git commit --no-verify -m "quick fix"
 
 1. **Ensure commits follow conventional commits** - Use `npm run validate:commits`
 2. **Update documentation** if adding features
-3. **Test template import** in a fresh Logseq graph
-4. **Run validation** - `bash scripts/validate.sh`
+3. **Run** `bb test && bb build && bb validate`
+4. **Check the import** in a fresh Logseq graph when you can: `LOGSEQ_DIR=/path/to/logseq bb check-import`
 5. **Update CHANGELOG.md** if necessary (or use `npm run changelog:write`)
 
 ### PR Title Format
@@ -320,10 +289,10 @@ Brief description of changes
 - Added validation for cookTime format
 
 ## Testing
-- [ ] Imported templates into fresh Logseq graph
+- [ ] Imported the library into a fresh Logseq graph (or ran `bb check-import`)
 - [ ] Verified properties appear correctly
 - [ ] Tested class inheritance
-- [ ] Ran validation scripts
+- [ ] Ran `bb test && bb build && bb validate`
 
 ## Related Issues
 Closes #123
@@ -336,7 +305,7 @@ None / Description of breaking changes
 - [ ] Commits follow conventional commits format
 - [ ] Documentation updated
 - [ ] CHANGELOG.md updated (if applicable)
-- [ ] Templates validated successfully
+- [ ] `bb validate` passes
 - [ ] Tested in Logseq
 ```
 
@@ -346,52 +315,57 @@ None / Description of breaking changes
 
 ### Research First
 
-1. Check [Schema.org](https://schema.org) for standard naming
-2. Review existing similar classes in the template
-3. Check [Tana supertags](https://tana.inc/docs/supertags) for inspiration
+1. Check [Schema.org](https://schema.org) for the standard name. A name that exists in Schema.org must use the `schema.*` namespace; a name that does not must use `custom.*`.
+2. Review existing similar classes in `source/`.
+3. Check [Tana supertags](https://tana.inc/docs/supertags) for inspiration.
 
 ### Adding a New Class
 
+1. Pick the module under `source/` whose theme fits (for example `source/creative-work/classes.edn`).
+2. Add the class under `:classes` with a fixed ident:
+
+```clojure
+:schema.class/Recipe
+{:block/title "Recipe",
+ :build/class-properties [:schema.property/cookTime :schema.property/recipeYield],
+ :build/class-extends [:schema.class/HowTo],
+ :build/properties
+ {:logseq.property/icon {:id "cooking", :type :emoji},
+  :logseq.property/description "A recipe.",
+  :schema.property/url "https://schema.org/Recipe"}}
+```
+
+3. Make sure every property it lists exists (in some `properties.edn`) and that its parent is a known class.
+4. Run `bb test && bb build && bb validate`.
+5. Commit:
+
 ```bash
-# 1. Add class in Logseq UI:
-#    - Create page with class name (e.g., "Recipe")
-#    - Add properties in class configuration panel
-#    - Set parent class (e.g., CreativeWork)
-#    - Add icon and description
-
-# 2. Export
-./scripts/export.sh
-
-# 3. Validate
-bash scripts/validate.sh
-
-# 4. Commit
-git commit -m "feat(classes): add Recipe class with cookTime and ingredients properties
-
-Added Recipe class inheriting from CreativeWork:
-- Properties: cookTime, ingredients, recipeYield, nutrition
-- Icon: 🍳
-- Description: A recipe for cooking or baking
-
-Follows Schema.org Recipe specification."
+git commit -m "feat(classes): add Recipe class"
 ```
 
 ### Adding a New Property
 
-```bash
-# 1. Add property in Logseq:
-#    - Define cardinality (:one or :many)
-#    - Set type (:default, :node, :date, :url, :number)
-#    - Assign to relevant classes
-#    - Add icon and description
+1. Add the property to the module's `properties.edn` under `:properties`:
 
-# 2. Export and validate
-./scripts/export.sh
-bash scripts/validate.sh
-
-# 3. Commit
-git commit -m "feat(properties): add allergens property to Recipe class"
+```clojure
+:schema.property/cookTime
+{:db/cardinality :db.cardinality/one,
+ :logseq.property/type :default,
+ :block/title "cookTime",
+ :build/properties
+ {:logseq.property/description "The time it takes to actually cook the dish.",
+  :schema.property/url "https://schema.org/cookTime"}}
 ```
+
+2. Add its ident to `:build/class-properties` of each class that should carry it.
+3. Run `bb test && bb build && bb validate`.
+4. Commit: `git commit -m "feat(properties): add cookTime property"`
+
+Terms that are not in Schema.org use `:custom.class/...` or `:custom.property/...` and omit `:schema.property/url`. Do not use `:user.*` idents. The build normalises each class's property order to one global order, so you do not need to keep orders consistent by hand.
+
+### Changing a Preset
+
+Edit `source/presets/<id>.edn`: `{:id :name :description :classes {class [props]}}`. A preset may list only properties attached directly to that class. See [source/presets/README.md](source/presets/README.md).
 
 ---
 
@@ -408,9 +382,7 @@ git commit -m "feat(properties): add allergens property to Recipe class"
 
 ```
 docs/
-├── user-guide/          # For template users
 ├── developer-guide/     # For contributors
-├── modular/             # Modular development docs
 ├── architecture/        # Technical deep-dives
 └── research/            # Analysis and research
 
@@ -434,7 +406,7 @@ Root level:
 
 ```bash
 git commit -m "docs(developer-guide): add conventional commits best practices"
-git commit -m "docs(user-guide): update import instructions for Windows"
+git commit -m "docs: update import instructions"
 git commit -m "docs: fix broken links in technical reference"
 ```
 
@@ -454,4 +426,4 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 ---
 
-**Thank you for contributing to Logseq Template Graph!** 🎉
+**Thank you for contributing!**
