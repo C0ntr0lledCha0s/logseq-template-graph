@@ -1,17 +1,12 @@
 # Logseq Template Graph - Git Ignore
 
-# Ignore UI-exported files with timestamps
-logseq_db_Templates_[0-9]*.edn
-
 # Personal development graphs
 dev-graph/
 template-dev/
 my-template/
 
-# Modular build artifacts (optional: commit these or ignore)
+# Build output (bb build)
 build/
-# Uncomment to track build artifacts:
-# !build/logseq_db_Templates_*.edn
 
 # Babashka cache
 .bb-cache/
