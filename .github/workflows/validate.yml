@@ -1,14 +1,25 @@
-name: Validate EDN Files
+name: Validate Schema Library
 
 on:
   pull_request:
     paths:
       - '**/*.edn'
       - 'source/**'
+      - 'scripts/**'
+      - 'src/**'
+      - 'bb.edn'
+      - 'vendor/**'
+      - '.github/workflows/validate.yml'
   push:
     branches: [main]
     paths:
       - '**/*.edn'
+      - 'source/**'
+      - 'scripts/**'
+      - 'src/**'
+      - 'bb.edn'
+      - 'vendor/**'
+      - '.github/workflows/validate.yml'
 
 jobs:
   validate:
@@ -23,44 +34,8 @@ jobs:
           curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install
           chmod +x install && ./install && rm install
 
-      - name: Validate EDN syntax (Babashka)
-        run: |
-          echo "Validating EDN files with Babashka..."
-          find . -name "*.edn" -type f | while read file; do
-            echo "Checking: $file"
-            bb -e "(clojure.edn/read-string (slurp \"$file\"))" || exit 1
-          done
+      - name: Build schema library
+        run: bb build
 
-      - name: Run validation script
-        run: |
-          if [ -f "scripts/validate.sh" ]; then
-            chmod +x scripts/validate.sh
-            for file in *.edn source/**/*.edn; do
-              if [ -f "$file" ]; then
-                ./scripts/validate.sh "$file"
-              fi
-            done
-          fi
-
-      - name: Check for export-type marker
-        run: |
-          echo "Checking for required export-type marker..."
-          for file in logseq_db_Templates*.edn; do
-            if [ -f "$file" ]; then
-              if ! grep -q ":logseq.db.sqlite.export/export-type :graph-ontology" "$file"; then
-                echo "❌ Missing export-type marker in $file"
-                exit 1
-              else
-                echo "✅ $file has export-type marker"
-              fi
-            fi
-          done
-
-      - name: Validate UUID references
-        run: |
-          echo "Validating UUID references in source files..."
-          if [ -d "source" ]; then
-            bb scripts/validate-refs.clj
-          else
-            echo "⚠️ source/ directory not found - skipping UUID validation"
-          fi
+      - name: Validate build output
+        run: bb validate

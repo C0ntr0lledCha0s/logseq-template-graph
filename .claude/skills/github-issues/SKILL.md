@@ -623,7 +623,7 @@ gh pr create --title "Fix #123: Issue title" --body "Closes #123"
 | `scope:templates` | Template .edn files | Teal (#008672) |
 | `scope:classes` | Class definitions | Teal (#006b75) |
 | `scope:properties` | Property definitions | Teal (#0e8a16) |
-| `scope:scripts` | Build/export scripts | Gray (#666666) |
+| `scope:scripts` | Build/validation scripts | Gray (#666666) |
 | `scope:ci` | CI/CD pipeline | Gray (#666666) |
 | `scope:docs` | Documentation | Green (#0e8a16) |
 | `scope:modular` | Modular architecture | Purple (#5319e7) |

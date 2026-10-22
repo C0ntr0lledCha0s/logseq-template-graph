@@ -5,7 +5,7 @@ This file contains example analyses and use cases for the EDN Analyzer skill.
 ## Example 1: Basic Template Analysis
 
 **User Request:**
-> "Analyze build/logseq_db_Templates_full.edn"
+> "Analyze build/schema-library.edn"
 
 **Output:**
 ```
@@ -58,17 +58,17 @@ Top Class Hierarchies:
 🔍 Orphaned Classes Analysis
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  Found 2 orphaned classes (missing :build/class-parent):
+⚠️  Found 2 orphaned classes (missing :build/class-extends):
 
 1. Schedule
    Location: source/intangible/classes.edn:145
    Current parent: (none)
-   → Suggestion: Add :build/class-parent :user.class/Intangible-abc123
+   → Suggestion: Add :build/class-extends [:schema.class/Intangible]
 
 2. ProductCategory
    Location: source/product/classes.edn:67
    Current parent: (none)
-   → Suggestion: Add :build/class-parent :user.class/DefinedTerm-def456
+   → Suggestion: Add :build/class-extends [:schema.class/DefinedTerm]
 
 Note: Thing and Agent classes are root classes and don't need parents.
 
@@ -179,9 +179,8 @@ All IDs are unique:
 - Total IDs: 1,665 unique
 
 ID Format Check:
-✅ All class IDs follow pattern: :user.class/ClassName-RandomID
-✅ All property IDs follow pattern: :user.property/propertyName-RandomID
-✅ All random suffixes are unique (8 characters)
+✅ All class IDs follow pattern: :schema.class/ClassName
+✅ All property IDs follow pattern: :schema.property/propertyName
 ```
 
 ---
@@ -202,8 +201,8 @@ Thing (base)
 
 Person Details:
 - Location: source/person/classes.edn:12
-- ID: :user.class/Person-xY9zK
-- Parent: :user.class/Thing-aB1cD
+- ID: :schema.class/Person
+- Parent: :schema.class/Thing
 - Properties: 36 total
   - Direct: 28 (jobTitle, email, telephone, etc.)
   - Inherited: 8 (from Thing: name, description, url, etc.)
@@ -239,7 +238,7 @@ Total Tree Size: 48 properties across 2 classes
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Property Definition:
-- ID: :user.property/email-pQ2rS
+- ID: :schema.property/email
 - Location: source/person/properties.edn:45
 - Type: :default (text)
 - Cardinality: :one
@@ -400,7 +399,7 @@ Trend: Rapid growth, moving toward modular architecture
 
 | Analysis Type | Example Command |
 |---------------|-----------------|
-| Basic stats | "Analyze build/logseq_db_Templates_full.edn" |
+| Basic stats | "Analyze build/schema-library.edn" |
 | Find orphans | "Find orphaned classes" |
 | Compare variants | "Compare full and CRM templates" |
 | Type distribution | "Show property type distribution" |

@@ -1,3 +1,154 @@
-{:name "Events Template"
- :description "Event management - Meetings, Conferences, Schedules"
- :include ["person" "organization" "event" "place" "base" "common"]}
+{:id "events",
+ :name "Events",
+ :description "Event management - Meetings, Conferences, Schedules",
+ :classes
+ {:custom.class/Business [],
+  :custom.class/BusinessMeeting
+  [:custom.property/project
+   :custom.property/topic
+   :custom.property/areas
+   :custom.property/objective
+   :custom.property/nextMeetingDate],
+  :custom.class/BusinessPerson [],
+  :custom.class/CountryState [],
+  :custom.class/Department [],
+  :custom.class/Resource [],
+  :schema.class/AdministrativeArea [],
+  :schema.class/Airport
+  [:schema.property/iataCode :schema.property/icaoCode],
+  :schema.class/BoatTerminal [],
+  :schema.class/Brand [],
+  :schema.class/BusStation [],
+  :schema.class/BusStop [],
+  :schema.class/BusinessAudience
+  [:schema.property/numberOfEmployees
+   :schema.property/yearlyRevenue
+   :schema.property/yearsInOperation],
+  :schema.class/BusinessEvent [],
+  :schema.class/ChildrensEvent [],
+  :schema.class/City [],
+  :schema.class/CivicStructure [:schema.property/openingHours],
+  :schema.class/ComedyEvent [],
+  :schema.class/Country [],
+  :schema.class/CourseInstance
+  [:schema.property/courseMode
+   :schema.property/courseSchedule
+   :schema.property/courseWorkload
+   :schema.property/instructor],
+  :schema.class/DanceEvent [],
+  :schema.class/EducationEvent
+  [:schema.property/assesses
+   :schema.property/educationalLevel
+   :schema.property/teaches],
+  :schema.class/EducationalOccupationalCredential
+  [:schema.property/competencyRequired
+   :schema.property/educationalLevel
+   :schema.property/credentialCategory
+   :schema.property/recognizedBy
+   :schema.property/validIn
+   :schema.property/validFor],
+  :schema.class/EducationalOrganization [:schema.property/alumni],
+  :schema.class/Event
+  [:schema.property/superEvent
+   :schema.property/subEvent
+   :schema.property/eventStatus
+   :schema.property/eventSchedule
+   :schema.property/location
+   :schema.property/duration
+   :schema.property/startDate
+   :schema.property/endDate
+   :schema.property/attendee
+   :schema.property/about
+   :schema.property/audience
+   :schema.property/keywords],
+  :schema.class/EventReservation [],
+  :schema.class/EventSeries [],
+  :schema.class/Festival [],
+  :schema.class/FoodEvent [],
+  :schema.class/LiteraryEvent [],
+  :schema.class/LocalBusiness
+  [:schema.property/openingHours :schema.property/priceRange],
+  :schema.class/MusicEvent [],
+  :schema.class/MusicGroup
+  [:schema.property/genre
+   :schema.property/album
+   :schema.property/track],
+  :schema.class/Occupation
+  [:schema.property/skills
+   :schema.property/experienceRequirements
+   :schema.property/qualifications
+   :schema.property/responsibilities],
+  :schema.class/Organization
+  [:schema.property/event
+   :schema.property/owns
+   :schema.property/alumni
+   :schema.property/areaServed
+   :schema.property/contactPoint
+   :schema.property/legalName
+   :schema.property/parentOrganization
+   :schema.property/employee
+   :schema.property/subOrganization
+   :schema.property/telephone
+   :schema.property/location
+   :schema.property/memberOf
+   :schema.property/member
+   :schema.property/email
+   :schema.property/keywords
+   :schema.property/logo],
+  :schema.class/PerformingGroup [],
+  :schema.class/Person
+  [:schema.property/familyName
+   :schema.property/givenName
+   :schema.property/children
+   :schema.property/parent
+   :schema.property/homeLocation
+   :schema.property/birthPlace
+   :schema.property/hasOccupation
+   :schema.property/workLocation
+   :schema.property/colleague
+   :schema.property/spouse
+   :schema.property/telephone
+   :schema.property/address
+   :schema.property/skills
+   :schema.property/relatedTo
+   :schema.property/worksFor
+   :schema.property/sibling
+   :schema.property/knows
+   :schema.property/knowsAbout
+   :schema.property/birthDate
+   :schema.property/jobTitle
+   :schema.property/email
+   :schema.property/alumniOf
+   :schema.property/affiliation
+   :schema.property/additionalName],
+  :schema.class/Place
+  [:schema.property/address
+   :schema.property/event
+   :schema.property/keywords],
+  :schema.class/Schedule
+  [:schema.property/byMonthDay
+   :schema.property/byMonth
+   :schema.property/byDay
+   :schema.property/duration
+   :schema.property/startDate
+   :schema.property/byMonthWeek
+   :schema.property/exceptDate
+   :schema.property/repeatCount
+   :schema.property/repeatFrequency
+   :schema.property/endDate
+   :schema.property/startTime
+   :schema.property/endTime
+   :schema.property/scheduleTimezone],
+  :schema.class/ScreeningEvent [:schema.property/workPresented],
+  :schema.class/SocialEvent [],
+  :schema.class/SportsEvent [],
+  :schema.class/TheaterEvent [],
+  :schema.class/Thing
+  [:schema.property/url
+   :schema.property/sameAs
+   :schema.property/image
+   :schema.property/subjectOf],
+  :schema.class/TouristDestination
+  [:schema.property/touristType :schema.property/includesAttraction],
+  :schema.class/TrainStation [],
+  :schema.class/VirtualLocation []}}

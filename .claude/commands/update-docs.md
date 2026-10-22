@@ -64,7 +64,7 @@ Select module: _____
 
 Recent files:
 1. docs/user-guide/installation.md (updated 3 days ago)
-2. docs/modular/quickstart.md (updated 1 week ago)
+2. docs/developer-guide/ci-cd-pipeline.md (updated 1 week ago)
 3. QUICK_START.md (updated 2 weeks ago)
 
 Enter number or file path: _____
@@ -318,7 +318,7 @@ Coverage: 91% → 100%
 /update-docs
 
 → What to update? User guide
-→ Which document? docs/modular/quickstart.md
+→ Which document? docs/developer-guide/ci-cd-pipeline.md
 → Update type? Add new section
 
 What section? Git hooks integration
@@ -341,7 +341,7 @@ Updated: Table of contents
 
 Preview → Confirm → Save
 
-Result: docs/modular/quickstart.md updated
+Result: docs/developer-guide/ci-cd-pipeline.md updated
 ```
 
 ### Workflow 3: Fix Outdated Content

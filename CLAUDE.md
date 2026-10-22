@@ -1,4 +1,4 @@
-# Logseq Template Graph - Claude Code Configuration
+# Logseq Schema Library - Claude Code Configuration
 
 This file provides guidance to Claude Code (AI assistant) when working with code in this repository.
 
@@ -8,200 +8,122 @@ This file provides guidance to Claude Code (AI assistant) when working with code
 
 ## Project Overview
 
-This is a **Logseq DB template graph** starter repository that provides structured ontologies for organizing knowledge in Logseq's database format. It contains predefined properties and classes based on Schema.org vocabulary.
+A **schema library** for Logseq DB graphs: Schema.org classes and properties as hand-edited EDN under `source/`, built into two release files.
 
-**Current Scale:**
-- **632 classes** (Thing, Person, Organization, Event, Place, etc.)
-- **1,033 properties** with rich metadata
-- **15,422 lines** in main template file
-- Schema.org-compliant vocabulary
-- Automated CI/CD pipeline + Modular workflow
+- `build/schema-library.edn` (released as `schema-library.edn`) - all classes and properties, importable via Logseq **Import -> EDN to DB Graph**
+- `build/schema-presets.edn` (released as `schema-presets.edn`) - role presets, read by the Ontology Sync plugin
+
+Counts come from `bb build` output (do not hard-code them in docs). Every `schema.*` entry carries `:schema.property/url`; non-Schema.org terms live under `custom.class/*` and `custom.property/*`.
 
 **Purpose:** Bring Tana-style supertag functionality to open-source Logseq using Schema.org vocabulary.
 
 ---
 
-## Quick File Navigation
+## Workflow
 
-### Core Templates
-- `logseq_db_Templates.edn` (15,422 lines) - Main template with 632 classes and 1,033 properties
-- `logseq_db_Templates_full.edn` (~7K lines) - Full version with timestamps
+Curate by editing `source/` directly. There is no export from a Logseq graph and no split step.
 
-### Documentation Structure
-
-**📁 All documentation is in the `docs/` folder:**
-
-```
-docs/
-├── README.md                    ← Documentation portal (START HERE)
-├── user-guide/                  ← For template users
-├── developer-guide/             ← For contributors
-│   ├── ci-cd-pipeline.md        ← Complete CI/CD workflow
-│   └── implementation-summary.md
-├── modular/                     ← For large templates (15K+ lines)
-│   ├── quickstart.md            ← 5-min modular guide
-│   └── strategy.md              ← Complete modularization
-├── architecture/                ← Technical deep-dives
-│   └── technical-reference.md   ← Detailed technical reference
-└── research/
-    └── comprehensive-analysis.md ← Logseq/Tana/Schema.org analysis
+```bash
+# edit source/<module>/classes.edn, properties.edn, source/presets/<id>.edn
+bb test && bb build && bb validate && bb publish-library   # then commit library/
+LOGSEQ_DIR=/path/to/logseq bb check-import   # optional: import into a fresh Logseq graph
 ```
 
-**Root Level Quick Access:**
-- [README.md](README.md) - Project overview
-- [QUICK_START.md](QUICK_START.md) - 5-minute setup
-- [DOCS_INDEX.md](DOCS_INDEX.md) - Complete documentation map
+- `bb test` - unit tests in `test/template_graph/`
+- `bb build` - `scripts/build.clj`: merges modules, normalises each class's property order to one global order, writes `build/`
+- `bb validate` - `scripts/validate.clj`: checks `build/` against `vendor/schemaorg-current-https.json`
+- `bb publish-library` / `bb check-library` - copy / verify `build/` output in `library/`. `library/` is generated (never hand-edit), committed, and downloaded by the Ontology Sync plugin
+- `bb check-import` - `scripts/ci/check-import.cljs` via nbb-logseq (needs `LOGSEQ_DIR`)
 
-### Scripts
-
-**Location:** `scripts/`
-
-**Core Export Scripts:**
-- `export.sh` / `export.ps1` - Export from Logseq + auto-split into modules
-- `validate.sh` - EDN validation
-- `analyze.sh` - Template statistics
-- `check-deps.js` - Verify Babashka installation (runs on npm install)
-
-**Modular Development (Babashka required):**
-- `split.clj` - Split monolith into modules (auto-runs after export)
-- `build.clj` - Build template variants (full, CRM, research, etc.)
+`build/` is git-ignored. Releases publish exactly `schema-library.edn` and `schema-presets.edn`.
 
 ---
 
-## Development Workflow
+## Repository Layout
 
-### Recommended Workflow (Modular - Default for 15K+ lines)
-```bash
-# 1. Make changes in Logseq
-# ... edit classes, properties ...
-
-# 2. Export and auto-split
-npm run export                # Exports → auto-splits into src/ modules
-
-# 3. Build template variants (optional)
-npm run build:full            # Full template (632 classes)
-npm run build:crm             # CRM preset
-npm run build:research        # Research preset
-
-# 4. Review and commit
-git diff src/                 # Review modular source changes
-git add .
-git commit -m "feat(classes): add Recipe class"
-git push
+```
+source/<module>/classes.edn      class definitions
+source/<module>/properties.edn   property definitions
+source/presets/<id>.edn          {:id :name :description :classes {class [props]}}
+src/template_graph/              edn_io, library (merge, order), presets, validate, vocab
+scripts/build.clj, validate.clj  bb entry points
+scripts/ci/                      check-import (nbb) support files
+vendor/                          Schema.org vocabulary for validation
+docs/                            documentation (see docs/README.md)
 ```
 
-### Alternative: Direct Script Execution
-```bash
-# Run scripts directly (bypasses npm):
-./scripts/export.sh           # Mac/Linux
-.\scripts\export.ps1           # Windows
-
-# Manual split (if needed):
-bb scripts/split.clj
-
-# Manual build:
-bb scripts/build.clj full
-```
-
-**See:** [docs/modular/quickstart.md](docs/modular/quickstart.md)
+Documentation: [README.md](README.md), [QUICK_START.md](QUICK_START.md), [DOCS_INDEX.md](DOCS_INDEX.md), [docs/README.md](docs/README.md).
 
 ---
 
-## EDN File Format
-
-Template files use Clojure Extended Data Notation (EDN):
+## EDN Format
 
 ```clojure
 {:properties
- {:user.property/propertyName-UniqueID
-  {:db/cardinality :db.cardinality/one  ; or :many
-   :logseq.property/type :default        ; :node, :date, :url, :number
-   :block/title "propertyName"
-   :build/property-classes [:user.class/ClassName-ID]
+ {:schema.property/email
+  {:db/cardinality :db.cardinality/one      ; or :many
+   :logseq.property/type :default           ; :node, :date, :url, :number
+   :block/title "email"
+   :build/property-classes [:schema.class/Person]
    :build/properties
-   {:logseq.property/icon {:id "emoji" :type :emoji}
-    :logseq.property/description "Description"}}}
+   {:logseq.property/icon {:id "email", :type :emoji}
+    :logseq.property/description "Email address."
+    :schema.property/url "https://schema.org/email"}}}
 
  :classes
- {:user.class/ClassName-UniqueID
-  {:block/title "ClassName"
-   :build/class-properties [:user.property/prop1 ...]
-   :build/class-parent :user.class/ParentClass-ID
-   :build/properties {...}}}
-
- :logseq.db.sqlite.export/export-type :graph-ontology}
+ {:schema.class/Person
+  {:block/title "Person"
+   :build/class-properties [:schema.property/email]
+   :build/class-extends [:schema.class/Thing]
+   :build/properties {:schema.property/url "https://schema.org/Person"}}}}
 ```
 
----
+Module files hold the `:classes` or `:properties` section; `bb build` merges them and adds the export marker and version.
 
-## Key Concepts
+### Idents
 
-### Properties
-Attributes attached to pages/blocks:
-- **Cardinality**: `:one` (single) or `:many` (multiple values)
-- **Type**: `:default`, `:node` (links), `:date`, `:url`, `:number`
-- **Property Classes**: Which classes can use this property
-- **Icon & Description**: UI metadata
+- `:schema.class/<Name>` / `:schema.property/<name>` - the name must exist in Schema.org (exact case)
+- `:custom.class/<Name>` / `:custom.property/<name>` - the name must NOT exist in Schema.org
+- `:user.*` idents are rejected by validation
+- Idents are fixed; never rename them once released
 
-### Classes
-Types of entities (like Tana supertags):
-- **Class Properties**: List of properties for this class
-- **Class Parent**: Inheritance (e.g., Person inherits from Thing)
-- **Aliases**: UUID-based cross-references
+### Presets
 
-### Schema.org Inspiration
-Standard vocabulary from schema.org:
-- **Thing** - Base class
-- **Person** - jobTitle, email, birthDate, spouse, worksFor
-- **Organization** - legalName, employee, member
-- **Event** - eventStatus, attendee, organizer
-- And 628+ more classes
+`{:id "crm" :name "CRM" :description "..." :classes {:schema.class/Person [:schema.property/email]}}`. A preset may list only properties attached directly to that class (`:build/class-properties`).
 
 ---
 
 ## Important Constraints
 
-1. **Do not modify**: `:logseq.db.sqlite.export/export-type :graph-ontology` marker
-2. **Preserve unique IDs**: Random suffixes like `-cB8UklzM` ensure uniqueness
-3. **Cardinality matters**: Changing `:one` ↔ `:many` affects storage
-4. **Type constraints**: Type changes affect UI and validation
-5. **Always use export scripts**: Never manual UI export without scripts
+1. **Fail fast**: `bb build` throws on conflicting definitions; `bb validate` must report `Valid`
+2. **Fixed idents**: no random suffixes, no `:user.*`
+3. **Every `schema.*` entry has `:schema.property/url`**
+4. **Cardinality and type matter**: changing `:one` <-> `:many` or the type affects storage and UI
+5. **Do not edit `build/`**: it is generated
 
 ---
 
 ## Common Development Tasks
 
 ### Adding New Classes
-1. Research Schema.org for standard naming
-2. Add icon (emoji) and description
-3. Define class properties list
-4. Set class parent for inheritance
-5. Test import in fresh graph
-6. Export using scripts: `./scripts/export.sh`
-7. Commit with semantic message: `git commit -m "feat: add Recipe class"`
+1. Check Schema.org for the standard name (`schema.*` if it exists, `custom.*` if not)
+2. Add the class to the fitting `source/<module>/classes.edn` with icon, description, `:schema.property/url`
+3. Define `:build/class-properties` and `:build/class-extends`
+4. Run `bb test && bb build && bb validate && bb publish-library` and commit `library/`
+5. Commit: `git commit -m "feat(classes): add Recipe class"`
 
 ### Adding New Properties
-1. Check Schema.org for standard name
-2. Choose cardinality (`:one` or `:many`)
-3. Set type (`:default`, `:node`, `:date`, `:url`, `:number`)
-4. Define which classes use it
-5. Add icon and description
-6. Test with actual data
-7. Export and commit
+1. Check Schema.org for the standard name
+2. Choose cardinality (`:one` or `:many`) and type (`:default`, `:node`, `:date`, `:url`, `:number`)
+3. Add it to the module's `properties.edn` and to `:build/class-properties` of the classes that use it
+4. Run `bb test && bb build && bb validate && bb publish-library` and commit `library/`
+5. Commit
 
 ### Documentation
-**When creating new documentation:**
 1. Determine audience (user, developer, researcher)
-2. Place in appropriate `docs/` subfolder:
-   - User guides → `docs/user-guide/`
-   - Developer guides → `docs/developer-guide/`
-   - Modular templates → `docs/modular/`
-   - Technical deep-dives → `docs/architecture/`
-   - Research/analysis → `docs/research/`
-3. Update [docs/README.md](docs/README.md) with new entry
-4. Update [DOCS_INDEX.md](DOCS_INDEX.md) if major addition
-5. Cross-link from related docs
-6. Test all links
+2. Place in the right `docs/` subfolder (`developer-guide/`, `architecture/`, `research/`)
+3. Update [docs/README.md](docs/README.md) and [DOCS_INDEX.md](DOCS_INDEX.md)
+4. Cross-link from related docs and test links
 
 ---
 
@@ -308,10 +230,10 @@ pwsh -NoProfile -File script.ps1
 - `classes` - Schema.org class additions/modifications
 - `properties` - Schema.org property additions/modifications
 - `ci` - CI/CD pipeline changes
-- `scripts` - Build, export, validation scripts
+- `scripts` - Build and validation scripts
 - `docs` - Documentation files
 - `release` - Release-related changes
-- `modular` - Modular architecture changes
+- `source` - Changes to the source/ module layout
 - `workflow` - Development workflow improvements
 
 #### Examples
@@ -329,7 +251,6 @@ git commit -m "docs: update installation instructions"
 git commit -m "docs(contributing): add commit message guidelines"
 
 # Chores
-git commit -m "chore(templates): auto-export templates"
 git commit -m "chore: update dependencies"
 
 # Breaking changes
@@ -384,19 +305,18 @@ The following hooks are automatically installed via `npm run setup`:
 
 2. **`post-commit`** - Validates build after source/ changes
    - Detects if `source/` directory was modified
-   - Runs `npm run build:full` to validate changes
+   - Runs `bb build` and `bb validate`
    - Reports build success or failure
-   - Suggests `/diagnose` command on failure
 
 3. **`pre-push`** - Comprehensive validation before pushing
-   - Builds all template variants (full, CRM, research)
+   - Runs `bb test`, `bb build` and `bb validate`
    - Validates all conventional commit messages
    - Checks for uncommitted changes in `source/`
    - Blocks push if any validation fails
 
 4. **`post-merge`** - Auto-rebuild after merge/pull
    - Detects if `source/` changed during merge
-   - Auto-runs `npm run build:full`
+   - Auto-runs `bb build` and `bb validate`
    - Notifies about changes to review
 
 #### Hook Locations
@@ -441,53 +361,28 @@ git tag v0.3.0
 git push --tags
 
 # 6. GitHub Actions automatically:
-#    - Builds all template variants
+#    - Runs bb test, bb build, bb validate (and check-import)
 #    - Generates release notes
-#    - Creates GitHub release with .edn files
-```
-
-**Manual Release (legacy):**
-
-```bash
-# 1. Export and test
-./scripts/export.sh
-
-# 2. Tag release
-git tag v0.3.0
-git push --tags
-
-# 3. GitHub Actions handles the rest automatically
+#    - Creates GitHub release with schema-library.edn and schema-presets.edn
 ```
 
 ---
 
 ## Quick Reference Links
 
-### For Users
-- [QUICK_START.md](QUICK_START.md#for-users-import-templates) - Installation
-- [README.md](README.md) - Feature overview
-
-### For Developers
-- [QUICK_START.md](QUICK_START.md#for-developers-set-up-development-environment) - Dev setup
-- [docs/developer-guide/ci-cd-pipeline.md](docs/developer-guide/ci-cd-pipeline.md) - Complete CI/CD
-- [docs/modular/quickstart.md](docs/modular/quickstart.md) - Modular workflow (15K+ lines)
-
-### For Deep Understanding
-- [docs/architecture/technical-reference.md](docs/architecture/technical-reference.md) - Complete technical reference
-- [docs/research/comprehensive-analysis.md](docs/research/comprehensive-analysis.md) - Logseq/Tana/Schema.org
-- [DOCS_INDEX.md](DOCS_INDEX.md) - Complete documentation map
+- [QUICK_START.md](QUICK_START.md) - import and develop
+- [CONTRIBUTING.md](CONTRIBUTING.md) - contribution guide
+- [docs/developer-guide/ci-cd-pipeline.md](docs/developer-guide/ci-cd-pipeline.md) - CI/CD
+- [docs/developer-guide/validation-reference.md](docs/developer-guide/validation-reference.md) - validation rules
+- [docs/architecture/technical-reference.md](docs/architecture/technical-reference.md) - technical reference
+- [DOCS_INDEX.md](DOCS_INDEX.md) - documentation map
 
 ---
 
 ## Related Resources
 
 - [Logseq Official Docs](https://docs.logseq.com)
-- [Logseq CLI on npm](https://www.npmjs.com/package/@logseq/cli)
 - [Schema.org](https://schema.org)
 - [EDN Format Spec](https://github.com/edn-format/edn)
 - [Tana Supertags](https://tana.inc/docs/supertags)
-- [Babashka](https://babashka.org/) - For modular workflow
-
----
-
-**Last Updated:** November 2025 | **Template Size:** 15,422 lines, 632 classes, 1,033 properties
+- [Babashka](https://babashka.org/)

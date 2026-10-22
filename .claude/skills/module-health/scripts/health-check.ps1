@@ -136,8 +136,8 @@ foreach ($moduleDir in $modules) {
     $classesFile = Join-Path $moduleDir.FullName "classes.edn"
     $propertiesFile = Join-Path $moduleDir.FullName "properties.edn"
 
-    $classes = Count-Items -File $classesFile -Pattern ":user\.class/"
-    $properties = Count-Items -File $propertiesFile -Pattern ":user\.property/"
+    $classes = Count-Items -File $classesFile -Pattern ":(schema|custom)\.class/"
+    $properties = Count-Items -File $propertiesFile -Pattern ":(schema|custom)\.property/"
 
     # Check for README
     $readmeFile = Join-Path $moduleDir.FullName "README.md"

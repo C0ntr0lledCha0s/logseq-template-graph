@@ -22,80 +22,27 @@ if ($uncommittedChanges) {
     exit 1
 }
 
-# Check 2: Validate all template variants build successfully
-Write-Host "[BUILD] Building all template variants..." -ForegroundColor Cyan
+# Check 2: Run unit tests, build the schema library and validate it
+Write-Host "[BUILD] Running bb test, bb build and bb validate..." -ForegroundColor Cyan
 Write-Host ""
 
-$buildFailed = $false
-
-# Build full variant
-try {
-    npm run build:full 2>&1 | Out-Null
-}
-catch {
-    Write-Host "[ERROR] Full template build failed" -ForegroundColor Red
-    $buildFailed = $true
-}
-
-# Build CRM variant
-try {
-    npm run build:crm 2>&1 | Out-Null
-}
-catch {
-    Write-Host "[ERROR] CRM template build failed" -ForegroundColor Red
-    $buildFailed = $true
-}
-
-# Build research variant
-try {
-    npm run build:research 2>&1 | Out-Null
-}
-catch {
-    Write-Host "[ERROR] Research template build failed" -ForegroundColor Red
-    $buildFailed = $true
-}
-
-if ($buildFailed) {
-    Write-Host ""
-    Write-Host "Run /diagnose in Claude Code for detailed analysis" -ForegroundColor Yellow
-    Write-Host "Or run: npm run build:full"
-    Write-Host ""
+if (-not (Get-Command bb -ErrorAction SilentlyContinue)) {
+    Write-Host "[ERROR] Babashka (bb) not installed - see https://babashka.org/" -ForegroundColor Red
     exit 1
 }
 
-Write-Host "✓ All template variants built successfully" -ForegroundColor Green
-Write-Host ""
-
-# Check 3: Validate UUID references in source files
-Write-Host "[VALIDATE] Checking UUID references in source files..." -ForegroundColor Cyan
-Write-Host ""
-
-if (Test-Path "source") {
-    if (Get-Command bb -ErrorAction SilentlyContinue) {
-        try {
-            bb scripts/validate-refs.clj
-            if ($LASTEXITCODE -ne 0) {
-                Write-Host ""
-                Write-Host "[ERROR] UUID reference validation failed" -ForegroundColor Red
-                Write-Host "Please fix broken UUID references before pushing" -ForegroundColor Yellow
-                Write-Host ""
-                exit 1
-            }
-            Write-Host "OK All UUID references valid" -ForegroundColor Green
-        }
-        catch {
-            Write-Host "[ERROR] UUID validation script failed to execute" -ForegroundColor Red
-            exit 1
-        }
-    }
-    else {
-        Write-Host "[WARNING] Babashka not installed - skipping UUID validation" -ForegroundColor Yellow
+foreach ($task in @("test", "build", "validate")) {
+    bb $task 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host ""
+        Write-Host "[ERROR] bb $task failed" -ForegroundColor Red
+        Write-Host "Run: bb $task"
+        Write-Host ""
+        exit 1
     }
 }
-else {
-    Write-Host "[INFO] source/ directory not found - skipping UUID validation" -ForegroundColor Cyan
-}
 
+Write-Host "OK Tests, build and validation passed" -ForegroundColor Green
 Write-Host ""
 
 # Check 4: Validate conventional commit messages for unpushed commits
@@ -114,7 +61,7 @@ if (-not $unpushedCommits) {
 }
 
 if ($unpushedCommits) {
-    $conventionalPattern = '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?: .+'
+    $conventionalPattern = '^(feat|fix|docs|style|refactor|perf|test|build|ops|chore)(\(.+\))?!?: .+'
 
     foreach ($commit in $unpushedCommits) {
         $commitMsg = $commit -replace '^\w+\s+', ''

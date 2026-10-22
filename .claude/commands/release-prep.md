@@ -10,7 +10,7 @@ This command prevents release mistakes by validating everything first.
 2. **Analyzes commits** - Reviews all commits since last tag
 3. **Determines version** - Calculates next version from conventional commits
 4. **Generates changelog** - Preview what will be in CHANGELOG.md
-5. **Validates builds** - Ensures all variants build successfully
+5. **Validates builds** - Ensures the library builds and validates (`bb test && bb build && bb validate`)
 6. **Creates release** - Tags, pushes, triggers GitHub Actions (if approved)
 
 ## Usage
@@ -67,7 +67,7 @@ feat(properties): add cookTime to Recipe (def5678)
 feat(classes): add Book class with ISBN (ghi9012)
 fix(templates): correct spouse cardinality (jkl3456)
 docs: update quickstart guide (mno7890)
-chore(templates): auto-export (pqr1234)
+chore(deps): update dependencies (pqr1234)
 ... (8 more)
 
 Summary:
@@ -135,7 +135,7 @@ Override version? [0.3.0]:
 - add examples for Recipe and Book classes (yza3456)
 
 ### Chores
-- **templates**: auto-export templates (pqr1234)
+- **deps**: update dependencies (pqr1234)
 - update dependencies (bcd7890)
 - clean up temporary files (efg1234)
 ... (3 more)
@@ -145,7 +145,7 @@ Full changelog will be written to CHANGELOG.md
 
 ### Step 5: Validate All Builds
 ```
-🔨 Building all variants to validate...
+🔨 Running bb test && bb build && bb validate ...
   [████████████] full      (8,934 lines) ✓
   [████████████] crm       (5,389 lines) ✓
   [████████████] research  (4,203 lines) ✓
@@ -157,14 +157,13 @@ All builds successful! ✅
 
 If any build fails:
 ```
-❌ Build failed: full variant
+❌ Build failed
 
 Cannot release with broken builds!
 
 💡 Options:
-  1. Fix the build: /diagnose full
-  2. Skip this variant: [not recommended]
-  3. Abort release: [recommended]
+  1. Fix the build: bb build
+  2. Abort release: [recommended]
 
 Abort release? [Y/n]
 ```
@@ -178,8 +177,8 @@ Abort release? [Y/n]
   ✓ All commits follow conventional commits
   ✓ Version bump calculated: v0.2.0 → v0.3.0
   ✓ Changelog generated successfully
-  ✓ All 5 template variants build
-  ✓ All variants validate
+  ✓ bb build succeeds
+  ✓ bb validate passes
   ✓ No uncommitted changes
   ✓ Branch up to date with remote
   ✓ No merge conflicts detected
@@ -198,7 +197,7 @@ This will:
   3. Create git tag: v0.3.0
   4. Push to remote (triggers GitHub Actions)
   5. GitHub Actions will:
-     - Build all template variants
+     - Run bb test, bb build, bb validate
      - Generate release notes
      - Create GitHub release
      - Upload .edn files as release assets
@@ -279,7 +278,7 @@ Options:
 ```
 ❌ Cannot release: build validation failed
 
-Failed variant: full
+Failed step: bb build
 
 See error above or run:
   /diagnose full

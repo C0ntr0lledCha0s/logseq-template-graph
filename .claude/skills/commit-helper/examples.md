@@ -9,16 +9,16 @@ This file contains real-world examples of conventional commits for the Logseq Te
 **Git Diff:**
 ```diff
 source/creative-work/classes.edn
-+ {:user.class/Recipe-xY9zK
++ {:schema.class/Recipe
 +  {:block/title "Recipe"
-+   :build/class-properties [:user.property/recipeIngredient-aB1cD ...]
-+   :build/class-parent :user.class/CreativeWork-pQ2rS
++   :build/class-properties [:schema.property/recipeIngredient ...]
++   :build/class-extends [:schema.class/CreativeWork]
 +   :build/properties {...}}}
 
 source/creative-work/properties.edn
-+ {:user.property/recipeIngredient-aB1cD {...}}
-+ {:user.property/cookTime-eF3gH {...}}
-+ {:user.property/recipeYield-iJ4kL {...}}
++ {:schema.property/recipeIngredient {...}}
++ {:schema.property/cookTime {...}}
++ {:schema.property/recipeYield {...}}
 ```
 
 **Suggested Commit:**
@@ -52,7 +52,7 @@ EOF
 **Git Diff:**
 ```diff
 source/person/properties.edn
-  {:user.property/spouse-mN5oP
+  {:schema.property/spouse
 -  {:db/cardinality :db.cardinality/one
 +  {:db/cardinality :db.cardinality/many
 ```
@@ -113,11 +113,10 @@ git commit -m "docs: update installation instructions for Windows
 **Git Diff:**
 ```diff
 .github/workflows/release.yml
-+ - name: Build all presets
++ - name: Build and validate schema library
 +   run: |
-+     npm run build:full
-+     npm run build:crm
-+     npm run build:research
++     bb build
++     bb validate
 ```
 
 **Suggested Commit:**
@@ -169,27 +168,24 @@ This improves module health score from 35/100 to 85/100."
 
 ---
 
-## Example 6: Chore (Auto-export)
+## Example 6: Chore (Dependency update)
 
-**Scenario:** Automated export from Logseq
+**Scenario:** Routine dependency update
 
 **Git Diff:**
 ```diff
-Multiple .edn files updated with timestamps
+package.json and lockfile updated
 ```
 
 **Suggested Commit:**
 ```bash
-git commit -m "chore(templates): auto-export templates after development
-
-Auto-generated from Logseq export on 2025-11-08"
+git commit -m "chore(deps): update git-conventional-commits"
 ```
 
 **Why this works:**
 - Type: `chore` (routine task)
-- Scope: `templates` (template files)
+- Scope: `deps` (dependencies)
 - Description: What happened
-- Body: Timestamp for reference
 
 ---
 
@@ -200,10 +196,10 @@ Auto-generated from Logseq export on 2025-11-08"
 **Git Diff:**
 ```diff
 source/organization/classes.edn
-- {:user.class/Customer-qR6sT ...}
+- {:schema.class/Customer ...}
 
 source/person/properties.edn
-+ {:user.property/customerRole-uV7wX ...}
++ {:schema.property/customerRole ...}
 ```
 
 **Suggested Commit:**
@@ -322,9 +318,9 @@ fix(properties): correct cardinality for author property
 docs: update README with installation steps
 ```
 
-### Automated Export
+### Dependency Update
 ```bash
-chore(templates): auto-export templates
+chore(deps): update git-conventional-commits
 ```
 
 ### Multiple Files, Single Purpose
@@ -414,7 +410,7 @@ git commit -m "fix(properties): correct spouse cardinality to :many"
 | `test` | Add/update tests | `test: add validation for EDN format` |
 | `build` | Build system/deps/CI | `build(ci): add preset builds` |
 | `ops` | Infrastructure/deployment | `ops: update GitHub Actions runner` |
-| `chore` | Miscellaneous | `chore(templates): auto-export` |
+| `chore` | Miscellaneous | `chore(deps): update dependencies` |
 
 ## Scope Reference
 
@@ -422,7 +418,7 @@ git commit -m "fix(properties): correct spouse cardinality to :many"
 |-------|-------------|---------|
 | `classes` | Class changes | `feat(classes): add Recipe` |
 | `properties` | Property changes | `fix(properties): correct cardinality` |
-| `templates` | Template file changes | `chore(templates): auto-export` |
+| `templates` | Template file changes | `chore(deps): update dependencies` |
 | `ci` | CI/CD changes | `build(ci): add workflow` |
 | `scripts` | Script changes | `perf(scripts): optimize build` |
 | `docs` | Documentation | `docs: update README` |

@@ -389,26 +389,26 @@ Properties: 15 new (recipeIngredient, cookTime, etc.)
 **Template Implementation:**
 ```clojure
 ;; In source/creative-work/classes.edn
-:user.class/Recipe-aB3cD4
+:schema.class/Recipe
 {:block/title "Recipe"
- :build/class-parent :user.class/CreativeWork-xY9zK
+ :build/class-extends [:schema.class/CreativeWork]
  :build/class-properties
- [:user.property/recipeIngredient-eF5gH6
-  :user.property/recipeInstructions-iJ7kL8
-  :user.property/cookTime-mN9oP0
+ [:schema.property/recipeIngredient
+  :schema.property/recipeInstructions
+  :schema.property/cookTime
   ...
-  :user.property/name-xyz123  ; inherited from Thing
-  :user.property/author-abc456]  ; inherited from CreativeWork
+  :schema.property/name  ; inherited from Thing
+  :schema.property/author]  ; inherited from CreativeWork
  :build/properties
  {:logseq.property/icon {:id "🍳" :type :emoji}
   :logseq.property/description "A recipe with cooking instructions"}}
 
 ;; In source/creative-work/properties.edn
-:user.property/recipeIngredient-eF5gH6
+:schema.property/recipeIngredient
 {:db/cardinality :db.cardinality/many
  :logseq.property/type :default
  :block/title "recipeIngredient"
- :build/property-classes [:user.class/Recipe-aB3cD4]
+ :build/property-classes [:schema.class/Recipe]
  :build/properties
  {:logseq.property/icon {:id "🥕" :type :emoji}
   :logseq.property/description "Ingredient for the recipe"}}

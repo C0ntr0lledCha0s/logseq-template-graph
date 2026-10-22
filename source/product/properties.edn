@@ -1,10 +1,10 @@
 {:properties
- {:user.property/isRelatedTo-VaZiAlSO
+ {:schema.property/isRelatedTo
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
    :block/title "isRelatedTo",
    :build/property-classes
-   [:user.class/Product-zfY4UZyk :user.class/Service-lkacLVaV],
+   [:schema.class/Product :schema.class/Service],
    :build/properties
    {:logseq.property/icon
     {:id "link",
@@ -16,13 +16,14 @@
      :type :emoji},
     :logseq.property/description
     "A pointer to another, somehow related product (or multiple products).",
-    :logseq.property/exclude-from-graph-view true}},
-  :user.property/isSimilarTo-GiQz4GGK
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/isRelatedTo"}},
+  :schema.property/isSimilarTo
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
    :block/title "isSimilarTo",
    :build/property-classes
-   [:user.class/Product-zfY4UZyk :user.class/Service-lkacLVaV],
+   [:schema.class/Product :schema.class/Service],
    :build/properties
    {:logseq.property/icon
     {:id "link",
@@ -34,4 +35,5 @@
      :type :emoji},
     :logseq.property/description
     "A pointer to another, functionally similar product (or multiple products).",
-    :logseq.property/exclude-from-graph-view true}}}}
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/isSimilarTo"}}}}

@@ -1,18 +1,19 @@
 {:classes
- #:user.class{:Language-SMD4JFAN #:block{:title "Language"},
-              :FamilyGroup-CmI2Ne2A
-              {:block/title "FamilyGroup",
-               :block/collapsed? false,
-               :build/class-properties
-               [:user.property/event-TnZsBTQU
-                :user.property/keywords-SmmwpeIY
-                :user.property/contactPoint-NixCcjXJ
-                :user.property/parentFamilyGroup-QduiTy2X
-                :user.property/subFamilyGroup-FDjn_0z4],
-               :build/class-extends [:user.class/Thing-K1x5zUhw],
-               :build/properties
-               #:logseq.property{:icon
-                                 {:id "man-woman-girl-girl",
-                                  :type :emoji},
-                                 :description
-                                 "A [[FamilyGroup]] such as parents and their children."}}}}
+ {:schema.class/Language
+  {:block/title "Language",
+   :build/properties
+   {:schema.property/url "https://schema.org/Language"}},
+  :custom.class/FamilyGroup
+  {:block/title "FamilyGroup",
+   :block/collapsed? false,
+   :build/class-properties
+   [:schema.property/event
+    :schema.property/keywords
+    :schema.property/contactPoint
+    :custom.property/parentFamilyGroup
+    :custom.property/subFamilyGroup],
+   :build/class-extends [:schema.class/Thing],
+   :build/properties
+   {:logseq.property/icon {:id "man-woman-girl-girl", :type :emoji},
+    :logseq.property/description
+    "A [[FamilyGroup]] such as parents and their children."}}}}

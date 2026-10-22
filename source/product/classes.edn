@@ -1,1 +1,5 @@
-{:classes #:user.class{:Product-zfY4UZyk #:block{:title "Product"}}}
+{:classes
+ {:schema.class/Product
+  {:block/title "Product",
+   :build/properties
+   {:schema.property/url "https://schema.org/Product"}}}}
