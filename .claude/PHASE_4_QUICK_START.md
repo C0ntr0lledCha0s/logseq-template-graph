@@ -1,3 +1,5 @@
+> **Historical:** written before v2.0.0 (schema library with fixed schema.* names); commands and file names here are out of date.
+
 # Phase 4 Quick Start Guide
 
 Welcome to the Phase 4 features! This guide will help you start using the new skills and commands immediately.

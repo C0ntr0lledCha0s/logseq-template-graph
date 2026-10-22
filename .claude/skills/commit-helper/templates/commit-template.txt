@@ -24,7 +24,7 @@
 # classes    - Schema.org class additions/modifications
 # properties - Schema.org property additions/modifications
 # ci         - CI/CD pipeline changes
-# scripts    - Build, export, validation scripts
+# scripts    - Build and validation scripts
 # docs       - Documentation files
 # release    - Release-related changes
 # modular    - Modular architecture changes
@@ -54,7 +54,7 @@
 # docs: update installation instructions for Windows
 # build(ci): add preset builds to release workflow
 # refactor(modular): split misc module into focused domains
-# chore(templates): auto-export templates after development
+# chore(deps): update dependencies
 # feat(classes)!: remove deprecated Customer class
 # perf(scripts): skip unchanged modules during build
 

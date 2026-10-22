@@ -29,13 +29,13 @@ console.log(`\n${colors.cyan}Checking optional dependencies...${colors.reset}\n`
 
 let allGood = true;
 
-// Check Babashka (required for modular workflow)
+// Check Babashka (required to build and validate)
 const hasBabashka = checkCommand('bb');
 if (hasBabashka) {
   console.log(`${colors.green}✓${colors.reset} Babashka (bb) - installed`);
 } else {
   console.log(`${colors.yellow}⚠${colors.reset} Babashka (bb) - not found`);
-  console.log(`${colors.gray}  Required for: Modular template workflow (split/build)${colors.reset}`);
+  console.log(`${colors.gray}  Required for: building and validating the schema library (bb test, bb build, bb validate)${colors.reset}`);
   console.log(`${colors.gray}  Install from: https://babashka.org/${colors.reset}`);
 
   const platform = os.platform();
@@ -54,5 +54,5 @@ if (allGood) {
   console.log(`\n${colors.green}All optional dependencies are installed!${colors.reset}\n`);
 } else {
   console.log(`${colors.yellow}Some optional dependencies are missing.${colors.reset}`);
-  console.log(`${colors.gray}You can still use basic features, but modular workflow requires Babashka.${colors.reset}\n`);
+  console.log(`${colors.gray}You can still use basic features, but building and validating requires Babashka.${colors.reset}\n`);
 }

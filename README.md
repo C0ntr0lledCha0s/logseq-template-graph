@@ -1,323 +1,85 @@
-# Logseq Template Graph
+# Logseq Schema Library
 
-A comprehensive starter template for **Logseq Database** that brings **Tana-style supertag** functionality using **Schema.org vocabulary**. Import this template to instantly get structured classes and properties for organizing your knowledge.
+A Schema.org schema library for **Logseq Database** graphs. It brings Tana-style supertags to Logseq: classes (`#Person`, `#Organization`, `#Event`, ...) that carry their own properties, using standard Schema.org names.
 
-**Quick Links:** [Quick Start](QUICK_START.md) | [Developer Guide](docs/developer-guide/ci-cd-pipeline.md) | [📚 Documentation](docs/README.md) | [Contributing](#-contributing)
-
----
-
-## Table of Contents
-
-- [What This Project Does](#-what-this-project-does)
-- [Quick Start](#-quick-start)
-- [What's Included](#-whats-included)
-- [For Template Developers](#-for-template-developers)
-- [Documentation](#-documentation)
-- [Why Use This Template](#-why-use-this-template)
-- [Contributing](#-contributing)
-- [Roadmap](#-roadmap)
-- [License](#-license)
+**Quick Links:** [Quick Start](QUICK_START.md) | [Documentation](docs/README.md) | [Contributing](CONTRIBUTING.md)
 
 ---
 
-## 🎯 What This Project Does
+## What you get
 
-This template provides **47 pre-built classes and 129 properties** that you can import into your Logseq DB graph to:
+Each release publishes exactly two files:
 
-- ✅ Tag notes with structured types (`#Person`, `#Organization`, `#Event`, etc.)
-- ✅ Get automatic fields/properties on tagged pages
-- ✅ Use industry-standard Schema.org naming conventions
-- ✅ Build a structured knowledge graph like Tana, but in open-source Logseq
+| File | Contents |
+|------|----------|
+| `schema-library.edn` | Every class and property, with fixed idents (`:schema.class/Person`, `:schema.property/email`, `:custom.class/FamilyGroup`). Importable into Logseq. |
+| `schema-presets.edn` | Role presets (full, crm, research, events, content, student-life). Each lists the classes in the role and, per class, the properties it brings. Read by the [Ontology Sync plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin). |
 
-## 🚀 Quick Start
+The class and property counts for the current source are printed by `bb build`.
 
-### For Users: Import Templates
+- Every `schema.*` entry carries `:schema.property/url` pointing at its Schema.org definition.
+- Terms that Schema.org does not define live under `custom.class/*` and `custom.property/*`.
+- Idents are fixed, so re-importing a newer release updates the same entities instead of creating duplicates.
 
-**Prerequisites:**
-- Logseq Database version installed ([installation guide](QUICK_START.md#step-0-install-logseq-database-version))
+## Use it
 
-**3-Step Setup:**
+1. Download `schema-library.edn` from the [latest release](https://github.com/C0ntr0lledCha0s/logseq-template-graph/releases/latest). Do not download the "Source code" archives.
+2. In Logseq DB: Settings -> Import -> **EDN to DB Graph**, and select the file.
+3. Tag pages with the imported classes. `#Person` gives you email, jobTitle, birthDate, and so on.
 
-1. **Download** the latest template from [Releases](https://github.com/C0ntr0lledCha0s/logseq-template-graph/releases/latest)
-   - Choose a variant: Full, CRM, or Research preset
+To build a smaller, role-shaped graph instead, use the Ontology Sync plugin, which reads both `schema-library.edn` and `schema-presets.edn`.
 
-2. **Import** into Logseq:
-   - Open Logseq → Settings (⚙️) → Import → **EDN to DB Graph**
-   - Select the downloaded `.edn` file
+Details: [QUICK_START.md](QUICK_START.md).
 
-3. **Start using** structured types:
-   - `#Person` → email, jobTitle, birthDate, etc.
-   - `#Organization` → legalName, employee, member, etc.
-   - `#Event` → eventStatus, attendee, organizer, etc.
+## Develop it
 
-**Detailed guide:** [QUICK_START.md](QUICK_START.md)
-
-[Back to top](#logseq-template-graph)
-
-## 📦 What's Included
-
-### Classes (Types)
-
-- **Thing** - Base class for everything
-- **Person** - People with contact info, relationships, occupations
-- **Organization** - Companies, teams, institutions
-- **Event** - Meetings, conferences, occasions
-  - EventSeries - Recurring events
-  - BusinessMeeting - Work meetings
-- **Place** - Locations and addresses
-- **Occupation** - Job roles and skills
-- **Schedule** - Recurring time patterns
-- **Audience** - Target groups
-- **Resource** - Generic resources
-
-### Property Types
-
-Properties support multiple types:
-- **Text** - Free-form content
-- **Node** - Links to other pages (relationships)
-- **Date** - Calendar dates
-- **URL** - Web links
-- **Number** - Numeric values
-- **Choices** - Pre-defined options (like event status)
-
-### Example: Person Class
-
-When you tag a page with `#Person`, you automatically get these properties:
-
-- jobTitle
-- email
-- givenName (first name)
-- familyName (last name)
-- birthDate
-- spouse (links to another Person)
-- children (multiple Person links)
-- worksFor (links to Organization)
-- alumniOf (educational institution)
-- knows (other people)
-- skills
-
-...and 15+ more Schema.org properties!
-
-## 🛠️ For Template Developers
-
-Want to contribute or customize templates?
-
-### Quick Setup
+Curating means editing the EDN under `source/` directly. There is no export step from a Logseq graph.
 
 ```bash
-# 1. Clone repository
 git clone https://github.com/C0ntr0lledCha0s/logseq-template-graph.git
 cd logseq-template-graph
+npm install                  # git hooks and changelog tooling (optional)
 
-# 2. Install all dependencies (includes @logseq/cli, git hooks)
-npm install
-# This installs Logseq CLI and checks for Babashka (optional)
+# edit source/<module>/classes.edn, properties.edn, source/presets/<id>.edn
 
-# 3. Install Babashka (for modular workflow - recommended)
-# Mac:     brew install borkdude/brew/babashka
-# Windows: scoop install babashka
-# Linux:   bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
-
-# 4. Set your graph path
-export LOGSEQ_GRAPH_PATH="$HOME/Logseq/template-dev"  # Mac/Linux
-# Or: $env:LOGSEQ_GRAPH_PATH = "C:\Users\...\template-dev"  # Windows
-
-# 5. Start developing!
-npm run export
+bb test && bb build && bb validate && bb publish-library   # then commit library/
 ```
 
-### Development Workflow
+- `bb test` runs the unit tests.
+- `bb build` merges `source/` into `build/schema-library.edn` and `build/schema-presets.edn` and prints the counts.
+- `bb validate` checks the build against the vendored Schema.org vocabulary (`vendor/`).
+- `bb publish-library` copies the build into `library/`; commit it. `library/` is generated (do not hand-edit) and is what the Ontology Sync plugin downloads. CI runs `bb check-library` to catch a stale copy.
+- `LOGSEQ_DIR=/path/to/logseq bb check-import` imports the build into a fresh Logseq graph, as CI does.
 
-```bash
-# 1. Make changes in Logseq
-# ... edit classes, properties ...
+Requires [Babashka](https://babashka.org/). See [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions and the release flow, and [docs/architecture/technical-reference.md](docs/architecture/technical-reference.md) for the EDN format.
 
-# 2. Export and auto-split into modules
-npm run export
+## Repository layout
 
-# 3. Build template variants (optional)
-npm run build:full      # Full template
-npm run build:crm       # CRM preset
-npm run build:research  # Research preset
-
-# 4. Review modular source changes
-git diff src/
-
-# 5. Commit using conventional commits
-git add .
-git commit -m "feat(classes): add Recipe class with cookTime property"
-
-# 6. Push to your fork
-git push origin feat/add-recipe-class
+```
+source/<module>/classes.edn      class definitions, grouped by module
+source/<module>/properties.edn   property definitions
+source/presets/<id>.edn          {:id :name :description :classes {class [props]}}
+src/template_graph/              build, merge and validation code
+scripts/build.clj, validate.clj  the bb build / bb validate entry points
+build/                           generated output (git-ignored)
+vendor/                          Schema.org vocabulary used by validation
 ```
 
-**Features:**
-- ✅ **NPM-based workflow** - No global installs needed
-- ✅ **Modular architecture** - Split 15K+ line templates into manageable modules
-- ✅ **Auto-split on export** - Automatically splits into `src/` modules
-- ✅ **Template variants** - Build full, CRM, research presets from modules
-- ✅ **Automated commit validation** - Conventional commits format
-- ✅ **Auto-generated changelogs** - From commit history
-- ✅ **CI/CD integration** - Automated releases and validation
+## Documentation
 
-**Complete guides:**
-- [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute (includes commit standards)
-- [QUICK_START.md](QUICK_START.md) - 5-minute developer setup
-- [Conventional Commits Guide](docs/developer-guide/conventional-commits-guide.md) - Commit message standards
-- [CI/CD Pipeline](docs/developer-guide/ci-cd-pipeline.md) - Full automation workflow
-- [Modular Development](docs/modular/quickstart.md) - For large templates
+- [Documentation portal](docs/README.md) and [DOCS_INDEX.md](DOCS_INDEX.md)
+- [Quick Start](QUICK_START.md)
+- [Technical Reference](docs/architecture/technical-reference.md)
+- [CI/CD Pipeline](docs/developer-guide/ci-cd-pipeline.md)
+- [Validation Reference](docs/developer-guide/validation-reference.md)
+- [Conventional Commits Guide](docs/developer-guide/conventional-commits-guide.md)
 
-[Back to top](#logseq-template-graph)
+## Learn more
 
-## 📚 Documentation
+- [Logseq](https://docs.logseq.com) and its [DB version guide](https://github.com/logseq/docs/blob/master/db-version.md)
+- [Schema.org](https://schema.org)
+- [Tana supertags](https://tana.inc/docs/supertags), the inspiration
 
-**📁 Organized Documentation:** [Documentation Portal](docs/README.md) - All guides organized by category in the `docs/` folder.
+## License
 
-**Quick Index:** [DOCS_INDEX.md](DOCS_INDEX.md) - Complete documentation map by task and audience.
-
-### Quick Access
-
-| Guide | For | What's Inside |
-|-------|-----|---------------|
-| [QUICK_START.md](QUICK_START.md) | Users & Developers | Installation, import instructions, dev setup |
-| [CI/CD Pipeline](docs/developer-guide/ci-cd-pipeline.md) | Developers | Workflows, automation, modular development |
-| [Technical Reference](docs/architecture/technical-reference.md) | Developers & AI | EDN format, classes, best practices |
-| [Comprehensive Analysis](docs/research/comprehensive-analysis.md) | Everyone | Deep dive: Logseq DB, Tana, Schema.org |
-| [Modular Quickstart](docs/modular/quickstart.md) | Developers | For large templates (15K+ lines) |
-
-**Recommended Reading Order:**
-1. Users: [README](README.md) → [QUICK_START](QUICK_START.md)
-2. Developers: [QUICK_START](QUICK_START.md) → [CI/CD Pipeline](docs/developer-guide/ci-cd-pipeline.md) → [Technical Reference](docs/architecture/technical-reference.md)
-
-[Back to top](#logseq-template-graph)
-
-## 🌟 Why Use This Template?
-
-### vs. Starting from Scratch
-
-❌ **Without template:**
-- Blank slate, no structure
-- Inconsistent property names
-- Reinvent the wheel for common types
-- Hours of setup work
-
-✅ **With this template:**
-- Instant structure for common types
-- Schema.org standard naming
-- Ready to use in seconds
-- Battle-tested vocabulary
-
-### vs. Tana
-
-This template brings **Tana's supertag experience** to Logseq:
-
-| Feature | Tana | This Template |
-|---------|------|---------------|
-| Typed objects | ✅ Supertags | ✅ Classes |
-| Auto fields | ✅ | ✅ Properties |
-| Inheritance | ✅ | ✅ Class parents |
-| Open source | ❌ Proprietary | ✅ MIT License |
-| Local-first | ❌ Cloud | ✅ Local SQLite |
-| Cost | 💰 Paid | 🆓 Free |
-
-## 🤝 Contributing
-
-Contributions welcome! We'd love your help expanding this template library.
-
-### How to Contribute
-
-1. **Fork** this repository
-2. **Set up** the development environment ([guide](QUICK_START.md#for-developers-set-up-development-environment))
-3. **Make changes** in your Logseq graph
-4. **Export** using `./scripts/export.sh`
-5. **Submit** a pull request
-
-### What to Contribute
-
-- New Schema.org classes (Book, Article, Recipe, Product, etc.)
-- Additional properties for existing classes
-- Domain-specific templates (Research, CRM, Project Management)
-- Documentation improvements
-- Bug fixes and validation improvements
-
-### Contribution Guidelines
-
-- Follow Schema.org naming conventions
-- Include icons and descriptions for new classes/properties
-- Test imports before submitting
-- Update documentation as needed
-
-**See:** [CI/CD Pipeline](docs/developer-guide/ci-cd-pipeline.md) for detailed development process
-
-[Back to top](#logseq-template-graph)
-
-## 📖 Learn More
-
-### About the Technologies
-
-- **Logseq Database** - SQLite-based knowledge management (2025 alpha)
-  - [Official Docs](https://docs.logseq.com)
-  - [DB Version Guide](https://github.com/logseq/docs/blob/master/db-version.md)
-
-- **Schema.org** - Structured vocabulary for the web
-  - [Schema.org Homepage](https://schema.org)
-  - [Person Type](https://schema.org/Person)
-  - [Organization Type](https://schema.org/Organization)
-  - [Event Type](https://schema.org/Event)
-
-- **Tana** - Inspiration for supertag paradigm
-  - [Tana Supertags](https://tana.inc/docs/supertags)
-
-## 🗺️ Roadmap
-
-### Phase 1: Core Foundation ✅
-- [x] Core classes (Person, Organization, Event, Place)
-- [x] Automated export workflow
-- [x] Comprehensive documentation
-- [x] CI/CD pipeline
-
-### Phase 2: Expansion 🚧
-- [ ] Add CreativeWork classes (Book, Article, Recipe)
-- [ ] Add Product and Review classes
-- [ ] Community sharing and feedback
-
-### Phase 3: Ecosystem 🔮
-- [ ] Multiple template variants (CRM, Research, Content)
-- [ ] Query templates and examples
-- [ ] Video tutorials
-- [ ] Template marketplace
-
-[Back to top](#logseq-template-graph)
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE)
-
-## 💬 Community & Support
-
-### Get Help
-- [GitHub Issues](https://github.com/C0ntr0lledCha0s/logseq-template-graph/issues) - Bug reports and feature requests
-- [Logseq Forums](https://discuss.logseq.com) - General discussion
-- [Documentation](.) - Comprehensive guides
-
-### Stay Updated
-- Watch this repository for new releases
-- Check the [Roadmap](#-roadmap) for upcoming features
-- Join discussions in issues and pull requests
-
-## 🙏 Acknowledgments
-
-- **Logseq Team** - For building an amazing open-source knowledge tool
-- **Schema.org** - For providing standardized vocabulary
-- **Tana** - For pioneering the supertag paradigm
-- **Community** - For feedback and contributions
-
-[Back to top](#logseq-template-graph)
-
----
-
-**Made with ❤️ for the Logseq community**
-
-*Give Logseq Database the structure it deserves! ⚡*
-
-**Quick Links:** [Quick Start](QUICK_START.md) | [Developer Guide](docs/developer-guide/ci-cd-pipeline.md) | [📚 Documentation](docs/README.md) | [Contributing](#-contributing)
+MIT, see [LICENSE](LICENSE).

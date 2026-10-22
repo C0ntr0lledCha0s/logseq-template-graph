@@ -1,3 +1,42 @@
+## **2.0.0**&emsp;<sub><sup>2026-10-21 ([v1.2.0...v2.0.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v1.2.0...v2.0.0))</sup></sub>
+
+**Breaking:** the template is now a single schema library with fixed names. Graphs built from earlier templates are not compatible.
+
+### Breaking Changes
+
+- Class and property idents are now fixed Schema.org names: `:schema.class/<Name>` and `:schema.property/<name>`. The random-suffix `:user.*` idents are gone.
+- Entries that are not Schema.org terms (18) live under `:custom.class/*` and `:custom.property/*`.
+- Releases publish exactly two files, `schema-library.edn` and `schema-presets.edn`. The per-preset `logseq_db_Templates_*.edn` files are no longer published.
+- The curation workflow is now: edit `source/` EDN by hand, then run `bb test && bb build && bb validate`. The Logseq export/split round trip (`export.sh`, `split.clj`) has been removed.
+
+### Features & Enhancements
+
+- The built library is also committed under `library/` (fetched by the Ontology Sync plugin).
+- Every Schema.org entry carries a `:schema.property/url` link to schema.org.
+- Presets list classes, and the properties each class brings, so the Ontology Sync role builder can merge and trim them.
+- `bb validate` checks:
+  - names against the vendored Schema.org vocabulary, and dangling references
+  - case collisions and preset contents
+  - url/title invariants and consistent property order
+- `bb check-import` imports the library into a fresh Logseq DB graph using Logseq's own import code, then re-imports it to prove nothing changes. It runs in CI and before every release.
+- The build normalises class property order. Logseq's import rejects conflicting orders.
+
+### Fixes and Renames
+
+- Spellings corrected to Schema.org:
+  - `LivestyleModification` → `LifestyleModification`
+  - `ChildernsEvent` → `ChildrensEvent`
+  - `Website` → `WebSite`
+  - `backStory` → `backstory`
+  - `requiredAge` → `requiredMinAge`
+  - `Parents` → `parent`
+- `serviceArea` → `areaServed`, since Schema.org supersedes `serviceArea`.
+- `readBy` is now a Schema.org property.
+- Removed: the unused duplicate property `Event` (the property `event` and class `Event` remain), the test property `NewTest`, and `sourceSchema` (replaced by `url`).
+- Malformed source files now fail the build with the file name, rather than silently dropping entries.
+
+<br>
+
 ## **1.2.0**&emsp;<sub><sup>2026-10-21 ([v1.1.0...v1.2.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v1.1.0...v1.2.0))</sup></sub>
 
 ### Features & Enhancements

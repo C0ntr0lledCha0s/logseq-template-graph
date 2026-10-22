@@ -14,26 +14,25 @@ catch {
 
 if ($changedFiles -match "^source/") {
     Write-Host ""
-    Write-Host "📦 Source modules changed during merge - rebuilding..." -ForegroundColor Cyan
+    Write-Host "Source files changed during merge - rebuilding..." -ForegroundColor Cyan
     Write-Host ""
 
-    # Run build
-    try {
-        $buildOutput = npm run build:full 2>&1 | Select-Object -Last 5
-        Write-Host $buildOutput
-
+    # Run build and validation
+    bb build 2>&1 | Select-Object -Last 5 | Write-Host
+    $buildExit = $LASTEXITCODE
+    if ($buildExit -eq 0) {
+        bb validate 2>&1 | Select-Object -Last 5 | Write-Host
+        $buildExit = $LASTEXITCODE
+    }
+    if ($buildExit -eq 0) {
         Write-Host ""
-        Write-Host "✓ Templates rebuilt successfully" -ForegroundColor Green
-        Write-Host ""
-        Write-Host "⚠️  Review changes in build/ directory before committing." -ForegroundColor Yellow
+        Write-Host "Schema library rebuilt and validated" -ForegroundColor Green
         Write-Host ""
     }
-    catch {
+    else {
         Write-Host ""
-        Write-Host "Build failed after merge!" -ForegroundColor Red
-        Write-Host ""
-        Write-Host "Run /diagnose full in Claude Code for analysis" -ForegroundColor Yellow
-        Write-Host "Or run: npm run build:full"
+        Write-Host "Build or validation failed after merge!" -ForegroundColor Red
+        Write-Host "Run: bb test && bb build && bb validate"
         Write-Host ""
         exit 1
     }

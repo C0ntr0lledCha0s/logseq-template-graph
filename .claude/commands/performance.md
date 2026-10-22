@@ -25,9 +25,7 @@ This command provides comprehensive performance monitoring for the template deve
 **Analysis:**
 ```bash
 # Time recent builds
-time bb scripts/build.clj full
-time bb scripts/build.clj crm
-time bb scripts/build.clj research
+time bb build
 
 # Check git history for build time changes
 git log --grep="build" --oneline -10
@@ -69,9 +67,9 @@ Current Build Times (avg of 3 runs):
 **Analysis:**
 ```bash
 # Get current stats
-grep -c ":user.class/" build/logseq_db_Templates_full.edn
-grep -c ":user.property/" build/logseq_db_Templates_full.edn
-ls -lh build/logseq_db_Templates_full.edn
+grep -c ":schema.class/" build/schema-library.edn
+grep -c ":schema.property/" build/schema-library.edn
+ls -lh build/schema-library.edn
 
 # Historical data from git
 git log --all --oneline --stat -- "*.edn"
@@ -259,7 +257,7 @@ Most Active Areas:
 **Analysis:**
 ```bash
 # Check validation
-./scripts/validate.sh build/*.edn
+bb validate
 
 # Check docs coverage
 find docs -name "*.md" | wc -l
@@ -418,11 +416,11 @@ Default: Show in terminal with colors and emojis
 ### Data Collection
 ```bash
 # Build times
-time bb scripts/build.clj full 2>&1 | grep real
+time bb build 2>&1 | grep real
 
 # Template stats
-grep -c ":user.class/" build/*.edn
-grep -c ":user.property/" build/*.edn
+grep -c ":schema.class/" build/*.edn
+grep -c ":schema.property/" build/*.edn
 ls -lh build/*.edn
 
 # Git metrics
@@ -436,7 +434,7 @@ gh run list --limit 50 --json status,conclusion,createdAt
 ### Trend Calculation
 ```bash
 # Compare with 30 days ago
-git show HEAD~30:build/logseq_db_Templates_full.edn | grep -c ":user.class/"
+git show HEAD~30:build/schema-library.edn | grep -c ":schema.class/"
 
 # Growth rate
 current=632

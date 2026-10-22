@@ -77,7 +77,7 @@ grep -r "Person" source/
 # Result: Exists in source/person/classes.edn
 
 # Step 2: Check properties
-grep -A 50 ":user.class/Person" source/person/classes.edn
+grep -A 50 ":schema.class/Person" source/person/classes.edn
 # Result: Person has email, telephone, and 28 other properties
 
 # Step 3: Search for duplicate requests
@@ -369,7 +369,7 @@ grep -r "Event" source/
 # Result: Event class exists in source/event/classes.edn
 
 # Step 2: Check current Event properties
-grep -A 30 ":user.class/Event" source/event/classes.edn
+grep -A 30 ":schema.class/Event" source/event/classes.edn
 # Result: Has startDate, endDate, location, organizer
 
 # Step 3: What properties are requested?
@@ -535,7 +535,7 @@ birthDate:: [[1990-05-15]]
 **CRM Template:**
 For contact management specifically, use the CRM preset:
 ```bash
-# Import build/logseq_db_Templates_crm.edn
+# Import build/schema-library.edn
 ```
 
 This includes Person, Organization, and contact-focused properties.

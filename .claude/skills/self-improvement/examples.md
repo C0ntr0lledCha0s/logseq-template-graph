@@ -503,8 +503,8 @@ grep -o '\`[^`]*\.md\`' CLAUDE.md
 grep -o '\`[^`]*\.sh\`' CLAUDE.md
 
 # Check if they exist
-find . -name "logseq_db_Templates.edn"
-find . -name "export.sh"
+find . -name "schema-library.edn"
+find . -name "build.clj"
 ```
 
 **Result:**
@@ -520,8 +520,8 @@ find . -name "export.sh"
 
 # Actual:
 wc -l logseq_db_Templates.edn  # Verify line count
-grep -c ':user.class/' src/**/*.edn  # Count classes
-grep -c ':user.property/' src/**/*.edn  # Count properties
+grep -c ':schema.class/' src/**/*.edn  # Count classes
+grep -c ':schema.property/' src/**/*.edn  # Count properties
 ```
 
 **Result:**
@@ -532,7 +532,7 @@ grep -c ':user.property/' src/**/*.edn  # Count properties
 
 **CLAUDE.md describes:**
 ```markdown
-npm run export  # Exports → auto-splits into src/ modules
+bb test && bb build && bb validate  # Edit source/ then build
 ```
 
 **Actual behavior:**

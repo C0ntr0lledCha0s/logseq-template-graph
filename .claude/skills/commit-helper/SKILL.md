@@ -38,7 +38,7 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 - `classes` - Schema.org class additions/modifications
 - `properties` - Schema.org property additions/modifications
 - `ci` - CI/CD pipeline changes
-- `scripts` - Build, export, validation scripts
+- `scripts` - Build and validation scripts
 - `docs` - Documentation files
 - `release` - Release-related changes
 - `modular` - Modular architecture changes
@@ -172,7 +172,7 @@ be :many to support multiple spouses (e.g., historical records).
 ```
 git diff --cached
   → docs/user-guide/installation.md (+15, -8)
-  → docs/modular/quickstart.md (+3, -1)
+  → docs/developer-guide/ci-cd-pipeline.md (+3, -1)
 
 Suggestion:
 docs: update installation instructions for Windows
@@ -188,9 +188,7 @@ git diff --cached
   → Multiple files across different modules
 
 Suggestion:
-chore: export templates after local development
-
-Auto-generated from Logseq export on 2025-11-08
+chore: update dependencies
 ```
 
 ## Validation Features

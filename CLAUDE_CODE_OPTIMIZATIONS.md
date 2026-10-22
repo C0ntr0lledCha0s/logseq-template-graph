@@ -1,3 +1,5 @@
+> **Historical:** written before v2.0.0 (schema library with fixed schema.* names); commands and file names here are out of date.
+
 # Claude Code Optimizations - Implementation Summary
 
 ## Overview
@@ -485,7 +487,6 @@ Total: ~15 minutes
 - [CLAUDE_CODE_SETUP.txt](CLAUDE_CODE_SETUP.txt) - Setup guide
 
 ### Commands
-- [/export](.claude/commands/export.md)
 - [/add-class](.claude/commands/add-class.md) (basic)
 - [/add-property](.claude/commands/add-property.md) (basic)
 - [/test-workflow](.claude/commands/test-workflow.md) ⭐ Phase 1

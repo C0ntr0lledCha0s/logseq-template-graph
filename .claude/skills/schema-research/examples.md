@@ -36,7 +36,7 @@ Direct Recipe Properties (15):
 ###Step 3: Check Template Status
 ```bash
 # Check if Recipe exists
-grep -r ":user.class/Recipe" source/
+grep -r ":schema.class/Recipe" source/
 # Result: Not found
 
 # Check if CreativeWork exists
@@ -101,7 +101,7 @@ Recommendation:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Add to: creative-work/ module
-Parent: :user.class/CreativeWork-xY9zK
+Parent: :schema.class/CreativeWork
 
 Required Properties (Add to creative-work/properties.edn):
 ➕ recipeIngredient (:default, :many) - Core ingredient list
@@ -133,10 +133,10 @@ Next Steps:
 
 1. Add Recipe class to source/creative-work/classes.edn:
    ```clojure
-   :user.class/Recipe-aB3cD4
+   :schema.class/Recipe
    {:block/title "Recipe"
-    :build/class-parent :user.class/CreativeWork-xY9zK
-    :build/class-properties [:user.property/recipeIngredient-eF5gH6 ...]
+    :build/class-extends [:schema.class/CreativeWork]
+    :build/class-properties [:schema.property/recipeIngredient ...]
     :build/properties
     {:logseq.property/icon {:id "🍳" :type :emoji}
      :logseq.property/description "A recipe with cooking instructions"}}
@@ -148,7 +148,7 @@ Next Steps:
 
 4. Build and test:
    ```bash
-   npm run build:full
+   bb test && bb build && bb validate
    # Import into Logseq test graph
    # Create test Recipe page
    # Verify properties appear
@@ -193,7 +193,7 @@ All Person Properties (50+ from Schema.org):
 
 ### Step 2: Check Template's Person Class
 ```bash
-grep -A 20 ":user.class/Person" source/person/classes.edn
+grep -A 20 ":schema.class/Person" source/person/classes.edn
 # Extract current properties list
 ```
 
@@ -352,11 +352,11 @@ Cardinality: :db.cardinality/one (single birth date)
 
 Definition:
 ```clojure
-:user.property/birthDate-xY9zK
+:schema.property/birthDate
 {:db/cardinality :db.cardinality/one
  :logseq.property/type :date
  :block/title "birthDate"
- :build/property-classes [:user.class/Person-aB1cD]
+ :build/property-classes [:schema.class/Person]
  :build/properties
  {:logseq.property/icon {:id "🎂" :type :emoji}
   :logseq.property/description "Date of birth"}}
@@ -434,14 +434,14 @@ Assign to Classes:
 
 Property Definition:
 ```clojure
-:user.property/location-pQ2rS
+:schema.property/location
 {:db/cardinality :db.cardinality/many
  :logseq.property/type :node
  :block/title "location"
  :build/property-classes
- [:user.class/Event-aB1cD
-  :user.class/Organization-eF3gH
-  :user.class/Action-iJ4kL]
+ [:schema.class/Event
+  :schema.class/Organization
+  :schema.class/Action]
  :build/properties
  {:logseq.property/icon {:id "📍" :type :emoji}
   :logseq.property/description "Physical or virtual location"}}

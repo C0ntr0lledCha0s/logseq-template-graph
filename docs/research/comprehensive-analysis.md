@@ -1,3 +1,5 @@
+> **Historical:** written before v2.0.0 (schema library with fixed schema.* names); commands and file names here are out of date.
+
 # Comprehensive Research Report: Logseq Template Graph Project
 
 ## Executive Summary
