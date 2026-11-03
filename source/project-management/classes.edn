@@ -1,0 +1,184 @@
+{:classes
+ {
+  :custom.class/PMItem
+  {:block/title "PM Item",
+   :build/class-properties
+   [:custom.property/adId
+    :custom.property/owner
+    :custom.property/scope],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "hierarchy-2"},
+    :logseq.property/description "Abstract root of the project-management schema. Never applied directly; every PM tag extends it and inherits ad-id, owner and scope."}}
+  :custom.class/Container
+  {:block/title "Container",
+   :build/class-extends [:custom.class/PMItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "box"},
+    :logseq.property/description "Abstract: a place work lives (Workspace, Portfolio, Project). Not applied directly."}}
+  :custom.class/Workspace
+  {:block/title "Workspace",
+   :build/class-extends [:custom.class/Container],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "building"},
+    :logseq.property/description "Top-level container that groups Portfolios."}}
+  :custom.class/Portfolio
+  {:block/title "Portfolio",
+   :build/class-extends [:custom.class/Container],
+   :build/class-properties
+   [:custom.property/inWorkspace],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "folders"},
+    :logseq.property/description "A set of Projects pursuing shared Objectives. Belongs to a Workspace via in-workspace."}}
+  :schema.class/Project
+  {:block/title "Project",
+   :build/class-extends [:custom.class/Container],
+   :build/class-properties
+   [:custom.property/inPortfolio
+    :custom.property/repo
+    :custom.property/projectType
+    :custom.property/defaultWorkflow],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "folder"},
+    :logseq.property/description "A bounded effort with its own Goals, Ideas and Work Items. Belongs to a Portfolio via in-portfolio.",
+    :schema.property/url "https://schema.org/Project"}}
+  :custom.class/Strategy
+  {:block/title "Strategy",
+   :build/class-extends [:custom.class/PMItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "compass"},
+    :logseq.property/description "Abstract: why and what (Vision, Direction, Idea). Not applied directly."}}
+  :custom.class/Vision
+  {:block/title "Vision",
+   :build/class-extends [:custom.class/Strategy],
+   :build/class-properties
+   [:custom.property/visionStatus
+    :custom.property/statement],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "eye"},
+    :logseq.property/description "One-sentence north star for a scope. Only one Vision per scope should have vision-status = current."}}
+  :custom.class/Direction
+  {:block/title "Direction",
+   :build/class-extends [:custom.class/Strategy],
+   :build/class-properties
+   [:custom.property/goalStatus
+    :custom.property/rank
+    :custom.property/points
+    :custom.property/successCriteria
+    :custom.property/parentDirection
+    :custom.property/progress],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "arrow-up-right"},
+    :logseq.property/description "Abstract parent shared by Objective and Goal. Not applied directly."}}
+  :custom.class/Objective
+  {:block/title "Objective",
+   :build/class-extends [:custom.class/Direction],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "target-arrow"},
+    :logseq.property/description "Portfolio-level goal (scope = a Portfolio). May point to a parent Objective via parent-direction."}}
+  :custom.class/Goal
+  {:block/title "Goal",
+   :build/class-extends [:custom.class/Direction],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "target"},
+    :logseq.property/description "Project-level goal (scope = a Project). Points to its Objective, or to a parent Goal when split, via parent-direction."}}
+  :custom.class/Idea
+  {:block/title "Idea",
+   :build/class-extends [:custom.class/Strategy],
+   :build/class-properties
+   [:custom.property/forGoal
+    :custom.property/ideaStage
+    :custom.property/horizon
+    :custom.property/reach
+    :custom.property/impact
+    :custom.property/effort
+    :custom.property/confidence
+    :custom.property/score
+    :custom.property/deliveredBy],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "bulb"},
+    :logseq.property/description "A bet that moves a Goal; acts as its key result. Linked to the Goal via for-goal and to the delivering work via delivered-by."}}
+  :custom.class/Governance
+  {:block/title "Governance",
+   :build/class-extends [:custom.class/PMItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "scale"},
+    :logseq.property/description "Abstract: records that steer work (Decision, Obstacle, Spec). Not applied directly."}}
+  :custom.class/Decision
+  {:block/title "Decision",
+   :build/class-extends [:custom.class/Governance],
+   :build/class-properties
+   [:custom.property/forGoal
+    :schema.property/question
+    :custom.property/decision
+    :custom.property/rationale
+    :custom.property/decidedBy
+    :custom.property/supersedes],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "gavel"},
+    :logseq.property/description "A recorded decision: the question, the answer, and why. Can supersede an earlier Decision."}}
+  :custom.class/Obstacle
+  {:block/title "Obstacle",
+   :build/class-extends [:custom.class/Governance],
+   :build/class-properties
+   [:custom.property/obstacleType
+    :custom.property/severity
+    :custom.property/obstacleStatus
+    :custom.property/mitigation
+    :custom.property/affects],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "barrier-block"},
+    :logseq.property/description "Something blocking or degrading progress. Links to what it affects; Work Items point to it via blocked-by."}}
+  :custom.class/Spec
+  {:block/title "Spec",
+   :build/class-extends [:custom.class/Governance],
+   :build/class-properties
+   [:custom.property/specType
+    :custom.property/specStatus
+    :custom.property/specifies],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "file-description"},
+    :logseq.property/description "A design, architecture or implementation spec for one or more Work Items."}}
+  :custom.class/WorkItem
+  {:block/title "Work Item",
+   :build/class-extends [:custom.class/PMItem :logseq.class/Task],
+   :build/class-properties
+   [:custom.property/points
+    :custom.property/forGoal
+    :custom.property/parentWork
+    :custom.property/phase
+    :custom.property/gitBranch
+    :custom.property/prUrl
+    :custom.property/blockedBy],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "checkbox"},
+    :logseq.property/description "A unit of work. Also extends the built-in Task, so it has Status, Priority and Deadline. A plain task is tagged Work Item directly. Agent Deck status mapping: backlog=Backlog, planning=Todo, running=Doing, review=In Review, done=Done, halted=Halted. Priority mapping: highest=Urgent, high=High, medium=Medium, low/lowest=Low."}}
+  :custom.class/Epic
+  {:block/title "Epic",
+   :build/class-extends [:custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "stack-2"},
+    :logseq.property/description "Large body of work. Has no parent-work. Delivers an Idea."}}
+  :custom.class/Feature
+  {:block/title "Feature",
+   :build/class-extends [:custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "sparkles"},
+    :logseq.property/description "New capability. Sits under an Epic or at top level."}}
+  :custom.class/Improvement
+  {:block/title "Improvement",
+   :build/class-extends [:custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "trending-up"},
+    :logseq.property/description "Enhancement to existing behaviour. Sits under an Epic or at top level."}}
+  :custom.class/Bug
+  {:block/title "Bug",
+   :build/class-extends [:custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "bug"},
+    :logseq.property/description "Defect to fix. Sits under an Epic or at top level."}}
+  :custom.class/Subtask
+  {:block/title "Subtask",
+   :build/class-extends [:custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/icon {:type :tabler-icon, :id "subtask"},
+    :logseq.property/description "Always sits under a non-epic Work Item via parent-work. Maximum depth is 2."}}}}
