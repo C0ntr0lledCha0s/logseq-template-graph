@@ -1,0 +1,369 @@
+{:properties
+ {
+  :custom.property/adId
+  {:block/title "ad-id",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Stable ID in Agent Deck, e.g. goal-012, t-045, idea-3, dec-001.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/owner
+  {:block/title "owner",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Person or agent responsible.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/scope
+  {:block/title "scope",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/Portfolio :schema.class/Project],
+   :build/properties
+   {:logseq.property/description "The container this item belongs to.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/inWorkspace
+  {:block/title "in-workspace",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/Workspace],
+   :build/properties
+   {:logseq.property/description "Workspace this Portfolio belongs to.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/inPortfolio
+  {:block/title "in-portfolio",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/Portfolio],
+   :build/properties
+   {:logseq.property/description "Portfolio this Project belongs to.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/projectType
+  {:block/title "project-type",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "app", :uuid #uuid "c1657db4-9a4f-51cc-b647-b5bdb5a6deaf"}
+    {:value "library", :uuid #uuid "14a34d03-819e-53d6-9861-d48512045c56"}
+    {:value "service", :uuid #uuid "9a813c8f-69a7-5759-95f9-128302334ef5"}
+    {:value "docs", :uuid #uuid "b694ebbd-bedd-564f-8349-21699c6c809f"}
+    {:value "infra", :uuid #uuid "7eb7b527-bde5-50ac-aed0-c7001064306c"}],
+   :build/properties
+   {:logseq.property/description "Kind of project.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/defaultWorkflow
+  {:block/title "default-workflow",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Default workflow used for this project's work.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/visionStatus
+  {:block/title "vision-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "draft", :uuid #uuid "ad7651f8-cd7b-5d89-b253-224efc753ab5"}
+    {:value "current", :uuid #uuid "f77ec8a6-0301-5719-9978-bf4290f1b64b"}
+    {:value "retired", :uuid #uuid "ae1bd7cc-b9e4-503d-804d-71e571a842ac"}],
+   :build/properties
+   {:logseq.property/description "Lifecycle of the Vision. Only one current Vision per scope.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/statement
+  {:block/title "statement",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "One-sentence north star: why this exists and what winning looks like.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/goalStatus
+  {:block/title "goal-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "active", :uuid #uuid "73e8f484-d2a9-5977-b3f6-93921e056424"}
+    {:value "paused", :uuid #uuid "a5481d53-f7f3-560c-9233-f966647b867f"}
+    {:value "achieved", :uuid #uuid "0292dd15-3f0c-52fd-aabe-4b24a6c4547a"}
+    {:value "abandoned", :uuid #uuid "41a8a3e2-4123-5314-b714-d8387cd8864a"}],
+   :build/properties
+   {:logseq.property/description "State of the Objective or Goal. achieved is set by human sign-off only.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/rank
+  {:block/title "rank",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Priority order within its scope; 1 = first.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/points
+  {:block/title "points",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Size estimate. More than 8 means decompose before starting.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/successCriteria
+  {:block/title "success-criteria",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "One line: how we know it is done.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/parentDirection
+  {:block/title "parent-direction",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/Objective :custom.class/Goal],
+   :build/properties
+   {:logseq.property/description "A Goal points to its Objective, or to a parent Goal when split; an Objective may point to a parent Objective.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/progress
+  {:block/title "progress",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Percent complete = Ideas at impact / Ideas not at wont, rolled up from children. Maintained externally (e.g. by Agent Deck); Logseq does not compute it.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/forGoal
+  {:block/title "for-goal",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/Goal :custom.class/Objective],
+   :build/properties
+   {:logseq.property/description "The Goal or Objective this item serves.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/ideaStage
+  {:block/title "idea-stage",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "parking", :uuid #uuid "6d6fed7f-5317-5b69-a7e4-99ec1b26693e"}
+    {:value "discovery", :uuid #uuid "2a757284-6c70-5061-8061-37638d80b4bf"}
+    {:value "ready", :uuid #uuid "198b0039-36d8-57e0-8afb-d4aa3b83c1aa"}
+    {:value "delivery", :uuid #uuid "34e42470-032c-5dfe-b5e2-a3600a2b0a89"}
+    {:value "impact", :uuid #uuid "948b42ee-eb56-5117-85cd-d40e87f78c2a"}
+    {:value "wont", :uuid #uuid "09fe89f6-91e3-5721-a41c-8230d3ff048d"}],
+   :build/properties
+   {:logseq.property/description "Where the Idea is in its lifecycle.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/horizon
+  {:block/title "horizon",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "now", :uuid #uuid "4703f0fd-060a-5809-be59-ea263fe42229"}
+    {:value "next", :uuid #uuid "945dbbae-9e50-5922-8c9f-dacf965f3199"}
+    {:value "later", :uuid #uuid "6e53f533-cc6d-5d13-b1c2-d2a71c3f4ccf"}],
+   :build/properties
+   {:logseq.property/description "Roadmap horizon. Blank = not on the roadmap; always blank at impact or wont.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/reach
+  {:block/title "reach",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "RICE reach, 1-5.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/impact
+  {:block/title "impact",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "RICE impact, 1-5.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/effort
+  {:block/title "effort",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "RICE effort, 1-5.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/confidence
+  {:block/title "confidence",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "RICE confidence, 0-100 (%).",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/score
+  {:block/title "score",
+   :logseq.property/type :number,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "reach x impact x confidence% / effort. Maintained externally; Logseq does not compute it.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/deliveredBy
+  {:block/title "delivered-by",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/many,
+   :build/property-classes [:custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/description "Work Items that deliver this Idea.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/parentWork
+  {:block/title "parent-work",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/Epic :custom.class/Feature :custom.class/Improvement :custom.class/WorkItem :custom.class/Bug],
+   :build/properties
+   {:logseq.property/description "Parent Work Item. Epic has no parent; Feature/Improvement/Bug/plain task sit under an Epic or at top level; Subtask always sits under a non-epic item. Max depth 2.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/phase
+  {:block/title "phase",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "brainstorm", :uuid #uuid "efff96af-e103-52f6-b743-d165c1a66f64"}
+    {:value "plan", :uuid #uuid "17a1f554-3af8-5768-95b6-d94a50e47676"}
+    {:value "execute", :uuid #uuid "4742e74c-a57f-53c3-b4a2-c90ebcd7b805"}
+    {:value "review", :uuid #uuid "49cb450c-a680-5b08-a503-7f57047ea703"}],
+   :build/properties
+   {:logseq.property/description "Workflow phase of the Work Item.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/gitBranch
+  {:block/title "branch",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Git branch name.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/prUrl
+  {:block/title "pr-url",
+   :logseq.property/type :url,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Pull request URL.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/blockedBy
+  {:block/title "blocked-by",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/many,
+   :build/property-classes [:custom.class/Obstacle],
+   :build/properties
+   {:logseq.property/description "Obstacles blocking this Work Item.",
+    :logseq.property/exclude-from-graph-view true}}
+  :schema.property/question
+  {:block/title "question",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "The question being decided.",
+    :logseq.property/exclude-from-graph-view true,
+    :schema.property/url "https://schema.org/question"}}
+  :custom.property/decision
+  {:block/title "decision",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "What was decided.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/rationale
+  {:block/title "rationale",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "Why it was decided.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/decidedBy
+  {:block/title "decided-by",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "human", :uuid #uuid "60d36d29-e157-515a-857c-04cb3ac7c26d"}
+    {:value "human-via-chat", :uuid #uuid "4eeb962a-e876-565d-8f89-0a3c23156857"}
+    {:value "conductor-gate", :uuid #uuid "3e4ed0fa-b822-573a-ac43-ee67ef10992e"}
+    {:value "conductor-round", :uuid #uuid "d706c66f-8930-52c0-8c50-d57aebc203db"}],
+   :build/properties
+   {:logseq.property/description "How the decision was made.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/supersedes
+  {:block/title "supersedes",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/Decision],
+   :build/properties
+   {:logseq.property/description "Earlier Decision this one replaces.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/obstacleType
+  {:block/title "obstacle-type",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "technical", :uuid #uuid "2724413a-c8be-5e18-9ed6-8e41509f6d5a"}
+    {:value "resource", :uuid #uuid "7642a4d8-b7f5-51e0-8200-0daee522b436"}
+    {:value "dependency", :uuid #uuid "a858dd0d-3e9d-5d37-9e7c-d99c4adc2b75"}
+    {:value "knowledge", :uuid #uuid "a43e432e-3566-56eb-aaf6-5dc0bef92ef0"}
+    {:value "external", :uuid #uuid "d23314c0-e97e-552c-b278-b674e6643709"}],
+   :build/properties
+   {:logseq.property/description "Kind of obstacle.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/severity
+  {:block/title "severity",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "blocking", :uuid #uuid "2764ef45-55d0-5126-b1ad-805fe445e4eb"}
+    {:value "degrading", :uuid #uuid "540c4cf6-7c17-539f-8bd6-f7d11fd1d0d1"}
+    {:value "risk", :uuid #uuid "9807d900-fed5-5494-8c95-f36b0b3b150e"}],
+   :build/properties
+   {:logseq.property/description "How badly it affects progress.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/obstacleStatus
+  {:block/title "obstacle-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "active", :uuid #uuid "f569a853-9654-5185-9d7a-3a5ecc15a2fe"}
+    {:value "mitigated", :uuid #uuid "9b261814-d3df-5bb7-830d-dc780ef6af78"}
+    {:value "resolved", :uuid #uuid "110ec840-b23e-5eb2-84c8-383e02aa19e3"}
+    {:value "accepted", :uuid #uuid "146e10d3-e6f9-5d93-91eb-c6a0e85459d1"}],
+   :build/properties
+   {:logseq.property/description "Current state of the obstacle.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/mitigation
+  {:block/title "mitigation",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/properties
+   {:logseq.property/description "What is being done about it.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/affects
+  {:block/title "affects",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/many,
+   :build/property-classes [:custom.class/Goal :custom.class/Objective :custom.class/Idea :custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/description "Items this obstacle affects.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/specType
+  {:block/title "spec-type",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "design", :uuid #uuid "762a1683-0f77-526c-93b2-35318f4316dc"}
+    {:value "architecture", :uuid #uuid "6f63b686-8b90-5712-81b8-203a78083ae7"}
+    {:value "implementation", :uuid #uuid "7828bf80-c098-533e-b823-f0d508b8c414"}],
+   :build/properties
+   {:logseq.property/description "Kind of spec.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/specStatus
+  {:block/title "spec-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "draft", :uuid #uuid "2f2a6860-2712-523d-b008-78150f23bc51"}
+    {:value "review", :uuid #uuid "ce716ec7-ba56-53bf-9925-a4b5aaab2bb4"}
+    {:value "approved", :uuid #uuid "9ee52066-e096-5034-8b83-f89e5bb8b6b9"}
+    {:value "superseded", :uuid #uuid "06d15d6d-507a-55cd-bd50-2af519e79aec"}
+    {:value "archived", :uuid #uuid "e70c4131-37f4-59f7-8917-37879f62734d"}],
+   :build/properties
+   {:logseq.property/description "Lifecycle of the spec.",
+    :logseq.property/exclude-from-graph-view true}}
+  :custom.property/specifies
+  {:block/title "specifies",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/many,
+   :build/property-classes [:custom.class/WorkItem],
+   :build/properties
+   {:logseq.property/description "Work Items this spec covers.",
+    :logseq.property/exclude-from-graph-view true}}}}

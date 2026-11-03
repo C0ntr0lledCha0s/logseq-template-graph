@@ -60,6 +60,13 @@
   (is (empty? (validate/errors (assoc-in (lib) [:classes :schema.class/Person :build/properties] {:logseq.property/icon {}
                                                                                                   :schema.property/url "https://schema.org/Person"}) [] vocab))))
 
+(deftest logseq-built-in-class-extends-allowed
+  (is (empty? (validate/errors (assoc-in (lib) [:classes :schema.class/Person :build/class-extends] [:logseq.class/Task]) [] vocab))))
+
+(deftest logseq-built-in-class-outside-class-position-flagged
+  (is (mentions? (validate/errors (assoc-in (lib) [:classes :schema.class/Person :build/class-properties] [:logseq.class/Task]) [] vocab)
+                 "logseq.class/Task")))
+
 (deftest user-ident-flagged
   (is (mentions? (validate/errors (assoc-in (lib) [:classes :schema.class/Person :build/class-extends] [:user.class/Thing-abc]) [] vocab)
                  "user.class/Thing-abc")))

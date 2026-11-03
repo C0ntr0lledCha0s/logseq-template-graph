@@ -1,4 +1,4 @@
-{:schema-library/version "2.0.0",
+{:schema-library/version "2.1.0",
  :presets
  [{:id "content",
    :name "Content Creation",
@@ -509,6 +509,12 @@
      :schema.property/educationalUse
      :schema.property/learningResourceType
      :schema.property/teaches],
+    :custom.class/Obstacle
+    [:custom.property/obstacleType
+     :custom.property/severity
+     :custom.property/obstacleStatus
+     :custom.property/mitigation
+     :custom.property/affects],
     :schema.class/Event
     [:schema.property/superEvent
      :schema.property/subEvent
@@ -531,6 +537,13 @@
      :schema.property/expertConsiderations
      :schema.property/physiologicalBenefits
      :schema.property/risks],
+    :custom.class/Decision
+    [:custom.property/forGoal
+     :schema.property/question
+     :custom.property/decision
+     :custom.property/rationale
+     :custom.property/decidedBy
+     :custom.property/supersedes],
     :schema.class/Service
     [:schema.property/category
      :schema.property/award
@@ -553,10 +566,27 @@
     [:schema.property/numberOfEmployees
      :schema.property/yearlyRevenue
      :schema.property/yearsInOperation],
+    :custom.class/WorkItem
+    [:custom.property/points
+     :custom.property/forGoal
+     :custom.property/parentWork
+     :custom.property/phase
+     :custom.property/gitBranch
+     :custom.property/prUrl
+     :custom.property/blockedBy],
+    :schema.class/Project
+    [:custom.property/inPortfolio
+     :custom.property/projectType
+     :custom.property/defaultWorkflow
+     :schema.property/codeRepository],
     :schema.class/ItemList
     [:schema.property/numberOfItems
      :schema.property/aggregateElement
      :schema.property/itemListOrder],
+    :custom.class/Spec
+    [:custom.property/specType
+     :custom.property/specStatus
+     :custom.property/specifies],
     :schema.class/ProgramMembership
     [:schema.property/member
      :schema.property/hostingOrganization
@@ -573,6 +603,7 @@
      :schema.property/trainNumber],
     :schema.class/Conversation [],
     :schema.class/Duration [],
+    :custom.class/Feature [],
     :schema.class/FlightReservation [],
     :schema.class/Game
     [:schema.property/characterAttribute
@@ -618,6 +649,7 @@
      :schema.property/suggestedGender
      :schema.property/suggestedMaxAge
      :schema.property/suggestedMinAge],
+    :custom.class/Portfolio [:custom.property/inWorkspace],
     :schema.class/SocialEvent [],
     :schema.class/SpreadsheetDigitalDocument [],
     :schema.class/TrainStation [],
@@ -659,9 +691,11 @@
      :schema.property/intensity
      :schema.property/repetitions
      :schema.property/restPeriods],
+    :custom.class/Improvement [],
     :schema.class/EducationalOrganization [:schema.property/alumni],
     :schema.class/TechArticle
     [:schema.property/dependencies :schema.property/proficiencyLevel],
+    :custom.class/Workspace [],
     :schema.class/OpinionNewsArticle [],
     :schema.class/TextDigitalDocument [],
     :schema.class/UserReview [],
@@ -686,6 +720,8 @@
      :schema.property/seller
      :schema.property/mealService
      :schema.property/flightNumber],
+    :custom.class/Vision
+    [:custom.property/visionStatus :custom.property/statement],
     :schema.class/EventReservation [],
     :schema.class/Movie
     [:schema.property/duration
@@ -741,6 +777,10 @@
      :schema.property/ticketedSeat],
     :schema.class/MemberProgram
     [:schema.property/hostingOrganization :schema.property/hasTiers],
+    :custom.class/PMItem
+    [:custom.property/adId
+     :custom.property/owner
+     :custom.property/scope],
     :custom.class/Business [],
     :schema.class/LodgingReservation
     [:schema.property/checkinTime
@@ -754,8 +794,10 @@
      :schema.property/director
      :schema.property/gameEdition
      :schema.property/gamePlatform],
+    :custom.class/Bug [],
     :schema.class/Recommendation [:schema.property/category],
     :schema.class/AdministrativeArea [],
+    :custom.class/Subtask [],
     :schema.class/TouristAttraction [:schema.property/touristType],
     :schema.class/TaxiReservation
     [:schema.property/partySize
@@ -888,6 +930,7 @@
      :schema.property/alumniOf
      :schema.property/affiliation
      :schema.property/additionalName],
+    :custom.class/Epic [],
     :schema.class/Episode
     [:schema.property/duration
      :schema.property/actor
@@ -936,11 +979,24 @@
      :schema.property/nextItem
      :schema.property/position
      :schema.property/previousItem],
+    :custom.class/Strategy [],
     :schema.class/Article
     [:schema.property/articleSection :schema.property/backstory],
     :schema.class/BoatReservation [],
+    :custom.class/Idea
+    [:custom.property/forGoal
+     :custom.property/ideaStage
+     :custom.property/horizon
+     :custom.property/reach
+     :custom.property/impact
+     :custom.property/effort
+     :custom.property/confidence
+     :custom.property/score
+     :custom.property/deliveredBy],
+    :custom.class/Goal [],
     :schema.class/TouristDestination
     [:schema.property/touristType :schema.property/includesAttraction],
+    :custom.class/Objective [],
     :schema.class/MusicRelease
     [:schema.property/duration
      :schema.property/catalogNumber
@@ -955,9 +1011,18 @@
      :custom.property/areas
      :custom.property/objective
      :custom.property/nextMeetingDate],
+    :custom.class/Governance [],
     :schema.class/PerformingGroup [],
+    :custom.class/Container [],
     :schema.class/Airport
     [:schema.property/iataCode :schema.property/icaoCode],
+    :custom.class/Direction
+    [:custom.property/goalStatus
+     :custom.property/rank
+     :custom.property/points
+     :custom.property/successCriteria
+     :custom.property/parentDirection
+     :custom.property/progress],
     :schema.class/QuantitativeValue
     [:schema.property/maxValue
      :schema.property/minValue
@@ -1017,6 +1082,76 @@
      :schema.property/associatedClaimReview
      :schema.property/associatedMediaReview
      :schema.property/associatedReview]}}
+  {:id "project-management",
+   :name "Project Management",
+   :description
+   "Vision, Objectives, Goals, Ideas, Work Items, Decisions, Obstacles and Specs",
+   :classes
+   {:custom.class/Obstacle
+    [:custom.property/obstacleType
+     :custom.property/severity
+     :custom.property/obstacleStatus
+     :custom.property/mitigation
+     :custom.property/affects],
+    :custom.class/Decision
+    [:custom.property/forGoal
+     :schema.property/question
+     :custom.property/decision
+     :custom.property/rationale
+     :custom.property/decidedBy
+     :custom.property/supersedes],
+    :custom.class/WorkItem
+    [:custom.property/points
+     :custom.property/forGoal
+     :custom.property/parentWork
+     :custom.property/phase
+     :custom.property/gitBranch
+     :custom.property/prUrl
+     :custom.property/blockedBy],
+    :schema.class/Project
+    [:custom.property/inPortfolio
+     :custom.property/projectType
+     :custom.property/defaultWorkflow
+     :schema.property/codeRepository],
+    :custom.class/Spec
+    [:custom.property/specType
+     :custom.property/specStatus
+     :custom.property/specifies],
+    :custom.class/Feature [],
+    :custom.class/Portfolio [:custom.property/inWorkspace],
+    :custom.class/Improvement [],
+    :custom.class/Workspace [],
+    :custom.class/Vision
+    [:custom.property/visionStatus :custom.property/statement],
+    :custom.class/PMItem
+    [:custom.property/adId
+     :custom.property/owner
+     :custom.property/scope],
+    :custom.class/Bug [],
+    :custom.class/Subtask [],
+    :custom.class/Epic [],
+    :custom.class/Strategy [],
+    :custom.class/Idea
+    [:custom.property/forGoal
+     :custom.property/ideaStage
+     :custom.property/horizon
+     :custom.property/reach
+     :custom.property/impact
+     :custom.property/effort
+     :custom.property/confidence
+     :custom.property/score
+     :custom.property/deliveredBy],
+    :custom.class/Goal [],
+    :custom.class/Objective [],
+    :custom.class/Governance [],
+    :custom.class/Container [],
+    :custom.class/Direction
+    [:custom.property/goalStatus
+     :custom.property/rank
+     :custom.property/points
+     :custom.property/successCriteria
+     :custom.property/parentDirection
+     :custom.property/progress]}}
   {:id "research",
    :name "Research",
    :description

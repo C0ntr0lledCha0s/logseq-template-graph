@@ -36,6 +36,12 @@
       (str where " references unknown ident " ref)
       (str where " has non-keyword entry " (pr-str ref)))))
 
+(defn- class-ref-errors
+  "Like ref-errors for positions that hold classes, which may also be Logseq
+  built-ins such as :logseq.class/Task."
+  [lib where refs]
+  (ref-errors lib where (remove #(and (keyword? %) (= "logseq.class" (namespace %))) refs)))
+
 (defn- vocab-errors
   [vocab idents]
   (for [ident idents
@@ -105,11 +111,11 @@
      (str ident " is in " section " with a mismatched namespace"))
    (for [[ident d] (:classes lib)
          e (concat (ref-errors lib (str ident " class-properties") (:build/class-properties d))
-                   (ref-errors lib (str ident " class-extends") (:build/class-extends d))
+                   (class-ref-errors lib (str ident " class-extends") (:build/class-extends d))
                    (ref-errors lib (str ident " build/properties") (keys (:build/properties d))))]
      e)
    (for [[ident d] (:properties lib)
-         e (concat (ref-errors lib (str ident " property-classes") (:build/property-classes d))
+         e (concat (class-ref-errors lib (str ident " property-classes") (:build/property-classes d))
                    (ref-errors lib (str ident " build/properties") (keys (:build/properties d))))]
      e)
    (property-order-errors lib)

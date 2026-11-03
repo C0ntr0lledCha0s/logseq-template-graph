@@ -1,3 +1,23 @@
+## **2.1.0**&emsp;<sub><sup>2026-11-03 ([v2.0.0...v2.1.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v2.0.0...v2.1.0))</sup></sub>
+
+Adds a project-management schema. Additive only: existing class and property idents are unchanged.
+
+### Features & Enhancements
+
+- New `source/project-management/` module with 21 classes and 42 properties, covering:
+  - strategy: Vision → Objective → Goal → Idea
+  - work: Work Item and its subtypes Epic, Feature, Improvement, Bug and Subtask
+  - governance: Decision, Obstacle and Spec
+- `Work Item` extends both `PM Item` and Logseq's built-in `Task`, so it has Status, Priority and Deadline.
+- `Project` uses Schema.org's `Project` class, extends both `Container` and `Organization`, and uses the existing `codeRepository` property.
+- New `project-management` preset. The `full` preset now includes all 21 new classes.
+- New `views/project-management.edn` with starter query views: Roadmap, Goal health, Up next, Orphans and Decision log. Import it with **Import EDN data** into a graph that already has the library.
+- `bb validate` accepts Logseq built-in classes (`:logseq.class/*`) in `class-extends` and `property-classes`.
+
+### Manual step
+
+- To use the "Halted" status, add it by hand to the built-in Status property. A library import can't add choices to built-in properties.
+
 ## **2.0.0**&emsp;<sub><sup>2026-10-21 ([v1.2.0...v2.0.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v1.2.0...v2.0.0))</sup></sub>
 
 **Breaking:** the template is now a single schema library with fixed names. Graphs built from earlier templates are not compatible.
