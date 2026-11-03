@@ -2086,10 +2086,6 @@
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
    :block/title "genre",
-   :build/closed-values
-   [{:value "Fantasy",
-     :uuid #uuid "684153b0-c950-4c69-82cb-e5997603052e",
-     :icon {:id "magic_wand", :type :emoji}}],
    :build/properties
    {:logseq.property/hide-empty-value false,
     :logseq.property/icon
