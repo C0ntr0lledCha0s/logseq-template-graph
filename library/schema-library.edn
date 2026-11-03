@@ -1742,7 +1742,8 @@
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description
-    "Default workflow used for this project's work."}},
+    "Default workflow used for this project's work.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/hasCertification
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2156,7 +2157,8 @@
     {:value "infra",
      :uuid #uuid "7eb7b527-bde5-50ac-aed0-c7001064306c"}],
    :build/properties
-   {:logseq.property/description "Kind of project."}},
+   {:logseq.property/description "Kind of project.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/dietFeatures
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2425,7 +2427,8 @@
    [:custom.class/Objective :custom.class/Goal],
    :build/properties
    {:logseq.property/description
-    "A Goal points to its Objective, or to a parent Goal when split; an Objective may point to a parent Objective."}},
+    "A Goal points to its Objective, or to a parent Goal when split; an Objective may point to a parent Objective.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/address
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2567,7 +2570,8 @@
    :logseq.property/type :default,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "Git branch name."}},
+   {:logseq.property/description "Git branch name.",
+    :logseq.property/exclude-from-graph-view true}},
   :custom.property/visionStatus
   {:block/title "vision-status",
    :logseq.property/type :default,
@@ -2581,7 +2585,8 @@
      :uuid #uuid "ae1bd7cc-b9e4-503d-804d-71e571a842ac"}],
    :build/properties
    {:logseq.property/description
-    "Lifecycle of the Vision. Only one current Vision per scope."}},
+    "Lifecycle of the Vision. Only one current Vision per scope.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/characterAttribute
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2949,7 +2954,8 @@
     :custom.class/Idea
     :custom.class/WorkItem],
    :build/properties
-   {:logseq.property/description "Items this obstacle affects."}},
+   {:logseq.property/description "Items this obstacle affects.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/priceRange
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2996,7 +3002,8 @@
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description
-    "reach x impact x confidence% / effort. Maintained externally; Logseq does not compute it."}},
+    "reach x impact x confidence% / effort. Maintained externally; Logseq does not compute it.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/episodeNumber
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -3187,7 +3194,8 @@
     {:value "archived",
      :uuid #uuid "e70c4131-37f4-59f7-8917-37879f62734d"}],
    :build/properties
-   {:logseq.property/description "Lifecycle of the spec."}},
+   {:logseq.property/description "Lifecycle of the spec.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/certificationRating
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -3320,7 +3328,8 @@
     {:value "risk",
      :uuid #uuid "9807d900-fed5-5494-8c95-f36b0b3b150e"}],
    :build/properties
-   {:logseq.property/description "How badly it affects progress."}},
+   {:logseq.property/description "How badly it affects progress.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/attendee
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -3515,8 +3524,8 @@
     {:value "wont",
      :uuid #uuid "09fe89f6-91e3-5721-a41c-8230d3ff048d"}],
    :build/properties
-   {:logseq.property/description
-    "Where the Idea is in its lifecycle."}},
+   {:logseq.property/description "Where the Idea is in its lifecycle.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/arrivalTerminal
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3543,7 +3552,8 @@
    :logseq.property/type :number,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "RICE confidence, 0-100 (%)."}},
+   {:logseq.property/description "RICE confidence, 0-100 (%).",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/pickupLocation
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -3749,7 +3759,8 @@
     {:value "accepted",
      :uuid #uuid "146e10d3-e6f9-5d93-91eb-c6a0e85459d1"}],
    :build/properties
-   {:logseq.property/description "Current state of the obstacle."}},
+   {:logseq.property/description "Current state of the obstacle.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/associatedClaimReview
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -3990,7 +4001,8 @@
    :logseq.property/type :default,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "What was decided."}},
+   {:logseq.property/description "What was decided.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/courseWorkload
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4419,7 +4431,8 @@
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description
-    "Percent complete = Ideas at impact / Ideas not at wont, rolled up from children. Maintained externally (e.g. by Agent Deck); Logseq does not compute it."}},
+    "Percent complete = Ideas at impact / Ideas not at wont, rolled up from children. Maintained externally (e.g. by Agent Deck); Logseq does not compute it.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/brand
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -4477,6 +4490,7 @@
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description "The question being decided.",
+    :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/question"}},
   :schema.property/lodgingUnitDescription
   {:db/cardinality :db.cardinality/one,
@@ -4513,7 +4527,8 @@
     {:value "conductor-round",
      :uuid #uuid "d706c66f-8930-52c0-8c50-d57aebc203db"}],
    :build/properties
-   {:logseq.property/description "How the decision was made."}},
+   {:logseq.property/description "How the decision was made.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/flightNumber
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4737,7 +4752,8 @@
    :logseq.property/type :url,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "Pull request URL."}},
+   {:logseq.property/description "Pull request URL.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/priceCurrency
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4765,8 +4781,8 @@
    :db/cardinality :db.cardinality/one,
    :build/property-classes [:custom.class/Decision],
    :build/properties
-   {:logseq.property/description
-    "Earlier Decision this one replaces."}},
+   {:logseq.property/description "Earlier Decision this one replaces.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/numberOfCredits
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -4885,13 +4901,15 @@
    :logseq.property/type :url,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "Source repository URL."}},
+   {:logseq.property/description "Source repository URL.",
+    :logseq.property/exclude-from-graph-view true}},
   :custom.property/impact
   {:block/title "impact",
    :logseq.property/type :number,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "RICE impact, 1-5."}},
+   {:logseq.property/description "RICE impact, 1-5.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/minValue
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -4915,7 +4933,8 @@
    :logseq.property/type :node,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "Person or agent responsible."}},
+   {:logseq.property/description "Person or agent responsible.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/value
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -5054,7 +5073,8 @@
    :logseq.property/type :default,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "Why it was decided."}},
+   {:logseq.property/description "Why it was decided.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/validFrom
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -5144,7 +5164,8 @@
    :db/cardinality :db.cardinality/many,
    :build/property-classes [:custom.class/WorkItem],
    :build/properties
-   {:logseq.property/description "Work Items this spec covers."}},
+   {:logseq.property/description "Work Items this spec covers.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/contactPoint
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -5402,8 +5423,8 @@
    :db/cardinality :db.cardinality/many,
    :build/property-classes [:custom.class/Obstacle],
    :build/properties
-   {:logseq.property/description
-    "Obstacles blocking this Work Item."}},
+   {:logseq.property/description "Obstacles blocking this Work Item.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/alignmentType
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -5510,7 +5531,8 @@
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description
-    "Stable ID in Agent Deck, e.g. goal-012, t-045, idea-3, dec-001."}},
+    "Stable ID in Agent Deck, e.g. goal-012, t-045, idea-3, dec-001.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/yearlyRevenue
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -5751,7 +5773,8 @@
    :logseq.property/type :default,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "One line: how we know it is done."}},
+   {:logseq.property/description "One line: how we know it is done.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/numberOfItems
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -5871,7 +5894,8 @@
    :logseq.property/type :number,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "RICE effort, 1-5."}},
+   {:logseq.property/description "RICE effort, 1-5.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/byMonth
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -6011,8 +6035,8 @@
    :build/property-classes
    [:custom.class/Portfolio :schema.class/Project],
    :build/properties
-   {:logseq.property/description
-    "The container this item belongs to."}},
+   {:logseq.property/description "The container this item belongs to.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/reviewBody
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -6035,7 +6059,8 @@
    :logseq.property/type :default,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "What is being done about it."}},
+   {:logseq.property/description "What is being done about it.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/experienceRequirements
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -6125,7 +6150,8 @@
    :build/property-classes [:custom.class/Workspace],
    :build/properties
    {:logseq.property/description
-    "Workspace this Portfolio belongs to."}},
+    "Workspace this Portfolio belongs to.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/audienceType
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -6396,8 +6422,8 @@
    :db/cardinality :db.cardinality/many,
    :build/property-classes [:custom.class/WorkItem],
    :build/properties
-   {:logseq.property/description
-    "Work Items that deliver this Idea."}},
+   {:logseq.property/description "Work Items that deliver this Idea.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/exerciseType
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -6538,7 +6564,8 @@
     :custom.class/Bug],
    :build/properties
    {:logseq.property/description
-    "Parent Work Item. Epic has no parent; Feature/Improvement/Bug/plain task sit under an Epic or at top level; Subtask always sits under a non-epic item. Max depth 2."}},
+    "Parent Work Item. Epic has no parent; Feature/Improvement/Bug/plain task sit under an Epic or at top level; Subtask always sits under a non-epic item. Max depth 2.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/worksFor
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -6640,7 +6667,8 @@
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description
-    "One-sentence north star: why this exists and what winning looks like."}},
+    "One-sentence north star: why this exists and what winning looks like.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/endorsers
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -6782,7 +6810,8 @@
      :uuid #uuid "41a8a3e2-4123-5314-b714-d8387cd8864a"}],
    :build/properties
    {:logseq.property/description
-    "State of the Objective or Goal. achieved is set by human sign-off only."}},
+    "State of the Objective or Goal. achieved is set by human sign-off only.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/numTracks
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -7040,8 +7069,8 @@
    :db/cardinality :db.cardinality/one,
    :build/property-classes [:custom.class/Portfolio],
    :build/properties
-   {:logseq.property/description
-    "Portfolio this Project belongs to."}},
+   {:logseq.property/description "Portfolio this Project belongs to.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/recognizedBy
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -7277,7 +7306,8 @@
     {:value "review",
      :uuid #uuid "49cb450c-a680-5b08-a503-7f57047ea703"}],
    :build/properties
-   {:logseq.property/description "Workflow phase of the Work Item."}},
+   {:logseq.property/description "Workflow phase of the Work Item.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/provider
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -7339,7 +7369,8 @@
      :uuid #uuid "6e53f533-cc6d-5d13-b1c2-d2a71c3f4ccf"}],
    :build/properties
    {:logseq.property/description
-    "Roadmap horizon. Blank = not on the roadmap; always blank at impact or wont."}},
+    "Roadmap horizon. Blank = not on the roadmap; always blank at impact or wont.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/ticketedSeat
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -7401,7 +7432,8 @@
    :logseq.property/type :number,
    :db/cardinality :db.cardinality/one,
    :build/properties
-   {:logseq.property/description "RICE reach, 1-5."}},
+   {:logseq.property/description "RICE reach, 1-5.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/parent
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -7465,7 +7497,8 @@
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description
-    "Size estimate. More than 8 means decompose before starting."}},
+    "Size estimate. More than 8 means decompose before starting.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/ratingExplanation
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -7669,14 +7702,16 @@
     {:value "external",
      :uuid #uuid "d23314c0-e97e-552c-b278-b674e6643709"}],
    :build/properties
-   {:logseq.property/description "Kind of obstacle."}},
+   {:logseq.property/description "Kind of obstacle.",
+    :logseq.property/exclude-from-graph-view true}},
   :custom.property/rank
   {:block/title "rank",
    :logseq.property/type :number,
    :db/cardinality :db.cardinality/one,
    :build/properties
    {:logseq.property/description
-    "Priority order within its scope; 1 = first."}},
+    "Priority order within its scope; 1 = first.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/numberOfPlayers
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -7715,7 +7750,8 @@
    [:custom.class/Goal :custom.class/Objective],
    :build/properties
    {:logseq.property/description
-    "The Goal or Objective this item serves."}},
+    "The Goal or Objective this item serves.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/credentialCategory
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -8130,7 +8166,9 @@
      :uuid #uuid "6f63b686-8b90-5712-81b8-203a78083ae7"}
     {:value "implementation",
      :uuid #uuid "7828bf80-c098-533e-b823-f0d508b8c414"}],
-   :build/properties {:logseq.property/description "Kind of spec."}},
+   :build/properties
+   {:logseq.property/description "Kind of spec.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/busName
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
