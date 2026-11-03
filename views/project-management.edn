@@ -31,7 +31,7 @@
               :build/properties
               {:logseq.property/query
                {:build/property-value :block,
-                :block/title "{:title \"Blocking obstacles on active goals\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Obstacle] [?b :custom.property/severity ?sev] [?sev :block/title \"blocking\"] [?b :custom.property/affects ?g] [?g :block/tags ?g-tag] [?g-tag :db/ident :custom.class/Goal] [?g :custom.property/goalStatus ?gs] [?gs :block/title \"active\"]]}",
+                :block/title "{:title \"Blocking obstacles on active goals\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Obstacle] [?b :custom.property/severity ?sev] [?sev :block/title \"blocking\"] (not-join [?b] [?b :custom.property/obstacleStatus ?os] [?os :block/title ?os-title] [(contains? #{\"resolved\" \"accepted\"} ?os-title)]) [?b :custom.property/affects ?g] [?g :block/tags ?g-tag] [?g-tag :db/ident :custom.class/Goal] [?g :custom.property/goalStatus ?gs] [?gs :block/title \"active\"]]}",
                 :build/properties {:logseq.property.code/lang "clojure",
                                    :logseq.property.node/display-type :code}}}}]}
     {:block/title "Up next",
@@ -55,12 +55,12 @@
                 :block/title "{:title \"Goals with no parent-direction\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Goal] (not [?b :custom.property/parentDirection _])]}",
                 :build/properties {:logseq.property.code/lang "clojure",
                                    :logseq.property.node/display-type :code}}}}
-      {:block/title "Work Items with no for-goal",
+      {:block/title "Work Items with no lineage to a goal",
               :build/tags [:logseq.class/Query],
               :build/properties
               {:logseq.property/query
                {:build/property-value :block,
-                :block/title "{:title \"Work Items with no for-goal\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] (or-join [?b-tag] [?b-tag :db/ident :custom.class/WorkItem] (and [?b-tag :logseq.property.class/extends ?b-parent] [?b-parent :db/ident :custom.class/WorkItem])) (not [?b :block/tags ?sub] [?sub :db/ident :custom.class/Subtask]) (not [?b :custom.property/forGoal _])]}",
+                :block/title "{:title \"Work Items with no lineage to a goal\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] (or-join [?b-tag] [?b-tag :db/ident :custom.class/WorkItem] (and [?b-tag :logseq.property.class/extends ?b-parent] [?b-parent :db/ident :custom.class/WorkItem])) (not-join [?b] (or-join [?b] [?b :custom.property/forGoal _] [_ :custom.property/deliveredBy ?b] (and [?b :custom.property/parentWork ?b-p] (or-join [?b-p] [?b-p :custom.property/forGoal _] [_ :custom.property/deliveredBy ?b-p] (and [?b-p :custom.property/parentWork ?b-p-p] (or-join [?b-p-p] [?b-p-p :custom.property/forGoal _] [_ :custom.property/deliveredBy ?b-p-p]))))))]}",
                 :build/properties {:logseq.property.code/lang "clojure",
                                    :logseq.property.node/display-type :code}}}}
       {:block/title "Ready Ideas with no delivered-by",

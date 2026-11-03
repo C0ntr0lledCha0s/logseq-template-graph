@@ -17,7 +17,7 @@ Starter query views live outside the library in [`views/project-management.edn`]
 - Every `schema.*` entry carries `:schema.property/url`.
 - Edit these files directly, then run `bb test && bb build && bb validate`. Class and property counts are printed by `bb build`.
 
-Schema.org terms used here: `Project` (class) and `question` (property). Property titles keep the hyphenated names used by Agent Deck (for example `ad-id`, `for-goal`); idents are camelCase (`:custom.property/adId`, `:custom.property/forGoal`). The `branch` title uses `:custom.property/gitBranch` because Schema.org's `branch` means a branch of an organization.
+Schema.org terms used here: `Project` (class, extends both `Container` and Schema.org's `Organization`), `question` and `codeRepository` (properties). Property titles keep the hyphenated names used by Agent Deck (for example `ad-id`, `for-goal`); idents are camelCase (`:custom.property/adId`, `:custom.property/forGoal`). The `branch` title uses `:custom.property/gitBranch` because Schema.org's `branch` means a branch of an organization.
 
 ## Tag hierarchy
 
@@ -26,7 +26,7 @@ PM Item                      abstract root: ad-id, owner, scope
 ├── Container                abstract
 │   ├── Workspace
 │   ├── Portfolio            in-workspace
-│   └── Project              in-portfolio, repo, project-type, default-workflow
+│   └── Project              in-portfolio, codeRepository, project-type, default-workflow (also extends Organization)
 ├── Strategy                 abstract
 │   ├── Vision               vision-status, statement
 │   ├── Direction            abstract: goal-status, rank, points, success-criteria, parent-direction, progress
@@ -64,10 +64,12 @@ Import `views/project-management.edn` into a graph that already has these classe
 | View | Query |
 |---|---|
 | Roadmap | Ideas excluding idea-stage = wont |
-| Goal health | Active Goals; blocking Obstacles affecting active Goals |
+| Goal health | Active Goals; blocking Obstacles affecting active Goals, excluding resolved or accepted ones |
 | Up next | Work Items (any subtype) with Status Backlog or Todo |
-| Orphans | Goals with no parent-direction; non-subtask Work Items with no for-goal; ready Ideas with no delivered-by |
+| Orphans | Goals with no parent-direction; Work Items with no lineage to a goal; ready Ideas with no delivered-by |
 | Decision log | Decisions not superseded by another Decision |
+
+A Work Item has lineage when it, or its parent-work (up to two levels), has a for-goal or is in an Idea's delivered-by.
 
 The queries filter. Sorting and grouping are table settings saved per view in the app: Roadmap groups by horizon and sorts by score descending; Up next sorts by Priority; Decision log sorts by Created.
 
