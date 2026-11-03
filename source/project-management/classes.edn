@@ -35,6 +35,7 @@
    :build/class-properties
    [:custom.property/inPortfolio
     :custom.property/projectType
+    :custom.property/projectStatus
     :custom.property/defaultWorkflow
     :schema.property/codeRepository],
    :build/properties

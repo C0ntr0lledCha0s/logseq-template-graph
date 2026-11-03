@@ -26,7 +26,7 @@ PM Item                      abstract root: ad-id, owner, scope
 ├── Container                abstract
 │   ├── Workspace
 │   ├── Portfolio            in-workspace
-│   └── Project              in-portfolio, codeRepository, project-type, default-workflow (also extends Organization)
+│   └── Project              in-portfolio, codeRepository, project-type, project-status, default-workflow (also extends Organization)
 ├── Strategy                 abstract
 │   ├── Vision               vision-status, statement
 │   ├── Direction            abstract: goal-status, rank, points, success-criteria, parent-direction, progress
