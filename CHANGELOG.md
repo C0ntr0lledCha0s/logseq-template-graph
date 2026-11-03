@@ -1,3 +1,9 @@
+## **2.2.0**&emsp;<sub><sup>2026-11-03 ([v2.1.0...v2.2.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v2.1.0...v2.2.0))</sup></sub>
+
+### Features & Enhancements
+
+- `Project` has a new `project-status` choice property: idea, planned, active, completed, paused or abandoned.
+
 ## **2.1.0**&emsp;<sub><sup>2026-11-03 ([v2.0.0...v2.1.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v2.0.0...v2.1.0))</sup></sub>
 
 Adds a project-management schema. Additive only: existing class and property idents are unchanged.
