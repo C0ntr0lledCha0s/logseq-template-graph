@@ -38,13 +38,6 @@
    :build/properties
    {:logseq.property/description "Portfolio this Project belongs to.",
     :logseq.property/exclude-from-graph-view true}}
-  :custom.property/repo
-  {:block/title "repo",
-   :logseq.property/type :url,
-   :db/cardinality :db.cardinality/one,
-   :build/properties
-   {:logseq.property/description "Source repository URL.",
-    :logseq.property/exclude-from-graph-view true}}
   :custom.property/projectType
   {:block/title "project-type",
    :logseq.property/type :default,

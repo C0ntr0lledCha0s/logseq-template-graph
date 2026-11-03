@@ -65,6 +65,6 @@
   :custom.class/Workspace [],
   :schema.class/Project
   [:custom.property/inPortfolio
-   :custom.property/repo
    :custom.property/projectType
-   :custom.property/defaultWorkflow]}}
+   :custom.property/defaultWorkflow
+   :schema.property/codeRepository]}}

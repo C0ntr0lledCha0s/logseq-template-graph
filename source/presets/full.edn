@@ -441,9 +441,9 @@
    :schema.property/program],
   :schema.class/Project
   [:custom.property/inPortfolio
-   :custom.property/repo
    :custom.property/projectType
-   :custom.property/defaultWorkflow],
+   :custom.property/defaultWorkflow
+   :schema.property/codeRepository],
   :schema.class/QuantitativeValue
   [:schema.property/maxValue
    :schema.property/minValue

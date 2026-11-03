@@ -31,12 +31,12 @@
     :logseq.property/description "A set of Projects pursuing shared Objectives. Belongs to a Workspace via in-workspace."}}
   :schema.class/Project
   {:block/title "Project",
-   :build/class-extends [:custom.class/Container],
+   :build/class-extends [:custom.class/Container :schema.class/Organization],
    :build/class-properties
    [:custom.property/inPortfolio
-    :custom.property/repo
     :custom.property/projectType
-    :custom.property/defaultWorkflow],
+    :custom.property/defaultWorkflow
+    :schema.property/codeRepository],
    :build/properties
    {:logseq.property/icon {:type :tabler-icon, :id "folder"},
     :logseq.property/description "A bounded effort with its own Goals, Ideas and Work Items. Belongs to a Portfolio via in-portfolio.",

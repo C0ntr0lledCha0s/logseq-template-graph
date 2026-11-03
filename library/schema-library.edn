@@ -197,12 +197,13 @@
     "A unit of work. Also extends the built-in Task, so it has Status, Priority and Deadline. A plain task is tagged Work Item directly. Agent Deck status mapping: backlog=Backlog, planning=Todo, running=Doing, review=In Review, done=Done, halted=Halted. Priority mapping: highest=Urgent, high=High, medium=Medium, low/lowest=Low."}},
   :schema.class/Project
   {:block/title "Project",
-   :build/class-extends [:custom.class/Container],
+   :build/class-extends
+   [:custom.class/Container :schema.class/Organization],
    :build/class-properties
    [:custom.property/inPortfolio
-    :custom.property/repo
     :custom.property/projectType
-    :custom.property/defaultWorkflow],
+    :custom.property/defaultWorkflow
+    :schema.property/codeRepository],
    :build/properties
    {:logseq.property/icon {:type :tabler-icon, :id "folder"},
     :logseq.property/description
@@ -4896,13 +4897,6 @@
     "Represents the length and pace of a course, expressed as a [Schedule](https://schema.org/Schedule).",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/courseSchedule"}},
-  :custom.property/repo
-  {:block/title "repo",
-   :logseq.property/type :url,
-   :db/cardinality :db.cardinality/one,
-   :build/properties
-   {:logseq.property/description "Source repository URL.",
-    :logseq.property/exclude-from-graph-view true}},
   :custom.property/impact
   {:block/title "impact",
    :logseq.property/type :number,
