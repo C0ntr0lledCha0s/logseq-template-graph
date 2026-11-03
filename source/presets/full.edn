@@ -3,7 +3,8 @@
  :description
  "Complete Schema.org-based template with all classes and properties",
  :classes
- {:custom.class/Business [],
+ {:custom.class/Bug [],
+  :custom.class/Business [],
   :custom.class/BusinessMeeting
   [:custom.property/project
    :custom.property/topic
@@ -11,15 +12,74 @@
    :custom.property/objective
    :custom.property/nextMeetingDate],
   :custom.class/BusinessPerson [],
+  :custom.class/Container [],
   :custom.class/CountryState [],
+  :custom.class/Decision
+  [:custom.property/forGoal
+   :schema.property/question
+   :custom.property/decision
+   :custom.property/rationale
+   :custom.property/decidedBy
+   :custom.property/supersedes],
   :custom.class/Department [],
+  :custom.class/Direction
+  [:custom.property/goalStatus
+   :custom.property/rank
+   :custom.property/points
+   :custom.property/successCriteria
+   :custom.property/parentDirection
+   :custom.property/progress],
+  :custom.class/Epic [],
   :custom.class/FamilyGroup
   [:schema.property/event
    :schema.property/keywords
    :schema.property/contactPoint
    :custom.property/parentFamilyGroup
    :custom.property/subFamilyGroup],
+  :custom.class/Feature [],
+  :custom.class/Goal [],
+  :custom.class/Governance [],
+  :custom.class/Idea
+  [:custom.property/forGoal
+   :custom.property/ideaStage
+   :custom.property/horizon
+   :custom.property/reach
+   :custom.property/impact
+   :custom.property/effort
+   :custom.property/confidence
+   :custom.property/score
+   :custom.property/deliveredBy],
+  :custom.class/Improvement [],
+  :custom.class/Objective [],
+  :custom.class/Obstacle
+  [:custom.property/obstacleType
+   :custom.property/severity
+   :custom.property/obstacleStatus
+   :custom.property/mitigation
+   :custom.property/affects],
+  :custom.class/PMItem
+  [:custom.property/adId
+   :custom.property/owner
+   :custom.property/scope],
+  :custom.class/Portfolio [:custom.property/inWorkspace],
   :custom.class/Resource [],
+  :custom.class/Spec
+  [:custom.property/specType
+   :custom.property/specStatus
+   :custom.property/specifies],
+  :custom.class/Strategy [],
+  :custom.class/Subtask [],
+  :custom.class/Vision
+  [:custom.property/visionStatus :custom.property/statement],
+  :custom.class/WorkItem
+  [:custom.property/points
+   :custom.property/forGoal
+   :custom.property/parentWork
+   :custom.property/phase
+   :custom.property/gitBranch
+   :custom.property/prUrl
+   :custom.property/blockedBy],
+  :custom.class/Workspace [],
   :schema.class/AdministrativeArea [],
   :schema.class/Airport
   [:schema.property/iataCode :schema.property/icaoCode],
@@ -379,6 +439,11 @@
    :schema.property/membershipNumber
    :schema.property/membershipPointsEarned
    :schema.property/program],
+  :schema.class/Project
+  [:custom.property/inPortfolio
+   :custom.property/repo
+   :custom.property/projectType
+   :custom.property/defaultWorkflow],
   :schema.class/QuantitativeValue
   [:schema.property/maxValue
    :schema.property/minValue

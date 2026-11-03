@@ -13,7 +13,7 @@ Each release publishes exactly two files:
 | File | Contents |
 |------|----------|
 | `schema-library.edn` | Every class and property, with fixed idents (`:schema.class/Person`, `:schema.property/email`, `:custom.class/FamilyGroup`). Importable into Logseq. |
-| `schema-presets.edn` | Role presets (full, crm, research, events, content, student-life). Each lists the classes in the role and, per class, the properties it brings. Read by the [Ontology Sync plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin). |
+| `schema-presets.edn` | Role presets (full, crm, research, events, content, student-life, project-management). Each lists the classes in the role and, per class, the properties it brings. Read by the [Ontology Sync plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin). |
 
 The class and property counts for the current source are printed by `bb build`.
 
