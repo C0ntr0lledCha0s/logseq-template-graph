@@ -30,7 +30,7 @@
   [lib where refs]
   (for [ref refs
         :when (or (not (keyword? ref))
-                  (and (not= "logseq.property" (namespace ref))
+                  (and (not (#{"logseq.property" "logseq.class"} (namespace ref)))
                        (not (known-ident? lib ref))))]
     (if (keyword? ref)
       (str where " references unknown ident " ref)
