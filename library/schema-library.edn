@@ -8520,4 +8520,4 @@
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/subTrip"}}},
  :logseq.db.sqlite.export/export-type :graph-ontology,
- :schema-library/version "2.0.0"}
+ :schema-library/version "2.1.0"}
