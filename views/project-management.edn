@@ -42,7 +42,7 @@
               :build/properties
               {:logseq.property/query
                {:build/property-value :block,
-                :block/title "{:title \"Up next\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] (or-join [?b-tag] [?b-tag :db/ident :custom.class/WorkItem] (and [?b-tag :logseq.property.class/extends ?b-parent] [?b-parent :db/ident :custom.class/WorkItem])) [?b :logseq.property/status ?st] [?st :db/ident ?st-ident] [(contains? #{:logseq.property/status.backlog :logseq.property/status.todo} ?st-ident)]]}",
+                :block/title "{:title \"Up next\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] (or-join [?b-tag] [?b-tag :db/ident :custom.class/WorkItem] (and [?b-tag :logseq.property.class/extends ?b-parent] [?b-parent :db/ident :custom.class/WorkItem])) (or-join [?b] (and [?b :logseq.property/status ?st] [?st :db/ident ?st-ident] [(contains? #{:logseq.property/status.backlog :logseq.property/status.todo} ?st-ident)]) (and [(get-else $ ?b :logseq.property/status :none) ?st-none] [(= ?st-none :none)]))]}",
                 :build/properties {:logseq.property.code/lang "clojure",
                                    :logseq.property.node/display-type :code}}}}]}
     {:block/title "Orphans",
