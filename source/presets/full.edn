@@ -442,6 +442,7 @@
   :schema.class/Project
   [:custom.property/inPortfolio
    :custom.property/projectType
+   :custom.property/projectStatus
    :custom.property/defaultWorkflow
    :schema.property/codeRepository],
   :schema.class/QuantitativeValue

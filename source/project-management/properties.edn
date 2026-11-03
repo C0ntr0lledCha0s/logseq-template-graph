@@ -51,6 +51,20 @@
    :build/properties
    {:logseq.property/description "Kind of project.",
     :logseq.property/exclude-from-graph-view true}}
+  :custom.property/projectStatus
+  {:block/title "project-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "idea", :uuid #uuid "effb7fe9-cc6c-522f-8eee-f63553ec9cac"}
+    {:value "planned", :uuid #uuid "2d03d10f-03d4-5898-a551-285c3c0368c8"}
+    {:value "active", :uuid #uuid "e9ebd96a-14ee-5dbf-84d4-fd49dffc26f6"}
+    {:value "completed", :uuid #uuid "b74fff05-1b7d-5e2c-935e-d3c2b79973bc"}
+    {:value "paused", :uuid #uuid "d5c5a7bc-053e-59f9-b905-e77d16f04437"}
+    {:value "abandoned", :uuid #uuid "91802899-8ca8-5350-aace-81ca66094e2c"}],
+   :build/properties
+   {:logseq.property/description "Where the Project is in its lifecycle.",
+    :logseq.property/exclude-from-graph-view true}}
   :custom.property/defaultWorkflow
   {:block/title "default-workflow",
    :logseq.property/type :default,
