@@ -35,6 +35,7 @@ Rules, enforced by `bb validate`:
 | `events` | Event management: meetings, conferences, schedules |
 | `content` | Content creators: videos, articles, images, media |
 | `student-life` | Student course and assignment tracking |
+| `project-management` | Vision, Objectives, Goals, Ideas, Work Items, Decisions, Obstacles and Specs |
 
 Class and property counts per preset are not listed here; read them from `build/schema-presets.edn` after `bb build`.
 

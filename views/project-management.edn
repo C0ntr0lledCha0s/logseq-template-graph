@@ -1,0 +1,84 @@
+;; Starter query views for the project-management classes.
+;; Import into a graph that already has the schema library: command palette -> Import EDN data.
+{:logseq.db.sqlite.export/export-type :page,
+ :pages-and-blocks
+ [{:page {:block/title "PM Views"},
+   :blocks
+   [{:block/title "Roadmap",
+     :build/children
+     [{:block/title "Ideas on the roadmap, excluding idea-stage = wont. In the table: Group by horizon, Sort by score descending."}
+      {:block/title "Roadmap",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Roadmap\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Idea] (not [?b :custom.property/ideaStage ?stage] [?stage :block/title \"wont\"])]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}]}
+    {:block/title "Goal health",
+     :build/children
+     [{:block/title "Active Goals. Show the rank, points and progress columns."}
+      {:block/title "Active goals",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Active goals\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Goal] [?b :custom.property/goalStatus ?gs] [?gs :block/title \"active\"]]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}
+      {:block/title "Blocking obstacles on active goals",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Blocking obstacles on active goals\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Obstacle] [?b :custom.property/severity ?sev] [?sev :block/title \"blocking\"] (not-join [?b] [?b :custom.property/obstacleStatus ?os] [?os :block/title ?os-title] [(contains? #{\"resolved\" \"accepted\"} ?os-title)]) [?b :custom.property/affects ?g] [?g :block/tags ?g-tag] [?g-tag :db/ident :custom.class/Goal] [?g :custom.property/goalStatus ?gs] [?gs :block/title \"active\"]]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}]}
+    {:block/title "Up next",
+     :build/children
+     [{:block/title "Work Items in Backlog or Todo. In the table: Sort by Priority, then by for-goal."}
+      {:block/title "Up next",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Up next\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] (or-join [?b-tag] [?b-tag :db/ident :custom.class/WorkItem] (and [?b-tag :logseq.property.class/extends ?b-parent] [?b-parent :db/ident :custom.class/WorkItem])) (or-join [?b] (and [?b :logseq.property/status ?st] [?st :db/ident ?st-ident] [(contains? #{:logseq.property/status.backlog :logseq.property/status.todo} ?st-ident)]) (and [(get-else $ ?b :logseq.property/status :none) ?st-none] [(= ?st-none :none)]))]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}]}
+    {:block/title "Orphans",
+     :build/children
+     [{:block/title "Goals with no parent-direction",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Goals with no parent-direction\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Goal] (not [?b :custom.property/parentDirection _])]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}
+      {:block/title "Work Items with no lineage to a goal",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Work Items with no lineage to a goal\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] (or-join [?b-tag] [?b-tag :db/ident :custom.class/WorkItem] (and [?b-tag :logseq.property.class/extends ?b-parent] [?b-parent :db/ident :custom.class/WorkItem])) (not-join [?b] (or-join [?b] [?b :custom.property/forGoal _] [_ :custom.property/deliveredBy ?b] (and [?b :custom.property/parentWork ?b-p] (or-join [?b-p] [?b-p :custom.property/forGoal _] [_ :custom.property/deliveredBy ?b-p] (and [?b-p :custom.property/parentWork ?b-p-p] (or-join [?b-p-p] [?b-p-p :custom.property/forGoal _] [_ :custom.property/deliveredBy ?b-p-p]))))))]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}
+      {:block/title "Ready Ideas with no delivered-by",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Ready Ideas with no delivered-by\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Idea] [?b :custom.property/ideaStage ?stage] [?stage :block/title \"ready\"] (not [?b :custom.property/deliveredBy _])]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}]}
+    {:block/title "Decision log",
+     :build/children
+     [{:block/title "Decisions not superseded by another Decision. In the table: Sort by Created."}
+      {:block/title "Decision log",
+              :build/tags [:logseq.class/Query],
+              :build/properties
+              {:logseq.property/query
+               {:build/property-value :block,
+                :block/title "{:title \"Decision log\" :query [:find [(pull ?b [*]) ...] :where [?b :block/tags ?b-tag] [?b-tag :db/ident :custom.class/Decision] (not [?other :custom.property/supersedes ?b])]}",
+                :build/properties {:logseq.property.code/lang "clojure",
+                                   :logseq.property.node/display-type :code}}}}]}]}]}
