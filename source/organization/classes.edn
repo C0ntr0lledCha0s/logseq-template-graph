@@ -39,14 +39,15 @@
     "https://schema.org/EducationalOccupationalCredential"}},
   :schema.class/EducationalOrganization
   {:block/title "EducationalOrganization",
-   :build/class-properties [:schema.property/alumni],
    :build/class-extends [:schema.class/Organization],
    :build/properties
    {:logseq.property/icon {:id "school", :type :emoji},
     :logseq.property/description "An educational organization.",
     :schema.property/url
     "https://schema.org/EducationalOrganization"}},
-  :custom.class/Department {:block/title "Department"},
+  :custom.class/Department
+  {:block/title "Department",
+   :build/class-extends [:schema.class/Organization]},
   :schema.class/MusicGroup
   {:block/title "MusicGroup",
    :block/collapsed? false,
@@ -60,7 +61,9 @@
     :logseq.property/description
     "A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.",
     :schema.property/url "https://schema.org/MusicGroup"}},
-  :custom.class/Business {:block/title "Business"},
+  :custom.class/Business
+  {:block/title "Business",
+   :build/class-extends [:schema.class/Organization]},
   :schema.class/Organization
   {:block/title "Organization",
    :block/collapsed? false,

@@ -25,7 +25,7 @@ The class and property counts for the current source are printed by `bb build`.
 
 1. Download `schema-library.edn` from the [latest release](https://github.com/C0ntr0lledCha0s/logseq-template-graph/releases/latest). Do not download the "Source code" archives.
 2. In Logseq DB: Settings -> Import -> **EDN to DB Graph**, and select the file.
-3. Tag pages with the imported classes. `#Person` gives you email, jobTitle, birthDate, and so on.
+3. Tag pages with the imported classes. `#Person` gives you email, birthDate, and so on; `#WorkProfile` adds work details such as jobTitle and worksFor.
 
 To build a smaller, role-shaped graph instead, use the Ontology Sync plugin, which reads both `schema-library.edn` and `schema-presets.edn`.
 

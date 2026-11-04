@@ -104,7 +104,8 @@
      :type :emoji},
     :logseq.property/description "A child of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/children"}},
+    :schema.property/url "https://schema.org/children",
+    :logseq.property/hide-empty-value true}},
   :schema.property/publisher
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -247,7 +248,8 @@
      :type :emoji},
     :logseq.property/description "A colleague of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/colleague"}},
+    :schema.property/url "https://schema.org/colleague",
+    :logseq.property/hide-empty-value true}},
   :schema.property/alumni
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -318,7 +320,8 @@
      :type :emoji},
     :logseq.property/description "A sibling of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/sibling"}},
+    :schema.property/url "https://schema.org/sibling",
+    :logseq.property/hide-empty-value true}},
   :schema.property/knows
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -340,7 +343,8 @@
     :logseq.property/description
     "The most generic bi-directional social/work relation.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/knows"}},
+    :schema.property/url "https://schema.org/knows",
+    :logseq.property/hide-empty-value true}},
   :schema.property/editor
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -663,7 +667,8 @@
     :logseq.property/description
     "A parent of this person. We use \"parents\" instead of \"parent\" as this property is already used.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/parent"}},
+    :schema.property/url "https://schema.org/parent",
+    :logseq.property/hide-empty-value true}},
   :schema.property/character
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -719,7 +724,8 @@
      :type :emoji},
     :logseq.property/description "The most generic familial relation.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/relatedTo"}},
+    :schema.property/url "https://schema.org/relatedTo",
+    :logseq.property/hide-empty-value true}},
   :schema.property/byArtist
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -827,4 +833,5 @@
      :type :emoji},
     :logseq.property/description "The person's spouse.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/spouse"}}}}
+    :schema.property/url "https://schema.org/spouse",
+    :logseq.property/hide-empty-value true}}}}
