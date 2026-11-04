@@ -1,3 +1,16 @@
+## **2.4.0**&emsp;<sub><sup>2026-11-04 ([v2.3.0...v2.4.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v2.3.0...v2.4.0))</sup></sub>
+
+Adds blog and social media posting, how-to and visual artwork classes. Additive only: existing class and property idents are unchanged.
+
+### Features & Enhancements
+
+- `Blog` has `blogPost` (links to `BlogPosting` pages) and `issn`.
+- `SocialMediaPosting` extends `Article` and has `sharedContent`. `BlogPosting` and `DiscussionForumPosting` extend it.
+- `HowTo` has `totalTime`, `prepTime`, `performTime`, `tool`, `supply`, `yield` and `estimatedCost`. Write the steps as child blocks.
+- `VisualArtwork` has `artist`, `artform`, `artMedium`, `artworkSurface`, `artEdition`, `height`, `width` and `depth`.
+- `Painting`, `Photograph` and `Sculpture` extend `CreativeWork`, as in Schema.org. Tag a work `#VisualArtwork` as well to get the art fields.
+- Presets: `content` and `full` include the new classes.
+
 ## **2.3.0**&emsp;<sub><sup>2026-11-04 ([v2.2.0...v2.3.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v2.2.0...v2.3.0))</sup></sub>
 
 Splits work and relationship fields out of `Person` into role tags you combine with `#Person` or `#Organization`.
