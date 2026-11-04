@@ -1,4 +1,4 @@
-{:schema-library/version "2.3.0",
+{:schema-library/version "2.4.0",
  :presets
  [{:id "content",
    :name "Content Creation",
