@@ -15,6 +15,10 @@
   :schema.class/Audiobook
   [:schema.property/duration :schema.property/readBy],
   :schema.class/BackgroundNewsArticle [],
+  :schema.class/Blog
+  [:schema.property/blogPost
+   :schema.property/issn],
+  :schema.class/BlogPosting [],
   :schema.class/Book
   [:schema.property/bookEdition
    :schema.property/bookFormat
@@ -86,6 +90,7 @@
   [:schema.property/startDate :schema.property/endDate],
   :schema.class/CriticReview [],
   :schema.class/DigitalDocument [],
+  :schema.class/DiscussionForumPosting [],
   :schema.class/Episode
   [:schema.property/duration
    :schema.property/actor
@@ -101,6 +106,14 @@
    :schema.property/numberOfPlayers
    :schema.property/quest],
   :schema.class/Guide [:schema.property/reviewAspect],
+  :schema.class/HowTo
+  [:schema.property/totalTime
+   :schema.property/prepTime
+   :schema.property/performTime
+   :schema.property/tool
+   :schema.property/supply
+   :schema.property/yield
+   :schema.property/estimatedCost],
   :schema.class/LearningResource
   [:schema.property/assesses
    :schema.property/competencyRequired
@@ -150,6 +163,7 @@
   :schema.class/NewsArticle [],
   :schema.class/NoteDigitalDocument [],
   :schema.class/OpinionNewsArticle [],
+  :schema.class/Painting [],
   :schema.class/Person
   [:schema.property/familyName
    :schema.property/givenName
@@ -170,6 +184,7 @@
    :schema.property/alumniOf
    :schema.property/affiliation
    :schema.property/additionalName],
+  :schema.class/Photograph [],
   :schema.class/PresentationDigitalDocument [],
   :schema.class/Recommendation [:schema.property/category],
   :schema.class/Report [:schema.property/reportNumber],
@@ -182,6 +197,8 @@
    :schema.property/associatedMediaReview
    :schema.property/associatedReview],
   :schema.class/ReviewNewsArticle [],
+  :schema.class/Sculpture [],
+  :schema.class/SocialMediaPosting [:schema.property/sharedContent],
   :schema.class/SoftwareApplication
   [:schema.property/applicationCategory
    :schema.property/applicationSubCategory
@@ -223,4 +240,13 @@
    :schema.property/director
    :schema.property/gameEdition
    :schema.property/gamePlatform],
+  :schema.class/VisualArtwork
+  [:schema.property/artist
+   :schema.property/artform
+   :schema.property/artMedium
+   :schema.property/artworkSurface
+   :schema.property/artEdition
+   :schema.property/height
+   :schema.property/width
+   :schema.property/depth],
   :schema.class/WebSite [:schema.property/issn]}}
