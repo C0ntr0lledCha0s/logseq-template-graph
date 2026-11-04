@@ -110,6 +110,13 @@
     :logseq.property/description
     "[Guide](https://schema.org/Guide) is a page or article that recommends specific products or services, or aspects of a thing for a user to consider. A [Guide](https://schema.org/Guide) may represent a Buying Guide and detail aspects of products or services for a user to consider. A [Guide](https://schema.org/Guide) may represent a Product Guide and recommend specific products or services. A [Guide](https://schema.org/Guide) may represent a Ranked List and recommend specific products or services with ranking.",
     :schema.property/url "https://schema.org/Guide"}},
+  :schema.class/Sculpture
+  {:block/title "Sculpture",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "moyai", :type :emoji},
+    :logseq.property/description "A piece of sculpture.",
+    :schema.property/url "https://schema.org/Sculpture"}},
   :schema.class/SpreadsheetDigitalDocument
   {:block/title "SpreadsheetDigitalDocument",
    :build/class-extends [:schema.class/DigitalDocument],
@@ -159,6 +166,30 @@
     :logseq.property/description
     "An [OpinionNewsArticle](https://schema.org/OpinionNewsArticle) is a [NewsArticle](https://schema.org/NewsArticle) that primarily expresses opinions rather than journalistic reporting of news and events. For example, a [NewsArticle](https://schema.org/NewsArticle) consisting of a column or [Blog](https://schema.org/Blog)/[BlogPosting](https://schema.org/BlogPosting) entry in the Opinions section of a news publication.",
     :schema.property/url "https://schema.org/OpinionNewsArticle"}},
+  :schema.class/Painting
+  {:block/title "Painting",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "frame_with_picture", :type :emoji},
+    :logseq.property/description "A painting.",
+    :schema.property/url "https://schema.org/Painting"}},
+  :schema.class/VisualArtwork
+  {:block/title "VisualArtwork",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "art", :type :emoji},
+    :logseq.property/description
+    "A work of art that is primarily visual in character.",
+    :schema.property/url "https://schema.org/VisualArtwork"},
+   :build/class-properties
+   [:schema.property/artist
+    :schema.property/artform
+    :schema.property/artMedium
+    :schema.property/artworkSurface
+    :schema.property/artEdition
+    :schema.property/height
+    :schema.property/width
+    :schema.property/depth]},
   :schema.class/TextDigitalDocument
   {:block/title "TextDigitalDocument",
    :build/class-extends [:schema.class/DigitalDocument],
@@ -412,6 +443,13 @@
     :logseq.property/description
     "A media season, e.g. TV, radio, video game etc.",
     :schema.property/url "https://schema.org/CreativeWorkSeason"}},
+  :schema.class/DiscussionForumPosting
+  {:block/title "DiscussionForumPosting",
+   :build/class-extends [:schema.class/SocialMediaPosting],
+   :build/properties
+   {:logseq.property/icon {:id "busts_in_silhouette", :type :emoji},
+    :logseq.property/description "A posting to a discussion forum.",
+    :schema.property/url "https://schema.org/DiscussionForumPosting"}},
   :schema.class/Episode
   {:block/title "Episode",
    :build/class-properties
@@ -428,6 +466,29 @@
     :logseq.property/description
     "A media episode (e.g. TV, radio, video game) which can be part of a series or season.",
     :schema.property/url "https://schema.org/Episode"}},
+  :schema.class/BlogPosting
+  {:block/title "BlogPosting",
+   :build/class-extends [:schema.class/SocialMediaPosting],
+   :build/properties
+   {:logseq.property/icon {:id "writing_hand", :type :emoji},
+    :logseq.property/description "A blog post.",
+    :schema.property/url "https://schema.org/BlogPosting"}},
+  :schema.class/HowTo
+  {:block/title "HowTo",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "clipboard", :type :emoji},
+    :logseq.property/description
+    "Instructions that explain how to achieve a result by performing a sequence of steps.",
+    :schema.property/url "https://schema.org/HowTo"},
+   :build/class-properties
+   [:schema.property/totalTime
+    :schema.property/prepTime
+    :schema.property/performTime
+    :schema.property/tool
+    :schema.property/supply
+    :schema.property/yield
+    :schema.property/estimatedCost]},
   :schema.class/DigitalDocument
   {:block/title "DigitalDocument",
    :build/class-extends [:schema.class/CreativeWork],
@@ -436,6 +497,25 @@
     {:id "FileDigit", :type :tabler-icon, :color "inherit"},
     :logseq.property/description "An electronic file or document.",
     :schema.property/url "https://schema.org/DigitalDocument"}},
+  :schema.class/Blog
+  {:block/title "Blog",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "spiral_note_pad", :type :emoji},
+    :logseq.property/description
+    "A blog, sometimes known as a \"weblog\". Individual posts (BlogPostings) in a Blog are often colloquially referred to by the same term.",
+    :schema.property/url "https://schema.org/Blog"},
+   :build/class-properties
+   [:schema.property/blogPost :schema.property/issn]},
+  :schema.class/SocialMediaPosting
+  {:block/title "SocialMediaPosting",
+   :build/class-extends [:schema.class/Article],
+   :build/properties
+   {:logseq.property/icon {:id "speech_balloon", :type :emoji},
+    :logseq.property/description
+    "A post to a social media platform, including blog posts, tweets, Facebook posts, etc.",
+    :schema.property/url "https://schema.org/SocialMediaPosting"},
+   :build/class-properties [:schema.property/sharedContent]},
   :schema.class/Article
   {:block/title "Article",
    :block/collapsed? false,
@@ -556,4 +636,11 @@
    {:logseq.property/icon {:id "thinking_face", :type :emoji},
     :logseq.property/description
     "A review of an item - for example, of a restaurant, movie, or store.",
-    :schema.property/url "https://schema.org/Review"}}}}
+    :schema.property/url "https://schema.org/Review"}},
+  :schema.class/Photograph
+  {:block/title "Photograph",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "camera", :type :emoji},
+    :logseq.property/description "A photograph.",
+    :schema.property/url "https://schema.org/Photograph"}}}}
