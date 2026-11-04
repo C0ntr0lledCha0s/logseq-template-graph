@@ -11,9 +11,9 @@ One file per preset, `source/presets/<id>.edn`:
  :name "CRM"
  :description "Customer relationship management - Person, Organization, and Contact"
  :classes
- {:schema.class/Person [:schema.property/email :schema.property/jobTitle]
+ {:schema.class/Person [:schema.property/email]
   :schema.class/Organization [:schema.property/legalName]
-  :custom.class/BusinessPerson []}}
+  :custom.class/WorkProfile [:schema.property/jobTitle]}}
 ```
 
 - `:id` - matches the file name

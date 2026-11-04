@@ -10,9 +10,23 @@
    :custom.property/areas
    :custom.property/objective
    :custom.property/nextMeetingDate],
-  :custom.class/BusinessPerson [],
+  :custom.class/Customer [],
   :custom.class/Department [],
+  :custom.class/Employee [],
+  :custom.class/Relationship
+  [:custom.property/relationshipStatus
+   :custom.property/keyRelationshipHolder
+   :custom.property/operationalRelationshipHolder],
   :custom.class/Resource [],
+  :custom.class/Supplier [],
+  :custom.class/TeamMember [],
+  :custom.class/Volunteer [],
+  :custom.class/WorkProfile
+  [:schema.property/jobTitle
+   :schema.property/worksFor
+   :schema.property/workLocation
+   :schema.property/colleague
+   :schema.property/hasOccupation],
   :schema.class/Brand [],
   :schema.class/BusinessAudience
   [:schema.property/numberOfEmployees
@@ -26,7 +40,7 @@
    :schema.property/recognizedBy
    :schema.property/validIn
    :schema.property/validFor],
-  :schema.class/EducationalOrganization [:schema.property/alumni],
+  :schema.class/EducationalOrganization [],
   :schema.class/LocalBusiness
   [:schema.property/openingHours :schema.property/priceRange],
   :schema.class/MusicGroup
@@ -63,20 +77,15 @@
    :schema.property/parent
    :schema.property/homeLocation
    :schema.property/birthPlace
-   :schema.property/hasOccupation
-   :schema.property/workLocation
-   :schema.property/colleague
    :schema.property/spouse
    :schema.property/telephone
    :schema.property/address
    :schema.property/skills
    :schema.property/relatedTo
-   :schema.property/worksFor
    :schema.property/sibling
    :schema.property/knows
    :schema.property/knowsAbout
    :schema.property/birthDate
-   :schema.property/jobTitle
    :schema.property/email
    :schema.property/alumniOf
    :schema.property/affiliation

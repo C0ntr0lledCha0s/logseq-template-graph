@@ -1,0 +1,25 @@
+{:classes
+ {:custom.class/Relationship
+  {:block/title "Relationship",
+   :build/class-properties
+   [:custom.property/relationshipStatus
+    :custom.property/keyRelationshipHolder
+    :custom.property/operationalRelationshipHolder],
+   :build/properties
+   {:logseq.property/icon {:id "link", :type :emoji},
+    :logseq.property/description
+    "Abstract root for parties you have a business relationship with. Never tagged directly: tag Client or Supplier alongside #Person or #Organization."}},
+  :custom.class/Customer
+  {:block/title "Client",
+   :build/class-extends [:custom.class/Relationship],
+   :build/properties
+   {:logseq.property/icon {:id "handshake", :type :emoji},
+    :logseq.property/description
+    "A person or organisation you provide goods or services to. Tag it alongside #Person or #Organization. Shown as Client; rename the tag to suit your sector (Customer, Member, Donor)."}},
+  :custom.class/Supplier
+  {:block/title "Supplier",
+   :build/class-extends [:custom.class/Relationship],
+   :build/properties
+   {:logseq.property/icon {:id "package", :type :emoji},
+    :logseq.property/description
+    "A person or organisation that provides goods or services to you. Tag it alongside #Person or #Organization."}}}}

@@ -9,20 +9,15 @@
     :schema.property/parent
     :schema.property/homeLocation
     :schema.property/birthPlace
-    :schema.property/hasOccupation
-    :schema.property/workLocation
-    :schema.property/colleague
     :schema.property/spouse
     :schema.property/telephone
     :schema.property/address
     :schema.property/skills
     :schema.property/relatedTo
-    :schema.property/worksFor
     :schema.property/sibling
     :schema.property/knows
     :schema.property/knowsAbout
     :schema.property/birthDate
-    :schema.property/jobTitle
     :schema.property/email
     :schema.property/alumniOf
     :schema.property/affiliation
@@ -33,4 +28,37 @@
     :logseq.property/description
     "A person (alive, dead, undead, or fictional).",
     :schema.property/url "https://schema.org/Person"}},
-  :custom.class/BusinessPerson {:block/title "BusinessPerson"}}}
+  :custom.class/WorkProfile
+  {:block/title "WorkProfile",
+   :build/class-properties
+   [:schema.property/jobTitle
+    :schema.property/worksFor
+    :schema.property/workLocation
+    :schema.property/colleague
+    :schema.property/hasOccupation],
+   :build/class-extends [:schema.class/Person],
+   :build/properties
+   {:logseq.property/icon {:id "briefcase", :type :emoji},
+    :logseq.property/description
+    "A person's working life: job title, employer, occupation, workplace and colleagues. Covers paid work and volunteering in any sector. Extends Person, so personal details stay available."}},
+  :custom.class/TeamMember
+  {:block/title "TeamMember",
+   :build/class-extends [:custom.class/WorkProfile],
+   :build/properties
+   {:logseq.property/icon {:id "busts_in_silhouette", :type :emoji},
+    :logseq.property/description
+    "Someone in your own organisation. Never tagged directly: tag Employee or Volunteer. Relationship holders point to team members."}},
+  :custom.class/Employee
+  {:block/title "Employee",
+   :build/class-extends [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/icon {:id "office_worker", :type :emoji},
+    :logseq.property/description
+    "A person employed by your organisation."}},
+  :custom.class/Volunteer
+  {:block/title "Volunteer",
+   :build/class-extends [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/icon {:id "raised_hands", :type :emoji},
+    :logseq.property/description
+    "A person who volunteers for your organisation."}}}}

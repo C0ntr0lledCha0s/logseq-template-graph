@@ -1,0 +1,34 @@
+{:properties
+ {:custom.property/relationshipStatus
+  {:block/title "relationship-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "prospect",
+     :uuid #uuid "bad70f78-e410-5e0f-9cbd-e24de5ee4eea"}
+    {:value "active",
+     :uuid #uuid "e98fe653-f6ff-543f-9385-14c9c5256491"}
+    {:value "former",
+     :uuid #uuid "1fc1f24a-0a27-529a-bc8b-b06e6835fa1e"}],
+   :build/properties
+   {:logseq.property/description
+    "Where the relationship stands: prospect, active or former.",
+    :logseq.property/exclude-from-graph-view true}},
+  :custom.property/keyRelationshipHolder
+  {:block/title "key-relationship-holder",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/description
+    "The team member who owns the relationship, for example the partner.",
+    :logseq.property/exclude-from-graph-view true}},
+  :custom.property/operationalRelationshipHolder
+  {:block/title "operational-relationship-holder",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/many,
+   :build/property-classes [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/description
+    "Team members who run the relationship day to day, for example the manager.",
+    :logseq.property/exclude-from-graph-view true}}}}

@@ -10,9 +10,14 @@
    :custom.property/areas
    :custom.property/objective
    :custom.property/nextMeetingDate],
-  :custom.class/BusinessPerson [],
   :custom.class/Department [],
   :custom.class/Resource [],
+  :custom.class/WorkProfile
+  [:schema.property/jobTitle
+   :schema.property/worksFor
+   :schema.property/workLocation
+   :schema.property/colleague
+   :schema.property/hasOccupation],
   :schema.class/AnalysisNewsArticle [],
   :schema.class/Article
   [:schema.property/articleSection :schema.property/backstory],
@@ -25,10 +30,7 @@
    :schema.property/illustrator
    :schema.property/isbn
    :schema.property/numberOfPages],
-  :schema.class/BookSeries
-  [:schema.property/startDate
-   :schema.property/endDate
-   :schema.property/issn],
+  :schema.class/BookSeries [:schema.property/issn],
   :schema.class/Brand [],
   :schema.class/BusinessAudience
   [:schema.property/numberOfEmployees
@@ -42,8 +44,6 @@
    :schema.property/certificationIdentification
    :schema.property/certificationRating
    :schema.property/issuedBy
-   :schema.property/datePublished
-   :schema.property/about
    :schema.property/validIn
    :schema.property/validFrom
    :schema.property/logo],
@@ -108,7 +108,7 @@
    :schema.property/recognizedBy
    :schema.property/validIn
    :schema.property/validFor],
-  :schema.class/EducationalOrganization [:schema.property/alumni],
+  :schema.class/EducationalOrganization [],
   :schema.class/Episode
   [:schema.property/duration
    :schema.property/actor
@@ -209,20 +209,15 @@
    :schema.property/parent
    :schema.property/homeLocation
    :schema.property/birthPlace
-   :schema.property/hasOccupation
-   :schema.property/workLocation
-   :schema.property/colleague
    :schema.property/spouse
    :schema.property/telephone
    :schema.property/address
    :schema.property/skills
    :schema.property/relatedTo
-   :schema.property/worksFor
    :schema.property/sibling
    :schema.property/knows
    :schema.property/knowsAbout
    :schema.property/birthDate
-   :schema.property/jobTitle
    :schema.property/email
    :schema.property/alumniOf
    :schema.property/affiliation
@@ -253,14 +248,7 @@
    :schema.property/programmingLanguage
    :schema.property/targetProduct],
   :schema.class/SpreadsheetDigitalDocument [],
-  :schema.class/Syllabus
-  [:schema.property/assesses
-   :schema.property/competencyRequired
-   :schema.property/educationalAlignment
-   :schema.property/educationalLevel
-   :schema.property/educationalUse
-   :schema.property/learningResourceType
-   :schema.property/teaches],
+  :schema.class/Syllabus [],
   :schema.class/TVEpisode [:schema.property/titleEIDR],
   :schema.class/TVSeason [:schema.property/titleEIDR],
   :schema.class/TVSeries

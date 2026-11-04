@@ -44,7 +44,7 @@ vendor/schemaorg-current-https.json   vocabulary used by validation
 build/                           generated, git-ignored
 ```
 
-Modules group classes by theme (person, organization, event, place, creative-work, product, action, intangible, health, misc, base) and `common` holds shared properties. A module may have `classes.edn`, `properties.edn`, or both.
+Modules group classes by theme (person, organization, relationship, event, place, creative-work, product, action, intangible, health, misc, project-management, base) and `common` holds shared properties. A module may have `classes.edn`, `properties.edn`, or both.
 
 ## Idents
 
@@ -114,7 +114,7 @@ A module file holds one section; the merged library holds both.
  :name "CRM"
  :description "Customer relationship management"
  :classes {:schema.class/Person [:schema.property/email]
-           :custom.class/BusinessPerson []}}
+           :custom.class/WorkProfile []}}
 ```
 
 Each preset lists the classes in a role and, per class, the properties the preset brings. A preset may list only properties attached **directly** to that class. `bb build` writes all presets to `build/schema-presets.edn` as `{:schema-library/version ... :presets [...]}`. See [source/presets/README.md](../../source/presets/README.md).

@@ -33,14 +33,6 @@
     :schema.property/url "https://schema.org/TVSeries"}},
   :schema.class/Syllabus
   {:block/title "Syllabus",
-   :build/class-properties
-   [:schema.property/assesses
-    :schema.property/educationalLevel
-    :schema.property/teaches
-    :schema.property/competencyRequired
-    :schema.property/educationalAlignment
-    :schema.property/educationalUse
-    :schema.property/learningResourceType],
    :build/class-extends [:schema.class/LearningResource],
    :build/properties
    {:logseq.property/icon {:id "school", :type :emoji},
@@ -169,6 +161,13 @@
     :logseq.property/description
     "Intended audience for an item, i.e. the group for whom the item was created.",
     :schema.property/url "https://schema.org/Audience"}},
+  :custom.class/Employee
+  {:block/title "Employee",
+   :build/class-extends [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/icon {:id "office_worker", :type :emoji},
+    :logseq.property/description
+    "A person employed by your organisation."}},
   :schema.class/BusinessAudience
   {:block/title "BusinessAudience",
    :build/class-properties
@@ -335,6 +334,19 @@
     :logseq.property/description
     "An online or virtual location for attending events. For example, one may attend an online seminar or educational event. While a virtual location may be used as the location of an event, virtual locations should not be confused with physical locations in the real world.",
     :schema.property/url "https://schema.org/VirtualLocation"}},
+  :custom.class/WorkProfile
+  {:block/title "WorkProfile",
+   :build/class-properties
+   [:schema.property/jobTitle
+    :schema.property/worksFor
+    :schema.property/workLocation
+    :schema.property/colleague
+    :schema.property/hasOccupation],
+   :build/class-extends [:schema.class/Person],
+   :build/properties
+   {:logseq.property/icon {:id "briefcase", :type :emoji},
+    :logseq.property/description
+    "A person's working life: job title, employer, occupation, workplace and colleagues. Covers paid work and volunteering in any sector. Extends Person, so personal details stay available."}},
   :schema.class/ScreeningEvent
   {:block/title "ScreeningEvent",
    :build/class-properties [:schema.property/workPresented],
@@ -367,10 +379,7 @@
     :schema.property/url "https://schema.org/Country"}},
   :schema.class/BookSeries
   {:block/title "BookSeries",
-   :build/class-properties
-   [:schema.property/startDate
-    :schema.property/endDate
-    :schema.property/issn],
+   :build/class-properties [:schema.property/issn],
    :build/class-extends [:schema.class/CreativeWorkSeries],
    :build/properties
    {:logseq.property/icon {:id "book", :type :emoji},
@@ -531,6 +540,13 @@
    {:logseq.property/icon {:id "children_crossing", :type :emoji},
     :logseq.property/description "Event type: Children's event.",
     :schema.property/url "https://schema.org/ChildrensEvent"}},
+  :custom.class/Volunteer
+  {:block/title "Volunteer",
+   :build/class-extends [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/icon {:id "raised_hands", :type :emoji},
+    :logseq.property/description
+    "A person who volunteers for your organisation."}},
   :schema.class/Festival
   {:block/title "Festival",
    :build/class-extends [:schema.class/Event],
@@ -600,7 +616,6 @@
     "Enhancement to existing behaviour. Sits under an Epic or at top level."}},
   :schema.class/EducationalOrganization
   {:block/title "EducationalOrganization",
-   :build/class-properties [:schema.property/alumni],
    :build/class-extends [:schema.class/Organization],
    :build/properties
    {:logseq.property/icon {:id "school", :type :emoji},
@@ -674,6 +689,13 @@
     :logseq.property/description
     "A group of multiple reservations with common values for all sub-reservations.",
     :schema.property/url "https://schema.org/ReservationPackage"}},
+  :custom.class/TeamMember
+  {:block/title "TeamMember",
+   :build/class-extends [:custom.class/WorkProfile],
+   :build/properties
+   {:logseq.property/icon {:id "busts_in_silhouette", :type :emoji},
+    :logseq.property/description
+    "Someone in your own organisation. Never tagged directly: tag Employee or Volunteer. Relationship holders point to team members."}},
   :schema.class/PresentationDigitalDocument
   {:block/title "PresentationDigitalDocument",
    :build/class-extends [:schema.class/DigitalDocument],
@@ -755,7 +777,9 @@
    {:logseq.property/icon {:id "film_projector", :type :emoji},
     :logseq.property/description "A movie.",
     :schema.property/url "https://schema.org/Movie"}},
-  :custom.class/Department {:block/title "Department"},
+  :custom.class/Department
+  {:block/title "Department",
+   :build/class-extends [:schema.class/Organization]},
   :schema.class/MusicGroup
   {:block/title "MusicGroup",
    :block/collapsed? false,
@@ -780,9 +804,7 @@
   :schema.class/Certification
   {:block/title "Certification",
    :build/class-properties
-   [:schema.property/datePublished
-    :schema.property/about
-    :schema.property/logo
+   [:schema.property/logo
     :schema.property/expires
     :schema.property/certificationStatus
     :schema.property/auditDate
@@ -848,6 +870,13 @@
     :logseq.property/description
     "Used to describe a ticket to an event, a flight, a bus ride, etc.",
     :schema.property/url "https://schema.org/Ticket"}},
+  :custom.class/Supplier
+  {:block/title "Supplier",
+   :build/class-extends [:custom.class/Relationship],
+   :build/properties
+   {:logseq.property/icon {:id "package", :type :emoji},
+    :logseq.property/description
+    "A person or organisation that provides goods or services to you. Tag it alongside #Person or #Organization."}},
   :schema.class/MemberProgram
   {:block/title "MemberProgram",
    :build/class-properties
@@ -868,7 +897,9 @@
    {:logseq.property/icon {:type :tabler-icon, :id "hierarchy-2"},
     :logseq.property/description
     "Abstract root of the project-management schema. Never applied directly; every PM tag extends it and inherits ad-id, owner and scope."}},
-  :custom.class/Business {:block/title "Business"},
+  :custom.class/Business
+  {:block/title "Business",
+   :build/class-extends [:schema.class/Organization]},
   :schema.class/LodgingReservation
   {:block/title "LodgingReservation",
    :block/collapsed? false,
@@ -1096,7 +1127,6 @@
    {:logseq.property/icon {:id "book", :type :emoji},
     :logseq.property/description "A book.",
     :schema.property/url "https://schema.org/Book"}},
-  :custom.class/BusinessPerson {:block/title "BusinessPerson"},
   :schema.class/BusTrip
   {:block/title "BusTrip",
    :build/class-properties
@@ -1227,18 +1257,13 @@
     :schema.property/parent
     :schema.property/homeLocation
     :schema.property/birthPlace
-    :schema.property/hasOccupation
-    :schema.property/workLocation
-    :schema.property/colleague
     :schema.property/spouse
     :schema.property/address
     :schema.property/relatedTo
-    :schema.property/worksFor
     :schema.property/sibling
     :schema.property/knows
     :schema.property/knowsAbout
     :schema.property/birthDate
-    :schema.property/jobTitle
     :schema.property/alumniOf
     :schema.property/affiliation
     :schema.property/additionalName],
@@ -1378,6 +1403,16 @@
    {:logseq.property/icon {:id "dancer", :type :emoji},
     :logseq.property/description "Event type: A social dance.",
     :schema.property/url "https://schema.org/DanceEvent"}},
+  :custom.class/Relationship
+  {:block/title "Relationship",
+   :build/class-properties
+   [:custom.property/relationshipStatus
+    :custom.property/keyRelationshipHolder
+    :custom.property/operationalRelationshipHolder],
+   :build/properties
+   {:logseq.property/icon {:id "link", :type :emoji},
+    :logseq.property/description
+    "Abstract root for parties you have a business relationship with. Never tagged directly: tag Client or Supplier alongside #Person or #Organization."}},
   :schema.class/ListItem
   {:block/title "ListItem",
    :build/class-properties
@@ -1480,6 +1515,13 @@
     :logseq.property/description
     "A series of [Event](https://schema.org/Event)s. Included events can relate with the series using the [superEvent](https://schema.org/superEvent) property.",
     :schema.property/url "https://schema.org/EventSeries"}},
+  :custom.class/Customer
+  {:block/title "Client",
+   :build/class-extends [:custom.class/Relationship],
+   :build/properties
+   {:logseq.property/icon {:id "handshake", :type :emoji},
+    :logseq.property/description
+    "A person or organisation you provide goods or services to. Tag it alongside #Person or #Organization. Shown as Client; rename the tag to suit your sector (Customer, Member, Donor)."}},
   :custom.class/BusinessMeeting
   {:block/title "Business Meeting",
    :build/class-properties
@@ -1866,6 +1908,21 @@
     "The item being described is intended to assess the competency or learning outcome defined by the referenced term.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/assesses"}},
+  :custom.property/relationshipStatus
+  {:block/title "relationship-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "prospect",
+     :uuid #uuid "bad70f78-e410-5e0f-9cbd-e24de5ee4eea"}
+    {:value "active",
+     :uuid #uuid "e98fe653-f6ff-543f-9385-14c9c5256491"}
+    {:value "former",
+     :uuid #uuid "1fc1f24a-0a27-529a-bc8b-b06e6835fa1e"}],
+   :build/properties
+   {:logseq.property/description
+    "Where the relationship stands: prospect, active or former.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/releaseOf
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2533,7 +2590,8 @@
      :type :emoji},
     :logseq.property/description "A child of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/children"}},
+    :schema.property/url "https://schema.org/children",
+    :logseq.property/hide-empty-value true}},
   :schema.property/license
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2663,6 +2721,15 @@
     "The production company or studio responsible for the item, e.g. series, video game, episode etc.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/productionCompany"}},
+  :custom.property/keyRelationshipHolder
+  {:block/title "key-relationship-holder",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/description
+    "The team member who owns the relationship, for example the partner.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/checkinTime
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -3636,7 +3703,8 @@
      :type :emoji},
     :logseq.property/description "A colleague of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/colleague"}},
+    :schema.property/url "https://schema.org/colleague",
+    :logseq.property/hide-empty-value true}},
   :schema.property/departureBusStop
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -3969,7 +4037,8 @@
      :type :emoji},
     :logseq.property/description "A sibling of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/sibling"}},
+    :schema.property/url "https://schema.org/sibling",
+    :logseq.property/hide-empty-value true}},
   :schema.property/isrcCode
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4100,7 +4169,8 @@
     :logseq.property/description
     "The most generic bi-directional social/work relation.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/knows"}},
+    :schema.property/url "https://schema.org/knows",
+    :logseq.property/hide-empty-value true}},
   :schema.property/hasPart
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -5645,7 +5715,135 @@
    :build/closed-values
    [{:value "Fantasy",
      :uuid #uuid "684153b0-c950-4c69-82cb-e5997603052e",
-     :icon {:id "magic_wand", :type :emoji}}],
+     :icon {:id "magic_wand", :type :emoji}}
+    {:value "Science Fiction",
+     :uuid #uuid "dfce040b-0fd2-5db5-8e06-de4a01e59654"}
+    {:value "Mystery",
+     :uuid #uuid "d6b228f0-d842-5345-887e-af71cca2021c"}
+    {:value "Thriller",
+     :uuid #uuid "07c66492-1183-5d25-8854-66d31fc34657"}
+    {:value "Crime",
+     :uuid #uuid "ee73d574-0399-521f-9814-c240321707b7"}
+    {:value "Horror",
+     :uuid #uuid "85d9adc5-828f-5038-bb56-9364fd3c6b9c"}
+    {:value "Romance",
+     :uuid #uuid "ad359797-d3ae-589e-abb6-4b7effed77a6"}
+    {:value "Historical Fiction",
+     :uuid #uuid "9fe7fd0a-d918-5e46-8567-27701e94c729"}
+    {:value "Literary Fiction",
+     :uuid #uuid "072bc10a-ec38-570e-b2dd-7d1fc235f09d"}
+    {:value "Adventure",
+     :uuid #uuid "539b76bc-4a7f-59b9-9f5b-687bf5976aec"}
+    {:value "Dystopian",
+     :uuid #uuid "6f7b529b-5d7f-516b-8867-b4734e1e9d9b"}
+    {:value "Young Adult",
+     :uuid #uuid "7fc9b82f-236b-5c94-ae1a-1f45b8b58703"}
+    {:value "Children's",
+     :uuid #uuid "e16c17eb-1d69-5f90-94eb-19c1b671f71b"}
+    {:value "Graphic Novel",
+     :uuid #uuid "aa8cc0f9-0c8a-5d9e-b8b0-dc351123fa0c"}
+    {:value "Poetry",
+     :uuid #uuid "aa819ef7-64be-5162-bc97-c4cd7ca63b7e"}
+    {:value "Short Stories",
+     :uuid #uuid "c09fa8b1-9375-5ae9-83c6-d32b278f6bee"}
+    {:value "Classic",
+     :uuid #uuid "3774c0f5-daba-5efb-bfd8-d919299da294"}
+    {:value "Biography",
+     :uuid #uuid "5a365ad2-b717-59eb-89f1-91aa9b7ba5d5"}
+    {:value "Memoir",
+     :uuid #uuid "c5089a4a-18b4-5ca4-81e4-77578ed9d567"}
+    {:value "History",
+     :uuid #uuid "0b5e4fc9-7102-59ab-b297-b4c2d68fbefa"}
+    {:value "Science",
+     :uuid #uuid "b81579df-8c8e-52b0-b15c-e2355979dafd"}
+    {:value "Technology",
+     :uuid #uuid "73de245e-8abb-5252-a519-fc580edbdc22"}
+    {:value "Philosophy",
+     :uuid #uuid "ad49aa57-7276-5299-b9ec-43bcae48a22e"}
+    {:value "Psychology",
+     :uuid #uuid "d39154c7-8459-5494-a9a8-f61a818a1200"}
+    {:value "Self-Help",
+     :uuid #uuid "94e4000e-6db1-51ea-9a87-48493b4e27ed"}
+    {:value "Business",
+     :uuid #uuid "772dc460-7c8e-561b-8973-302fa0bc178d"}
+    {:value "Leadership",
+     :uuid #uuid "282fa580-a81a-5996-86f7-68baeff62562"}
+    {:value "Productivity",
+     :uuid #uuid "b5d13f42-2977-541b-8bbb-3e2d11d7c7a2"}
+    {:value "Economics",
+     :uuid #uuid "48268621-d005-56bf-8e17-3de243188d57"}
+    {:value "Politics",
+     :uuid #uuid "bd4bc94a-d1b6-5da6-bee5-8957fa463c86"}
+    {:value "Health",
+     :uuid #uuid "4f64123a-fcd3-50bd-ba1c-36c76b925ecb"}
+    {:value "Religion",
+     :uuid #uuid "50208d88-81cf-5fbf-a411-260826fce052"}
+    {:value "True Crime",
+     :uuid #uuid "111e7d66-2c25-5174-8b43-0cfd158392d1"}
+    {:value "Travel",
+     :uuid #uuid "d73911f6-c855-5818-b521-e8b0f4b60a42"}
+    {:value "Cooking",
+     :uuid #uuid "2a8c763c-e3d7-5b31-8c51-7bcece7a6ac1"}
+    {:value "Art", :uuid #uuid "7ca7fd86-8679-53a4-9138-b508b10ed588"}
+    {:value "Education",
+     :uuid #uuid "42e10d3f-4301-504f-bab0-d92d65085a30"}
+    {:value "Reference",
+     :uuid #uuid "44182aeb-3cd7-5347-b55d-b9dda5a86108"}
+    {:value "Essay",
+     :uuid #uuid "3d5e44f1-4081-554e-b15f-0ff33491aaf6"}
+    {:value "Action",
+     :uuid #uuid "0cdb9850-a271-5caa-92ef-55c789eb5af0"}
+    {:value "Comedy",
+     :uuid #uuid "28968b68-9b41-5fd6-97e6-fda2cdbd6b2f"}
+    {:value "Drama",
+     :uuid #uuid "c8a5a890-4431-565f-aab3-3fcfc4fc4161"}
+    {:value "Animation",
+     :uuid #uuid "cb1b20eb-36af-5f7e-8715-22e0383966bf"}
+    {:value "Documentary",
+     :uuid #uuid "419bd4af-9d59-5318-8f2d-fc8f0410f567"}
+    {:value "Family",
+     :uuid #uuid "acdfa96d-179e-534f-ba12-d38db1d05ee0"}
+    {:value "Musical",
+     :uuid #uuid "5d3361ad-8263-55f0-9e95-c2bf8ca40955"}
+    {:value "Western",
+     :uuid #uuid "5bd3679f-afff-5938-a9c7-26c56778b214"}
+    {:value "War", :uuid #uuid "09b99519-711f-51c6-b365-029e74e5493a"}
+    {:value "News", :uuid #uuid "2359e8f0-992a-56ba-ba39-59e6ad5b800b"}
+    {:value "Reality",
+     :uuid #uuid "10acb0df-8fe4-5074-99a4-044ad643f35a"}
+    {:value "Talk Show",
+     :uuid #uuid "b8ba1686-30e8-59a8-90ad-aac82fe7645b"}
+    {:value "Rock", :uuid #uuid "6e122e26-c17b-5afe-bd2a-2625153abee4"}
+    {:value "Pop", :uuid #uuid "be1aabec-4249-59c0-b2d4-b1176deb3fee"}
+    {:value "Jazz", :uuid #uuid "465a96b0-a94f-5e62-80f2-7e695e367626"}
+    {:value "Classical",
+     :uuid #uuid "2276d85e-4331-55f5-8356-a691c260df13"}
+    {:value "Hip Hop",
+     :uuid #uuid "59fd6724-e27d-5619-8005-5af0fe0533c0"}
+    {:value "R&B", :uuid #uuid "4daab504-1a56-5eef-ba65-e7cc86e507bf"}
+    {:value "Electronic",
+     :uuid #uuid "85298854-49ab-5c89-8c70-f623c925c44c"}
+    {:value "Country",
+     :uuid #uuid "a7a0cf8d-c21f-511d-bb27-4998d25a6d73"}
+    {:value "Folk", :uuid #uuid "5b2e636d-483d-5257-8645-e25354ceba1c"}
+    {:value "Blues",
+     :uuid #uuid "1c12d604-2fca-5ee9-b312-4db8bb277bf9"}
+    {:value "Metal",
+     :uuid #uuid "2f8cb738-88a1-5d67-b7f5-3bc1baf4485e"}
+    {:value "Soundtrack",
+     :uuid #uuid "4368e4d5-9ecc-590e-b144-48e63a1ec710"}
+    {:value "Strategy",
+     :uuid #uuid "9c93d8f4-2f96-5113-9b52-268e854ec299"}
+    {:value "Role-Playing",
+     :uuid #uuid "e9f55555-0b4c-5556-96b4-bdf41ba593cf"}
+    {:value "Puzzle",
+     :uuid #uuid "3643a9f7-7de7-54ff-9e85-03858d77791b"}
+    {:value "Simulation",
+     :uuid #uuid "ac739dec-7e9d-57d4-a6ce-7ccfabe60074"}
+    {:value "Sports",
+     :uuid #uuid "0350a095-d51a-5d9c-9a9f-f43222feff28"}
+    {:value "Other",
+     :uuid #uuid "9f8fe2f5-7a09-50d1-aeb4-243ae5398a5f"}],
    :build/properties
    {:logseq.property/hide-empty-value false,
     :logseq.property/icon
@@ -6166,6 +6364,15 @@
    :build/properties
    {:logseq.property/description
     "Workspace this Portfolio belongs to.",
+    :logseq.property/exclude-from-graph-view true}},
+  :custom.property/operationalRelationshipHolder
+  {:block/title "operational-relationship-holder",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/many,
+   :build/property-classes [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/description
+    "Team members who run the relationship day to day, for example the manager.",
     :logseq.property/exclude-from-graph-view true}},
   :schema.property/audienceType
   {:db/cardinality :db.cardinality/many,
@@ -7479,7 +7686,8 @@
     :logseq.property/description
     "A parent of this person. We use \"parents\" instead of \"parent\" as this property is already used.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/parent"}},
+    :schema.property/url "https://schema.org/parent",
+    :logseq.property/hide-empty-value true}},
   :schema.property/epidemiology
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -7644,7 +7852,8 @@
      :type :emoji},
     :logseq.property/description "The most generic familial relation.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/relatedTo"}},
+    :schema.property/url "https://schema.org/relatedTo",
+    :logseq.property/hide-empty-value true}},
   :schema.property/unitText
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -8423,7 +8632,8 @@
      :type :emoji},
     :logseq.property/description "The person's spouse.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/spouse"}},
+    :schema.property/url "https://schema.org/spouse",
+    :logseq.property/hide-empty-value true}},
   :custom.property/topic
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -8541,4 +8751,4 @@
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/subTrip"}}},
  :logseq.db.sqlite.export/export-type :graph-ontology,
- :schema-library/version "2.2.0"}
+ :schema-library/version "2.3.0"}

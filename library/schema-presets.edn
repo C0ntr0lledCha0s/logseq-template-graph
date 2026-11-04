@@ -1,4 +1,4 @@
-{:schema-library/version "2.2.0",
+{:schema-library/version "2.3.0",
  :presets
  [{:id "content",
    :name "Content Creation",
@@ -14,14 +14,7 @@
      :schema.property/musicBy
      :schema.property/productionCompany
      :schema.property/numberOfEpisodes],
-    :schema.class/Syllabus
-    [:schema.property/assesses
-     :schema.property/competencyRequired
-     :schema.property/educationalAlignment
-     :schema.property/educationalLevel
-     :schema.property/educationalUse
-     :schema.property/learningResourceType
-     :schema.property/teaches],
+    :schema.class/Syllabus [],
     :schema.class/BackgroundNewsArticle [],
     :schema.class/NewsArticle [],
     :schema.class/Conversation [],
@@ -39,10 +32,13 @@
      :schema.property/featureList
      :schema.property/softwareAddOn
      :schema.property/softwareHelp],
-    :schema.class/BookSeries
-    [:schema.property/startDate
-     :schema.property/endDate
-     :schema.property/issn],
+    :custom.class/WorkProfile
+    [:schema.property/jobTitle
+     :schema.property/worksFor
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/hasOccupation],
+    :schema.class/BookSeries [:schema.property/issn],
     :schema.class/MusicAlbum
     [:schema.property/byArtist
      :schema.property/albumProductionType
@@ -81,8 +77,6 @@
      :schema.property/certificationIdentification
      :schema.property/certificationRating
      :schema.property/issuedBy
-     :schema.property/datePublished
-     :schema.property/about
      :schema.property/validIn
      :schema.property/validFrom
      :schema.property/logo],
@@ -138,7 +132,6 @@
      :schema.property/illustrator
      :schema.property/isbn
      :schema.property/numberOfPages],
-    :custom.class/BusinessPerson [],
     :schema.class/CreativeWorkSeries
     [:schema.property/startDate :schema.property/endDate],
     :schema.class/WebSite [:schema.property/issn],
@@ -165,20 +158,15 @@
      :schema.property/parent
      :schema.property/homeLocation
      :schema.property/birthPlace
-     :schema.property/hasOccupation
-     :schema.property/workLocation
-     :schema.property/colleague
      :schema.property/spouse
      :schema.property/telephone
      :schema.property/address
      :schema.property/skills
      :schema.property/relatedTo
-     :schema.property/worksFor
      :schema.property/sibling
      :schema.property/knows
      :schema.property/knowsAbout
      :schema.property/birthDate
-     :schema.property/jobTitle
      :schema.property/email
      :schema.property/alumniOf
      :schema.property/affiliation
@@ -243,10 +231,17 @@
    :description
    "Customer relationship management - Person, Organization, and Contact",
    :classes
-   {:schema.class/BusinessAudience
+   {:custom.class/Employee [],
+    :schema.class/BusinessAudience
     [:schema.property/numberOfEmployees
      :schema.property/yearlyRevenue
      :schema.property/yearsInOperation],
+    :custom.class/WorkProfile
+    [:schema.property/jobTitle
+     :schema.property/worksFor
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/hasOccupation],
     :schema.class/LocalBusiness
     [:schema.property/openingHours :schema.property/priceRange],
     :schema.class/EducationalOccupationalCredential
@@ -256,15 +251,17 @@
      :schema.property/recognizedBy
      :schema.property/validIn
      :schema.property/validFor],
-    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :custom.class/Volunteer [],
+    :schema.class/EducationalOrganization [],
+    :custom.class/TeamMember [],
     :custom.class/Department [],
     :schema.class/MusicGroup
     [:schema.property/genre
      :schema.property/album
      :schema.property/track],
+    :custom.class/Supplier [],
     :custom.class/Business [],
     :custom.class/Resource [],
-    :custom.class/BusinessPerson [],
     :schema.class/Thing
     [:schema.property/url
      :schema.property/sameAs
@@ -277,20 +274,15 @@
      :schema.property/parent
      :schema.property/homeLocation
      :schema.property/birthPlace
-     :schema.property/hasOccupation
-     :schema.property/workLocation
-     :schema.property/colleague
      :schema.property/spouse
      :schema.property/telephone
      :schema.property/address
      :schema.property/skills
      :schema.property/relatedTo
-     :schema.property/worksFor
      :schema.property/sibling
      :schema.property/knows
      :schema.property/knowsAbout
      :schema.property/birthDate
-     :schema.property/jobTitle
      :schema.property/email
      :schema.property/alumniOf
      :schema.property/affiliation
@@ -312,6 +304,11 @@
      :schema.property/email
      :schema.property/keywords
      :schema.property/logo],
+    :custom.class/Relationship
+    [:custom.property/relationshipStatus
+     :custom.property/keyRelationshipHolder
+     :custom.property/operationalRelationshipHolder],
+    :custom.class/Customer [],
     :custom.class/BusinessMeeting
     [:custom.property/project
      :custom.property/topic
@@ -349,6 +346,12 @@
      :schema.property/yearlyRevenue
      :schema.property/yearsInOperation],
     :schema.class/VirtualLocation [],
+    :custom.class/WorkProfile
+    [:schema.property/jobTitle
+     :schema.property/worksFor
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/hasOccupation],
     :schema.class/ScreeningEvent [:schema.property/workPresented],
     :schema.class/Country [],
     :schema.class/LocalBusiness
@@ -367,7 +370,7 @@
      :schema.property/validFor],
     :schema.class/ChildrensEvent [],
     :schema.class/Festival [],
-    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :schema.class/EducationalOrganization [],
     :schema.class/EventReservation [],
     :custom.class/Department [],
     :schema.class/MusicGroup
@@ -383,7 +386,6 @@
      :schema.property/teaches],
     :schema.class/BusStation [],
     :custom.class/Resource [],
-    :custom.class/BusinessPerson [],
     :schema.class/Schedule
     [:schema.property/byMonthDay
      :schema.property/byMonth
@@ -411,20 +413,15 @@
      :schema.property/parent
      :schema.property/homeLocation
      :schema.property/birthPlace
-     :schema.property/hasOccupation
-     :schema.property/workLocation
-     :schema.property/colleague
      :schema.property/spouse
      :schema.property/telephone
      :schema.property/address
      :schema.property/skills
      :schema.property/relatedTo
-     :schema.property/worksFor
      :schema.property/sibling
      :schema.property/knows
      :schema.property/knowsAbout
      :schema.property/birthDate
-     :schema.property/jobTitle
      :schema.property/email
      :schema.property/alumniOf
      :schema.property/affiliation
@@ -501,14 +498,7 @@
      :schema.property/musicBy
      :schema.property/productionCompany
      :schema.property/numberOfEpisodes],
-    :schema.class/Syllabus
-    [:schema.property/assesses
-     :schema.property/competencyRequired
-     :schema.property/educationalAlignment
-     :schema.property/educationalLevel
-     :schema.property/educationalUse
-     :schema.property/learningResourceType
-     :schema.property/teaches],
+    :schema.class/Syllabus [],
     :custom.class/Obstacle
     [:custom.property/obstacleType
      :custom.property/severity
@@ -562,6 +552,7 @@
      :schema.property/logo],
     :schema.class/Audience
     [:schema.property/audienceType :schema.property/geographicArea],
+    :custom.class/Employee [],
     :schema.class/BusinessAudience
     [:schema.property/numberOfEmployees
      :schema.property/yearlyRevenue
@@ -621,6 +612,12 @@
      :schema.property/softwareAddOn
      :schema.property/softwareHelp],
     :schema.class/VirtualLocation [],
+    :custom.class/WorkProfile
+    [:schema.property/jobTitle
+     :schema.property/worksFor
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/hasOccupation],
     :schema.class/ScreeningEvent [:schema.property/workPresented],
     :schema.class/PhysicalActivity
     [:schema.property/associatedAnatomy
@@ -628,10 +625,7 @@
      :schema.property/epidemiology
      :schema.property/pathophysiology],
     :schema.class/Country [],
-    :schema.class/BookSeries
-    [:schema.property/startDate
-     :schema.property/endDate
-     :schema.property/issn],
+    :schema.class/BookSeries [:schema.property/issn],
     :schema.class/LocalBusiness
     [:schema.property/openingHours :schema.property/priceRange],
     :schema.class/MusicAlbum
@@ -670,6 +664,7 @@
      :schema.property/validFor],
     :schema.class/TrainReservation [],
     :schema.class/ChildrensEvent [],
+    :custom.class/Volunteer [],
     :schema.class/Festival [],
     :schema.class/Audiobook
     [:schema.property/duration :schema.property/readBy],
@@ -693,7 +688,7 @@
      :schema.property/repetitions
      :schema.property/restPeriods],
     :custom.class/Improvement [],
-    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :schema.class/EducationalOrganization [],
     :schema.class/TechArticle
     [:schema.property/dependencies :schema.property/proficiencyLevel],
     :custom.class/Workspace [],
@@ -703,6 +698,7 @@
     :schema.class/ReportageNewsArticle [],
     :schema.class/BusReservation [],
     :schema.class/ReservationPackage [:schema.property/subReservation],
+    :custom.class/TeamMember [],
     :schema.class/PresentationDigitalDocument [],
     :schema.class/MusicPlaylist
     [:schema.property/track :schema.property/numTracks],
@@ -744,8 +740,6 @@
      :schema.property/certificationIdentification
      :schema.property/certificationRating
      :schema.property/issuedBy
-     :schema.property/datePublished
-     :schema.property/about
      :schema.property/validIn
      :schema.property/validFrom
      :schema.property/logo],
@@ -776,6 +770,7 @@
      :schema.property/ticketNumber
      :schema.property/ticketToken
      :schema.property/ticketedSeat],
+    :custom.class/Supplier [],
     :schema.class/MemberProgram
     [:schema.property/hostingOrganization :schema.property/hasTiers],
     :custom.class/PMItem
@@ -858,7 +853,6 @@
      :schema.property/illustrator
      :schema.property/isbn
      :schema.property/numberOfPages],
-    :custom.class/BusinessPerson [],
     :schema.class/BusTrip
     [:schema.property/arrivalBusStop
      :schema.property/busName
@@ -913,20 +907,15 @@
      :schema.property/parent
      :schema.property/homeLocation
      :schema.property/birthPlace
-     :schema.property/hasOccupation
-     :schema.property/workLocation
-     :schema.property/colleague
      :schema.property/spouse
      :schema.property/telephone
      :schema.property/address
      :schema.property/skills
      :schema.property/relatedTo
-     :schema.property/worksFor
      :schema.property/sibling
      :schema.property/knows
      :schema.property/knowsAbout
      :schema.property/birthDate
-     :schema.property/jobTitle
      :schema.property/email
      :schema.property/alumniOf
      :schema.property/affiliation
@@ -975,6 +964,10 @@
     :schema.class/Language [],
     :schema.class/DigitalDocument [],
     :schema.class/DanceEvent [],
+    :custom.class/Relationship
+    [:custom.property/relationshipStatus
+     :custom.property/keyRelationshipHolder
+     :custom.property/operationalRelationshipHolder],
     :schema.class/ListItem
     [:schema.property/item
      :schema.property/nextItem
@@ -1006,6 +999,7 @@
      :schema.property/recordLabel
      :schema.property/releaseOf],
     :schema.class/EventSeries [],
+    :custom.class/Customer [],
     :custom.class/BusinessMeeting
     [:custom.property/project
      :custom.property/topic
@@ -1169,14 +1163,7 @@
      :schema.property/musicBy
      :schema.property/productionCompany
      :schema.property/numberOfEpisodes],
-    :schema.class/Syllabus
-    [:schema.property/assesses
-     :schema.property/competencyRequired
-     :schema.property/educationalAlignment
-     :schema.property/educationalLevel
-     :schema.property/educationalUse
-     :schema.property/learningResourceType
-     :schema.property/teaches],
+    :schema.class/Syllabus [],
     :schema.class/BackgroundNewsArticle [],
     :schema.class/NewsArticle [],
     :schema.class/BusinessAudience
@@ -1198,10 +1185,13 @@
      :schema.property/featureList
      :schema.property/softwareAddOn
      :schema.property/softwareHelp],
-    :schema.class/BookSeries
-    [:schema.property/startDate
-     :schema.property/endDate
-     :schema.property/issn],
+    :custom.class/WorkProfile
+    [:schema.property/jobTitle
+     :schema.property/worksFor
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/hasOccupation],
+    :schema.class/BookSeries [:schema.property/issn],
     :schema.class/LocalBusiness
     [:schema.property/openingHours :schema.property/priceRange],
     :schema.class/MusicAlbum
@@ -1225,7 +1215,7 @@
      :schema.property/director
      :schema.property/productionCompany
      :schema.property/musicBy],
-    :schema.class/EducationalOrganization [:schema.property/alumni],
+    :schema.class/EducationalOrganization [],
     :schema.class/TechArticle
     [:schema.property/dependencies :schema.property/proficiencyLevel],
     :schema.class/OpinionNewsArticle [],
@@ -1255,8 +1245,6 @@
      :schema.property/certificationIdentification
      :schema.property/certificationRating
      :schema.property/issuedBy
-     :schema.property/datePublished
-     :schema.property/about
      :schema.property/validIn
      :schema.property/validFrom
      :schema.property/logo],
@@ -1313,7 +1301,6 @@
      :schema.property/illustrator
      :schema.property/isbn
      :schema.property/numberOfPages],
-    :custom.class/BusinessPerson [],
     :schema.class/CreativeWorkSeries
     [:schema.property/startDate :schema.property/endDate],
     :schema.class/WebSite [:schema.property/issn],
@@ -1340,20 +1327,15 @@
      :schema.property/parent
      :schema.property/homeLocation
      :schema.property/birthPlace
-     :schema.property/hasOccupation
-     :schema.property/workLocation
-     :schema.property/colleague
      :schema.property/spouse
      :schema.property/telephone
      :schema.property/address
      :schema.property/skills
      :schema.property/relatedTo
-     :schema.property/worksFor
      :schema.property/sibling
      :schema.property/knows
      :schema.property/knowsAbout
      :schema.property/birthDate
-     :schema.property/jobTitle
      :schema.property/email
      :schema.property/alumniOf
      :schema.property/affiliation
@@ -1464,14 +1446,7 @@
      :schema.property/musicBy
      :schema.property/productionCompany
      :schema.property/numberOfEpisodes],
-    :schema.class/Syllabus
-    [:schema.property/assesses
-     :schema.property/competencyRequired
-     :schema.property/educationalAlignment
-     :schema.property/educationalLevel
-     :schema.property/educationalUse
-     :schema.property/learningResourceType
-     :schema.property/teaches],
+    :schema.class/Syllabus [],
     :schema.class/Event
     [:schema.property/superEvent
      :schema.property/subEvent
@@ -1542,12 +1517,15 @@
      :schema.property/softwareAddOn
      :schema.property/softwareHelp],
     :schema.class/VirtualLocation [],
+    :custom.class/WorkProfile
+    [:schema.property/jobTitle
+     :schema.property/worksFor
+     :schema.property/workLocation
+     :schema.property/colleague
+     :schema.property/hasOccupation],
     :schema.class/ScreeningEvent [:schema.property/workPresented],
     :schema.class/Country [],
-    :schema.class/BookSeries
-    [:schema.property/startDate
-     :schema.property/endDate
-     :schema.property/issn],
+    :schema.class/BookSeries [:schema.property/issn],
     :schema.class/MusicAlbum
     [:schema.property/byArtist
      :schema.property/albumProductionType
@@ -1632,8 +1610,6 @@
      :schema.property/certificationIdentification
      :schema.property/certificationRating
      :schema.property/issuedBy
-     :schema.property/datePublished
-     :schema.property/about
      :schema.property/validIn
      :schema.property/validFrom
      :schema.property/logo],
@@ -1737,7 +1713,6 @@
      :schema.property/illustrator
      :schema.property/isbn
      :schema.property/numberOfPages],
-    :custom.class/BusinessPerson [],
     :schema.class/BusTrip
     [:schema.property/arrivalBusStop
      :schema.property/busName
@@ -1792,20 +1767,15 @@
      :schema.property/parent
      :schema.property/homeLocation
      :schema.property/birthPlace
-     :schema.property/hasOccupation
-     :schema.property/workLocation
-     :schema.property/colleague
      :schema.property/spouse
      :schema.property/telephone
      :schema.property/address
      :schema.property/skills
      :schema.property/relatedTo
-     :schema.property/worksFor
      :schema.property/sibling
      :schema.property/knows
      :schema.property/knowsAbout
      :schema.property/birthDate
-     :schema.property/jobTitle
      :schema.property/email
      :schema.property/alumniOf
      :schema.property/affiliation

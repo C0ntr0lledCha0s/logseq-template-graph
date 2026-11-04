@@ -41,7 +41,7 @@ If you want only the classes for a role (CRM, research, events, ...) rather than
 
 Tag any page with an imported class:
 
-- `#Person` brings email, jobTitle, birthDate, and so on.
+- `#Person` brings email, birthDate, and so on. `#WorkProfile` extends it with work details such as jobTitle and worksFor.
 - `#Organization` brings legalName, employee, member, and so on.
 - `#Event` brings eventStatus, attendee, organizer, and so on.
 
