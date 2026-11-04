@@ -1,3 +1,30 @@
+## **2.3.0**&emsp;<sub><sup>2026-11-04 ([v2.2.0...v2.3.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v2.2.0...v2.3.0))</sup></sub>
+
+Splits work and relationship fields out of `Person` into role tags you combine with `#Person` or `#Organization`.
+
+### Features & Enhancements
+
+- `WorkProfile` (replaces `BusinessPerson`) extends `Person` and holds `jobTitle`, `worksFor`, `workLocation`, `colleague` and `hasOccupation`. These are no longer on `Person`. The description covers paid work and volunteering.
+- New `TeamMember`, with `Employee` and `Volunteer` under it, for your own people.
+- New `relationship` module:
+  - `Relationship` (abstract) has `relationship-status` (prospect, active, former), `key-relationship-holder` (one) and `operational-relationship-holder` (many). Both holders point to `TeamMember`.
+  - `Client` (ident `custom.class/Customer`) and `Supplier` extend it. Tag them alongside `#Person` or `#Organization`.
+- `children`, `parent`, `spouse`, `sibling`, `relatedTo`, `knows` and `colleague` hide when empty.
+- `Business` and `Department` extend `Organization`.
+- `genre` has 69 choices covering fiction, non-fiction, film/TV, music and games, plus "Other". It used to have only "Fantasy".
+- Presets: the work fields move to `WorkProfile`. `crm` and `full` include the new classes.
+
+### Fixes
+
+- Removed properties repeated from a parent class on `EducationalOrganization`, `BookSeries`, `Certification` and `Syllabus`.
+
+### Manual steps
+
+Importing never removes anything. In graphs that imported an earlier version:
+- Delete the empty `BusinessPerson` tag.
+- Remove `jobTitle`, `worksFor`, `workLocation`, `colleague` and `hasOccupation` from the `Person` tag.
+- Tag work contacts `#WorkProfile` and your own people `#Employee` or `#Volunteer`.
+
 ## **2.2.0**&emsp;<sub><sup>2026-11-03 ([v2.1.0...v2.2.0](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/v2.1.0...v2.2.0))</sup></sub>
 
 ### Features & Enhancements
