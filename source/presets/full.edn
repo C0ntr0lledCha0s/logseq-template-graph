@@ -111,6 +111,10 @@
   :schema.class/Audiobook
   [:schema.property/duration :schema.property/readBy],
   :schema.class/BackgroundNewsArticle [],
+  :schema.class/Blog
+  [:schema.property/blogPost
+   :schema.property/issn],
+  :schema.class/BlogPosting [],
   :schema.class/BoatReservation [],
   :schema.class/BoatTerminal [],
   :schema.class/BoatTrip
@@ -219,6 +223,7 @@
    :schema.property/physiologicalBenefits
    :schema.property/risks],
   :schema.class/DigitalDocument [],
+  :schema.class/DiscussionForumPosting [],
   :schema.class/Duration [],
   :schema.class/EducationEvent
   [:schema.property/assesses
@@ -292,6 +297,14 @@
    :schema.property/numberOfPlayers
    :schema.property/quest],
   :schema.class/Guide [:schema.property/reviewAspect],
+  :schema.class/HowTo
+  [:schema.property/totalTime
+   :schema.property/prepTime
+   :schema.property/performTime
+   :schema.property/tool
+   :schema.property/supply
+   :schema.property/yield
+   :schema.property/estimatedCost],
   :schema.class/Intangible [],
   :schema.class/ItemList
   [:schema.property/numberOfItems
@@ -397,6 +410,7 @@
    :schema.property/email
    :schema.property/keywords
    :schema.property/logo],
+  :schema.class/Painting [],
   :schema.class/PeopleAudience
   [:schema.property/requiredGender
    :schema.property/requiredMinAge
@@ -426,6 +440,7 @@
    :schema.property/alumniOf
    :schema.property/affiliation
    :schema.property/additionalName],
+  :schema.class/Photograph [],
   :schema.class/PhysicalActivity
   [:schema.property/associatedAnatomy
    :schema.property/category
@@ -500,6 +515,7 @@
    :schema.property/endTime
    :schema.property/scheduleTimezone],
   :schema.class/ScreeningEvent [:schema.property/workPresented],
+  :schema.class/Sculpture [],
   :schema.class/Service
   [:schema.property/category
    :schema.property/award
@@ -517,6 +533,7 @@
    :schema.property/termsOfService
    :schema.property/logo],
   :schema.class/SocialEvent [],
+  :schema.class/SocialMediaPosting [:schema.property/sharedContent],
   :schema.class/SoftwareApplication
   [:schema.property/applicationCategory
    :schema.property/applicationSubCategory
@@ -596,5 +613,14 @@
    :schema.property/gameEdition
    :schema.property/gamePlatform],
   :schema.class/VirtualLocation [],
+  :schema.class/VisualArtwork
+  [:schema.property/artist
+   :schema.property/artform
+   :schema.property/artMedium
+   :schema.property/artworkSurface
+   :schema.property/artEdition
+   :schema.property/height
+   :schema.property/width
+   :schema.property/depth],
   :schema.class/WebAPI [:schema.property/documentation],
   :schema.class/WebSite [:schema.property/issn]}}

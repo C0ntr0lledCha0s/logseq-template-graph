@@ -1,5 +1,15 @@
 {:properties
- {:schema.property/inAlbum
+ {:schema.property/height
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "height",
+   :build/properties
+   {:logseq.property/icon {:id "straight_ruler", :type :emoji},
+    :logseq.property/description "The height of the item.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/height"}},
+  :schema.property/inAlbum
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
    :block/title "inAlbum",
@@ -11,6 +21,17 @@
     "The album to which this recording belongs.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/inAlbum"}},
+  :schema.property/artform
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "artform",
+   :build/properties
+   {:logseq.property/icon {:id "frame_with_picture", :type :emoji},
+    :logseq.property/description
+    "The art form, e.g. Painting, Drawing, Sculpture, Print, Photograph, Assemblage, Collage.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artform"}},
   :schema.property/hasCertification
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -112,6 +133,72 @@
     "A season that is part of the media series.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/containsSeason"}},
+  :schema.property/yield
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "yield",
+   :build/properties
+   {:logseq.property/icon {:id "dart", :type :emoji},
+    :logseq.property/description
+    "The quantity that results by performing instructions. For example, a paper airplane, 10 personalized candles.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/yield"}},
+  :schema.property/performTime
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "performTime",
+   :build/properties
+   {:logseq.property/icon {:id "hourglass", :type :emoji},
+    :logseq.property/description
+    "The length of time it takes to perform instructions, not including time to prepare the supplies.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/performTime"}},
+  :schema.property/artist
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "artist",
+   :build/properties
+   {:logseq.property/icon {:id "art", :type :emoji},
+    :logseq.property/description
+    "The primary artist for a work in a medium other than pencils or digital line art, for example watercolours or digital paints.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artist"},
+   :build/property-classes [:schema.class/Person]},
+  :schema.property/estimatedCost
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "estimatedCost",
+   :build/properties
+   {:logseq.property/icon {:id "heavy_dollar_sign", :type :emoji},
+    :logseq.property/description
+    "The estimated cost of the supply or supplies consumed when performing instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/estimatedCost"}},
+  :schema.property/totalTime
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "totalTime",
+   :build/properties
+   {:logseq.property/icon {:id "stopwatch", :type :emoji},
+    :logseq.property/description
+    "The total time required to perform instructions, including time to prepare the supplies.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/totalTime"}},
+  :schema.property/width
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "width",
+   :build/properties
+   {:logseq.property/icon {:id "straight_ruler", :type :emoji},
+    :logseq.property/description "The width of the item.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/width"}},
   :schema.property/associatedClaimReview
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -131,6 +218,18 @@
     "An associated [ClaimReview](https://schema.org/ClaimReview), related by specific common content, topic or claim. The expectation is that this property would be most typically used in cases where a single activity is conducting both claim reviews and media reviews, in which case [relatedMediaReview](https://schema.org/relatedMediaReview) would commonly be used on a [ClaimReview](https://schema.org/ClaimReview), while [relatedClaimReview](https://schema.org/relatedClaimReview) would be used on [MediaReview](https://schema.org/MediaReview).",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/associatedClaimReview"}},
+  :schema.property/sharedContent
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "sharedContent",
+   :build/properties
+   {:logseq.property/icon {:id "link", :type :emoji},
+    :logseq.property/description
+    "A CreativeWork such as an image, video, or audio clip shared as part of this posting.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/sharedContent"},
+   :build/property-classes [:schema.class/CreativeWork]},
   :schema.property/recordedAs
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -168,6 +267,17 @@
     "Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).\nInverse property: [isPartOf](https://schema.org/isPartOf)",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/hasPart"}},
+  :schema.property/tool
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :default,
+   :block/title "tool",
+   :build/properties
+   {:logseq.property/icon {:id "hammer", :type :emoji},
+    :logseq.property/description
+    "An object used (but not consumed) when performing instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/tool"}},
   :schema.property/syllabusSections
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -187,6 +297,17 @@
     "Indicates (typically several) Syllabus entities that lay out what each section of the overall course will cover.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/syllabusSections"}},
+  :schema.property/prepTime
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "prepTime",
+   :build/properties
+   {:logseq.property/icon {:id "timer_clock", :type :emoji},
+    :logseq.property/description
+    "The length of time it takes to prepare the items to be used in instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/prepTime"}},
   :schema.property/softwareHelp
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -198,6 +319,28 @@
     :logseq.property/description "Software application help.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/softwareHelp"}},
+  :schema.property/artMedium
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :default,
+   :block/title "artMedium",
+   :build/properties
+   {:logseq.property/icon {:id "lower_left_paintbrush", :type :emoji},
+    :logseq.property/description
+    "The material used, e.g. Oil, Watercolour, Acrylic, Linoprint, Marble, Cyanotype, Digital, Pastel, Pencil, Mixed Media.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artMedium"}},
+  :schema.property/artworkSurface
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "artworkSurface",
+   :build/properties
+   {:logseq.property/icon {:id "scroll", :type :emoji},
+    :logseq.property/description
+    "The supporting materials for the artwork, e.g. Canvas, Paper, Wood, Board.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artworkSurface"}},
   :schema.property/recordingOf
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -243,6 +386,17 @@
     "A release of this album.\nInverse property: [releaseOf](https://schema.org/releaseOf)",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/albumRelease"}},
+  :schema.property/supply
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :default,
+   :block/title "supply",
+   :build/properties
+   {:logseq.property/icon {:id "package", :type :emoji},
+    :logseq.property/description
+    "A supply consumed when performing instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/supply"}},
   :schema.property/workPresented
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -281,6 +435,16 @@
     "An associated [Review](https://schema.org/Review).",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/associatedReview"}},
+  :schema.property/depth
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "depth",
+   :build/properties
+   {:logseq.property/icon {:id "straight_ruler", :type :emoji},
+    :logseq.property/description "The depth of the item.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/depth"}},
   :schema.property/softwareAddOn
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -454,4 +618,27 @@
     :logseq.property/description
     "The playlist to which this recording belongs.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/inPlaylist"}}}}
+    :schema.property/url "https://schema.org/inPlaylist"}},
+  :schema.property/artEdition
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "artEdition",
+   :build/properties
+   {:logseq.property/icon {:id "1234", :type :emoji},
+    :logseq.property/description
+    "The number of copies when multiple copies of a piece of artwork are produced, e.g. 20 for a limited edition of 20 prints.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artEdition"}},
+  :schema.property/blogPost
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "blogPost",
+   :build/properties
+   {:logseq.property/icon {:id "writing_hand", :type :emoji},
+    :logseq.property/description
+    "A posting that is part of this blog.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/blogPost"},
+   :build/property-classes [:schema.class/BlogPosting]}}}

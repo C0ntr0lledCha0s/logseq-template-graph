@@ -1,4 +1,4 @@
-{:schema-library/version "2.3.0",
+{:schema-library/version "2.4.0",
  :presets
  [{:id "content",
    :name "Content Creation",
@@ -45,6 +45,7 @@
      :schema.property/albumRelease
      :schema.property/albumReleaseType],
     :schema.class/Guide [:schema.property/reviewAspect],
+    :schema.class/Sculpture [],
     :schema.class/SpreadsheetDigitalDocument [],
     :schema.class/Audiobook
     [:schema.property/duration :schema.property/readBy],
@@ -56,6 +57,16 @@
     :schema.class/TechArticle
     [:schema.property/dependencies :schema.property/proficiencyLevel],
     :schema.class/OpinionNewsArticle [],
+    :schema.class/Painting [],
+    :schema.class/VisualArtwork
+    [:schema.property/artist
+     :schema.property/artform
+     :schema.property/artMedium
+     :schema.property/artworkSurface
+     :schema.property/artEdition
+     :schema.property/height
+     :schema.property/width
+     :schema.property/depth],
     :schema.class/TextDigitalDocument [],
     :schema.class/UserReview [],
     :schema.class/ReportageNewsArticle [],
@@ -171,6 +182,7 @@
      :schema.property/alumniOf
      :schema.property/affiliation
      :schema.property/additionalName],
+    :schema.class/DiscussionForumPosting [],
     :schema.class/Episode
     [:schema.property/duration
      :schema.property/actor
@@ -179,7 +191,19 @@
      :schema.property/productionCompany
      :schema.property/episodeNumber
      :schema.property/partOfSeason],
+    :schema.class/BlogPosting [],
+    :schema.class/HowTo
+    [:schema.property/totalTime
+     :schema.property/prepTime
+     :schema.property/performTime
+     :schema.property/tool
+     :schema.property/supply
+     :schema.property/yield
+     :schema.property/estimatedCost],
     :schema.class/DigitalDocument [],
+    :schema.class/Blog
+    [:schema.property/blogPost :schema.property/issn],
+    :schema.class/SocialMediaPosting [:schema.property/sharedContent],
     :schema.class/Article
     [:schema.property/articleSection :schema.property/backstory],
     :schema.class/MusicRelease
@@ -225,7 +249,8 @@
      :schema.property/reviewRating
      :schema.property/associatedClaimReview
      :schema.property/associatedMediaReview
-     :schema.property/associatedReview]}}
+     :schema.property/associatedReview],
+    :schema.class/Photograph []}}
   {:id "crm",
    :name "CRM",
    :description
@@ -636,6 +661,7 @@
     :schema.class/Guide [:schema.property/reviewAspect],
     :schema.class/ComedyEvent [],
     :schema.class/FoodEvent [],
+    :schema.class/Sculpture [],
     :schema.class/PeopleAudience
     [:schema.property/requiredGender
      :schema.property/requiredMinAge
@@ -693,6 +719,16 @@
     [:schema.property/dependencies :schema.property/proficiencyLevel],
     :custom.class/Workspace [],
     :schema.class/OpinionNewsArticle [],
+    :schema.class/Painting [],
+    :schema.class/VisualArtwork
+    [:schema.property/artist
+     :schema.property/artform
+     :schema.property/artMedium
+     :schema.property/artworkSurface
+     :schema.property/artEdition
+     :schema.property/height
+     :schema.property/width
+     :schema.property/depth],
     :schema.class/TextDigitalDocument [],
     :schema.class/UserReview [],
     :schema.class/ReportageNewsArticle [],
@@ -920,6 +956,7 @@
      :schema.property/alumniOf
      :schema.property/affiliation
      :schema.property/additionalName],
+    :schema.class/DiscussionForumPosting [],
     :custom.class/Epic [],
     :schema.class/Episode
     [:schema.property/duration
@@ -935,6 +972,7 @@
      :schema.property/keywords],
     :schema.class/EducationalAudience [:custom.property/educationRole],
     :custom.class/CountryState [],
+    :schema.class/BlogPosting [],
     :schema.class/SportsEvent [],
     :custom.class/FamilyGroup
     [:schema.property/event
@@ -959,15 +997,26 @@
      :schema.property/email
      :schema.property/keywords
      :schema.property/logo],
+    :schema.class/HowTo
+    [:schema.property/totalTime
+     :schema.property/prepTime
+     :schema.property/performTime
+     :schema.property/tool
+     :schema.property/supply
+     :schema.property/yield
+     :schema.property/estimatedCost],
     :schema.class/BusStop [],
     :schema.class/LifestyleModification [],
     :schema.class/Language [],
     :schema.class/DigitalDocument [],
     :schema.class/DanceEvent [],
+    :schema.class/Blog
+    [:schema.property/blogPost :schema.property/issn],
     :custom.class/Relationship
     [:custom.property/relationshipStatus
      :custom.property/keyRelationshipHolder
      :custom.property/operationalRelationshipHolder],
+    :schema.class/SocialMediaPosting [:schema.property/sharedContent],
     :schema.class/ListItem
     [:schema.property/item
      :schema.property/nextItem
@@ -1076,7 +1125,8 @@
      :schema.property/reviewRating
      :schema.property/associatedClaimReview
      :schema.property/associatedMediaReview
-     :schema.property/associatedReview]}}
+     :schema.property/associatedReview],
+    :schema.class/Photograph []}}
   {:id "project-management",
    :name "Project Management",
    :description

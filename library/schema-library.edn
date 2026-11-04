@@ -434,6 +434,13 @@
    {:logseq.property/icon {:id "pretzel", :type :emoji},
     :logseq.property/description "Event type: Food event.",
     :schema.property/url "https://schema.org/FoodEvent"}},
+  :schema.class/Sculpture
+  {:block/title "Sculpture",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "moyai", :type :emoji},
+    :logseq.property/description "A piece of sculpture.",
+    :schema.property/url "https://schema.org/Sculpture"}},
   :schema.class/PeopleAudience
   {:block/title "PeopleAudience",
    :build/class-properties
@@ -647,6 +654,30 @@
     :logseq.property/description
     "An [OpinionNewsArticle](https://schema.org/OpinionNewsArticle) is a [NewsArticle](https://schema.org/NewsArticle) that primarily expresses opinions rather than journalistic reporting of news and events. For example, a [NewsArticle](https://schema.org/NewsArticle) consisting of a column or [Blog](https://schema.org/Blog)/[BlogPosting](https://schema.org/BlogPosting) entry in the Opinions section of a news publication.",
     :schema.property/url "https://schema.org/OpinionNewsArticle"}},
+  :schema.class/Painting
+  {:block/title "Painting",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "frame_with_picture", :type :emoji},
+    :logseq.property/description "A painting.",
+    :schema.property/url "https://schema.org/Painting"}},
+  :schema.class/VisualArtwork
+  {:block/title "VisualArtwork",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "art", :type :emoji},
+    :logseq.property/description
+    "A work of art that is primarily visual in character.",
+    :schema.property/url "https://schema.org/VisualArtwork"},
+   :build/class-properties
+   [:schema.property/artist
+    :schema.property/artform
+    :schema.property/artMedium
+    :schema.property/artworkSurface
+    :schema.property/artEdition
+    :schema.property/height
+    :schema.property/width
+    :schema.property/depth]},
   :schema.class/TextDigitalDocument
   {:block/title "TextDigitalDocument",
    :build/class-extends [:schema.class/DigitalDocument],
@@ -1273,6 +1304,13 @@
     :logseq.property/description
     "A person (alive, dead, undead, or fictional).",
     :schema.property/url "https://schema.org/Person"}},
+  :schema.class/DiscussionForumPosting
+  {:block/title "DiscussionForumPosting",
+   :build/class-extends [:schema.class/SocialMediaPosting],
+   :build/properties
+   {:logseq.property/icon {:id "busts_in_silhouette", :type :emoji},
+    :logseq.property/description "A posting to a discussion forum.",
+    :schema.property/url "https://schema.org/DiscussionForumPosting"}},
   :custom.class/Epic
   {:block/title "Epic",
    :build/class-extends [:custom.class/WorkItem],
@@ -1322,6 +1360,13 @@
    :build/properties
    {:logseq.property/icon {:id "earth_americas", :type :emoji},
     :logseq.property/description "A state or province of a country."}},
+  :schema.class/BlogPosting
+  {:block/title "BlogPosting",
+   :build/class-extends [:schema.class/SocialMediaPosting],
+   :build/properties
+   {:logseq.property/icon {:id "writing_hand", :type :emoji},
+    :logseq.property/description "A blog post.",
+    :schema.property/url "https://schema.org/BlogPosting"}},
   :schema.class/SportsEvent
   {:block/title "SportsEvent",
    :build/class-extends [:schema.class/Event],
@@ -1369,6 +1414,22 @@
     :logseq.property/description
     "An [[Organization]] such as a school, NGO, corporation, club, etc.",
     :schema.property/url "https://schema.org/Organization"}},
+  :schema.class/HowTo
+  {:block/title "HowTo",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "clipboard", :type :emoji},
+    :logseq.property/description
+    "Instructions that explain how to achieve a result by performing a sequence of steps.",
+    :schema.property/url "https://schema.org/HowTo"},
+   :build/class-properties
+   [:schema.property/totalTime
+    :schema.property/prepTime
+    :schema.property/performTime
+    :schema.property/tool
+    :schema.property/supply
+    :schema.property/yield
+    :schema.property/estimatedCost]},
   :schema.class/BusStop
   {:block/title "BusStop",
    :build/class-extends [:schema.class/CivicStructure],
@@ -1403,6 +1464,16 @@
    {:logseq.property/icon {:id "dancer", :type :emoji},
     :logseq.property/description "Event type: A social dance.",
     :schema.property/url "https://schema.org/DanceEvent"}},
+  :schema.class/Blog
+  {:block/title "Blog",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "spiral_note_pad", :type :emoji},
+    :logseq.property/description
+    "A blog, sometimes known as a \"weblog\". Individual posts (BlogPostings) in a Blog are often colloquially referred to by the same term.",
+    :schema.property/url "https://schema.org/Blog"},
+   :build/class-properties
+   [:schema.property/blogPost :schema.property/issn]},
   :custom.class/Relationship
   {:block/title "Relationship",
    :build/class-properties
@@ -1413,6 +1484,15 @@
    {:logseq.property/icon {:id "link", :type :emoji},
     :logseq.property/description
     "Abstract root for parties you have a business relationship with. Never tagged directly: tag Client or Supplier alongside #Person or #Organization."}},
+  :schema.class/SocialMediaPosting
+  {:block/title "SocialMediaPosting",
+   :build/class-extends [:schema.class/Article],
+   :build/properties
+   {:logseq.property/icon {:id "speech_balloon", :type :emoji},
+    :logseq.property/description
+    "A post to a social media platform, including blog posts, tweets, Facebook posts, etc.",
+    :schema.property/url "https://schema.org/SocialMediaPosting"},
+   :build/class-properties [:schema.property/sharedContent]},
   :schema.class/ListItem
   {:block/title "ListItem",
    :build/class-properties
@@ -1748,9 +1828,26 @@
    {:logseq.property/icon {:id "thinking_face", :type :emoji},
     :logseq.property/description
     "A review of an item - for example, of a restaurant, movie, or store.",
-    :schema.property/url "https://schema.org/Review"}}},
+    :schema.property/url "https://schema.org/Review"}},
+  :schema.class/Photograph
+  {:block/title "Photograph",
+   :build/class-extends [:schema.class/CreativeWork],
+   :build/properties
+   {:logseq.property/icon {:id "camera", :type :emoji},
+    :logseq.property/description "A photograph.",
+    :schema.property/url "https://schema.org/Photograph"}}},
  :properties
- {:schema.property/inAlbum
+ {:schema.property/height
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "height",
+   :build/properties
+   {:logseq.property/icon {:id "straight_ruler", :type :emoji},
+    :logseq.property/description "The height of the item.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/height"}},
+  :schema.property/inAlbum
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
    :block/title "inAlbum",
@@ -1762,6 +1859,17 @@
     "The album to which this recording belongs.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/inAlbum"}},
+  :schema.property/artform
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "artform",
+   :build/properties
+   {:logseq.property/icon {:id "frame_with_picture", :type :emoji},
+    :logseq.property/description
+    "The art form, e.g. Painting, Drawing, Sculpture, Print, Photograph, Assemblage, Collage.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artform"}},
   :schema.property/courseMode
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -2331,6 +2439,17 @@
    {:logseq.property/description "The date the ticket was issued.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/dateIssued"}},
+  :schema.property/yield
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "yield",
+   :build/properties
+   {:logseq.property/icon {:id "dart", :type :emoji},
+    :logseq.property/description
+    "The quantity that results by performing instructions. For example, a paper airplane, 10 personalized candles.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/yield"}},
   :schema.property/issuedBy
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2429,6 +2548,29 @@
     :logseq.property/description "Headline of the article.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/headline"}},
+  :schema.property/performTime
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "performTime",
+   :build/properties
+   {:logseq.property/icon {:id "hourglass", :type :emoji},
+    :logseq.property/description
+    "The length of time it takes to perform instructions, not including time to prepare the supplies.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/performTime"}},
+  :schema.property/artist
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "artist",
+   :build/properties
+   {:logseq.property/icon {:id "art", :type :emoji},
+    :logseq.property/description
+    "The primary artist for a work in a medium other than pencils or digital line art, for example watercolours or digital paints.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artist"},
+   :build/property-classes [:schema.class/Person]},
   :schema.property/recordLabel
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2647,6 +2789,17 @@
    {:logseq.property/description
     "Lifecycle of the Vision. Only one current Vision per scope.",
     :logseq.property/exclude-from-graph-view true}},
+  :schema.property/estimatedCost
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "estimatedCost",
+   :build/properties
+   {:logseq.property/icon {:id "heavy_dollar_sign", :type :emoji},
+    :logseq.property/description
+    "The estimated cost of the supply or supplies consumed when performing instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/estimatedCost"}},
   :schema.property/characterAttribute
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -3443,6 +3596,17 @@
     "A person or organization attending the event.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/attendee"}},
+  :schema.property/totalTime
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "totalTime",
+   :build/properties
+   {:logseq.property/icon {:id "stopwatch", :type :emoji},
+    :logseq.property/description
+    "The total time required to perform instructions, including time to prepare the supplies.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/totalTime"}},
   :schema.property/eventStatus
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -3595,6 +3759,16 @@
     "Provides negative considerations regarding something, most typically in pro/con lists for reviews (alongside [positiveNotes](https://schema.org/positiveNotes)). For symmetry",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/negativeNotes"}},
+  :schema.property/width
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "width",
+   :build/properties
+   {:logseq.property/icon {:id "straight_ruler", :type :emoji},
+    :logseq.property/description "The width of the item.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/width"}},
   :custom.property/ideaStage
   {:block/title "idea-stage",
    :logseq.property/type :default,
@@ -4094,6 +4268,18 @@
    :build/properties
    {:logseq.property/description "What was decided.",
     :logseq.property/exclude-from-graph-view true}},
+  :schema.property/sharedContent
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "sharedContent",
+   :build/properties
+   {:logseq.property/icon {:id "link", :type :emoji},
+    :logseq.property/description
+    "A CreativeWork such as an image, video, or audio clip shared as part of this posting.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/sharedContent"},
+   :build/property-classes [:schema.class/CreativeWork]},
   :schema.property/courseWorkload
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4311,6 +4497,17 @@
     "The platform where the train arrives.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/arrivalPlatform"}},
+  :schema.property/tool
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :default,
+   :block/title "tool",
+   :build/properties
+   {:logseq.property/icon {:id "hammer", :type :emoji},
+    :logseq.property/description
+    "An object used (but not consumed) when performing instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/tool"}},
   :schema.property/pathophysiology
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4544,6 +4741,17 @@
     "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/brand"}},
+  :schema.property/prepTime
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "prepTime",
+   :build/properties
+   {:logseq.property/icon {:id "timer_clock", :type :emoji},
+    :logseq.property/description
+    "The length of time it takes to prepare the items to be used in instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/prepTime"}},
   :schema.property/reportNumber
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4966,6 +5174,17 @@
    :logseq.property/type :default,
    :block/title "objective",
    :build/properties {:logseq.property/exclude-from-graph-view true}},
+  :schema.property/artMedium
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :default,
+   :block/title "artMedium",
+   :build/properties
+   {:logseq.property/icon {:id "lower_left_paintbrush", :type :emoji},
+    :logseq.property/description
+    "The material used, e.g. Oil, Watercolour, Acrylic, Linoprint, Marble, Cyanotype, Digital, Pastel, Pencil, Mixed Media.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artMedium"}},
   :schema.property/courseSchedule
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -5409,6 +5628,17 @@
     "The Person's [[Occupation]] . For past professions, use Role for expressing dates",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/hasOccupation"}},
+  :schema.property/artworkSurface
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "artworkSurface",
+   :build/properties
+   {:logseq.property/icon {:id "scroll", :type :emoji},
+    :logseq.property/description
+    "The supporting materials for the artwork, e.g. Canvas, Paper, Wood, Board.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artworkSurface"}},
   :schema.property/sponsor
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -6414,6 +6644,17 @@
     "An entity that arranges for an exchange between a buyer and a seller. In most cases a broker never acquires or releases ownership of a product or service involved in an exchange. If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/broker"}},
+  :schema.property/supply
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :default,
+   :block/title "supply",
+   :build/properties
+   {:logseq.property/icon {:id "package", :type :emoji},
+    :logseq.property/description
+    "A supply consumed when performing instructions.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/supply"}},
   :schema.property/workPresented
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -6587,6 +6828,16 @@
     "Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/ticketToken"}},
+  :schema.property/depth
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "depth",
+   :build/properties
+   {:logseq.property/icon {:id "straight_ruler", :type :emoji},
+    :logseq.property/description "The depth of the item.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/depth"}},
   :schema.property/numberOfSeasons
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :number,
@@ -8524,6 +8775,17 @@
     "The playlist to which this recording belongs.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/inPlaylist"}},
+  :schema.property/artEdition
+  {:db/cardinality :db.cardinality/one,
+   :logseq.property/type :default,
+   :block/title "artEdition",
+   :build/properties
+   {:logseq.property/icon {:id "1234", :type :emoji},
+    :logseq.property/description
+    "The number of copies when multiple copies of a piece of artwork are produced, e.g. 20 for a limited edition of 20 prints.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/artEdition"}},
   :schema.property/additionalVariable
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -8596,6 +8858,18 @@
     "A link to the ListItem that precedes the current one.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/previousItem"}},
+  :schema.property/blogPost
+  {:db/cardinality :db.cardinality/many,
+   :logseq.property/type :node,
+   :block/title "blogPost",
+   :build/properties
+   {:logseq.property/icon {:id "writing_hand", :type :emoji},
+    :logseq.property/description
+    "A posting that is part of this blog.",
+    :logseq.property/exclude-from-graph-view true,
+    :logseq.property/hide-empty-value true,
+    :schema.property/url "https://schema.org/blogPost"},
+   :build/property-classes [:schema.class/BlogPosting]},
   :schema.property/dependencies
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -8751,4 +9025,4 @@
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/subTrip"}}},
  :logseq.db.sqlite.export/export-type :graph-ontology,
- :schema-library/version "2.3.0"}
+ :schema-library/version "2.4.0"}
