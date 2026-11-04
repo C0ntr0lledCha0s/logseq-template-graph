@@ -11,9 +11,9 @@
    :custom.property/areas
    :custom.property/objective
    :custom.property/nextMeetingDate],
-  :custom.class/BusinessPerson [],
   :custom.class/Container [],
   :custom.class/CountryState [],
+  :custom.class/Customer [],
   :custom.class/Decision
   [:custom.property/forGoal
    :schema.property/question
@@ -29,6 +29,7 @@
    :custom.property/successCriteria
    :custom.property/parentDirection
    :custom.property/progress],
+  :custom.class/Employee [],
   :custom.class/Epic [],
   :custom.class/FamilyGroup
   [:schema.property/event
@@ -62,6 +63,10 @@
    :custom.property/owner
    :custom.property/scope],
   :custom.class/Portfolio [:custom.property/inWorkspace],
+  :custom.class/Relationship
+  [:custom.property/relationshipStatus
+   :custom.property/keyRelationshipHolder
+   :custom.property/operationalRelationshipHolder],
   :custom.class/Resource [],
   :custom.class/Spec
   [:custom.property/specType
@@ -69,8 +74,11 @@
    :custom.property/specifies],
   :custom.class/Strategy [],
   :custom.class/Subtask [],
+  :custom.class/Supplier [],
+  :custom.class/TeamMember [],
   :custom.class/Vision
   [:custom.property/visionStatus :custom.property/statement],
+  :custom.class/Volunteer [],
   :custom.class/WorkItem
   [:custom.property/points
    :custom.property/forGoal
@@ -79,6 +87,12 @@
    :custom.property/gitBranch
    :custom.property/prUrl
    :custom.property/blockedBy],
+  :custom.class/WorkProfile
+  [:schema.property/jobTitle
+   :schema.property/worksFor
+   :schema.property/workLocation
+   :schema.property/colleague
+   :schema.property/hasOccupation],
   :custom.class/Workspace [],
   :schema.class/AdministrativeArea [],
   :schema.class/Airport
@@ -108,10 +122,7 @@
    :schema.property/illustrator
    :schema.property/isbn
    :schema.property/numberOfPages],
-  :schema.class/BookSeries
-  [:schema.property/startDate
-   :schema.property/endDate
-   :schema.property/issn],
+  :schema.class/BookSeries [:schema.property/issn],
   :schema.class/Brand [],
   :schema.class/BusReservation [],
   :schema.class/BusStation [],
@@ -133,8 +144,6 @@
    :schema.property/certificationIdentification
    :schema.property/certificationRating
    :schema.property/issuedBy
-   :schema.property/datePublished
-   :schema.property/about
    :schema.property/validIn
    :schema.property/validFrom
    :schema.property/logo],
@@ -223,7 +232,7 @@
    :schema.property/recognizedBy
    :schema.property/validIn
    :schema.property/validFor],
-  :schema.class/EducationalOrganization [:schema.property/alumni],
+  :schema.class/EducationalOrganization [],
   :schema.class/Episode
   [:schema.property/duration
    :schema.property/actor
@@ -404,20 +413,15 @@
    :schema.property/parent
    :schema.property/homeLocation
    :schema.property/birthPlace
-   :schema.property/hasOccupation
-   :schema.property/workLocation
-   :schema.property/colleague
    :schema.property/spouse
    :schema.property/telephone
    :schema.property/address
    :schema.property/skills
    :schema.property/relatedTo
-   :schema.property/worksFor
    :schema.property/sibling
    :schema.property/knows
    :schema.property/knowsAbout
    :schema.property/birthDate
-   :schema.property/jobTitle
    :schema.property/email
    :schema.property/alumniOf
    :schema.property/affiliation
@@ -529,14 +533,7 @@
   :schema.class/SportsEvent [],
   :schema.class/SpreadsheetDigitalDocument [],
   :schema.class/StructuredValue [],
-  :schema.class/Syllabus
-  [:schema.property/assesses
-   :schema.property/competencyRequired
-   :schema.property/educationalAlignment
-   :schema.property/educationalLevel
-   :schema.property/educationalUse
-   :schema.property/learningResourceType
-   :schema.property/teaches],
+  :schema.class/Syllabus [],
   :schema.class/TVEpisode [:schema.property/titleEIDR],
   :schema.class/TVSeason [:schema.property/titleEIDR],
   :schema.class/TVSeries

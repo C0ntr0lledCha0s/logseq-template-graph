@@ -19,14 +19,6 @@
     :schema.property/url "https://schema.org/TVSeries"}},
   :schema.class/Syllabus
   {:block/title "Syllabus",
-   :build/class-properties
-   [:schema.property/assesses
-    :schema.property/competencyRequired
-    :schema.property/educationalAlignment
-    :schema.property/educationalLevel
-    :schema.property/educationalUse
-    :schema.property/learningResourceType
-    :schema.property/teaches],
    :build/class-extends [:schema.class/LearningResource],
    :build/properties
    {:logseq.property/icon {:id "school", :type :emoji},
@@ -89,10 +81,7 @@
     :schema.property/url "https://schema.org/SoftwareApplication"}},
   :schema.class/BookSeries
   {:block/title "BookSeries",
-   :build/class-properties
-   [:schema.property/startDate
-    :schema.property/endDate
-    :schema.property/issn],
+   :build/class-properties [:schema.property/issn],
    :build/class-extends [:schema.class/CreativeWorkSeries],
    :build/properties
    {:logseq.property/icon {:id "book", :type :emoji},
@@ -248,8 +237,6 @@
     :schema.property/certificationIdentification
     :schema.property/certificationRating
     :schema.property/issuedBy
-    :schema.property/datePublished
-    :schema.property/about
     :schema.property/validIn
     :schema.property/validFrom
     :schema.property/logo],

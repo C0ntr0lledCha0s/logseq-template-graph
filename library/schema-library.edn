@@ -33,14 +33,6 @@
     :schema.property/url "https://schema.org/TVSeries"}},
   :schema.class/Syllabus
   {:block/title "Syllabus",
-   :build/class-properties
-   [:schema.property/assesses
-    :schema.property/educationalLevel
-    :schema.property/teaches
-    :schema.property/competencyRequired
-    :schema.property/educationalAlignment
-    :schema.property/educationalUse
-    :schema.property/learningResourceType],
    :build/class-extends [:schema.class/LearningResource],
    :build/properties
    {:logseq.property/icon {:id "school", :type :emoji},
@@ -169,6 +161,13 @@
     :logseq.property/description
     "Intended audience for an item, i.e. the group for whom the item was created.",
     :schema.property/url "https://schema.org/Audience"}},
+  :custom.class/Employee
+  {:block/title "Employee",
+   :build/class-extends [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/icon {:id "office_worker", :type :emoji},
+    :logseq.property/description
+    "A person employed by your organisation."}},
   :schema.class/BusinessAudience
   {:block/title "BusinessAudience",
    :build/class-properties
@@ -335,6 +334,19 @@
     :logseq.property/description
     "An online or virtual location for attending events. For example, one may attend an online seminar or educational event. While a virtual location may be used as the location of an event, virtual locations should not be confused with physical locations in the real world.",
     :schema.property/url "https://schema.org/VirtualLocation"}},
+  :custom.class/WorkProfile
+  {:block/title "WorkProfile",
+   :build/class-properties
+   [:schema.property/jobTitle
+    :schema.property/worksFor
+    :schema.property/workLocation
+    :schema.property/colleague
+    :schema.property/hasOccupation],
+   :build/class-extends [:schema.class/Person],
+   :build/properties
+   {:logseq.property/icon {:id "briefcase", :type :emoji},
+    :logseq.property/description
+    "A person's working life: job title, employer, occupation, workplace and colleagues. Covers paid work and volunteering in any sector. Extends Person, so personal details stay available."}},
   :schema.class/ScreeningEvent
   {:block/title "ScreeningEvent",
    :build/class-properties [:schema.property/workPresented],
@@ -367,10 +379,7 @@
     :schema.property/url "https://schema.org/Country"}},
   :schema.class/BookSeries
   {:block/title "BookSeries",
-   :build/class-properties
-   [:schema.property/startDate
-    :schema.property/endDate
-    :schema.property/issn],
+   :build/class-properties [:schema.property/issn],
    :build/class-extends [:schema.class/CreativeWorkSeries],
    :build/properties
    {:logseq.property/icon {:id "book", :type :emoji},
@@ -531,6 +540,13 @@
    {:logseq.property/icon {:id "children_crossing", :type :emoji},
     :logseq.property/description "Event type: Children's event.",
     :schema.property/url "https://schema.org/ChildrensEvent"}},
+  :custom.class/Volunteer
+  {:block/title "Volunteer",
+   :build/class-extends [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/icon {:id "raised_hands", :type :emoji},
+    :logseq.property/description
+    "A person who volunteers for your organisation."}},
   :schema.class/Festival
   {:block/title "Festival",
    :build/class-extends [:schema.class/Event],
@@ -600,7 +616,6 @@
     "Enhancement to existing behaviour. Sits under an Epic or at top level."}},
   :schema.class/EducationalOrganization
   {:block/title "EducationalOrganization",
-   :build/class-properties [:schema.property/alumni],
    :build/class-extends [:schema.class/Organization],
    :build/properties
    {:logseq.property/icon {:id "school", :type :emoji},
@@ -674,6 +689,13 @@
     :logseq.property/description
     "A group of multiple reservations with common values for all sub-reservations.",
     :schema.property/url "https://schema.org/ReservationPackage"}},
+  :custom.class/TeamMember
+  {:block/title "TeamMember",
+   :build/class-extends [:custom.class/WorkProfile],
+   :build/properties
+   {:logseq.property/icon {:id "busts_in_silhouette", :type :emoji},
+    :logseq.property/description
+    "Someone in your own organisation. Never tagged directly: tag Employee or Volunteer. Relationship holders point to team members."}},
   :schema.class/PresentationDigitalDocument
   {:block/title "PresentationDigitalDocument",
    :build/class-extends [:schema.class/DigitalDocument],
@@ -755,7 +777,9 @@
    {:logseq.property/icon {:id "film_projector", :type :emoji},
     :logseq.property/description "A movie.",
     :schema.property/url "https://schema.org/Movie"}},
-  :custom.class/Department {:block/title "Department"},
+  :custom.class/Department
+  {:block/title "Department",
+   :build/class-extends [:schema.class/Organization]},
   :schema.class/MusicGroup
   {:block/title "MusicGroup",
    :block/collapsed? false,
@@ -780,9 +804,7 @@
   :schema.class/Certification
   {:block/title "Certification",
    :build/class-properties
-   [:schema.property/datePublished
-    :schema.property/about
-    :schema.property/logo
+   [:schema.property/logo
     :schema.property/expires
     :schema.property/certificationStatus
     :schema.property/auditDate
@@ -848,6 +870,13 @@
     :logseq.property/description
     "Used to describe a ticket to an event, a flight, a bus ride, etc.",
     :schema.property/url "https://schema.org/Ticket"}},
+  :custom.class/Supplier
+  {:block/title "Supplier",
+   :build/class-extends [:custom.class/Relationship],
+   :build/properties
+   {:logseq.property/icon {:id "package", :type :emoji},
+    :logseq.property/description
+    "A person or organisation that provides goods or services to you. Tag it alongside #Person or #Organization."}},
   :schema.class/MemberProgram
   {:block/title "MemberProgram",
    :build/class-properties
@@ -868,7 +897,9 @@
    {:logseq.property/icon {:type :tabler-icon, :id "hierarchy-2"},
     :logseq.property/description
     "Abstract root of the project-management schema. Never applied directly; every PM tag extends it and inherits ad-id, owner and scope."}},
-  :custom.class/Business {:block/title "Business"},
+  :custom.class/Business
+  {:block/title "Business",
+   :build/class-extends [:schema.class/Organization]},
   :schema.class/LodgingReservation
   {:block/title "LodgingReservation",
    :block/collapsed? false,
@@ -1096,7 +1127,6 @@
    {:logseq.property/icon {:id "book", :type :emoji},
     :logseq.property/description "A book.",
     :schema.property/url "https://schema.org/Book"}},
-  :custom.class/BusinessPerson {:block/title "BusinessPerson"},
   :schema.class/BusTrip
   {:block/title "BusTrip",
    :build/class-properties
@@ -1227,18 +1257,13 @@
     :schema.property/parent
     :schema.property/homeLocation
     :schema.property/birthPlace
-    :schema.property/hasOccupation
-    :schema.property/workLocation
-    :schema.property/colleague
     :schema.property/spouse
     :schema.property/address
     :schema.property/relatedTo
-    :schema.property/worksFor
     :schema.property/sibling
     :schema.property/knows
     :schema.property/knowsAbout
     :schema.property/birthDate
-    :schema.property/jobTitle
     :schema.property/alumniOf
     :schema.property/affiliation
     :schema.property/additionalName],
@@ -1378,6 +1403,16 @@
    {:logseq.property/icon {:id "dancer", :type :emoji},
     :logseq.property/description "Event type: A social dance.",
     :schema.property/url "https://schema.org/DanceEvent"}},
+  :custom.class/Relationship
+  {:block/title "Relationship",
+   :build/class-properties
+   [:custom.property/relationshipStatus
+    :custom.property/keyRelationshipHolder
+    :custom.property/operationalRelationshipHolder],
+   :build/properties
+   {:logseq.property/icon {:id "link", :type :emoji},
+    :logseq.property/description
+    "Abstract root for parties you have a business relationship with. Never tagged directly: tag Client or Supplier alongside #Person or #Organization."}},
   :schema.class/ListItem
   {:block/title "ListItem",
    :build/class-properties
@@ -1480,6 +1515,13 @@
     :logseq.property/description
     "A series of [Event](https://schema.org/Event)s. Included events can relate with the series using the [superEvent](https://schema.org/superEvent) property.",
     :schema.property/url "https://schema.org/EventSeries"}},
+  :custom.class/Customer
+  {:block/title "Client",
+   :build/class-extends [:custom.class/Relationship],
+   :build/properties
+   {:logseq.property/icon {:id "handshake", :type :emoji},
+    :logseq.property/description
+    "A person or organisation you provide goods or services to. Tag it alongside #Person or #Organization. Shown as Client; rename the tag to suit your sector (Customer, Member, Donor)."}},
   :custom.class/BusinessMeeting
   {:block/title "Business Meeting",
    :build/class-properties
@@ -1866,6 +1908,21 @@
     "The item being described is intended to assess the competency or learning outcome defined by the referenced term.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/assesses"}},
+  :custom.property/relationshipStatus
+  {:block/title "relationship-status",
+   :logseq.property/type :default,
+   :db/cardinality :db.cardinality/one,
+   :build/closed-values
+   [{:value "prospect",
+     :uuid #uuid "bad70f78-e410-5e0f-9cbd-e24de5ee4eea"}
+    {:value "active",
+     :uuid #uuid "e98fe653-f6ff-543f-9385-14c9c5256491"}
+    {:value "former",
+     :uuid #uuid "1fc1f24a-0a27-529a-bc8b-b06e6835fa1e"}],
+   :build/properties
+   {:logseq.property/description
+    "Where the relationship stands: prospect, active or former.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/releaseOf
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2533,7 +2590,8 @@
      :type :emoji},
     :logseq.property/description "A child of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/children"}},
+    :schema.property/url "https://schema.org/children",
+    :logseq.property/hide-empty-value true}},
   :schema.property/license
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -2663,6 +2721,15 @@
     "The production company or studio responsible for the item, e.g. series, video game, episode etc.",
     :logseq.property/exclude-from-graph-view true,
     :schema.property/url "https://schema.org/productionCompany"}},
+  :custom.property/keyRelationshipHolder
+  {:block/title "key-relationship-holder",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/one,
+   :build/property-classes [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/description
+    "The team member who owns the relationship, for example the partner.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/checkinTime
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :datetime,
@@ -3636,7 +3703,8 @@
      :type :emoji},
     :logseq.property/description "A colleague of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/colleague"}},
+    :schema.property/url "https://schema.org/colleague",
+    :logseq.property/hide-empty-value true}},
   :schema.property/departureBusStop
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :node,
@@ -3969,7 +4037,8 @@
      :type :emoji},
     :logseq.property/description "A sibling of the person.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/sibling"}},
+    :schema.property/url "https://schema.org/sibling",
+    :logseq.property/hide-empty-value true}},
   :schema.property/isrcCode
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -4100,7 +4169,8 @@
     :logseq.property/description
     "The most generic bi-directional social/work relation.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/knows"}},
+    :schema.property/url "https://schema.org/knows",
+    :logseq.property/hide-empty-value true}},
   :schema.property/hasPart
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :node,
@@ -6295,6 +6365,15 @@
    {:logseq.property/description
     "Workspace this Portfolio belongs to.",
     :logseq.property/exclude-from-graph-view true}},
+  :custom.property/operationalRelationshipHolder
+  {:block/title "operational-relationship-holder",
+   :logseq.property/type :node,
+   :db/cardinality :db.cardinality/many,
+   :build/property-classes [:custom.class/TeamMember],
+   :build/properties
+   {:logseq.property/description
+    "Team members who run the relationship day to day, for example the manager.",
+    :logseq.property/exclude-from-graph-view true}},
   :schema.property/audienceType
   {:db/cardinality :db.cardinality/many,
    :logseq.property/type :default,
@@ -7607,7 +7686,8 @@
     :logseq.property/description
     "A parent of this person. We use \"parents\" instead of \"parent\" as this property is already used.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/parent"}},
+    :schema.property/url "https://schema.org/parent",
+    :logseq.property/hide-empty-value true}},
   :schema.property/epidemiology
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -7772,7 +7852,8 @@
      :type :emoji},
     :logseq.property/description "The most generic familial relation.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/relatedTo"}},
+    :schema.property/url "https://schema.org/relatedTo",
+    :logseq.property/hide-empty-value true}},
   :schema.property/unitText
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,
@@ -8551,7 +8632,8 @@
      :type :emoji},
     :logseq.property/description "The person's spouse.",
     :logseq.property/exclude-from-graph-view true,
-    :schema.property/url "https://schema.org/spouse"}},
+    :schema.property/url "https://schema.org/spouse",
+    :logseq.property/hide-empty-value true}},
   :custom.property/topic
   {:db/cardinality :db.cardinality/one,
    :logseq.property/type :default,

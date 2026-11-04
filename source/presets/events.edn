@@ -9,10 +9,15 @@
    :custom.property/areas
    :custom.property/objective
    :custom.property/nextMeetingDate],
-  :custom.class/BusinessPerson [],
   :custom.class/CountryState [],
   :custom.class/Department [],
   :custom.class/Resource [],
+  :custom.class/WorkProfile
+  [:schema.property/jobTitle
+   :schema.property/worksFor
+   :schema.property/workLocation
+   :schema.property/colleague
+   :schema.property/hasOccupation],
   :schema.class/AdministrativeArea [],
   :schema.class/Airport
   [:schema.property/iataCode :schema.property/icaoCode],
@@ -47,7 +52,7 @@
    :schema.property/recognizedBy
    :schema.property/validIn
    :schema.property/validFor],
-  :schema.class/EducationalOrganization [:schema.property/alumni],
+  :schema.class/EducationalOrganization [],
   :schema.class/Event
   [:schema.property/superEvent
    :schema.property/subEvent
@@ -103,20 +108,15 @@
    :schema.property/parent
    :schema.property/homeLocation
    :schema.property/birthPlace
-   :schema.property/hasOccupation
-   :schema.property/workLocation
-   :schema.property/colleague
    :schema.property/spouse
    :schema.property/telephone
    :schema.property/address
    :schema.property/skills
    :schema.property/relatedTo
-   :schema.property/worksFor
    :schema.property/sibling
    :schema.property/knows
    :schema.property/knowsAbout
    :schema.property/birthDate
-   :schema.property/jobTitle
    :schema.property/email
    :schema.property/alumniOf
    :schema.property/affiliation
