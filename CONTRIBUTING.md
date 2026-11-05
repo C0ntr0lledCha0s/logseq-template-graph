@@ -56,11 +56,7 @@ This project uses a **dev/main branching model** with automated releases:
 - **`dev`** - Development branch (default, most work happens here)
 - **`main`** - Production/release branch (protected)
 
-**Automated Release Logic:**
-- **Merge `dev` → `main`** = Minor/Major release (v1.1.0 → v1.2.0)
-- **Direct commit to `main`** = Patch release (v1.1.0 → v1.1.1, hotfixes only)
-- **Version determined automatically** from conventional commits
-- **Changelog and tags created automatically** by GitHub Actions
+**Releases are manual.** A maintainer bumps the version and writes the changelog on `dev`, merges `dev` → `main`, and pushes a `vX.Y.Z` tag; the tag builds and publishes the release. `auto-release.yml` only previews the next version. The full steps are in the [CI/CD Pipeline guide](docs/developer-guide/ci-cd-pipeline.md#release-flow).
 
 ### Regular Development
 
@@ -93,67 +89,33 @@ git push origin dev
 
 ### Creating a Release
 
-When you're ready to release the features from `dev`:
+Maintainers only. Follow [Release flow](docs/developer-guide/ci-cd-pipeline.md#release-flow):
 
-```bash
-# 1. Ensure dev is up to date and all tests pass
-git checkout dev
-git pull origin dev
-
-# 2. Create PR from dev → main
-gh pr create --base main --head dev --title "Release v1.2.0" --body "Release new features"
-
-# Or via GitHub UI:
-# - Go to Pull Requests
-# - Click "New pull request"
-# - Base: main, Compare: dev
-# - Create pull request
-
-# 3. Review the PR
-# - Check all commits included
-# - Verify CI passes
-# - Preview changelog in PR
-
-# 4. Merge PR → main
-# GitHub Actions will automatically:
-# - Determine version from commits (v1.2.0)
-# - Generate CHANGELOG.md
-# - Create git tag (v1.2.0)
-# - Build schema-library.edn and schema-presets.edn
-# - Create GitHub release
-
-# 5. Sync is automatic
-# main → dev sync happens automatically after hotfixes
-```
+1. PR `chore(release): prepare version X.Y.Z` into `dev`: bump `package.json`, add the `CHANGELOG.md` entry, run `bb publish-library`. Squash-merge.
+2. PR `release: merge dev into main for vX.Y.Z` into `main`. Merge with a merge commit, keeping that title as the commit subject (the default `Merge pull request ...` subject skips the sync back to `dev`).
+3. `git tag -a vX.Y.Z origin/main -m "Release vX.Y.Z"` and `git push origin vX.Y.Z`. The tag runs `release.yml`, which publishes `schema-library.edn` and `schema-presets.edn`.
+4. `main` syncs back into `dev` automatically.
 
 ### Hotfix Workflow (Emergency Patch)
 
-For urgent production fixes only:
+For urgent fixes only. The same manual steps apply, with a patch version:
 
 ```bash
-# 1. Work directly on main branch
-git checkout main
-git pull origin main
+# 1. Branch from main, fix, open a PR into main
+git checkout main && git pull origin main
+git checkout -b fix/critical-issue
+# ... minimal fix, bb test && bb build && bb validate && bb publish-library ...
+# bump package.json to the next patch version and add the CHANGELOG entry in the same PR
 
-# 2. Fix the critical issue
-# ... make minimal fix ...
+# Squash-merge it with a fix: title (a subject containing "Merge pull request" or "chore(release):" skips the sync to dev)
 
-# 3. Commit with conventional commit
-git commit -m "fix(security): patch XSS vulnerability"
-
-# 4. Push to main
-git push origin main
-
-# GitHub Actions will automatically:
-# - Detect hotfix (direct commit)
-# - Create PATCH version (v1.1.0 → v1.1.1)
-# - Generate changelog
-# - Create git tag
-# - Create release
-# - Sync main → dev
-
-# ⚠️ Use hotfixes sparingly - prefer dev → main workflow
+# 2. After merging, tag main as in the release flow
+git fetch origin
+git tag -a vX.Y.Z origin/main -m "Release vX.Y.Z"
+git push origin vX.Y.Z
 ```
+
+`sync-branches.yml` then merges `main` back into `dev`.
 
 ## Commit Message Guidelines
 
