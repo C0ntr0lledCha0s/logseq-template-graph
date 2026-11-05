@@ -1,6 +1,6 @@
 # Presets
 
-A preset describes a role: which classes it includes and which properties each class brings. Presets are published in `schema-presets.edn` and read by the [Ontology Sync plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin) to build a role-shaped graph from `schema-library.edn`.
+A preset describes a role: which classes it includes and which properties each class brings. Presets are published in `schema-presets.edn` and read by the [Ontology Schema Builder plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin) to build a role-shaped graph from `schema-library.edn`.
 
 ## Format
 
@@ -56,4 +56,4 @@ Use `.github/PRESET_TEMPLATE.md` as a copyable starting point.
 
 ## Using a preset
 
-Releases publish only `schema-library.edn` and `schema-presets.edn`. Per-preset import files are not built. To get a role-shaped graph, use the Ontology Sync plugin, which reads both files. To import everything, use `schema-library.edn` through Settings -> Import -> **EDN to DB Graph**.
+Releases publish only `schema-library.edn` and `schema-presets.edn`. Per-preset import files are not built. To get a role-shaped graph, use the Ontology Schema Builder plugin, which reads both files. To import everything, use `schema-library.edn` through Settings -> Import -> **EDN to DB Graph**.

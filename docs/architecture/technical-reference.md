@@ -24,7 +24,7 @@ The library is Schema.org vocabulary expressed as Logseq DB "graph ontology" EDN
 | Build output | Released as | Used for |
 |--------------|-------------|----------|
 | `build/schema-library.edn` | `schema-library.edn` | Import via Logseq **Import -> EDN to DB Graph** |
-| `build/schema-presets.edn` | `schema-presets.edn` | Role presets, read by the Ontology Sync plugin together with the library |
+| `build/schema-presets.edn` | `schema-presets.edn` | Role presets, read by the Ontology Schema Builder plugin together with the library |
 
 ## Repository structure
 

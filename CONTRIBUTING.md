@@ -76,7 +76,7 @@ git pull origin dev
 # 3. Test, build and validate
 bb test && bb build && bb validate
 
-# 3b. Publish the generated library (do not hand-edit library/; the Ontology Sync plugin downloads it)
+# 3b. Publish the generated library (do not hand-edit library/; the Ontology Schema Builder plugin downloads it)
 bb publish-library
 
 # 4. Review changes (small, per-module diffs)

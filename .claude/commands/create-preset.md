@@ -4,7 +4,7 @@ Guide the user through creating a role preset for the schema library.
 
 ## What This Does
 
-Creates `source/presets/<id>.edn`: a role described as a set of classes and, per class, the properties the role brings. Presets are published in `schema-presets.edn` and read by the Ontology Sync plugin. There are no per-preset build files.
+Creates `source/presets/<id>.edn`: a role described as a set of classes and, per class, the properties the role brings. Presets are published in `schema-presets.edn` and read by the Ontology Schema Builder plugin. There are no per-preset build files.
 
 ## Format
 
@@ -56,7 +56,7 @@ Show any error and fix the preset. Confirm the preset appears in `build/schema-p
 
 ## Using the preset
 
-Releases publish exactly `schema-library.edn` and `schema-presets.edn`. Users build the role with the Ontology Sync plugin, which reads both.
+Releases publish exactly `schema-library.edn` and `schema-presets.edn`. Users build a schema from roles with the Ontology Schema Builder plugin, which reads both.
 
 ## Related
 

@@ -64,7 +64,7 @@ The npm scripts `npm run build`, `npm test` and `npm run validate` call the same
 3. The tag triggers `release.yml`, which runs the full check (tests, build, validate, import check) and publishes **exactly two files**:
    - `schema-library.edn`
    - `schema-presets.edn`
-4. Users download `schema-library.edn` and import it via Logseq **Import -> EDN to DB Graph**, or build a role with the Ontology Sync plugin, which reads both files.
+4. Users download `schema-library.edn` and import it via Logseq **Import -> EDN to DB Graph**, or build a schema with the Ontology Schema Builder plugin, which reads both files.
 
 The released version is read from `package.json` by `bb build` and written into both files.
 
