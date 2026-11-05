@@ -1,17 +1,8 @@
-# Release Preparation Checklist
+# Release Preparation
 
-Prepare and validate a release before tagging and pushing.
+Cut a release of `schema-library.edn` and `schema-presets.edn` from `dev`.
 
-This command prevents release mistakes by validating everything first.
-
-## What This Does
-
-1. **Validates git state** - No uncommitted changes, clean working tree
-2. **Analyzes commits** - Reviews all commits since last tag
-3. **Determines version** - Calculates next version from conventional commits
-4. **Generates changelog** - Preview what will be in CHANGELOG.md
-5. **Validates builds** - Ensures the library builds and validates (`bb test && bb build && bb validate`)
-6. **Creates release** - Tags, pushes, triggers GitHub Actions (if approved)
+Releases are manual. `auto-release.yml` runs in dry-run mode and only previews the next version; it creates no tag. The authoritative steps are in [docs/developer-guide/ci-cd-pipeline.md](../../docs/developer-guide/ci-cd-pipeline.md#release-flow). This command walks through them.
 
 ## Usage
 
@@ -19,336 +10,67 @@ This command prevents release mistakes by validating everything first.
 /release-prep [version]
 ```
 
-**Examples:**
-```bash
-/release-prep          # Auto-detect next version
-/release-prep v0.3.0   # Specify version explicitly
-/release-prep patch    # Force patch version
-/release-prep minor    # Force minor version
-/release-prep major    # Force major version
-```
+`version` is optional (`2.5.0`, `patch`, `minor`, `major`). Without it, pick from the commits since the last tag: `feat` -> minor, `fix` only -> patch, `!` or `BREAKING` -> major.
 
-## Process
+## Steps
 
-### Step 1: Validate Git State
-```
-🔍 Checking git status...
-  ✓ Working directory clean
-  ✓ All changes committed
-  ✓ On branch: feat/new-classes
-  ✓ Up to date with remote
-
-Current branch: feat/new-classes
-Target branch: main
-```
-
-If uncommitted changes:
-```
-❌ Uncommitted changes detected!
-
-Modified files:
-  source/person/properties.edn
-  source/creative-work/classes.edn
-
-💡 Please commit or stash changes before releasing:
-  git add .
-  git commit -m "feat: final changes"
-
-Or force release anyway? [y/N]
-```
-
-### Step 2: Analyze Commits Since Last Tag
-```
-📋 Commits since v0.2.0 (14 commits)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-feat(classes): add Recipe class (abc1234)
-feat(properties): add cookTime to Recipe (def5678)
-feat(classes): add Book class with ISBN (ghi9012)
-fix(templates): correct spouse cardinality (jkl3456)
-docs: update quickstart guide (mno7890)
-chore(deps): update dependencies (pqr1234)
-... (8 more)
-
-Summary:
-  5 features (feat)
-  1 fix
-  2 docs updates
-  6 chores
-
-Breaking changes: None
-```
-
-If invalid commit messages found:
-```
-⚠️  Warning: Non-conventional commits detected
-
-These commits don't follow conventional commits:
-  - "Added new property" (should be: feat: add new property)
-  - "fixed bug" (should be: fix: correct ...)
-
-Continue anyway? [y/N]
-```
-
-### Step 3: Determine Next Version
-```
-📦 Version Calculation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Current version: v0.2.0
-
-Based on conventional commits:
-  5 features (feat) → MINOR bump
-  1 fix → PATCH bump
-  0 breaking changes → No MAJOR bump
-
-Recommended: v0.3.0
-
-Override version? [0.3.0]:
-```
-
-**Version Logic:**
-- `feat:` → minor bump (0.2.0 → 0.3.0)
-- `fix:` → patch bump (0.2.0 → 0.2.1)
-- `BREAKING CHANGE:` → major bump (0.2.0 → 1.0.0)
-- Multiple types → highest wins
-
-### Step 4: Generate Changelog Preview
-```
-📝 Changelog Preview for v0.3.0
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-## [0.3.0] - 2025-11-08
-
-### Features
-- **classes**: add Recipe class with 5 properties (abc1234)
-- **properties**: add cookTime to Recipe class (def5678)
-- **classes**: add Book class with ISBN property (ghi9012)
-- **classes**: add Article class for blog posts (stu5678)
-- **properties**: add datePublished to CreativeWork (vwx9012)
-
-### Bug Fixes
-- **templates**: correct spouse property cardinality from :many to :one (jkl3456)
-
-### Documentation
-- update quickstart guide with new classes (mno7890)
-- add examples for Recipe and Book classes (yza3456)
-
-### Chores
-- **deps**: update dependencies (pqr1234)
-- update dependencies (bcd7890)
-- clean up temporary files (efg1234)
-... (3 more)
-
-Full changelog will be written to CHANGELOG.md
-```
-
-### Step 5: Validate All Builds
-```
-🔨 Running bb test && bb build && bb validate ...
-  [████████████] full      (8,934 lines) ✓
-  [████████████] crm       (5,389 lines) ✓
-  [████████████] research  (4,203 lines) ✓
-  [████████████] content   (3,902 lines) ✓
-  [████████████] events    (2,801 lines) ✓
-
-All builds successful! ✅
-```
-
-If any build fails:
-```
-❌ Build failed
-
-Cannot release with broken builds!
-
-💡 Options:
-  1. Fix the build: bb build
-  2. Abort release: [recommended]
-
-Abort release? [Y/n]
-```
-
-### Step 6: Run Pre-Release Checks
-```
-✅ Pre-Release Checklist
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  ✓ Git working directory clean
-  ✓ All commits follow conventional commits
-  ✓ Version bump calculated: v0.2.0 → v0.3.0
-  ✓ Changelog generated successfully
-  ✓ bb build succeeds
-  ✓ bb validate passes
-  ✓ No uncommitted changes
-  ✓ Branch up to date with remote
-  ✓ No merge conflicts detected
-
-Everything looks good! ✅
-```
-
-### Step 7: Confirm and Execute
-```
-🚀 Ready to Release v0.3.0
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-This will:
-  1. Write CHANGELOG.md
-  2. Commit changelog: "docs(release): update changelog for v0.3.0"
-  3. Create git tag: v0.3.0
-  4. Push to remote (triggers GitHub Actions)
-  5. GitHub Actions will:
-     - Run bb test, bb build, bb validate
-     - Generate release notes
-     - Create GitHub release
-     - Upload .edn files as release assets
-
-Proceed with release? [Y/n]:
-```
-
-If user confirms:
-```
-📤 Executing release...
-
-  ✓ Wrote CHANGELOG.md
-  ✓ Committed changelog
-  ✓ Created tag v0.3.0
-  ✓ Pushed to remote
-
-🎉 Release v0.3.0 initiated!
-
-GitHub Actions is now running:
-  → https://github.com/YourOrg/logseq-template-graph/actions
-
-The release will be available at:
-  → https://github.com/YourOrg/logseq-template-graph/releases/tag/v0.3.0
-
-Estimated completion: 3-5 minutes
-```
-
-## Manual Release Process (if preferred)
-
-If you want to do it manually:
+### 1. Check the starting point
 
 ```bash
-# 1. Determine version
-npm run version
-
-# 2. Generate changelog
-npm run changelog:write
-
-# 3. Commit changelog
-git commit -am "docs(release): update changelog for v0.3.0"
-
-# 4. Tag
-git tag v0.3.0
-
-# 5. Push
-git push --tags
+git fetch origin --tags
+git switch dev && git pull --ff-only
+git describe --tags --abbrev=0 origin/main      # last release
+git log --oneline <last-tag>..origin/dev        # what this release contains
+gh pr list --base dev --state open              # anything still waiting to land?
 ```
 
-## Error Scenarios
+Stop if the working tree is dirty or a PR meant for this release is still open.
 
-### Uncommitted Changes
-```
-❌ Cannot release with uncommitted changes
+### 2. Prepare the version (PR into `dev`)
 
-Modified:
-  source/person/properties.edn
-  README.md
-
-Options:
-  1. Commit changes: git add . && git commit -m "..."
-  2. Stash changes: git stash
-  3. Force release (not recommended): --force
-```
-
-### Version Conflict
-```
-❌ Tag v0.3.0 already exists!
-
-Existing tag: v0.3.0 (created 2025-11-01)
-
-Options:
-  1. Use different version: v0.4.0, v1.0.0
-  2. Delete existing tag: git tag -d v0.3.0 (dangerous!)
-  3. Abort release
+```bash
+git switch -c chore/release-X.Y.Z
+# package.json: "version": "X.Y.Z"
+# CHANGELOG.md: new entry at the top, hand-written in the style of the existing ones:
+#   ## **X.Y.Z**&emsp;<sub><sup>YYYY-MM-DD ([vPREV...vX.Y.Z](https://github.com/C0ntr0lledCha0s/logseq-template-graph/compare/vPREV...vX.Y.Z))</sup></sub>
+#   one-line summary, then ### Features & Enhancements / ### Fixes / ### Manual steps (only if users must change their graph)
+bb test && bb validate && bb publish-library && bb check-library
+git add package.json CHANGELOG.md library/
+git commit -m "chore(release): prepare version X.Y.Z"
+git push -u origin chore/release-X.Y.Z
+gh pr create --base dev --title "chore(release): prepare version X.Y.Z" --body "..."
 ```
 
-### Build Failure
-```
-❌ Cannot release: build validation failed
+Wait for CI, then squash-merge.
 
-Failed step: bb build
+### 3. Merge `dev` into `main`
 
-See error above or run:
-  /diagnose full
-
-Release aborted for safety.
+```bash
+gh pr create --base main --head dev --title "release: merge dev into main for vX.Y.Z" --body "Releases vX.Y.Z (#...)."
+# after CI passes:
+gh pr merge <n> --merge --subject "release: merge dev into main for vX.Y.Z" --body ""
 ```
 
-### No Changes Since Last Release
+Keep that subject. A subject containing `Merge pull request` or `chore(release):` makes `sync-branches.yml` skip syncing `main` back into `dev`.
+
+### 4. Tag and publish
+
+```bash
+git fetch origin
+git tag -a vX.Y.Z origin/main -m "Release vX.Y.Z"
+git push origin vX.Y.Z
+gh run list --workflow release.yml --limit 1     # watch it finish
+gh release view vX.Y.Z --json assets --jq '.assets[].name'
 ```
-⚠️  Warning: No commits since last tag (v0.2.0)
 
-Current HEAD is already tagged as v0.2.0
+The release must have exactly `schema-library.edn` and `schema-presets.edn`, stamped with `X.Y.Z`.
 
-Nothing to release!
+### 5. Finish
 
-Did you mean to:
-  - Make changes first?
-  - Create a patch release anyway? (not recommended)
-```
+- Check `dev` received the `chore(sync): sync main → dev` commit.
+- Close issues that `Closes #N` did not close, linking the release.
 
-## Tips
+## When GitHub misbehaves
 
-- **First time?** Run `/validate-env` to check setup
-- **Test builds first?** Run `/test-workflow` before releasing
-- **Unsure about version?** Let the tool auto-detect from commits
-- **Want to preview?** Run with `--dry-run` (doesn't actually release)
-
-## Conventional Commits Guide
-
-Your commit messages determine the version bump:
-
-| Commit Type | Example | Version Impact |
-|-------------|---------|---------------|
-| `feat:` | `feat: add Recipe class` | Minor (0.2.0 → 0.3.0) |
-| `fix:` | `fix: correct cardinality` | Patch (0.2.0 → 0.2.1) |
-| `BREAKING CHANGE:` | `feat!: remove Customer class` | Major (0.2.0 → 1.0.0) |
-| `docs:` | `docs: update README` | No bump (chore) |
-| `chore:` | `chore: update deps` | No bump (chore) |
-
-**Scopes** (optional):
-- `feat(classes): ...`
-- `fix(templates): ...`
-- `docs(release): ...`
-
-See: [CLAUDE.md - Conventional Commits](../../CLAUDE.md#conventional-commits)
-
-## Time Savings
-
-**Manual release:** ~15-20 minutes
-- Check git status (2 min)
-- Review commits (3 min)
-- Calculate version (2 min)
-- Generate changelog (5 min)
-- Build and validate (3 min)
-- Tag and push (5 min)
-
-**With /release-prep:** ~5 minutes
-- Automated checks (2 min)
-- Review and confirm (3 min)
-
-**Saves:** 10-15 minutes per release
-
-## Related Commands
-
-- `/test-workflow` - Test changes before releasing
-- `/validate-env` - Check environment setup
-- `/stats` - View project statistics
-
-## Learn More
-
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [CI/CD Pipeline](../../docs/developer-guide/ci-cd-pipeline.md)
-- [CLAUDE.md - Git Workflow](../../CLAUDE.md#git-workflow)
+- **`Internal Server Error`, `502` or `Merge already in progress`:** check [githubstatus.com](https://www.githubstatus.com). Confirm the ref did not move (`git ls-remote origin`, `gh pr view <n> --json state`) before retrying, so nothing happens twice.
+- **`release.yml` fails at Create GitHub Release** (for example `Cannot read properties of undefined`) and no release exists: `gh run rerun <run-id> --failed`.

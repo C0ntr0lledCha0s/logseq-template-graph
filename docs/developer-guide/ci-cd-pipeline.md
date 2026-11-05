@@ -53,18 +53,35 @@ The npm scripts `npm run build`, `npm test` and `npm run validate` call the same
 | `build-templates.yml` | PRs and pushes | `bb build`, prints statistics, uploads `schema-library` build artifacts |
 | `validate.yml` | PRs and pushes to main | `bb build`, `bb validate` |
 | `validate-commits.yml` | PRs | Checks commits follow Conventional Commits |
-| `auto-release.yml` | Push to `main` | Determines the next version from commits, updates `CHANGELOG.md` and `package.json`, tags `vX.Y.Z` |
+| `auto-release.yml` | Push to `main` | **Dry run only** (`AUTO_RELEASE_ENABLED: 'false'`): previews the next version and changelog in the run summary. It creates no commit, tag or release |
 | `release.yml` | Tag `v*` | `bb test`, `bb build`, `bb validate`, `bb check-import`; creates the GitHub release |
-| `sync-branches.yml` | Push to `main` | Syncs `main` back into `dev` |
+| `sync-branches.yml` | Push to `main` | Syncs `main` back into `dev`. Skipped when the commit message contains `Merge pull request` or `chore(release):` |
 
 ## Release flow
 
-1. Work lands on `dev`; open a PR `dev` -> `main`.
-2. Merging to `main` triggers `auto-release.yml`, which bumps the version from the conventional commits and pushes a `v*` tag.
-3. The tag triggers `release.yml`, which runs the full check (tests, build, validate, import check) and publishes **exactly two files**:
+Releases are cut by hand. `auto-release.yml` only previews them.
+
+1. **Feature PRs land on `dev`.**
+2. **Prepare the version on `dev`.** Open a PR `chore(release): prepare version X.Y.Z` into `dev` that:
+   - bumps `package.json` to `X.Y.Z` (minor for `feat`, patch for `fix`, major for `!`/`BREAKING`),
+   - adds a hand-written `CHANGELOG.md` entry at the top, in the style of the existing entries (summary line, Features & Enhancements, Fixes, Manual steps when users must change their graph),
+   - runs `bb publish-library`, so `library/` carries the new version stamp.
+
+   Squash-merge it once CI passes.
+3. **Merge `dev` into `main`.** Open a PR `release: merge dev into main for vX.Y.Z` (base `main`, head `dev`) and merge it with a **merge commit**, keeping that title as the commit subject. GitHub's default subject (`Merge pull request #N ...`) makes `sync-branches.yml` skip the sync.
+4. **Tag `main`.** Push an annotated tag on the merge commit:
+   ```bash
+   git fetch origin
+   git tag -a vX.Y.Z origin/main -m "Release vX.Y.Z"
+   git push origin vX.Y.Z
+   ```
+5. **`release.yml` publishes.** The tag runs the full check (tests, build, validate, import check) and publishes **exactly two files**:
    - `schema-library.edn`
    - `schema-presets.edn`
-4. Users download `schema-library.edn` and import it via Logseq **Import -> EDN to DB Graph**, or build a role with the Ontology Sync plugin, which reads both files.
+6. **`sync-branches.yml` merges `main` back into `dev`** (a `chore(sync): sync main → dev` commit).
+7. **Close the issues.** `Closes #N` in a commit or PR body only takes effect when it reaches `main`. Close any that stay open by hand, linking the release.
+
+Users download `schema-library.edn` and import it via Logseq **Import -> EDN to DB Graph** or `logseq import-edn`, or build a role with the Ontology Sync plugin, which reads both files.
 
 The released version is read from `package.json` by `bb build` and written into both files.
 
@@ -88,6 +105,8 @@ Bypass (not recommended): `git commit --no-verify`, `git push --no-verify`.
 | `bb: command not found` | Install [Babashka](https://babashka.org/) |
 | `bb build` throws `conflicting definitions` | The same ident is defined differently in two modules; keep one |
 | `bb validate` prints errors | See [validation-reference.md](validation-reference.md) |
+| `release.yml` fails at **Create GitHub Release** with an error such as `Cannot read properties of undefined` | Usually a GitHub API outage. If no release was created, re-run the failed job: `gh run rerun <run-id> --failed` |
+| A tag push or PR merge returns `Internal Server Error`, `502` or `Merge already in progress` | Check [githubstatus.com](https://www.githubstatus.com). Confirm the ref did not move (`git ls-remote origin`) before retrying, so nothing happens twice |
 | `bb check-import` fails with `LOGSEQ_DIR must point at a logseq/logseq checkout` | Set `LOGSEQ_DIR` and install dependencies in its `scripts/` directory |
 | Import check fails in CI only | Run `LOGSEQ_DIR=... bb check-import` locally; read the reported import error |
 
