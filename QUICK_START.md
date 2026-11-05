@@ -23,7 +23,7 @@ Download **`schema-library.edn`** from the [latest release](https://github.com/C
 Each release publishes exactly two files:
 
 - `schema-library.edn` - all classes and properties. This is the file you import.
-- `schema-presets.edn` - role presets, read by the Ontology Sync plugin. You do not import it directly.
+- `schema-presets.edn` - role presets, read by the Ontology Schema Builder plugin. You do not import it directly.
 
 Do not download the "Source code" archives; they are development files.
 
@@ -33,9 +33,27 @@ Do not download the "Source code" archives; they are development files.
 2. Go to Settings -> Import -> **EDN to DB Graph**.
 3. Select `schema-library.edn` and wait for the import to finish.
 
-### Alternative: build a role with the Ontology Sync plugin
+Importing into a graph that already has notes is fine: it adds the classes and properties and leaves your content alone. Re-importing a newer release updates them in place.
 
-If you want only the classes for a role (CRM, research, events, ...) rather than the whole library, use the [Ontology Sync plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin). It reads both `schema-library.edn` and `schema-presets.edn`.
+### Alternative: import from the command line
+
+The [Logseq CLI](https://www.npmjs.com/package/@logseq/cli) (`@logseq/cli` 0.4.3 or later, Node.js 22.17+) imports into a local DB graph:
+
+```bash
+npm install -g @logseq/cli
+logseq list                                        # graph names
+logseq import-edn -g "My Graph" -f schema-library.edn
+logseq validate -g "My Graph"                      # optional check
+```
+
+- The graph must already exist (create it in the Logseq app first). Local graphs live in `~/logseq/graphs/`.
+- Close the graph in the Logseq app before importing into it from the command line.
+- To import into the graph that is open in the app instead, turn on the app's [HTTP API server](https://docs.logseq.com/#/page/local%20http%20server) and pass its token: `logseq import-edn -a <token> -f schema-library.edn`.
+- Running the import again is safe: it updates the same classes and properties.
+
+### Alternative: build a schema with the Ontology Schema Builder plugin
+
+If you want only the classes for a role (CRM, research, events, ...) rather than the whole library, use the [Ontology Schema Builder plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin). It reads both `schema-library.edn` and `schema-presets.edn`.
 
 ### Step 3: Start using it
 
@@ -43,7 +61,9 @@ Tag any page with an imported class:
 
 - `#Person` brings email, birthDate, and so on. `#WorkProfile` extends it with work details such as jobTitle and worksFor.
 - `#Organization` brings legalName, employee, member, and so on.
-- `#Event` brings eventStatus, attendee, organizer, and so on.
+- `#Event` brings startDate, eventStatus, attendee, location, and so on.
+
+For inheritance, property types, worked examples, queries and updating, read the [user guide](docs/user-guide/using-the-library.md).
 
 [Back to top](#quick-start-guide)
 
@@ -148,6 +168,7 @@ Run PowerShell as needed with `-ExecutionPolicy Bypass`, or use Git Bash. `bb` i
 
 ## Next steps
 
+- [Using the library](docs/user-guide/using-the-library.md)
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [Technical Reference](docs/architecture/technical-reference.md)
 - [Documentation portal](docs/README.md)
