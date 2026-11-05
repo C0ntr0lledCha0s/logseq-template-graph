@@ -112,7 +112,7 @@ Importing never **removes** anything. When a release drops a property from a cla
 
 ## Importing only part of the library
 
-The full library has every class. If you only want the classes for one job (CRM, research, events, content, student life, project management), use the [Ontology Sync plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin): start from one or more presets, untick what you do not need, and import the result. You can import more later; it uses the same idents, so nothing is duplicated.
+The full library has every class. If you only want the classes for one job (CRM, research, events, content, student life, project management), use the [Ontology Schema Builder plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin): start from one or more roles, untick what you do not need, and import the result. You can import more later; it uses the same idents, so nothing is duplicated.
 
 ## Troubleshooting
 

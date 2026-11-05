@@ -13,7 +13,7 @@ Each release publishes exactly two files:
 | File | Contents |
 |------|----------|
 | `schema-library.edn` | Every class and property, with fixed idents (`:schema.class/Person`, `:schema.property/email`, `:custom.class/FamilyGroup`). Importable into Logseq. |
-| `schema-presets.edn` | Role presets (full, crm, research, events, content, student-life, project-management). Each lists the classes in the role and, per class, the properties it brings. Read by the [Ontology Sync plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin). |
+| `schema-presets.edn` | Role presets (full, crm, research, events, content, student-life, project-management). Each lists the classes in the role and, per class, the properties it brings. Read by the [Ontology Schema Builder plugin](https://github.com/C0ntr0lledCha0s/logseq-ontology-sync-plugin). |
 
 The class and property counts for the current source are printed by `bb build`.
 
@@ -27,7 +27,7 @@ The class and property counts for the current source are printed by `bb build`.
 2. In Logseq DB: Settings -> Import -> **EDN to DB Graph**, and select the file.
 3. Tag pages with the imported classes. `#Person` gives you email, birthDate, and so on; `#WorkProfile` adds work details such as jobTitle and worksFor.
 
-To build a smaller, role-shaped graph instead, use the Ontology Sync plugin, which reads both `schema-library.edn` and `schema-presets.edn`.
+To build a smaller, role-shaped graph instead, use the Ontology Schema Builder plugin, which reads both `schema-library.edn` and `schema-presets.edn`.
 
 Details: [QUICK_START.md](QUICK_START.md).
 
@@ -48,7 +48,7 @@ bb test && bb build && bb validate && bb publish-library   # then commit library
 - `bb test` runs the unit tests.
 - `bb build` merges `source/` into `build/schema-library.edn` and `build/schema-presets.edn` and prints the counts.
 - `bb validate` checks the build against the vendored Schema.org vocabulary (`vendor/`).
-- `bb publish-library` copies the build into `library/`; commit it. `library/` is generated (do not hand-edit) and is what the Ontology Sync plugin downloads. CI runs `bb check-library` to catch a stale copy.
+- `bb publish-library` copies the build into `library/`; commit it. `library/` is generated (do not hand-edit) and is what the Ontology Schema Builder plugin downloads. CI runs `bb check-library` to catch a stale copy.
 - `LOGSEQ_DIR=/path/to/logseq bb check-import` imports the build into a fresh Logseq graph, as CI does.
 
 Requires [Babashka](https://babashka.org/). See [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions and the release flow, and [docs/architecture/technical-reference.md](docs/architecture/technical-reference.md) for the EDN format.

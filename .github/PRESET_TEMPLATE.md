@@ -4,7 +4,7 @@ Copy this file's example to `source/presets/<id>.edn` to create a new preset. Se
 
 ## What a preset is
 
-A preset describes a role: the classes it includes and, per class, the properties it brings. Presets are published in `schema-presets.edn` and read by the Ontology Sync plugin.
+A preset describes a role: the classes it includes and, per class, the properties it brings. Presets are published in `schema-presets.edn` and read by the Ontology Schema Builder plugin.
 
 ## Template
 

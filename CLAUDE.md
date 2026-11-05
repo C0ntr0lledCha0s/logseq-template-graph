@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (AI assistant) when working with code
 A **schema library** for Logseq DB graphs: Schema.org classes and properties as hand-edited EDN under `source/`, built into two release files.
 
 - `build/schema-library.edn` (released as `schema-library.edn`) - all classes and properties, importable via Logseq **Import -> EDN to DB Graph**
-- `build/schema-presets.edn` (released as `schema-presets.edn`) - role presets, read by the Ontology Sync plugin
+- `build/schema-presets.edn` (released as `schema-presets.edn`) - role presets, read by the Ontology Schema Builder plugin
 
 Counts come from `bb build` output (do not hard-code them in docs). Every `schema.*` entry carries `:schema.property/url`; non-Schema.org terms live under `custom.class/*` and `custom.property/*`.
 
@@ -32,7 +32,7 @@ LOGSEQ_DIR=/path/to/logseq bb check-import   # optional: import into a fresh Log
 - `bb test` - unit tests in `test/template_graph/`
 - `bb build` - `scripts/build.clj`: merges modules, normalises each class's property order to one global order, writes `build/`
 - `bb validate` - `scripts/validate.clj`: checks `build/` against `vendor/schemaorg-current-https.json`
-- `bb publish-library` / `bb check-library` - copy / verify `build/` output in `library/`. `library/` is generated (never hand-edit), committed, and downloaded by the Ontology Sync plugin
+- `bb publish-library` / `bb check-library` - copy / verify `build/` output in `library/`. `library/` is generated (never hand-edit), committed, and downloaded by the Ontology Schema Builder plugin
 - `bb check-import` - `scripts/ci/check-import.cljs` via nbb-logseq (needs `LOGSEQ_DIR`)
 
 `build/` is git-ignored. Releases publish exactly `schema-library.edn` and `schema-presets.edn`.
