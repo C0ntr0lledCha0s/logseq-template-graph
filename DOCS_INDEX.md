@@ -9,7 +9,8 @@ Map of the documentation in this repository.
 ### Users
 
 - [README](README.md) - what the library is and what each release contains
-- [Quick Start: import](QUICK_START.md#for-users-import-the-library) - download `schema-library.edn` and import it
+- [Quick Start: import](QUICK_START.md#for-users-import-the-library) - download `schema-library.edn` and import it, in the app or from the command line
+- [Using the library](docs/user-guide/using-the-library.md) - tagging, inheritance, property types, examples, queries, updating
 
 ### Developers
 
@@ -25,6 +26,7 @@ Map of the documentation in this repository.
 |------|-------------|
 | [README.md](README.md) | Project overview |
 | [QUICK_START.md](QUICK_START.md) | Import and develop |
+| [docs/user-guide/using-the-library.md](docs/user-guide/using-the-library.md) | Using the library after import |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guide |
 | [CLAUDE.md](CLAUDE.md) | Guidance for Claude Code |
 | [source/presets/README.md](source/presets/README.md) | Preset format and the available presets |
@@ -41,6 +43,7 @@ Map of the documentation in this repository.
 | Task | Where |
 |------|-------|
 | Import the library | [Quick Start: import](QUICK_START.md#for-users-import-the-library) |
+| Use the classes after importing | [Using the library](docs/user-guide/using-the-library.md) |
 | Add a class or property | [CONTRIBUTING.md](CONTRIBUTING.md#adding-classes-and-properties) |
 | Change a preset | [source/presets/README.md](source/presets/README.md) |
 | Understand a validation error | [Validation Reference](docs/developer-guide/validation-reference.md) |

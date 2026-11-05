@@ -6,7 +6,8 @@ Documentation for the Logseq Schema Library.
 
 | Document | Description |
 |----------|-------------|
-| [Quick Start: import](../QUICK_START.md#for-users-import-the-library) | Install Logseq DB and import `schema-library.edn` |
+| [Quick Start: import](../QUICK_START.md#for-users-import-the-library) | Install Logseq DB and import `schema-library.edn`, in the app or from the command line |
+| [Using the library](user-guide/using-the-library.md) | Tagging, inheritance, property types, examples, queries, updating |
 
 ## Developers
 
